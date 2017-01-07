@@ -1,0 +1,16 @@
+/.c9/
+/.idea/
+/doc/
+/test/
+/var/
+/web/
+
+/.babelrc
+/.editorconfig
+/.esdoc.json
+/.eslintrc.yaml
+/.gitattributes
+/.gitignore
+/.travis.yml
+/*.iml
+/*.js

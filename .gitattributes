@@ -1,0 +1,19 @@
+* text=auto
+
+.babelrc text
+.editorconfig text
+.esdoc.json text
+.eslintrc.yaml text
+.gitattributes text
+.gitignore text
+.npmignore text
+.travis.yml text
+
+*.js text
+*.json text
+*.md text
+*.txt text
+*.yaml text
+
+*.ico binary
+*.png binary
