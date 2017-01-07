@@ -1,0 +1,45 @@
+{
+  "description": "Parse and format LCOV coverage reports.",
+  "homepage": "https://github.com/cedx/lcov.js",
+  "name": "@cedx/lcov",
+
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "https://github.com/cedx/lcov.js/issues",
+  "license": "Apache-2.0",
+  "repository": "cedx/lcov.js",
+  "version": "0.1.0",
+
+  "jsnext:main": "./src/index",
+  "main": "./lib/index",
+
+  "devDependencies": {
+    "@cedx/gulp-david": "^3.1.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "coveralls": "^2.11.15",
+    "del": "^2.2.2",
+    "esdoc": "^0.5.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-mocha": "^3.0.1",
+    "isparta": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "keywords": [
+    "coverage",
+    "formatter",
+    "lcov",
+    "parser",
+    "test"
+  ],
+  "scripts": {
+    "coverage": "cat var/lcov.info | coveralls",
+    "prepublish": "gulp build",
+    "test": "gulp test"
+  }
+}
