@@ -12,6 +12,9 @@
   "jsnext:main": "./src/index",
   "main": "./lib/index",
 
+  "dependencies": {
+    "@cedx/enum": "^1.2.0"
+  },
   "devDependencies": {
     "@cedx/gulp-david": "^3.1.0",
     "babel-preset-latest": "^6.16.0",
