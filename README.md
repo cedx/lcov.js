@@ -17,6 +17,12 @@ $ npm install --save @cedx/lcov
 ## Usage
 TODO
 
+### Parse coverage data from a LCOV file
+The parser produces a data structure compatible with the format used by the [lcov-parse](https://github.com/davglass/lcov-parse) library.
+
+### Format coverage data to the LCOV format
+TODO
+
 ## See also
 - [API reference](https://cedx.github.io/lcov.js)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.js)
