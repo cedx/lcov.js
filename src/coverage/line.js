@@ -26,13 +26,13 @@ export class LineData {
   constructor(options = {}) {
 
     /**
-     * The branch number.
+     * The data checksum.
      * @type {string}
      */
     this.checksum = typeof options.checksum == 'string' ? options.checksum : '';
 
     /**
-     * The block number.
+     * The execution count.
      * @type {number}
      */
     this.executionCount = typeof options.executionCount == 'number' ? options.executionCount : 0;
