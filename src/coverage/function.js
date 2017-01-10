@@ -26,16 +26,22 @@ export class FunctionData {
   constructor(options = {}) {
 
     /**
-     * The branch number.
+     * The execution count.
      * @type {number}
      */
     this.executionCount = typeof options.executionCount == 'number' ? options.executionCount : 0;
 
     /**
-     * The block number.
+     * The function name.
      * @type {string}
      */
     this.functionName = typeof options.functionName == 'string' ? options.functionName : '';
+
+    /**
+     * The line number of the function start.
+     * @type {number}
+     */
+    this.lineNumber = typeof options.lineNumber == 'number' ? options.lineNumber : 0;
   }
 
   /**
@@ -46,7 +52,8 @@ export class FunctionData {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionData({
       executionCount: map.hit,
-      functionName: map.name
+      functionName: map.name,
+      lineNumber: map.line
     });
   }
 
@@ -57,15 +64,19 @@ export class FunctionData {
   toJSON() {
     return {
       hit: this.executionCount,
+      line: this.lineNumber,
       name: this.functionName
     }
   }
 
   /**
    * Returns a string representation of this object.
+   * @param {boolean} asDefinition Value indicating whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
    * @return {string} The string representation of this object.
    */
-  toString() {
-    return `${Token.FUNCTION_DATA}:${this.executionCount},${this.functionName}`;
+  toString(asDefinition = false) {
+    let token = asDefinition ? Token.FUNCTION_NAME : Token.FUNCTION_DATA;
+    let number = asDefinition ? this.lineNumber : this.executionCount;
+    return `${token}:${number},${this.functionName}`;
   }
 }
