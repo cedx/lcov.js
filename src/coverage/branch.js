@@ -12,6 +12,42 @@ export class BranchCoverage {
   constructor(options = {}) {
     // TODO
   }
+
+  /**
+   * Creates a new branch data from the specified JSON map.
+   * @param {object} map A JSON map representing a branch data.
+   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   */
+  static fromJSON(map) {
+    return !map || typeof map != 'object' ? null : new BranchData({
+        branchNumber: map.branch,
+        blockNumber: map.block,
+        lineNumber: map.line,
+        taken: map.taken
+      });
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return {object} The map in JSON format corresponding to this object.
+   */
+  toJSON() {
+    return {
+      branch: this.branchNumber,
+      block: this.blockNumber,
+      line: this.lineNumber,
+      taken: this.taken
+    }
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @return {string} The string representation of this object.
+   */
+  toString() {
+    let value = `${Token.BRANCH_DATA}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
+    return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
+  }
 }
 
 /**
