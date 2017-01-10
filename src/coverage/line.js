@@ -11,20 +11,36 @@ export class LineCoverage {
    */
   constructor(options = {}) {
 
+    /**
+     * The coverage data.
+     * @type {LineData[]}
+     */
+    this.data = Array.isArray(options.data) ? options.data : [];
+
+    /**
+     * The number of lines found.
+     * @type {number}
+     */
+    this.found = typeof options.found =='number' ? options.found : 0;
+
+    /**
+     * The number of lines hit.
+     * @type {number}
+     */
+    this.hit = typeof options.hit =='number' ? options.hit : 0;
   }
 
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {LineData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchData({
-        branchNumber: map.branch,
-        blockNumber: map.block,
-        lineNumber: map.line,
-        taken: map.taken
-      });
+    return !map || typeof map != 'object' ? null : new LineCoverage({
+      data: Array.isArray(map.details) ? map.details.map(item => LineData.fromJSON(item)).filter(item => item) : [],
+      found: map.found,
+      hit: map.hit
+    });
   }
 
   /**
@@ -33,10 +49,9 @@ export class LineCoverage {
    */
   toJSON() {
     return {
-      branch: this.branchNumber,
-      block: this.blockNumber,
-      line: this.lineNumber,
-      taken: this.taken
+      details: this.data.map(item => item.toJSON()),
+      found: this.found,
+      hit: this.hit
     }
   }
 
@@ -45,8 +60,10 @@ export class LineCoverage {
    * @return {string} The string representation of this object.
    */
   toString() {
-    let value = `${Token.BRANCH_DATA}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
-    return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
+    let lines = data.map(item => item.toString());
+    lines.push(`${Token.LINES_FOUND}:${this.found}`);
+    lines.push(`${Token.LINES_HIT}:${this.hit}`);
+    return lines.join('\n');
   }
 }
 
@@ -83,7 +100,7 @@ export class LineData {
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {LineData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new LineData({

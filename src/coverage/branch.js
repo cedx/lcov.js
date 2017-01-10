@@ -10,7 +10,24 @@ export class BranchCoverage {
    * @param {object} [options] An object specifying values used to initialize this instance.
    */
   constructor(options = {}) {
-    // TODO
+
+    /**
+     * The coverage data.
+     * @type {BranchData[]}
+     */
+    this.data = Array.isArray(options.data) ? options.data : [];
+
+    /**
+     * The number of branches found.
+     * @type {number}
+     */
+    this.found = typeof options.found =='number' ? options.found : 0;
+
+    /**
+     * The number of branches hit.
+     * @type {number}
+     */
+    this.hit = typeof options.hit =='number' ? options.hit : 0;
   }
 
   /**
@@ -19,12 +36,11 @@ export class BranchCoverage {
    * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchData({
-        branchNumber: map.branch,
-        blockNumber: map.block,
-        lineNumber: map.line,
-        taken: map.taken
-      });
+    return !map || typeof map != 'object' ? null : new BranchCoverage({
+      data: Array.isArray(map.details) ? map.details.map(item => BranchData.fromJSON(item)).filter(item => item) : [],
+      found: map.found,
+      hit: map.hit
+    });
   }
 
   /**
@@ -33,10 +49,9 @@ export class BranchCoverage {
    */
   toJSON() {
     return {
-      branch: this.branchNumber,
-      block: this.blockNumber,
-      line: this.lineNumber,
-      taken: this.taken
+      details: this.data.map(item => item.toJSON()),
+      found: this.found,
+      hit: this.hit
     }
   }
 
@@ -45,8 +60,10 @@ export class BranchCoverage {
    * @return {string} The string representation of this object.
    */
   toString() {
-    let value = `${Token.BRANCH_DATA}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
-    return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
+    let lines = data.map(item => item.toString());
+    lines.push(`${Token.BRANCHES_FOUND}:${this.found}`);
+    lines.push(`${Token.BRANCHES_HIT}:${this.hit}`);
+    return lines.join('\n');
   }
 }
 
