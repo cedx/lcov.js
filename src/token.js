@@ -26,7 +26,7 @@ export const Token = Enum.create({
   FUNCTION_DATA: 'FNDA',
   FUNCTION_NAME: 'FN',
   FUNCTIONS_FOUND: 'FNF',
-  FUNCTIONS_HIT: 'FNR',
+  FUNCTIONS_HIT: 'FNH',
   LINE_DATA: 'DA',
   LINES_FOUND: 'LF',
   LINES_HIT: 'LH',
