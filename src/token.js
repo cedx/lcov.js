@@ -19,17 +19,17 @@ import {Enum} from '@cedx/enum';
  * @property {string} TEST_NAME A test name.
  */
 export const Token = Enum.create({
-  BRANCH_DATA: 'BRDA',
   BRANCHES_FOUND: 'BRF',
   BRANCHES_HIT: 'BRH',
+  BRANCH_DATA: 'BRDA',
   END_OF_RECORD: 'end_of_record',
-  FUNCTION_DATA: 'FNDA',
-  FUNCTION_NAME: 'FN',
   FUNCTIONS_FOUND: 'FNF',
   FUNCTIONS_HIT: 'FNH',
-  LINE_DATA: 'DA',
+  FUNCTION_DATA: 'FNDA',
+  FUNCTION_NAME: 'FN',
   LINES_FOUND: 'LF',
   LINES_HIT: 'LH',
+  LINE_DATA: 'DA',
   SOURCE_FILE: 'SF',
   TEST_NAME: 'TN'
 });

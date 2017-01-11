@@ -6,37 +6,37 @@ import {Token} from '../token';
 /**
  * Provides the coverage data of a source file.
  */
-class Record {
+export class Record {
 
   /**
    * Initializes a new instance of the class.
-   * @param {string} [sourceFile] The path to the source file.
+   * @param {object} [options] An object specifying values used to initialize this instance.
    */
-  constructor(sourceFile) {
+  constructor(options = {}) {
 
     /**
      * The branch coverage.
      * @type {BranchCoverage}
      */
-    this.branches = new BranchCoverage();
+    this.branches = options.branches instanceof BranchCoverage ? options.branches : new BranchCoverage();
 
     /**
      * The function coverage.
      * @type {FunctionCoverage}
      */
-    this.functions = new FunctionCoverage();
+    this.functions = options.functions instanceof FunctionCoverage ? options.functions : new FunctionCoverage();
 
     /**
      * The line coverage.
      * @type {LineCoverage}
      */
-    this.lines = new LineCoverage();
+    this.lines = options.lines instanceof LineCoverage ? options.lines : new LineCoverage();
 
     /**
      * The path to the source file.
      * @type {string}
      */
-    this.sourceFile = typeof sourceFile == 'string' ? sourceFile : '';
+    this.sourceFile = typeof options.sourceFile == 'string' ? options.sourceFile : '';
   }
 
   /**
@@ -46,10 +46,10 @@ class Record {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Record({
-      branches: map.branches,
-      functions: map.functions,
-      lines: map.lines,
-      sourceFile: map.sourceFile
+      branches: BranchCoverage.fromJSON(map.branches),
+      functions: FunctionCoverage.fromJSON(map.functions),
+      lines: LineCoverage.fromJSON(map.lines),
+      sourceFile: map.file
     });
   }
 
@@ -59,11 +59,13 @@ class Record {
    */
   toJSON() {
     return {
+      /* eslint-disable sort-keys */
       file: this.sourceFile,
-      branches: this.branches.toJSON(),
-      functions: this.functions.toJSON(),
-      lines: this.lines.toJSON()
-    }
+      branches: this.branches ? this.branches.toJSON() : null,
+      functions: this.functions ? this.functions.toJSON() : null,
+      lines: this.lines ? this.lines.toJSON() : null
+      /* eslint-enable sort-keys */
+    };
   }
 
   /**
