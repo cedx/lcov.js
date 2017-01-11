@@ -42,7 +42,7 @@ export class Record {
   /**
    * Creates a new record from the specified JSON map.
    * @param {object} map A JSON map representing a record.
-   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Record} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Record({

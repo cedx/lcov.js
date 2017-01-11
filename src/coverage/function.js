@@ -37,7 +37,7 @@ export class FunctionData {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionData({
-      executionCount: map.hit,
+      executionCount: map.count,
       functionName: map.name,
       lineNumber: map.line
     });
@@ -49,7 +49,7 @@ export class FunctionData {
    */
   toJSON() {
     return {
-      hit: this.executionCount,
+      count: this.executionCount,
       line: this.lineNumber,
       name: this.functionName
     };
@@ -100,11 +100,11 @@ export class FunctionCoverage {
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionCoverage({
-      data: Array.isArray(map.details) ? map.details.map(item => FunctionData.fromJSON(item)).filter(item => item) : [],
+      data: Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJSON(item)).filter(item => item) : [],
       found: map.found,
       hit: map.hit
     });
@@ -116,7 +116,7 @@ export class FunctionCoverage {
    */
   toJSON() {
     return {
-      details: this.data.map(item => item.toJSON()),
+      data: this.data.map(item => item.toJSON()),
       found: this.found,
       hit: this.hit
     };

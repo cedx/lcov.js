@@ -106,11 +106,11 @@ export class BranchCoverage {
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {BranchCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new BranchCoverage({
-      data: Array.isArray(map.details) ? map.details.map(item => BranchData.fromJSON(item)).filter(item => item) : [],
+      data: Array.isArray(map.data) ? map.data.map(item => BranchData.fromJSON(item)).filter(item => item) : [],
       found: map.found,
       hit: map.hit
     });
@@ -122,7 +122,7 @@ export class BranchCoverage {
    */
   toJSON() {
     return {
-      details: this.data.map(item => item.toJSON()),
+      data: this.data.map(item => item.toJSON()),
       found: this.found,
       hit: this.hit
     };
