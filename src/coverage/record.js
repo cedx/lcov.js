@@ -18,19 +18,19 @@ export class Record {
      * The branch coverage.
      * @type {BranchCoverage}
      */
-    this.branches = options.branches instanceof BranchCoverage ? options.branches : new BranchCoverage();
+    this.branches = options.branches instanceof BranchCoverage ? options.branches : null;
 
     /**
      * The function coverage.
      * @type {FunctionCoverage}
      */
-    this.functions = options.functions instanceof FunctionCoverage ? options.functions : new FunctionCoverage();
+    this.functions = options.functions instanceof FunctionCoverage ? options.functions : null;
 
     /**
      * The line coverage.
      * @type {LineCoverage}
      */
-    this.lines = options.lines instanceof LineCoverage ? options.lines : new LineCoverage();
+    this.lines = options.lines instanceof LineCoverage ? options.lines : null;
 
     /**
      * The path to the source file.
