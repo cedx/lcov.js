@@ -1,7 +1,7 @@
 'use strict';
 
 import assert from 'assert';
-import {BranchCoverage, BranchData} from '../../src/index';
+import {BranchCoverage, BranchData} from '../src/index';
 
 /**
  * @test {BranchCoverage}

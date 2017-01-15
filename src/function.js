@@ -1,9 +1,9 @@
-import {Token} from '../token';
+import {Token} from './token';
 
 /**
- * Provides details for branch coverage.
+ * Provides details for function coverage.
  */
-export class BranchData {
+export class FunctionData {
 
   /**
    * Initializes a new instance of the class.
@@ -12,41 +12,34 @@ export class BranchData {
   constructor(options = {}) {
 
     /**
-     * The block number.
+     * The execution count.
      * @type {number}
      */
-    this.blockNumber = typeof options.blockNumber == 'number' ? options.blockNumber : 0;
+    this.executionCount = typeof options.executionCount == 'number' ? options.executionCount : 0;
 
     /**
-     * The branch number.
-     * @type {number}
+     * The function name.
+     * @type {string}
      */
-    this.branchNumber = typeof options.branchNumber == 'number' ? options.branchNumber : 0;
+    this.functionName = typeof options.functionName == 'string' ? options.functionName : '';
 
     /**
-     * The line number.
+     * The line number of the function start.
      * @type {number}
      */
     this.lineNumber = typeof options.lineNumber == 'number' ? options.lineNumber : 0;
-
-    /**
-     * A number indicating how often this branch was taken.
-     * @type {number}
-     */
-    this.taken = typeof options.taken == 'number' ? options.taken : 0;
   }
 
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchData({
-      blockNumber: map.block,
-      branchNumber: map.branch,
-      lineNumber: map.line,
-      taken: map.taken
+    return !map || typeof map != 'object' ? null : new FunctionData({
+      executionCount: map.count,
+      functionName: map.name,
+      lineNumber: map.line
     });
   }
 
@@ -56,27 +49,28 @@ export class BranchData {
    */
   toJSON() {
     return {
-      block: this.blockNumber,
-      branch: this.branchNumber,
+      count: this.executionCount,
       line: this.lineNumber,
-      taken: this.taken
+      name: this.functionName
     };
   }
 
   /**
    * Returns a string representation of this object.
+   * @param {boolean} asDefinition Value indicating whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
    * @return {string} The string representation of this object.
    */
-  toString() {
-    let value = `${Token.BRANCH_DATA}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
-    return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
+  toString(asDefinition = false) {
+    let token = asDefinition ? Token.FUNCTION_NAME : Token.FUNCTION_DATA;
+    let number = asDefinition ? this.lineNumber : this.executionCount;
+    return `${token}:${number},${this.functionName}`;
   }
 }
 
 /**
- * Provides the coverage data of branches.
+ * Provides the coverage data of functions.
  */
-export class BranchCoverage {
+export class FunctionCoverage {
 
   /**
    * Initializes a new instance of the class.
@@ -86,18 +80,18 @@ export class BranchCoverage {
 
     /**
      * The coverage data.
-     * @type {BranchData[]}
+     * @type {FunctionData[]}
      */
     this.data = Array.isArray(options.data) ? options.data : [];
 
     /**
-     * The number of branches found.
+     * The number of functions found.
      * @type {number}
      */
     this.found = typeof options.found == 'number' ? options.found : 0;
 
     /**
-     * The number of branches hit.
+     * The number of functions hit.
      * @type {number}
      */
     this.hit = typeof options.hit == 'number' ? options.hit : 0;
@@ -106,11 +100,11 @@ export class BranchCoverage {
   /**
    * Creates a new branch data from the specified JSON map.
    * @param {object} map A JSON map representing a branch data.
-   * @return {BranchCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchCoverage({
-      data: Array.isArray(map.data) ? map.data.map(item => BranchData.fromJSON(item)).filter(item => item) : [],
+    return !map || typeof map != 'object' ? null : new FunctionCoverage({
+      data: Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJSON(item)).filter(item => item) : [],
       found: map.found,
       hit: map.hit
     });
@@ -133,9 +127,10 @@ export class BranchCoverage {
    * @return {string} The string representation of this object.
    */
   toString() {
-    let lines = this.data.map(item => item.toString());
-    lines.push(`${Token.BRANCHES_FOUND}:${this.found}`);
-    lines.push(`${Token.BRANCHES_HIT}:${this.hit}`);
+    let lines = this.data.map(item => item.toString(true));
+    lines.push(...this.data.map(item => item.toString(false)));
+    lines.push(`${Token.LINES_FOUND}:${this.found}`);
+    lines.push(`${Token.LINES_HIT}:${this.hit}`);
     return lines.join('\n');
   }
 }

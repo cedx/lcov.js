@@ -1,7 +1,7 @@
 import {BranchCoverage} from './branch';
 import {FunctionCoverage} from './function';
 import {LineCoverage} from './line';
-import {Token} from '../token';
+import {Token} from './token';
 
 /**
  * Provides the coverage data of a source file.

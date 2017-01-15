@@ -1,4 +1,4 @@
-import {Token} from '../token';
+import {Token} from './token';
 
 /**
  * Provides details for line coverage.

@@ -1,8 +1,6 @@
-export * from './parser';
+export * from './branch';
+export * from './function';
+export * from './line';
+export * from './record';
+export * from './report';
 export * from './token';
-
-export * from './coverage/branch';
-export * from './coverage/function';
-export * from './coverage/line';
-export * from './coverage/record';
-export * from './coverage/report';
