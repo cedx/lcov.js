@@ -117,7 +117,7 @@ export class Report {
               /* eslint-disable sort-keys */
               lineNumber: Number(data[0]),
               executionCount: Number(data[1]),
-              checksum: data.length >= 3 ? data[2] : null
+              checksum: data.length >= 3 ? data[2] : ''
               /* eslint-enable sort-keys */
             }));
             break;
