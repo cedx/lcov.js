@@ -62,32 +62,6 @@ describe('Report', () => {
   });
 
   /**
-   * @test {Report#toJSON}
-   */
-  describe('#toJSON()', () => {
-    it('should return a map with default values for a newly created instance', () => {
-      let map = new Report().toJSON();
-      assert.equal(Object.keys(map).length, 2);
-      assert.ok(Array.isArray(map.records));
-      assert.equal(map.records.length, 0);
-      assert.equal(map.testName, '');
-    });
-
-    it('should return a non-empty map for an initialized instance', () => {
-      let map = new Report({
-        records: [new Record()],
-        testName: 'LcovTest'
-      }).toJSON();
-
-      assert.equal(Object.keys(map).length, 2);
-      assert.ok(Array.isArray(map.records));
-      assert.equal(map.records.length, 1);
-      assert.ok(map.records[0] && typeof map.records[0] == 'object');
-      assert.equal(map.testName, 'LcovTest');
-    });
-  });
-
-  /**
    * @test {Report.parse}
    */
   describe('.parse()', () => {
@@ -139,6 +113,32 @@ describe('Report', () => {
 
     it('should throw an error if the input is invalid', () => {
       assert.throws(() => Report.parse('TN:Example'));
+    });
+  });
+
+  /**
+   * @test {Report#toJSON}
+   */
+  describe('#toJSON()', () => {
+    it('should return a map with default values for a newly created instance', () => {
+      let map = new Report().toJSON();
+      assert.equal(Object.keys(map).length, 2);
+      assert.ok(Array.isArray(map.records));
+      assert.equal(map.records.length, 0);
+      assert.equal(map.testName, '');
+    });
+
+    it('should return a non-empty map for an initialized instance', () => {
+      let map = new Report({
+        records: [new Record()],
+        testName: 'LcovTest'
+      }).toJSON();
+
+      assert.equal(Object.keys(map).length, 2);
+      assert.ok(Array.isArray(map.records));
+      assert.equal(map.records.length, 1);
+      assert.ok(map.records[0] && typeof map.records[0] == 'object');
+      assert.equal(map.testName, 'LcovTest');
     });
   });
 
