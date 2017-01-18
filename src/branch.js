@@ -43,9 +43,9 @@ export class BranchData {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new BranchData({
-      blockNumber: map.block,
-      branchNumber: map.branch,
-      lineNumber: map.line,
+      blockNumber: map.blockNumber,
+      branchNumber: map.branchNumber,
+      lineNumber: map.lineNumber,
       taken: map.taken
     });
   }
@@ -56,9 +56,9 @@ export class BranchData {
    */
   toJSON() {
     return {
-      block: this.blockNumber,
-      branch: this.branchNumber,
-      line: this.lineNumber,
+      blockNumber: this.blockNumber,
+      branchNumber: this.branchNumber,
+      lineNumber: this.lineNumber,
       taken: this.taken
     };
   }

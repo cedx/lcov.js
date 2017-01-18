@@ -36,7 +36,7 @@ export class Report {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new Record({
       records: Array.isArray(map.records) ? map.records.map(item => Record.fromJSON(item)).filter(item => item) : [],
-      testName: map.test
+      testName: map.testName
     });
   }
 
@@ -153,7 +153,7 @@ export class Report {
   toJSON() {
     return {
       /* eslint-disable sort-keys */
-      test: this.testName,
+      testName: this.testName,
       records: this.records.map(item => item.toJSON())
       /* eslint-enable sort-keys */
     };

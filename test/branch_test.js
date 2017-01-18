@@ -50,9 +50,9 @@ describe('BranchData', () => {
 
     it('should return an initialized instance for a non-empty map', () => {
       let data = BranchData.fromJSON({
-        block: 3,
-        branch: 2,
-        line: 127,
+        blockNumber: 3,
+        branchNumber: 2,
+        lineNumber: 127,
         taken: 1
       });
 
@@ -70,9 +70,9 @@ describe('BranchData', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new BranchData().toJSON();
       assert.equal(Object.keys(map).length, 4);
-      assert.equal(map.block, 0);
-      assert.equal(map.branch, 0);
-      assert.equal(map.line, 0);
+      assert.equal(map.blockNumber, 0);
+      assert.equal(map.branchNumber, 0);
+      assert.equal(map.lineNumber, 0);
       assert.equal(map.taken, 0);
     });
 
@@ -85,9 +85,9 @@ describe('BranchData', () => {
       }).toJSON();
 
       assert.equal(Object.keys(map).length, 4);
-      assert.equal(map.block, 3);
-      assert.equal(map.branch, 2);
-      assert.equal(map.line, 127);
+      assert.equal(map.blockNumber, 3);
+      assert.equal(map.branchNumber, 2);
+      assert.equal(map.lineNumber, 127);
       assert.equal(map.taken, 1);
     });
   });

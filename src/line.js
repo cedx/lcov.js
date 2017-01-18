@@ -38,8 +38,8 @@ export class LineData {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new LineData({
       checksum: map.checksum,
-      executionCount: map.count,
-      lineNumber: map.line
+      executionCount: map.executionCount,
+      lineNumber: map.lineNumber
     });
   }
 
@@ -50,8 +50,8 @@ export class LineData {
   toJSON() {
     return {
       checksum: this.checksum,
-      count: this.executionCount,
-      line: this.lineNumber
+      executionCount: this.executionCount,
+      lineNumber: this.lineNumber
     };
   }
 

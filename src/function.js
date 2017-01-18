@@ -37,9 +37,9 @@ export class FunctionData {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionData({
-      executionCount: map.count,
-      functionName: map.name,
-      lineNumber: map.line
+      executionCount: map.executionCount,
+      functionName: map.functionName,
+      lineNumber: map.lineNumber
     });
   }
 
@@ -49,9 +49,9 @@ export class FunctionData {
    */
   toJSON() {
     return {
-      count: this.executionCount,
-      line: this.lineNumber,
-      name: this.functionName
+      executionCount: this.executionCount,
+      functionName: this.functionName,
+      lineNumber: this.lineNumber
     };
   }
 

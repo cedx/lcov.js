@@ -49,7 +49,7 @@ export class Record {
       branches: BranchCoverage.fromJSON(map.branches),
       functions: FunctionCoverage.fromJSON(map.functions),
       lines: LineCoverage.fromJSON(map.lines),
-      sourceFile: map.file
+      sourceFile: map.sourceFile
     });
   }
 
@@ -60,7 +60,7 @@ export class Record {
   toJSON() {
     return {
       /* eslint-disable sort-keys */
-      file: this.sourceFile,
+      sourceFile: this.sourceFile,
       branches: this.branches ? this.branches.toJSON() : null,
       functions: this.functions ? this.functions.toJSON() : null,
       lines: this.lines ? this.lines.toJSON() : null
