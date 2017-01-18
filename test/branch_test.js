@@ -64,7 +64,7 @@ describe('BranchCoverage', () => {
   /**
    * @test {BranchCoverage#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new BranchCoverage().toJSON();
 
@@ -98,7 +98,7 @@ describe('BranchCoverage', () => {
   /**
    * @test {BranchCoverage#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "BRF:<found>\\n,BRH:<hit>"', () => {
       let coverage = new BranchCoverage();
       assert.equal(String(coverage), 'BRF:0\nBRH:0');
@@ -171,7 +171,7 @@ describe('BranchData', () => {
   /**
    * @test {BranchData#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new BranchData().toJSON();
       assert.equal(Object.keys(map).length, 4);
@@ -200,7 +200,7 @@ describe('BranchData', () => {
   /**
    * @test {BranchData#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
       let data = new BranchData();
       assert.equal(String(data), 'BRDA:0,0,0,-');

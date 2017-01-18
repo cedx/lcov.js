@@ -64,7 +64,7 @@ describe('LineCoverage', () => {
   /**
    * @test {LineCoverage#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new LineCoverage().toJSON();
 
@@ -98,7 +98,7 @@ describe('LineCoverage', () => {
   /**
    * @test {LineCoverage#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "LF:<found>\\n,LH:<hit>"', () => {
       let coverage = new LineCoverage();
       assert.equal(String(coverage), 'LF:0\nLH:0');
@@ -166,7 +166,7 @@ describe('LineData', () => {
   /**
    * @test {LineData#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new LineData().toJSON();
       assert.equal(Object.keys(map).length, 3);
@@ -192,7 +192,7 @@ describe('LineData', () => {
   /**
    * @test {LineData#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () => {
       let data = new LineData();
       assert.equal(String(data), 'DA:0,0');

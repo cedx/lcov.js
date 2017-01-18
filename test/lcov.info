@@ -1,6 +1,6 @@
 TN:Example
 
-SF:/home/cedx/lcov.php/fixture.php
+SF:/home/cedx/lcov.js/fixture.js
 FN:4,main
 FNDA:2,main
 FNF:1
@@ -13,7 +13,7 @@ LF:4
 LH:4
 end_of_record
 
-SF:/home/cedx/lcov.php/func1.php
+SF:/home/cedx/lcov.js/func1.js
 FN:5,func1
 FNDA:4,func1
 FNF:1
@@ -37,7 +37,7 @@ LF:9
 LH:9
 end_of_record
 
-SF:/home/cedx/lcov.php/func2.php
+SF:/home/cedx/lcov.js/func2.js
 FN:5,func2
 FNDA:2,func2
 FNF:1

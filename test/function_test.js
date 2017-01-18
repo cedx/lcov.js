@@ -64,7 +64,7 @@ describe('FunctionCoverage', () => {
   /**
    * @test {FunctionCoverage#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new FunctionCoverage().toJSON();
 
@@ -98,7 +98,7 @@ describe('FunctionCoverage', () => {
   /**
    * @test {FunctionCoverage#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "FNF:<found>\\n,FNH:<hit>"', () => {
       let coverage = new FunctionCoverage();
       assert.equal(String(coverage), 'FNF:0\nFNH:0');
@@ -167,7 +167,7 @@ describe('FunctionData', () => {
   /**
    * @test {FunctionData#toJSON}
    */
-  describe('.toJSON()', () => {
+  describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new FunctionData().toJSON();
       assert.equal(Object.keys(map).length, 3);
@@ -193,7 +193,7 @@ describe('FunctionData', () => {
   /**
    * @test {FunctionData#toString}
    */
-  describe('.toString()', () => {
+  describe('#toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
       let data = new FunctionData();
       assert.equal(data.toString(true), 'FN:0,');
