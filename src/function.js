@@ -129,8 +129,8 @@ export class FunctionCoverage {
   toString() {
     let lines = this.data.map(item => item.toString(true));
     lines.push(...this.data.map(item => item.toString(false)));
-    lines.push(`${Token.LINES_FOUND}:${this.found}`);
-    lines.push(`${Token.LINES_HIT}:${this.hit}`);
+    lines.push(`${Token.FUNCTIONS_FOUND}:${this.found}`);
+    lines.push(`${Token.FUNCTIONS_HIT}:${this.hit}`);
     return lines.join('\n');
   }
 }
