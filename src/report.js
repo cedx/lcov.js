@@ -79,7 +79,7 @@ export class Report {
             if (data.length < 2) throw new Error('Invalid function name.');
             record.functions.data.push(new FunctionData({
               functionName: data[1],
-              lineNumber: Number(data[0])
+              lineNumber: parseInt(data[0], 10)
             }));
             break;
 
@@ -87,56 +87,56 @@ export class Report {
             if (data.length < 2) throw new Error('Invalid function data.');
             record.functions.data.some(item => {
               if (item.functionName != data[1]) return false;
-              item.executionCount = Number(data[0]);
+              item.executionCount = parseInt(data[0], 10);
               return true;
             });
             break;
 
           case Token.FUNCTIONS_FOUND:
-            record.functions.found = Number(data[0]);
+            record.functions.found = parseInt(data[0], 10);
             break;
 
           case Token.FUNCTIONS_HIT:
-            record.functions.hit = Number(data[0]);
+            record.functions.hit = parseInt(data[0], 10);
             break;
 
           case Token.BRANCH_DATA:
             if (data.length < 4) throw new Error('Invalid branch data.');
             record.branches.data.push(new BranchData({
               /* eslint-disable sort-keys */
-              lineNumber: Number(data[0]),
-              blockNumber: Number(data[1]),
-              branchNumber: Number(data[2]),
-              taken: data[3] == '-' ? 0 : Number(data[3])
+              lineNumber: parseInt(data[0], 10),
+              blockNumber: parseInt(data[1], 10),
+              branchNumber: parseInt(data[2], 10),
+              taken: data[3] == '-' ? 0 : parseInt(data[3], 10)
               /* eslint-enable sort-keys */
             }));
             break;
 
           case Token.BRANCHES_FOUND:
-            record.branches.found = Number(data[0]);
+            record.branches.found = parseInt(data[0], 10);
             break;
 
           case Token.BRANCHES_HIT:
-            record.branches.hit = Number(data[0]);
+            record.branches.hit = parseInt(data[0], 10);
             break;
 
           case Token.LINE_DATA:
             if (data.length < 3) throw new Error('Invalid branch data.');
             record.lines.data.push(new LineData({
               /* eslint-disable sort-keys */
-              lineNumber: Number(data[0]),
-              executionCount: Number(data[1]),
+              lineNumber: parseInt(data[0], 10),
+              executionCount: parseInt(data[1], 10),
               checksum: data.length >= 3 ? data[2] : ''
               /* eslint-enable sort-keys */
             }));
             break;
 
           case Token.LINES_FOUND:
-            record.lines.found = Number(data[0]);
+            record.lines.found = parseInt(data[0], 10);
             break;
 
           case Token.LINES_HIT:
-            record.lines.hit = Number(data[0]);
+            record.lines.hit = parseInt(data[0], 10);
             break;
 
           case Token.END_OF_RECORD:
