@@ -72,11 +72,10 @@ describe('FunctionData', () => {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      let data = new FunctionData({blockNumber: 3, branchNumber: 2, lineNumber: 127, taken: 1});
-      assert.equal(data.blockNumber, 3);
-      assert.equal(data.branchNumber, 2);
+      let data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
+      assert.equal(data.executionCount, 3);
+      assert.equal(data.functionName, 'main');
       assert.equal(data.lineNumber, 127);
-      assert.equal(data.taken, 1);
     });
 
     it('should not create new properties', () => {
@@ -94,24 +93,21 @@ describe('FunctionData', () => {
 
     it('should return an instance with default values for an empty map', () => {
       let data = FunctionData.fromJSON({});
-      assert.equal(data.blockNumber, 0);
-      assert.equal(data.branchNumber, 0);
+      assert.equal(data.executionCount, 0);
+      assert.equal(data.functionName, '');
       assert.equal(data.lineNumber, 0);
-      assert.equal(data.taken, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
       let data = FunctionData.fromJSON({
-        blockNumber: 3,
-        branchNumber: 2,
-        lineNumber: 127,
-        taken: 1
+        executionCount: 3,
+        functionName: 'main',
+        lineNumber: 127
       });
 
-      assert.equal(data.blockNumber, 3);
-      assert.equal(data.branchNumber, 2);
+      assert.equal(data.executionCount, 3);
+      assert.equal(data.functionName, 'main');
       assert.equal(data.lineNumber, 127);
-      assert.equal(data.taken, 1);
     });
   });
 
@@ -121,26 +117,23 @@ describe('FunctionData', () => {
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new FunctionData().toJSON();
-      assert.equal(Object.keys(map).length, 4);
-      assert.equal(map.blockNumber, 0);
-      assert.equal(map.branchNumber, 0);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.executionCount, 0);
+      assert.equal(map.functionName, '');
       assert.equal(map.lineNumber, 0);
-      assert.equal(map.taken, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       let map = new FunctionData({
-        blockNumber: 3,
-        branchNumber: 2,
-        lineNumber: 127,
-        taken: 1
+        executionCount: 3,
+        functionName: 'main',
+        lineNumber: 127
       }).toJSON();
 
-      assert.equal(Object.keys(map).length, 4);
-      assert.equal(map.blockNumber, 3);
-      assert.equal(map.branchNumber, 2);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.executionCount, 3);
+      assert.equal(map.functionName, 'main');
       assert.equal(map.lineNumber, 127);
-      assert.equal(map.taken, 1);
     });
   });
 
@@ -148,12 +141,20 @@ describe('FunctionData', () => {
    * @test {FunctionData#toString}
    */
   describe('.toString()', () => {
-    it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
+    it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
       let data = new FunctionData();
-      assert.equal(String(data), 'BRDA:0,0,0,-');
+      assert.equal(data.toString(true), 'FN:0,');
 
-      data = new FunctionData({blockNumber: 3, branchNumber: 2, lineNumber: 127, taken: 1});
-      assert.equal(String(data), 'BRDA:127,3,2,1');
+      data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
+      assert.equal(data.toString(true), 'FN:127,main');
+    });
+
+    it('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () => {
+      let data = new FunctionData();
+      assert.equal(data.toString(false), 'FNDA:0,');
+
+      data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
+      assert.equal(data.toString(false), 'FNDA:3,main');
     });
   });
 });
