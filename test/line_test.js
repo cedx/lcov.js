@@ -94,6 +94,24 @@ describe('LineCoverage', () => {
       assert.equal(map.hit, 11);
     });
   });
+
+  /**
+   * @test {LineCoverage#toString}
+   */
+  describe('.toString()', () => {
+    it('should return a format like "LF:<found>\\n,LH:<hit>"', () => {
+      let coverage = new LineCoverage();
+      assert.equal(String(coverage), 'LF:0\nLH:0');
+
+      let data = new LineData({
+        executionCount: 3,
+        lineNumber: 127
+      });
+
+      coverage = new LineCoverage({data: [data], found: 23, hit: 11});
+      assert.equal(String(coverage), `${data}\nLF:23\nLH:11`);
+    });
+  });
 });
 
 /**

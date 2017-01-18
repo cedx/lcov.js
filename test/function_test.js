@@ -94,6 +94,25 @@ describe('FunctionCoverage', () => {
       assert.equal(map.hit, 11);
     });
   });
+
+  /**
+   * @test {FunctionCoverage#toString}
+   */
+  describe('.toString()', () => {
+    it('should return a format like "FNF:<found>\\n,FNH:<hit>"', () => {
+      let coverage = new FunctionCoverage();
+      assert.equal(String(coverage), 'FNF:0\nFNH:0');
+
+      let data = new FunctionData({
+        executionCount: 3,
+        functionName: 'main',
+        lineNumber: 127
+      });
+
+      coverage = new FunctionCoverage({data: [data], found: 23, hit: 11});
+      assert.equal(String(coverage), 'FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11');
+    });
+  });
 });
 
 /**

@@ -94,6 +94,25 @@ describe('BranchCoverage', () => {
       assert.equal(map.hit, 11);
     });
   });
+
+  /**
+   * @test {BranchCoverage#toString}
+   */
+  describe('.toString()', () => {
+    it('should return a format like "BRF:<found>\\n,BRH:<hit>"', () => {
+      let coverage = new BranchCoverage();
+      assert.equal(String(coverage), 'BRF:0\nBRH:0');
+
+      let data = new BranchData({
+        blockNumber: 3,
+        branchNumber: 2,
+        lineNumber: 127
+      });
+
+      coverage = new BranchCoverage({data: [data], found: 23, hit: 11});
+      assert.equal(String(coverage), `${data}\nBRF:23\nBRH:11`);
+    });
+  });
 });
 
 /**
