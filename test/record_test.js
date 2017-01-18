@@ -9,7 +9,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src/ind
 describe('Record', () => {
 
   /**
-   * @test {Report#constructor}
+   * @test {Record#constructor}
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
@@ -98,7 +98,7 @@ describe('Record', () => {
   });
 
   /**
-   * @test {Report#toString}
+   * @test {Record#toString}
    */
   describe('#toString()', () => {
     it('should return a format like "SF:<sourceFile>\\n,end_of_record"', () => {

@@ -31,10 +31,10 @@ export class Report {
   /**
    * Creates a new record from the specified JSON map.
    * @param {object} map A JSON map representing a record.
-   * @return {Record} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Report} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new Record({
+    return !map || typeof map != 'object' ? null : new Report({
       records: Array.isArray(map.records) ? map.records.map(item => Record.fromJSON(item)).filter(item => item) : [],
       testName: map.testName
     });
@@ -56,14 +56,14 @@ export class Report {
         lines: new LineCoverage()
       });
 
-      for (let line in coverage.split(/\r?\n/)) {
+      for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
         if (!line.length) continue;
 
         let parts = line.split(':');
         if (parts.length < 2 && parts[0] != Token.END_OF_RECORD) throw new Error('Invalid token format.');
 
-        let token = parts.shift().toUpperCase();
+        let token = parts.shift();
         let data = parts.join(':').split(',');
 
         switch (token) {
