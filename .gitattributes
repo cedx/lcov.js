@@ -9,6 +9,7 @@
 .npmignore text
 .travis.yml text
 
+*.info text
 *.js text
 *.json text
 *.md text
