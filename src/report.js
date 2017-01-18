@@ -48,15 +48,20 @@ export class Report {
    */
   static parse(coverage) {
     let report = new Report();
-    let record = new Record({
-      branches: new BranchCoverage(),
-      functions: new FunctionCoverage(),
-      lines: new LineCoverage()
-    });
 
     try {
+      let record = new Record({
+        branches: new BranchCoverage(),
+        functions: new FunctionCoverage(),
+        lines: new LineCoverage()
+      });
+
       for (let line in coverage.split(/\r?\n/)) {
-        let parts = line.trim().split(':');
+        line = line.trim();
+        if (!line.length) continue;
+
+        let parts = line.split(':');
+        if (parts.length < 2 && parts[0] != Token.END_OF_RECORD) throw new Error('Invalid token format.');
 
         let token = parts.shift().toUpperCase();
         let data = parts.join(':').split(',');
@@ -71,6 +76,7 @@ export class Report {
             break;
 
           case Token.FUNCTION_NAME:
+            if (data.length < 2) throw new Error('Invalid function name.');
             record.functions.data.push(new FunctionData({
               functionName: data[1],
               lineNumber: Number(data[0])
@@ -78,6 +84,7 @@ export class Report {
             break;
 
           case Token.FUNCTION_DATA:
+            if (data.length < 2) throw new Error('Invalid function data.');
             record.functions.data.some(item => {
               if (item.functionName != data[1]) return false;
               item.executionCount = Number(data[0]);
@@ -94,6 +101,7 @@ export class Report {
             break;
 
           case Token.BRANCH_DATA:
+            if (data.length < 4) throw new Error('Invalid branch data.');
             record.branches.data.push(new BranchData({
               /* eslint-disable sort-keys */
               lineNumber: Number(data[0]),
@@ -113,6 +121,7 @@ export class Report {
             break;
 
           case Token.LINE_DATA:
+            if (data.length < 3) throw new Error('Invalid branch data.');
             record.lines.data.push(new LineData({
               /* eslint-disable sort-keys */
               lineNumber: Number(data[0]),
