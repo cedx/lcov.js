@@ -132,7 +132,11 @@ export class Report {
 
           case Token.END_OF_RECORD:
             report.records.push(record);
-            record = new Record();
+            record = new Record({
+              branches: new BranchCoverage(),
+              functions: new FunctionCoverage(),
+              lines: new LineCoverage()
+            });
             break;
         }
       }
