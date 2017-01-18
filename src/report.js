@@ -121,7 +121,7 @@ export class Report {
             break;
 
           case Token.LINE_DATA:
-            if (data.length < 3) throw new Error('Invalid branch data.');
+            if (data.length < 3) throw new Error('Invalid line data.');
             record.lines.data.push(new LineData({
               /* eslint-disable sort-keys */
               lineNumber: parseInt(data[0], 10),
