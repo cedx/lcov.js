@@ -60,11 +60,10 @@ The `Report.toJSON()` instance method will return a map like this:
       "lines": {
         "data": [
           {"checksum": "PF4Rz2r7RTliO9u6bZ7h6g", "executionCount": 2, "lineNumber": 6},
-          ...,
           {"checksum": "y7GE3Y4FyXCeXcrtqgSVzw", "executionCount": 2, "lineNumber": 9}
         ],
-        "found": 4,
-        "hit": 4
+        "found": 2,
+        "hit": 2
       }
     }
   ]
