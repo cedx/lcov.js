@@ -1,7 +1,7 @@
 # LCOV Reports for JS
 ![Release](https://img.shields.io/npm/v/@cedx/lcov.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Dependencies](https://david-dm.org/cedx/lcov.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.js/badge.svg) ![Build](https://travis-ci.org/cedx/lcov.js.svg)
 
-Parse and format [LCOV](http://ltp.sourceforge.net/lcov.php) coverage reports, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Requirements
 The latest [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com) versions.
@@ -18,7 +18,7 @@ $ npm install --save @cedx/lcov
 This package provides a set of classes representing a coverage report and its data.
 The [`Report`](https://github.com/cedx/lcov.js/blob/master/src/report.js) class, the main one, provides the parsing and formatting features.
 
-### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/lcov.php) file
+### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) file
 The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
 
 ```javascript
@@ -60,7 +60,7 @@ The `Report.toJSON()` instance method will return a map like this:
       "lines": {
         "data": [
           {"checksum": "PF4Rz2r7RTliO9u6bZ7h6g", "executionCount": 2, "lineNumber": 6},
-          ... ,
+          ...,
           {"checksum": "y7GE3Y4FyXCeXcrtqgSVzw", "executionCount": 2, "lineNumber": 9}
         ],
         "found": 4,
@@ -71,7 +71,7 @@ The `Report.toJSON()` instance method will return a map like this:
 }
 ```
 
-### Format coverage data to the [LCOV](http://ltp.sourceforge.net/lcov.php) format
+### Format coverage data to the [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as LCOV string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result using the `Report.toString()` method:
 
