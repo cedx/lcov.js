@@ -72,52 +72,33 @@ The `Report.toJSON()` instance method will return a map like this:
 
 ### Format coverage data to the [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as LCOV string.
-All you have to do is to create the adequate structure using these different classes, and to export the final result using the `Report.toString()` method:
+All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
 ```javascript
 const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
 
-let lineData = new LineData({
-  checksum: 'PF4Rz2r7RTliO9u6bZ7h6g',
-  executionCount: 2,
-  lineNumber: 6
-});
+let record = new Record('/home/cedx/lcov.js/fixture.js');
+record.functions = new FunctionCoverage(1, 1);
+record.lines = new LineCoverage(2, 2, [
+ new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
+ new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+]);
 
-let lineCoverage = new LineCoverage({
-  data: [lineData, ...],
-  found: 4,
-  hit: 4
-});
-
-let record = new Record({
-  functions: new FunctionCoverage({data: [...], found: 1, hit: 1}),
-  lines: lineCoverage,
-  sourceFile: '/home/cedx/lcov.js/fixture.js'
-});
-
-let report = new Report({
-  records: [record],
-  testName: 'Example'
-});
-
+let report = new Report('Example', [record]);
 console.log(report.toString());
 ```
 
-It will return a LCOV report formatted like this:
+The `Report.toString()` method will return a LCOV report formatted like this:
 
 ```
 TN:Example
-SF:/home/cedx/lcov.js/fixture.js
-FN:4,main
-FNDA:2,main
+SF:/home/cedx/lcov.dart/fixture.js
 FNF:1
 FNH:1
 DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
 DA:7,2,yGMB6FhEEAd8OyASe3Ni1w
-DA:8,2,8F2cpOfOtP7xrzoeUaNfTg
-DA:9,2,y7GE3Y4FyXCeXcrtqgSVzw
-LF:4
-LH:4
+LF:2
+LH:2
 end_of_record
 ```
 
