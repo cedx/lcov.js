@@ -7,33 +7,36 @@ export class BranchData {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {number} [lineNumber] The line number.
+   * @param {number} [blockNumber] The block number.
+   * @param {number} [branchNumber] The branch number.
+   * @param {number} [taken] A number indicating how often this branch was taken.
    */
-  constructor(options = {}) {
+  constructor(lineNumber = 0, blockNumber = 0, branchNumber = 0, taken = 0) {
 
     /**
      * The block number.
      * @type {number}
      */
-    this.blockNumber = typeof options.blockNumber == 'number' ? options.blockNumber : 0;
+    this.blockNumber = blockNumber;
 
     /**
      * The branch number.
      * @type {number}
      */
-    this.branchNumber = typeof options.branchNumber == 'number' ? options.branchNumber : 0;
+    this.branchNumber = branchNumber;
 
     /**
      * The line number.
      * @type {number}
      */
-    this.lineNumber = typeof options.lineNumber == 'number' ? options.lineNumber : 0;
+    this.lineNumber = lineNumber;
 
     /**
      * A number indicating how often this branch was taken.
      * @type {number}
      */
-    this.taken = typeof options.taken == 'number' ? options.taken : 0;
+    this.taken = taken;
   }
 
   /**
@@ -42,12 +45,12 @@ export class BranchData {
    * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchData({
-      blockNumber: map.blockNumber,
-      branchNumber: map.branchNumber,
-      lineNumber: map.lineNumber,
-      taken: map.taken
-    });
+    return !map || typeof map != 'object' ? null : new BranchData(
+      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
+      typeof map.blockNumber == 'number' ? map.blockNumber : 0,
+      typeof map.branchNumber == 'number' ? map.branchNumber : 0,
+      typeof map.taken == 'number' ? map.taken : 0
+    );
   }
 
   /**
@@ -80,27 +83,29 @@ export class BranchCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {number} [found] The number of branches found.
+   * @param {number} [hit] The number of branches found.
+   * @param {BranchData[]} [data] The coverage data.
    */
-  constructor(options = {}) {
+  constructor(found = 0, hit = 0, data = []) {
 
     /**
      * The coverage data.
      * @type {BranchData[]}
      */
-    this.data = Array.isArray(options.data) ? options.data : [];
+    this.data = data;
 
     /**
      * The number of branches found.
      * @type {number}
      */
-    this.found = typeof options.found == 'number' ? options.found : 0;
+    this.found = found;
 
     /**
      * The number of branches hit.
      * @type {number}
      */
-    this.hit = typeof options.hit == 'number' ? options.hit : 0;
+    this.hit = hit;
   }
 
   /**
@@ -109,11 +114,11 @@ export class BranchCoverage {
    * @return {BranchCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new BranchCoverage({
-      data: Array.isArray(map.data) ? map.data.map(item => BranchData.fromJSON(item)).filter(item => item) : [],
-      found: map.found,
-      hit: map.hit
-    });
+    return !map || typeof map != 'object' ? null : new BranchCoverage(
+      typeof map.found == 'number' ? map.found : 0,
+      typeof map.hit == 'number' ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => BranchData.fromJSON(item)).filter(item => item) : []
+    );
   }
 
   /**

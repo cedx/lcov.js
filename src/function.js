@@ -7,27 +7,29 @@ export class FunctionData {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {string} [functionName] The function name.
+   * @param {number} [lineNumber] The line number of the function start.
+   * @param {number} [executionCount] The execution count.
    */
-  constructor(options = {}) {
+  constructor(functionName = '', lineNumber = 0, executionCount = 0) {
 
     /**
      * The execution count.
      * @type {number}
      */
-    this.executionCount = typeof options.executionCount == 'number' ? options.executionCount : 0;
+    this.executionCount = executionCount;
 
     /**
      * The function name.
      * @type {string}
      */
-    this.functionName = typeof options.functionName == 'string' ? options.functionName : '';
+    this.functionName = functionName;
 
     /**
      * The line number of the function start.
      * @type {number}
      */
-    this.lineNumber = typeof options.lineNumber == 'number' ? options.lineNumber : 0;
+    this.lineNumber = lineNumber;
   }
 
   /**
@@ -36,11 +38,11 @@ export class FunctionData {
    * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new FunctionData({
-      executionCount: map.executionCount,
-      functionName: map.functionName,
-      lineNumber: map.lineNumber
-    });
+    return !map || typeof map != 'object' ? null : new FunctionData(
+      typeof map.functionName == 'string' ? map.functionName : '',
+      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
+      typeof map.executionCount == 'number' ? map.executionCount : 0
+    );
   }
 
   /**
@@ -74,27 +76,29 @@ export class FunctionCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {number} [found] The number of functions found.
+   * @param {number} [hit] The number of functions found.
+   * @param {FunctionData[]} [data] The coverage data.
    */
-  constructor(options = {}) {
+  constructor(found = 0, hit = 0, data = []) {
 
     /**
      * The coverage data.
      * @type {FunctionData[]}
      */
-    this.data = Array.isArray(options.data) ? options.data : [];
+    this.data = data;
 
     /**
      * The number of functions found.
      * @type {number}
      */
-    this.found = typeof options.found == 'number' ? options.found : 0;
+    this.found = found;
 
     /**
      * The number of functions hit.
      * @type {number}
      */
-    this.hit = typeof options.hit == 'number' ? options.hit : 0;
+    this.hit = hit;
   }
 
   /**
@@ -103,11 +107,11 @@ export class FunctionCoverage {
    * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new FunctionCoverage({
-      data: Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJSON(item)).filter(item => item) : [],
-      found: map.found,
-      hit: map.hit
-    });
+    return !map || typeof map != 'object' ? null : new FunctionCoverage(
+      typeof map.found == 'number' ? map.found : 0,
+      typeof map.hit == 'number' ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJSON(item)).filter(item => item) : []
+    );
   }
 
   /**

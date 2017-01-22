@@ -7,27 +7,29 @@ export class LineData {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {number} [lineNumber] The line number.
+   * @param {number} [executionCount] The execution count.
+   * @param {string} [checksum] The data checksum.
    */
-  constructor(options = {}) {
+  constructor(lineNumber = 0, executionCount = 0, checksum = '') {
 
     /**
      * The data checksum.
      * @type {string}
      */
-    this.checksum = typeof options.checksum == 'string' ? options.checksum : '';
+    this.checksum = checksum;
 
     /**
      * The execution count.
      * @type {number}
      */
-    this.executionCount = typeof options.executionCount == 'number' ? options.executionCount : 0;
+    this.executionCount = executionCount;
 
     /**
      * The line number.
      * @type {number}
      */
-    this.lineNumber = typeof options.lineNumber == 'number' ? options.lineNumber : 0;
+    this.lineNumber = lineNumber;
   }
 
   /**
@@ -36,11 +38,11 @@ export class LineData {
    * @return {LineData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new LineData({
-      checksum: map.checksum,
-      executionCount: map.executionCount,
-      lineNumber: map.lineNumber
-    });
+    return !map || typeof map != 'object' ? null : new LineData(
+      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
+      typeof map.executionCount == 'number' ? map.executionCount : 0,
+      typeof map.checksum == 'string' ? map.checksum : ''
+    );
   }
 
   /**
@@ -72,27 +74,29 @@ export class LineCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {number} [found] The number of lines found.
+   * @param {number} [hit] The number of lines found.
+   * @param {LineData[]} [data] The coverage data.
    */
-  constructor(options = {}) {
+  constructor(found = 0, hit = 0, data = []) {
 
     /**
      * The coverage data.
      * @type {LineData[]}
      */
-    this.data = Array.isArray(options.data) ? options.data : [];
+    this.data = data;
 
     /**
      * The number of lines found.
      * @type {number}
      */
-    this.found = typeof options.found == 'number' ? options.found : 0;
+    this.found = found;
 
     /**
      * The number of lines hit.
      * @type {number}
      */
-    this.hit = typeof options.hit == 'number' ? options.hit : 0;
+    this.hit = hit;
   }
 
   /**
@@ -101,11 +105,11 @@ export class LineCoverage {
    * @return {LineCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new LineCoverage({
-      data: Array.isArray(map.data) ? map.data.map(item => LineData.fromJSON(item)).filter(item => item) : [],
-      found: map.found,
-      hit: map.hit
-    });
+    return !map || typeof map != 'object' ? null : new LineCoverage(
+      typeof map.found == 'number' ? map.found : 0,
+      typeof map.hit == 'number' ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => LineData.fromJSON(item)).filter(item => item) : []
+    );
   }
 
   /**

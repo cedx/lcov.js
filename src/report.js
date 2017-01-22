@@ -11,21 +11,22 @@ export class Report {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {string} [testName] The test name.
+   * @param {Record[]} [records] The record list.
    */
-  constructor(options = {}) {
+  constructor(testName = '', records = []) {
 
     /**
      * The record list.
      * @type {Record[]}
      */
-    this.records = Array.isArray(options.records) ? options.records : [];
+    this.records = records;
 
     /**
      * The test name.
      * @type {string}
      */
-    this.testName = typeof options.testName == 'string' ? options.testName : '';
+    this.testName = testName;
   }
 
   /**
@@ -34,10 +35,10 @@ export class Report {
    * @return {Report} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new Report({
-      records: Array.isArray(map.records) ? map.records.map(item => Record.fromJSON(item)).filter(item => item) : [],
-      testName: map.testName
-    });
+    return !map || typeof map != 'object' ? null : new Report(
+      typeof map.testName == 'string' ? map.testName : '',
+      Array.isArray(map.records) ? map.records.map(item => Record.fromJSON(item)).filter(item => item) : []
+    );
   }
 
   /**
@@ -50,11 +51,10 @@ export class Report {
     let report = new Report();
 
     try {
-      let record = new Record({
-        branches: new BranchCoverage(),
-        functions: new FunctionCoverage(),
-        lines: new LineCoverage()
-      });
+      let record = new Record();
+      record.branches = new BranchCoverage();
+      record.functions = new FunctionCoverage();
+      record.lines = new LineCoverage();
 
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
@@ -77,10 +77,7 @@ export class Report {
 
           case Token.FUNCTION_NAME:
             if (data.length < 2) throw new Error('Invalid function name.');
-            record.functions.data.push(new FunctionData({
-              functionName: data[1],
-              lineNumber: parseInt(data[0], 10)
-            }));
+            record.functions.data.push(new FunctionData(data[1], parseInt(data[0], 10)));
             break;
 
           case Token.FUNCTION_DATA:
@@ -102,14 +99,12 @@ export class Report {
 
           case Token.BRANCH_DATA:
             if (data.length < 4) throw new Error('Invalid branch data.');
-            record.branches.data.push(new BranchData({
-              /* eslint-disable sort-keys */
-              lineNumber: parseInt(data[0], 10),
-              blockNumber: parseInt(data[1], 10),
-              branchNumber: parseInt(data[2], 10),
-              taken: data[3] == '-' ? 0 : parseInt(data[3], 10)
-              /* eslint-enable sort-keys */
-            }));
+            record.branches.data.push(new BranchData(
+              parseInt(data[0], 10),
+              parseInt(data[1], 10),
+              parseInt(data[2], 10),
+              data[3] == '-' ? 0 : parseInt(data[3], 10)
+            ));
             break;
 
           case Token.BRANCHES_FOUND:
@@ -122,13 +117,11 @@ export class Report {
 
           case Token.LINE_DATA:
             if (data.length < 3) throw new Error('Invalid line data.');
-            record.lines.data.push(new LineData({
-              /* eslint-disable sort-keys */
-              lineNumber: parseInt(data[0], 10),
-              executionCount: parseInt(data[1], 10),
-              checksum: data.length >= 3 ? data[2] : ''
-              /* eslint-enable sort-keys */
-            }));
+            record.lines.data.push(new LineData(
+              parseInt(data[0], 10),
+              parseInt(data[1], 10),
+              data.length >= 3 ? data[2] : ''
+            ));
             break;
 
           case Token.LINES_FOUND:
@@ -141,11 +134,11 @@ export class Report {
 
           case Token.END_OF_RECORD:
             report.records.push(record);
-            record = new Record({
-              branches: new BranchCoverage(),
-              functions: new FunctionCoverage(),
-              lines: new LineCoverage()
-            });
+
+            record = new Record();
+            record.branches = new BranchCoverage();
+            record.functions = new FunctionCoverage();
+            record.lines = new LineCoverage();
             break;
         }
       }
@@ -177,7 +170,7 @@ export class Report {
    * @return {string} The string representation of this object.
    */
   toString() {
-    let lines = [`${Token.TEST_NAME}:${this.testName}`];
+    let lines = this.testName.length ? [`${Token.TEST_NAME}:${this.testName}`] : [];
     lines.push(...this.records.map(item => item.toString()));
     return lines.join('\n');
   }

@@ -10,33 +10,33 @@ export class Record {
 
   /**
    * Initializes a new instance of the class.
-   * @param {object} [options] An object specifying values used to initialize this instance.
+   * @param {string} [sourceFile] The path to the source file.
    */
-  constructor(options = {}) {
+  constructor(sourceFile = '') {
 
     /**
      * The branch coverage.
      * @type {BranchCoverage}
      */
-    this.branches = options.branches instanceof BranchCoverage ? options.branches : null;
+    this.branches = null;
 
     /**
      * The function coverage.
      * @type {FunctionCoverage}
      */
-    this.functions = options.functions instanceof FunctionCoverage ? options.functions : null;
+    this.functions = null;
 
     /**
      * The line coverage.
      * @type {LineCoverage}
      */
-    this.lines = options.lines instanceof LineCoverage ? options.lines : null;
+    this.lines = null;
 
     /**
      * The path to the source file.
      * @type {string}
      */
-    this.sourceFile = typeof options.sourceFile == 'string' ? options.sourceFile : '';
+    this.sourceFile = sourceFile;
   }
 
   /**
@@ -45,12 +45,13 @@ export class Record {
    * @return {Record} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
   static fromJSON(map) {
-    return !map || typeof map != 'object' ? null : new Record({
-      branches: BranchCoverage.fromJSON(map.branches),
-      functions: FunctionCoverage.fromJSON(map.functions),
-      lines: LineCoverage.fromJSON(map.lines),
-      sourceFile: map.sourceFile
-    });
+    if (!map || typeof map != 'object') return null;
+
+    let record = new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '');
+    record.branches = BranchCoverage.fromJSON(map.branches);
+    record.functions = FunctionCoverage.fromJSON(map.functions);
+    record.lines = LineCoverage.fromJSON(map.lines);
+    return record;
   }
 
   /**

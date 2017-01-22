@@ -10,28 +10,6 @@ import {BranchData, FunctionData, LineData, Record, Report} from '../src/index';
 describe('Report', () => {
 
   /**
-   * @test {Report#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let record = new Record();
-      let report = new Report({
-        records: [record],
-        testName: 'LcovTest'
-      });
-
-      assert.ok(Array.isArray(report.records));
-      assert.equal(report.records.length, 1);
-      assert.strictEqual(report.records[0], record);
-      assert.equal(report.testName, 'LcovTest');
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new Report({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {Report.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -129,11 +107,7 @@ describe('Report', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new Report({
-        records: [new Record()],
-        testName: 'LcovTest'
-      }).toJSON();
-
+      let map = new Report('LcovTest', [new Record()]).toJSON();
       assert.equal(Object.keys(map).length, 2);
       assert.ok(Array.isArray(map.records));
       assert.equal(map.records.length, 1);
@@ -147,16 +121,10 @@ describe('Report', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
-      let report = new Report();
-      assert.equal(String(report), 'TN:');
+      assert.equal(String(new Report()), '');
 
       let record = new Record();
-      report = new Report({
-        records: [record],
-        testName: 'LcovTest'
-      });
-
-      assert.equal(String(report), `TN:LcovTest\n${record}`);
+      assert.equal(String(new Report('LcovTest', [record])), `TN:LcovTest\n${record}`);
     });
   });
 });

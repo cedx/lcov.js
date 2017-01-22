@@ -9,27 +9,6 @@ import {FunctionCoverage, FunctionData} from '../src/index';
 describe('FunctionCoverage', () => {
 
   /**
-   * @test {FunctionCoverage#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let data = new FunctionData();
-      let coverage = new FunctionCoverage({data: [data], found: 23, hit: 11});
-
-      assert.ok(Array.isArray(coverage.data));
-      assert.equal(coverage.data.length, 1);
-      assert.strictEqual(coverage.data[0], data);
-
-      assert.equal(coverage.found, 23);
-      assert.equal(coverage.hit, 11);
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new FunctionCoverage({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {FunctionCoverage.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -77,11 +56,7 @@ describe('FunctionCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new FunctionCoverage({
-        data: [new FunctionData()],
-        found: 23,
-        hit: 11
-      }).toJSON();
+      let map = new FunctionCoverage(23, 11, [new FunctionData()]).toJSON();
 
       assert.equal(Object.keys(map).length, 3);
       assert.ok(Array.isArray(map.data));
@@ -100,16 +75,9 @@ describe('FunctionCoverage', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "FNF:<found>\\n,FNH:<hit>"', () => {
-      let coverage = new FunctionCoverage();
-      assert.equal(String(coverage), 'FNF:0\nFNH:0');
+      assert.equal(String(new FunctionCoverage()), 'FNF:0\nFNH:0');
 
-      let data = new FunctionData({
-        executionCount: 3,
-        functionName: 'main',
-        lineNumber: 127
-      });
-
-      coverage = new FunctionCoverage({data: [data], found: 23, hit: 11});
+      let coverage = new FunctionCoverage(23, 11, [new FunctionData('main', 127, 3)]);
       assert.equal(String(coverage), 'FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11');
     });
   });
@@ -119,22 +87,6 @@ describe('FunctionCoverage', () => {
  * @test {FunctionData}
  */
 describe('FunctionData', () => {
-
-  /**
-   * @test {FunctionData#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
-      assert.equal(data.executionCount, 3);
-      assert.equal(data.functionName, 'main');
-      assert.equal(data.lineNumber, 127);
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new FunctionData({foo: 'bar'})));
-    });
-  });
 
   /**
    * @test {FunctionData.fromJSON}
@@ -177,12 +129,7 @@ describe('FunctionData', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new FunctionData({
-        executionCount: 3,
-        functionName: 'main',
-        lineNumber: 127
-      }).toJSON();
-
+      let map = new FunctionData('main', 127, 3).toJSON();
       assert.equal(Object.keys(map).length, 3);
       assert.equal(map.executionCount, 3);
       assert.equal(map.functionName, 'main');
@@ -195,19 +142,13 @@ describe('FunctionData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
-      let data = new FunctionData();
-      assert.equal(data.toString(true), 'FN:0,');
-
-      data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
-      assert.equal(data.toString(true), 'FN:127,main');
+      assert.equal(new FunctionData().toString(true), 'FN:0,');
+      assert.equal(new FunctionData('main', 127, 3).toString(true), 'FN:127,main');
     });
 
     it('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () => {
-      let data = new FunctionData();
-      assert.equal(data.toString(false), 'FNDA:0,');
-
-      data = new FunctionData({executionCount: 3, functionName: 'main', lineNumber: 127});
-      assert.equal(data.toString(false), 'FNDA:3,main');
+      assert.equal(new FunctionData().toString(false), 'FNDA:0,');
+      assert.equal(new FunctionData('main', 127, 3).toString(false), 'FNDA:3,main');
     });
   });
 });

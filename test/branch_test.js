@@ -9,27 +9,6 @@ import {BranchCoverage, BranchData} from '../src/index';
 describe('BranchCoverage', () => {
 
   /**
-   * @test {BranchCoverage#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let data = new BranchData();
-      let coverage = new BranchCoverage({data: [data], found: 23, hit: 11});
-
-      assert.ok(Array.isArray(coverage.data));
-      assert.equal(coverage.data.length, 1);
-      assert.strictEqual(coverage.data[0], data);
-
-      assert.equal(coverage.found, 23);
-      assert.equal(coverage.hit, 11);
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new BranchCoverage({foo: 'bar'})));
-    });
-  });
-
-  /**
    * @test {BranchCoverage.fromJSON}
    */
   describe('.fromJSON()', () => {
@@ -77,12 +56,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new BranchCoverage({
-        data: [new BranchData()],
-        found: 23,
-        hit: 11
-      }).toJSON();
-
+      let map = new BranchCoverage(23, 11, [new BranchData()]).toJSON();
       assert.equal(Object.keys(map).length, 3);
       assert.ok(Array.isArray(map.data));
       assert.equal(map.data.length, 1);
@@ -100,17 +74,10 @@ describe('BranchCoverage', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "BRF:<found>\\n,BRH:<hit>"', () => {
-      let coverage = new BranchCoverage();
-      assert.equal(String(coverage), 'BRF:0\nBRH:0');
+      assert.equal(String(new BranchCoverage()), 'BRF:0\nBRH:0');
 
-      let data = new BranchData({
-        blockNumber: 3,
-        branchNumber: 2,
-        lineNumber: 127
-      });
-
-      coverage = new BranchCoverage({data: [data], found: 23, hit: 11});
-      assert.equal(String(coverage), `${data}\nBRF:23\nBRH:11`);
+      let data = new BranchData(127, 3, 2, 1);
+      assert.equal(String(new BranchCoverage(23, 11, [data])), `${data}\nBRF:23\nBRH:11`);
     });
   });
 });
@@ -119,23 +86,6 @@ describe('BranchCoverage', () => {
  * @test {BranchData}
  */
 describe('BranchData', () => {
-
-  /**
-   * @test {BranchData#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      let data = new BranchData({blockNumber: 3, branchNumber: 2, lineNumber: 127, taken: 1});
-      assert.equal(data.blockNumber, 3);
-      assert.equal(data.branchNumber, 2);
-      assert.equal(data.lineNumber, 127);
-      assert.equal(data.taken, 1);
-    });
-
-    it('should not create new properties', () => {
-      assert.ok(!('foo' in new BranchData({foo: 'bar'})));
-    });
-  });
 
   /**
    * @test {BranchData.fromJSON}
@@ -182,13 +132,7 @@ describe('BranchData', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new BranchData({
-        blockNumber: 3,
-        branchNumber: 2,
-        lineNumber: 127,
-        taken: 1
-      }).toJSON();
-
+      let map = new BranchData(127, 3, 2, 1).toJSON();
       assert.equal(Object.keys(map).length, 4);
       assert.equal(map.blockNumber, 3);
       assert.equal(map.branchNumber, 2);
@@ -202,11 +146,8 @@ describe('BranchData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
-      let data = new BranchData();
-      assert.equal(String(data), 'BRDA:0,0,0,-');
-
-      data = new BranchData({blockNumber: 3, branchNumber: 2, lineNumber: 127, taken: 1});
-      assert.equal(String(data), 'BRDA:127,3,2,1');
+      assert.equal(String(new BranchData()), 'BRDA:0,0,0,-');
+      assert.equal(String(new BranchData(127, 3, 2, 1)), 'BRDA:127,3,2,1');
     });
   });
 });
