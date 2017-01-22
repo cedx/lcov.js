@@ -92,7 +92,7 @@ The `Report.toString()` method will return a LCOV report formatted like this:
 
 ```
 TN:Example
-SF:/home/cedx/lcov.dart/fixture.js
+SF:/home/cedx/lcov.js/fixture.js
 FNF:1
 FNH:1
 DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
