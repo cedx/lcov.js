@@ -116,7 +116,7 @@ export class Report {
             break;
 
           case Token.LINE_DATA:
-            if (data.length < 3) throw new Error('Invalid line data.');
+            if (data.length < 2) throw new Error('Invalid line data.');
             record.lines.data.push(new LineData(
               parseInt(data[0], 10),
               parseInt(data[1], 10),
