@@ -44,7 +44,7 @@ describe('Report', () => {
    */
   describe('.parse()', () => {
     /* eslint-disable no-sync */
-    let report = Report.parse(fs.readFileSync(`${__dirname}/lcov.info`, 'utf8'));
+    let report = Report.parse(fs.readFileSync(`${__dirname}/fixtures/lcov.info`, 'utf8'));
     /* eslint-enable no-sync */
 
     it('should have a test name', () => {
