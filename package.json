@@ -16,10 +16,10 @@
     "@cedx/enum": "^1.3.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.1.0",
+    "@cedx/coveralls": "^0.2.0",
     "@cedx/gulp-david": "^4.0.0",
     "babel-preset-latest": "^6.22.0",
-    "babel-register": "^6.22.0",
+    "babel-register": "^6.23.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
     "gulp": "^3.9.1",
