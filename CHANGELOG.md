@@ -1,6 +1,15 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
+## Version 0.4.0
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: using ES2017 features, like async/await functions.
+- Improved the build system.
+- Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
+- Removed the dependency on the `@cedx/enum` module.
+- Removed the dependency on the `gulp-load-plugins` module.
+- Updated the package dependencies.
+
 ## Version 0.3.0
 - Updated the package dependencies.
 
