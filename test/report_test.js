@@ -88,7 +88,7 @@ describe('Report', () => {
     });
 
     it('should throw an error if the input is invalid', () => {
-      expect(() => Report.parse('TN:Example')).to.throw(Error);
+      expect(() => Report.parse('TN:Example')).to.throw();
     });
   });
 
