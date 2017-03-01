@@ -12,9 +12,6 @@
   "jsnext:main": "./src/index",
   "main": "./lib/index",
 
-  "dependencies": {
-    "@cedx/enum": "^1.3.0"
-  },
   "devDependencies": {
     "@cedx/coveralls": "^0.2.0",
     "@cedx/gulp-david": "^4.0.0",
