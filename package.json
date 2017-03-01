@@ -24,11 +24,9 @@
     "esdoc": "^0.5.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-istanbul": "^1.1.1",
     "gulp-eslint": "^3.0.1",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^4.0.0",
-    "isparta": "^4.0.0"
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2"
   },
   "engines": {
     "node": ">=6.9.0"
@@ -43,6 +41,6 @@
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
     "prepublish": "gulp build",
-    "test": "gulp test"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register"
   }
 }
