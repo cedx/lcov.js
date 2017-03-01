@@ -1,5 +1,3 @@
-import {Enum} from '@cedx/enum';
-
 /**
  * Provides the list of tokens supported by the parser.
  * @type {object}
@@ -18,7 +16,7 @@ import {Enum} from '@cedx/enum';
  * @property {string} SOURCE_FILE The path to a source file.
  * @property {string} TEST_NAME A test name.
  */
-export const Token = Enum.create({
+export const Token = Object.freeze({
   BRANCHES_FOUND: 'BRF',
   BRANCHES_HIT: 'BRH',
   BRANCH_DATA: 'BRDA',

@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import fs from 'fs';
 import {BranchData, FunctionData, LineData, Record, Report} from '../src/index';
 
@@ -14,15 +14,14 @@ describe('Report', () => {
    */
   describe('.fromJSON()', () => {
     it('should return a null reference with a non-object value', () => {
-      assert.strictEqual(Report.fromJSON('foo'), null);
+      expect(Report.fromJSON('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
       let report = Report.fromJSON({});
-      assert.ok(report instanceof Report);
-      assert.ok(Array.isArray(report.records));
-      assert.equal(report.records.length, 0);
-      assert.equal(report.testName, '');
+      expect(report).to.be.instanceof(Report);
+      expect(report.records).to.be.an('array').and.to.be.empty;
+      expect(report.testName).to.be.empty;
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -31,11 +30,10 @@ describe('Report', () => {
         testName: 'LcovTest'
       });
 
-      assert.ok(report instanceof Report);
-      assert.ok(Array.isArray(report.records));
-      assert.equal(report.records.length, 1);
-      assert.ok(report.records[0] instanceof Record);
-      assert.equal(report.testName, 'LcovTest');
+      expect(report).to.be.instanceof(Report);
+      expect(report.records).to.be.an('array').and.have.lengthOf(1);
+      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.testName).to.equal('LcovTest');
     });
   });
 
@@ -48,49 +46,49 @@ describe('Report', () => {
     /* eslint-enable no-sync */
 
     it('should have a test name', () => {
-      assert.equal(report.testName, 'Example');
+      expect(report.testName).to.equal('Example');
     });
 
     it('should contain three records', () => {
-      assert.equal(report.records.length, 3);
-      assert.ok(report.records[0] instanceof Record);
-      assert.equal(report.records[0].sourceFile, '/home/cedx/lcov.js/fixture.js');
-      assert.equal(report.records[1].sourceFile, '/home/cedx/lcov.js/func1.js');
-      assert.equal(report.records[2].sourceFile, '/home/cedx/lcov.js/func2.js');
+      expect(report.records).to.have.lengthOf(3);
+      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
+      expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
+      expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
     });
 
     it('should have detailed branch coverage', () => {
       let branches = report.records[1].branches;
-      assert.equal(branches.found, 4);
-      assert.equal(branches.hit, 4);
+      expect(branches.found).to.equal(4);
+      expect(branches.hit).to.equal(4);
 
-      assert.equal(branches.data.length, 4);
-      assert.ok(branches.data[0] instanceof BranchData);
-      assert.equal(branches.data[0].lineNumber, 8);
+      expect(branches.data).to.have.lengthOf(4);
+      expect(branches.data[0]).to.be.instanceof(BranchData);
+      expect(branches.data[0].lineNumber).to.equal(8);
     });
 
     it('should have detailed function coverage', () => {
       let functions = report.records[1].functions;
-      assert.equal(functions.found, 1);
-      assert.equal(functions.hit, 1);
+      expect(functions.found).to.equal(1);
+      expect(functions.hit).to.equal(1);
 
-      assert.equal(functions.data.length, 1);
-      assert.ok(functions.data[0] instanceof FunctionData);
-      assert.equal('func1', functions.data[0].functionName);
+      expect(functions.data).to.have.lengthOf(1);
+      expect(functions.data[0]).to.be.instanceof(FunctionData);
+      expect(functions.data[0].functionName).to.equal('func1');
     });
 
     it('should have detailed line coverage', () => {
       let lines = report.records[1].lines;
-      assert.equal(lines.found, 9);
-      assert.equal(lines.hit, 9);
+      expect(lines.found).to.equal(9);
+      expect(lines.hit).to.equal(9);
 
-      assert.equal(lines.data.length, 9);
-      assert.ok(lines.data[0] instanceof LineData);
-      assert.equal(lines.data[0].checksum, '5kX7OTfHFcjnS98fjeVqNA');
+      expect(lines.data).to.have.lengthOf(9);
+      expect(lines.data[0]).to.be.instanceof(LineData);
+      expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
     });
 
     it('should throw an error if the input is invalid', () => {
-      assert.throws(() => Report.parse('TN:Example'));
+      expect(() => Report.parse('TN:Example')).to.throw(Error);
     });
   });
 
@@ -100,19 +98,17 @@ describe('Report', () => {
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new Report().toJSON();
-      assert.equal(Object.keys(map).length, 2);
-      assert.ok(Array.isArray(map.records));
-      assert.equal(map.records.length, 0);
-      assert.equal(map.testName, '');
+      expect(Object.keys(map)).to.have.lengthOf(2);
+      expect(map.records).to.be.an('array').and.to.be.empty;
+      expect(map.testName).to.be.empty;
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       let map = new Report('LcovTest', [new Record()]).toJSON();
-      assert.equal(Object.keys(map).length, 2);
-      assert.ok(Array.isArray(map.records));
-      assert.equal(map.records.length, 1);
-      assert.ok(map.records[0] && typeof map.records[0] == 'object');
-      assert.equal(map.testName, 'LcovTest');
+      expect(Object.keys(map)).to.have.lengthOf(2);
+      expect(map.records).to.be.an('array').and.have.lengthOf(1);
+      expect(map.records[0]).to.be.an('object');
+      expect(map.testName).to.equal('LcovTest');
     });
   });
 
@@ -121,10 +117,10 @@ describe('Report', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
-      assert.equal(String(new Report()), '');
+      expect(String(new Report())).to.be.empty;
 
       let record = new Record();
-      assert.equal(String(new Report('LcovTest', [record])), `TN:LcovTest\n${record}`);
+      expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
     });
   });
 });

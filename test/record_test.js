@@ -1,6 +1,6 @@
 'use strict';
 
-import assert from 'assert';
+import {expect} from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src/index';
 
 /**
@@ -13,16 +13,16 @@ describe('Record', () => {
    */
   describe('.fromJSON()', () => {
     it('should return a null reference with a non-object value', () => {
-      assert.strictEqual(Record.fromJSON('foo'), null);
+      expect(Record.fromJSON('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
       let record = Record.fromJSON({});
-      assert.ok(record instanceof Record);
-      assert.strictEqual(record.branches, null);
-      assert.strictEqual(record.functions, null);
-      assert.strictEqual(record.lines, null);
-      assert.equal(record.sourceFile, '');
+      expect(record).to.be.instanceof(Record);
+      expect(record.branches).to.be.null;
+      expect(record.functions).to.be.null;
+      expect(record.lines).to.be.null;
+      expect(record.sourceFile).to.be.empty;
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -33,11 +33,11 @@ describe('Record', () => {
         sourceFile: '/home/cedx/lcov.js'
       });
 
-      assert.ok(record instanceof Record);
-      assert.ok(record.branches instanceof BranchCoverage);
-      assert.ok(record.functions instanceof FunctionCoverage);
-      assert.ok(record.lines instanceof LineCoverage);
-      assert.equal(record.sourceFile, '/home/cedx/lcov.js');
+      expect(record).to.be.instanceof(Record);
+      expect(record.branches).to.be.instanceof(BranchCoverage);
+      expect(record.functions).to.be.instanceof(FunctionCoverage);
+      expect(record.lines).to.be.instanceof(LineCoverage);
+      expect(record.sourceFile).to.equal('/home/cedx/lcov.js');
     });
   });
 
@@ -47,11 +47,11 @@ describe('Record', () => {
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new Record().toJSON();
-      assert.equal(Object.keys(map).length, 4);
-      assert.strictEqual(map.branches, null);
-      assert.strictEqual(map.functions, null);
-      assert.strictEqual(map.lines, null);
-      assert.equal(map.sourceFile, '');
+      expect(Object.keys(map)).to.have.lengthOf(4);
+      expect(map.branches).to.be.null;
+      expect(map.functions).to.be.null;
+      expect(map.lines).to.be.null;
+      expect(map.sourceFile).to.be.empty;
     });
 
     it('should return a non-empty map for an initialized instance', () => {
@@ -61,11 +61,11 @@ describe('Record', () => {
       record.lines = new LineCoverage();
 
       let map = record.toJSON();
-      assert.equal(Object.keys(map).length, 4);
-      assert.ok(map.branches && typeof map.branches == 'object');
-      assert.ok(map.functions && typeof map.functions == 'object');
-      assert.ok(map.lines && typeof map.lines == 'object');
-      assert.equal(map.sourceFile, '/home/cedx/lcov.js');
+      expect(Object.keys(map)).to.have.lengthOf(4);
+      expect(map.branches).to.be.an('object');
+      expect(map.functions).to.be.an('object');
+      expect(map.lines).to.be.an('object');
+      expect(map.sourceFile).to.equal('/home/cedx/lcov.js');
     });
   });
 
@@ -74,14 +74,14 @@ describe('Record', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "SF:<sourceFile>\\n,end_of_record"', () => {
-      assert.equal(String(new Record()), 'SF:\nend_of_record');
+      expect(String(new Record())).to.equal('SF:\nend_of_record');
 
       let record = new Record('/home/cedx/lcov.js');
       record.branches = new BranchCoverage();
       record.functions = new FunctionCoverage();
       record.lines = new LineCoverage();
 
-      assert.equal(String(record), `SF:/home/cedx/lcov.js\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record`);
+      expect(String(record)).to.equal(`SF:/home/cedx/lcov.js\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record`);
     });
   });
 });
