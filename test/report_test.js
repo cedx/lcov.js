@@ -20,7 +20,7 @@ describe('Report', () => {
     it('should return an instance with default values for an empty map', () => {
       let report = Report.fromJSON({});
       expect(report).to.be.instanceof(Report);
-      expect(report.records).to.be.an('array').and.to.be.empty;
+      expect(report.records).to.be.an('array').and.be.empty;
       expect(report.testName).to.be.empty;
     });
 
@@ -99,7 +99,7 @@ describe('Report', () => {
     it('should return a map with default values for a newly created instance', () => {
       let map = new Report().toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
-      expect(map.records).to.be.an('array').and.to.be.empty;
+      expect(map.records).to.be.an('array').and.be.empty;
       expect(map.testName).to.be.empty;
     });
 

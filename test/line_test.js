@@ -18,7 +18,7 @@ describe('LineCoverage', () => {
 
     it('should return an instance with default values for an empty map', () => {
       let coverage = LineCoverage.fromJSON({});
-      expect(coverage.data).to.be.an('array').and.to.be.empty;
+      expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
       expect(coverage.hit).to.equal(0);
     });
@@ -46,7 +46,7 @@ describe('LineCoverage', () => {
       let map = new LineCoverage().toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.to.be.empty;
+      expect(map.data).to.be.an('array').and.be.empty;
 
       expect(map.found).to.equal(0);
       expect(map.hit).to.equal(0);
