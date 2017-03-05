@@ -18,6 +18,7 @@ describe('BranchCoverage', () => {
 
     it('should return an instance with default values for an empty map', () => {
       let coverage = BranchCoverage.fromJSON({});
+      expect(coverage).to.be.instanceof(BranchCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
       expect(coverage.hit).to.equal(0);
@@ -25,13 +26,15 @@ describe('BranchCoverage', () => {
 
     it('should return an initialized instance for a non-empty map', () => {
       let coverage = BranchCoverage.fromJSON({
-        data: [{lineNumber: 23}],
+        data: [{lineNumber: 127}],
         found: 23,
         hit: 11,
       });
 
+      expect(coverage).to.be.instanceof(BranchCoverage);
       expect(coverage.data).to.be.an('array').and.have.lengthOf(1);
       expect(coverage.data[0]).to.be.instanceof(BranchData);
+      expect(coverage.data[0].lineNumber).to.equal(127);
 
       expect(coverage.found).to.equal(23);
       expect(coverage.hit).to.equal(11);
@@ -92,6 +95,7 @@ describe('BranchData', () => {
 
     it('should return an instance with default values for an empty map', () => {
       let data = BranchData.fromJSON({});
+      expect(data).to.be.instanceof(BranchData);
       expect(data.blockNumber).to.equal(0);
       expect(data.branchNumber).to.equal(0);
       expect(data.lineNumber).to.equal(0);
@@ -106,6 +110,7 @@ describe('BranchData', () => {
         taken: 1
       });
 
+      expect(data).to.be.instanceof(BranchData);
       expect(data.blockNumber).to.equal(3);
       expect(data.branchNumber).to.equal(2);
       expect(data.lineNumber).to.equal(127);
