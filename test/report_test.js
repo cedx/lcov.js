@@ -40,10 +40,9 @@ describe('Report', () => {
   /**
    * @test {Report.parse}
    */
-  describe('.parse()', () => {
-    /* eslint-disable no-sync */
-    let report = Report.parse(fs.readFileSync(`${__dirname}/fixtures/lcov.info`, 'utf8'));
-    /* eslint-enable no-sync */
+  describe('.parse()', async () => {
+    const readFile = file => new Promise(resolve => fs.readFile(file, 'utf8', (err, data) => resolve(err ? '' : data)));
+    let report = Report.parse(await readFile(`${__dirname}/fixtures/lcov.info`));
 
     it('should have a test name', () => {
       expect(report.testName).to.equal('Example');
