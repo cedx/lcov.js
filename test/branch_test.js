@@ -60,7 +60,7 @@ describe('BranchCoverage', () => {
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
-      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber');
+      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
 
       expect(map.found).to.equal(23);
       expect(map.hit).to.equal(11);
