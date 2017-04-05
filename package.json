@@ -9,8 +9,8 @@
   "repository": "cedx/lcov.js",
   "version": "1.0.0",
 
-  "jsnext:main": "./src/index",
   "main": "./lib/index",
+  "module": "./src/index",
 
   "devDependencies": {
     "@cedx/coveralls": "^0.5.0",
