@@ -1,6 +1,7 @@
 'use strict';
 
 import {expect} from 'chai';
+import {describe, it} from 'mocha';
 import {BranchCoverage, BranchData} from '../src/index';
 
 /**

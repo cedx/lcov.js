@@ -2,6 +2,7 @@
 
 import {expect} from 'chai';
 import fs from 'fs';
+import {describe, it} from 'mocha';
 import {BranchData, FunctionData, LineData, Record, Report} from '../src/index';
 
 /**
