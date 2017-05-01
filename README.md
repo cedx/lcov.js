@@ -22,11 +22,11 @@ The [`Report`](https://github.com/cedx/lcov.js/blob/master/src/report.js) class,
 The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
 
 ```javascript
-const fs = require('fs');
+const {readFileSync} = require('fs');
 const {Report} = require('@cedx/lcov');
 
 try {
-  let coverage = fs.readFileSync('lcov.info', 'utf8');
+  let coverage = readFileSync('lcov.info', 'utf8');
   let report = Report.parse(coverage);
   console.log(`The coverage report contains ${report.records.length} records:`);
   console.log(report.toJSON());
