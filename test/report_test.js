@@ -1,7 +1,7 @@
 'use strict';
 
 import {expect} from 'chai';
-import fs from 'fs';
+import {readFile} from 'fs';
 import {describe, it} from 'mocha';
 import {BranchData, FunctionData, LineData, Record, Report} from '../src/index';
 
@@ -42,8 +42,8 @@ describe('Report', () => {
    * @test {Report.parse}
    */
   describe('.parse()', async () => {
-    const readFile = file => new Promise(resolve => fs.readFile(file, 'utf8', (err, data) => resolve(err ? '' : data)));
-    let report = Report.parse(await readFile(`${__dirname}/fixtures/lcov.info`));
+    const loadReport = file => new Promise(resolve => readFile(file, 'utf8', (err, data) => resolve(err ? '' : data)));
+    let report = Report.parse(await loadReport(`${__dirname}/fixtures/lcov.info`));
 
     it('should have a test name', () => {
       expect(report.testName).to.equal('Example');
