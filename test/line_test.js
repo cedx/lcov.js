@@ -47,7 +47,7 @@ describe('LineCoverage', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new LineCoverage().toJSON();
+      let map = (new LineCoverage).toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.data).to.be.an('array').and.be.empty;
@@ -57,7 +57,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new LineCoverage(23, 11, [new LineData()]).toJSON();
+      let map = new LineCoverage(23, 11, [new LineData]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
@@ -73,7 +73,7 @@ describe('LineCoverage', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "LF:<found>\\n,LH:<hit>"', () => {
-      expect(String(new LineCoverage())).to.equal('LF:0\nLH:0');
+      expect(String(new LineCoverage)).to.equal('LF:0\nLH:0');
 
       let data = new LineData(127, 3);
       expect(String(new LineCoverage(23, 11, [data]))).to.equal(`${data}\nLF:23\nLH:11`);
@@ -121,7 +121,7 @@ describe('LineData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new LineData().toJSON();
+      let map = (new LineData).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.checksum).to.be.empty;
       expect(map.executionCount).to.equal(0);
@@ -142,7 +142,7 @@ describe('LineData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () => {
-      expect(String(new LineData())).to.equal('DA:0,0');
+      expect(String(new LineData)).to.equal('DA:0,0');
       expect(String(new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c'))).to.equal('DA:127,3,ed076287532e86365e841e92bfc50d8c');
     });
   });

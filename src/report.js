@@ -48,13 +48,13 @@ export class Report {
    * @throws {Error} A parsing error occurred.
    */
   static parse(coverage) {
-    let report = new Report();
+    let report = new Report;
 
     try {
-      let record = new Record();
-      record.branches = new BranchCoverage();
-      record.functions = new FunctionCoverage();
-      record.lines = new LineCoverage();
+      let record = new Record;
+      record.branches = new BranchCoverage;
+      record.functions = new FunctionCoverage;
+      record.lines = new LineCoverage;
 
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
@@ -135,10 +135,10 @@ export class Report {
           case Token.END_OF_RECORD:
             report.records.push(record);
 
-            record = new Record();
-            record.branches = new BranchCoverage();
-            record.functions = new FunctionCoverage();
-            record.lines = new LineCoverage();
+            record = new Record;
+            record.branches = new BranchCoverage;
+            record.functions = new FunctionCoverage;
+            record.lines = new LineCoverage;
             break;
         }
       }

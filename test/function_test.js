@@ -47,7 +47,7 @@ describe('FunctionCoverage', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new FunctionCoverage().toJSON();
+      let map = (new FunctionCoverage).toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.data).to.be.an('array').and.be.empty;
@@ -57,7 +57,7 @@ describe('FunctionCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new FunctionCoverage(23, 11, [new FunctionData()]).toJSON();
+      let map = new FunctionCoverage(23, 11, [new FunctionData]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
@@ -73,7 +73,7 @@ describe('FunctionCoverage', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "FNF:<found>\\n,FNH:<hit>"', () => {
-      expect(String(new FunctionCoverage())).to.equal('FNF:0\nFNH:0');
+      expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
 
       let coverage = new FunctionCoverage(23, 11, [new FunctionData('main', 127, 3)]);
       expect(String(coverage)).to.equal('FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11');
@@ -121,7 +121,7 @@ describe('FunctionData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new FunctionData().toJSON();
+      let map = (new FunctionData).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.executionCount).to.equal(0);
       expect(map.functionName).to.be.empty;
@@ -142,12 +142,12 @@ describe('FunctionData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
-      expect(new FunctionData().toString(true)).to.equal('FN:0,');
+      expect((new FunctionData).toString(true)).to.equal('FN:0,');
       expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');
     });
 
     it('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () => {
-      expect(new FunctionData().toString(false)).to.equal('FNDA:0,');
+      expect((new FunctionData).toString(false)).to.equal('FNDA:0,');
       expect(new FunctionData('main', 127, 3).toString(false)).to.equal('FNDA:3,main');
     });
   });

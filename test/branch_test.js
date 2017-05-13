@@ -47,7 +47,7 @@ describe('BranchCoverage', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new BranchCoverage().toJSON();
+      let map = (new BranchCoverage).toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.data).to.be.an('array').and.be.empty;
@@ -57,7 +57,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new BranchCoverage(23, 11, [new BranchData()]).toJSON();
+      let map = new BranchCoverage(23, 11, [new BranchData]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
@@ -73,7 +73,7 @@ describe('BranchCoverage', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "BRF:<found>\\n,BRH:<hit>"', () => {
-      expect(String(new BranchCoverage())).to.equal('BRF:0\nBRH:0');
+      expect(String(new BranchCoverage)).to.equal('BRF:0\nBRH:0');
 
       let data = new BranchData(127, 3, 2, 1);
       expect(String(new BranchCoverage(23, 11, [data]))).to.equal(`${data}\nBRF:23\nBRH:11`);
@@ -124,7 +124,7 @@ describe('BranchData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new BranchData().toJSON();
+      let map = (new BranchData).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.blockNumber).to.equal(0);
       expect(map.branchNumber).to.equal(0);
@@ -147,7 +147,7 @@ describe('BranchData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
-      expect(String(new BranchData())).to.equal('BRDA:0,0,0,-');
+      expect(String(new BranchData)).to.equal('BRDA:0,0,0,-');
       expect(String(new BranchData(127, 3, 2, 1))).to.equal('BRDA:127,3,2,1');
     });
   });
