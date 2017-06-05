@@ -1,17 +1,14 @@
 {
-  "description": "Parse and format LCOV coverage reports.",
-  "homepage": "https://github.com/cedx/lcov.js",
-  "name": "@cedx/lcov",
-
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/lcov.js/issues",
+  "description": "Parse and format LCOV coverage reports.",
+  "homepage": "https://github.com/cedx/lcov.js",
   "license": "Apache-2.0",
-  "repository": "cedx/lcov.js",
-  "version": "1.1.1",
-
   "main": "./lib/index",
   "module": "./src/index",
-
+  "name": "@cedx/lcov",
+  "repository": "cedx/lcov.js",
+  "version": "1.1.1",
   "devDependencies": {
     "@cedx/coveralls": "^1.0.2",
     "@cedx/gulp-david": "^7.0.1",
