@@ -60,12 +60,10 @@ export class Record {
    */
   toJSON() {
     return {
-      /* eslint-disable sort-keys */
       sourceFile: this.sourceFile,
       branches: this.branches ? this.branches.toJSON() : null,
       functions: this.functions ? this.functions.toJSON() : null,
       lines: this.lines ? this.lines.toJSON() : null
-      /* eslint-enable sort-keys */
     };
   }
 

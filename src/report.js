@@ -158,10 +158,8 @@ export class Report {
    */
   toJSON() {
     return {
-      /* eslint-disable sort-keys */
       testName: this.testName,
       records: this.records.map(item => item.toJSON())
-      /* eslint-enable sort-keys */
     };
   }
 
