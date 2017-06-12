@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
 ## Version 2.0.0
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
 
 ## Version 1.1.1
 - Fixed a code generation bug.
