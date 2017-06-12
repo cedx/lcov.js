@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [LCOV Repor
 
 ## Version 2.0.0
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Updated the package dependencies.
 
 ## Version 1.1.1
 - Fixed a code generation bug.
