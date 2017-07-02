@@ -77,59 +77,59 @@ export class Report {
 
           case Token.FUNCTION_NAME:
             if (data.length < 2) throw new Error('Invalid function name.');
-            record.functions.data.push(new FunctionData(data[1], parseInt(data[0], 10)));
+            record.functions.data.push(new FunctionData(data[1], Number.parseInt(data[0], 10)));
             break;
 
           case Token.FUNCTION_DATA:
             if (data.length < 2) throw new Error('Invalid function data.');
             record.functions.data.some(item => {
               if (item.functionName != data[1]) return false;
-              item.executionCount = parseInt(data[0], 10);
+              item.executionCount = Number.parseInt(data[0], 10);
               return true;
             });
             break;
 
           case Token.FUNCTIONS_FOUND:
-            record.functions.found = parseInt(data[0], 10);
+            record.functions.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.FUNCTIONS_HIT:
-            record.functions.hit = parseInt(data[0], 10);
+            record.functions.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.BRANCH_DATA:
             if (data.length < 4) throw new Error('Invalid branch data.');
             record.branches.data.push(new BranchData(
-              parseInt(data[0], 10),
-              parseInt(data[1], 10),
-              parseInt(data[2], 10),
-              data[3] == '-' ? 0 : parseInt(data[3], 10)
+              Number.parseInt(data[0], 10),
+              Number.parseInt(data[1], 10),
+              Number.parseInt(data[2], 10),
+              data[3] == '-' ? 0 : Number.parseInt(data[3], 10)
             ));
             break;
 
           case Token.BRANCHES_FOUND:
-            record.branches.found = parseInt(data[0], 10);
+            record.branches.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.BRANCHES_HIT:
-            record.branches.hit = parseInt(data[0], 10);
+            record.branches.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.LINE_DATA:
             if (data.length < 2) throw new Error('Invalid line data.');
             record.lines.data.push(new LineData(
-              parseInt(data[0], 10),
-              parseInt(data[1], 10),
+              Number.parseInt(data[0], 10),
+              Number.parseInt(data[1], 10),
               data.length >= 3 ? data[2] : ''
             ));
             break;
 
           case Token.LINES_FOUND:
-            record.lines.found = parseInt(data[0], 10);
+            record.lines.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.LINES_HIT:
-            record.lines.hit = parseInt(data[0], 10);
+            record.lines.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.END_OF_RECORD:

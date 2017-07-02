@@ -46,10 +46,10 @@ export class BranchData {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new BranchData(
-      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
-      typeof map.blockNumber == 'number' ? map.blockNumber : 0,
-      typeof map.branchNumber == 'number' ? map.branchNumber : 0,
-      typeof map.taken == 'number' ? map.taken : 0
+      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
+      Number.isInteger(map.branchNumber) ? map.branchNumber : 0,
+      Number.isInteger(map.taken) ? map.taken : 0
     );
   }
 
@@ -115,8 +115,8 @@ export class BranchCoverage {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new BranchCoverage(
-      typeof map.found == 'number' ? map.found : 0,
-      typeof map.hit == 'number' ? map.hit : 0,
+      Number.isInteger(map.found) ? map.found : 0,
+      Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(item => BranchData.fromJSON(item)).filter(item => item) : []
     );
   }

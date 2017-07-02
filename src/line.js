@@ -39,8 +39,8 @@ export class LineData {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new LineData(
-      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
-      typeof map.executionCount == 'number' ? map.executionCount : 0,
+      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      Number.isInteger(map.executionCount) ? map.executionCount : 0,
       typeof map.checksum == 'string' ? map.checksum : ''
     );
   }
@@ -106,8 +106,8 @@ export class LineCoverage {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new LineCoverage(
-      typeof map.found == 'number' ? map.found : 0,
-      typeof map.hit == 'number' ? map.hit : 0,
+      Number.isInteger(map.found) ? map.found : 0,
+      Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(item => LineData.fromJSON(item)).filter(item => item) : []
     );
   }

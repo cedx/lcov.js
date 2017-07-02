@@ -40,8 +40,8 @@ export class FunctionData {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionData(
       typeof map.functionName == 'string' ? map.functionName : '',
-      typeof map.lineNumber == 'number' ? map.lineNumber : 0,
-      typeof map.executionCount == 'number' ? map.executionCount : 0
+      Number.isInteger(typeof map.lineNumber) ? map.lineNumber : 0,
+      Number.isInteger(typeof map.executionCount) ? map.executionCount : 0
     );
   }
 
@@ -108,8 +108,8 @@ export class FunctionCoverage {
    */
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionCoverage(
-      typeof map.found == 'number' ? map.found : 0,
-      typeof map.hit == 'number' ? map.hit : 0,
+      Number.isInteger(map.found) ? map.found : 0,
+      Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJSON(item)).filter(item => item) : []
     );
   }
