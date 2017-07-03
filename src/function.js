@@ -40,8 +40,8 @@ export class FunctionData {
   static fromJSON(map) {
     return !map || typeof map != 'object' ? null : new FunctionData(
       typeof map.functionName == 'string' ? map.functionName : '',
-      Number.isInteger(typeof map.lineNumber) ? map.lineNumber : 0,
-      Number.isInteger(typeof map.executionCount) ? map.executionCount : 0
+      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      Number.isInteger(map.executionCount) ? map.executionCount : 0
     );
   }
 
