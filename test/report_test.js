@@ -97,11 +97,11 @@ describe('Report', () => {
     });
 
     it('should throw an error if the input is invalid', () => {
-      expect(() => Report.parse('ZZ:dummy')).to.throw();
+      expect(() => Report.parse('ZZ')).to.throw('invalid LCOV format');
     });
 
     it('should throw an error if the report is empty', () => {
-      expect(() => Report.parse('TN:Example')).to.throw();
+      expect(() => Report.parse('TN:Example')).to.throw('coverage data is empty');
     });
   });
 
