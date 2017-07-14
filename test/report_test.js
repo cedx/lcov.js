@@ -44,7 +44,7 @@ describe('Report', () => {
    */
   describe('.parse()', async () => {
     const loadReport = promisify(readFile);
-    let reportPath = `${__dirname}/fixtures/lcov.info`;
+    let reportPath = 'test/fixtures/lcov.info';
 
     it('should have a test name', async () => {
       let report = Report.parse(await loadReport(reportPath, 'utf8'));
