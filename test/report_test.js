@@ -1,10 +1,9 @@
 'use strict';
 
-import {expect} from 'chai';
-import {readFile} from 'fs';
-import {describe, it} from 'mocha';
-import {promisify} from 'util';
-import {BranchData, FunctionData, LineData, Record, Report} from '../src/index';
+const {expect} = require('chai');
+const {readFile} = require('fs');
+const {promisify} = require('util');
+const {BranchData, FunctionData, LineData, Record, Report} = require('../lib');
 
 /**
  * @test {Report}

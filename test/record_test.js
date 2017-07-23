@@ -1,8 +1,7 @@
 'use strict';
 
-import {expect} from 'chai';
-import {describe, it} from 'mocha';
-import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src/index';
+const {expect} = require('chai');
+const {BranchCoverage, FunctionCoverage, LineCoverage, Record} = require('../lib');
 
 /**
  * @test {Record}
