@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
+## Version 2.1.0
+- Removed the dependency on [Babel](https://babeljs.io) compiler.
+- Updated the package dependencies.
+
 ## Version 2.0.0
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Updated the package dependencies.

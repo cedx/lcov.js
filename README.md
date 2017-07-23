@@ -22,9 +22,9 @@ The [`Report`](https://github.com/cedx/lcov.js/blob/master/src/report.js) class,
 The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
 
 ```javascript
-import {Report} from '@cedx/lcov';
-import {readFile} from 'fs';
-import {promisify} from 'util';
+const {Report} = require('@cedx/lcov');
+const {readFile} = require('fs');
+const {promisify} = require('util');
 
 try {
   const loadReport = promisify(readFile);
@@ -79,7 +79,7 @@ Each provided class has a dedicated `toString()` instance method returning the c
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
 ```javascript
-import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
+const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
 
 let record = new Record('/home/cedx/lcov.js/fixture.js');
 record.functions = new FunctionCoverage(1, 1);
