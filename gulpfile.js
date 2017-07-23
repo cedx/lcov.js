@@ -4,7 +4,6 @@ const {david} = require('@cedx/gulp-david');
 const {spawn} = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
-const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
 const {normalize} = require('path');
 
