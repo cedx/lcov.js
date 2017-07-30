@@ -43,31 +43,31 @@ catch (error) {
 
 The `Report.toJSON()` instance method will return a map like this:
 
-```json
+```javascript
 {
-  "testName": "Example",
-  "records": [
+  testName: "Example",
+  records: [
     {
-      "sourceFile": "/home/cedx/lcov.js/fixture.js",
-      "branches": {
-        "data": [],
-        "found": 0,
-        "hit": 0
+      sourceFile: "/home/cedx/lcov.js/fixture.js",
+      branches: {
+        data: [],
+        found: 0,
+        hit: 0
       },
-      "functions": {
-        "data": [
-          {"executionCount": 2, "functionName": "main", "lineNumber": 4}
+      functions: {
+        data: [
+          {executionCount: 2, functionName: "main", lineNumber: 4}
         ],
-        "found": 1,
-        "hit": 1
+        found: 1,
+        hit: 1
       },
-      "lines": {
-        "data": [
-          {"checksum": "PF4Rz2r7RTliO9u6bZ7h6g", "executionCount": 2, "lineNumber": 6},
-          {"checksum": "y7GE3Y4FyXCeXcrtqgSVzw", "executionCount": 2, "lineNumber": 9}
+      lines: {
+        data: [
+          {checksum: "PF4Rz2r7RTliO9u6bZ7h6g", executionCount: 2, lineNumber: 6},
+          {checksum: "y7GE3Y4FyXCeXcrtqgSVzw", executionCount: 2, lineNumber: 9}
         ],
-        "found": 2,
-        "hit": 2
+        found: 2,
+        hit: 2
       }
     }
   ]
