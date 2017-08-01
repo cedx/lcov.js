@@ -7,7 +7,7 @@
   "main": "./lib/index",
   "name": "@cedx/lcov",
   "repository": "cedx/lcov.js",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "devDependencies": {
     "@cedx/coveralls": "^2.2.0",
     "@cedx/gulp-david": "^8.1.0",
