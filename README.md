@@ -19,7 +19,7 @@ This package provides a set of classes representing a coverage report and its da
 The [`Report`](https://github.com/cedx/lcov.js/blob/master/src/report.js) class, the main one, provides the parsing and formatting features.
 
 ### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) file
-The `Report.parse()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
+The `Report.fromCoverage()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
 
 ```javascript
 const {Report} = require('@cedx/lcov');
@@ -30,7 +30,7 @@ try {
   const loadReport = promisify(readFile);
   
   let coverage = await loadReport('lcov.info', 'utf8');
-  let report = Report.parse(coverage);
+  let report = Report.fromCoverage(coverage);
   
   console.log(`The coverage report contains ${report.records.length} records:`);
   console.log(report.toJSON());

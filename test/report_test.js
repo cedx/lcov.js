@@ -11,6 +11,72 @@ const {BranchData, FunctionData, LineData, Record, Report} = require('../lib');
 describe('Report', () => {
 
   /**
+   * @test {Report.fromCoverage}
+   */
+  describe('.fromCoverage()', async () => {
+    const loadReport = promisify(readFile);
+    let reportPath = 'test/fixtures/lcov.info';
+
+    it('should have a test name', async () => {
+      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
+      expect(report.testName).to.equal('Example');
+    });
+
+    it('should contain three records', async () => {
+      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
+      expect(report.records).to.have.lengthOf(3);
+      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
+      expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
+      expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
+    });
+
+    it('should have detailed branch coverage', async () => {
+      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
+
+      let branches = report.records[1].branches;
+      expect(branches.found).to.equal(4);
+      expect(branches.hit).to.equal(4);
+
+      expect(branches.data).to.have.lengthOf(4);
+      expect(branches.data[0]).to.be.instanceof(BranchData);
+      expect(branches.data[0].lineNumber).to.equal(8);
+    });
+
+    it('should have detailed function coverage', async () => {
+      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
+
+      let functions = report.records[1].functions;
+      expect(functions.found).to.equal(1);
+      expect(functions.hit).to.equal(1);
+
+      expect(functions.data).to.have.lengthOf(1);
+      expect(functions.data[0]).to.be.instanceof(FunctionData);
+      expect(functions.data[0].functionName).to.equal('func1');
+    });
+
+    it('should have detailed line coverage', async () => {
+      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
+
+      let lines = report.records[1].lines;
+      expect(lines.found).to.equal(9);
+      expect(lines.hit).to.equal(9);
+
+      expect(lines.data).to.have.lengthOf(9);
+      expect(lines.data[0]).to.be.instanceof(LineData);
+      expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
+    });
+
+    it('should throw an error if the input is invalid', () => {
+      expect(() => Report.fromCoverage('ZZ')).to.throw('invalid LCOV format');
+    });
+
+    it('should throw an error if the report is empty', () => {
+      expect(() => Report.fromCoverage('TN:Example')).to.throw('coverage data is empty');
+    });
+  });
+
+  /**
    * @test {Report.fromJson}
    */
   describe('.fromJson()', () => {
@@ -35,72 +101,6 @@ describe('Report', () => {
       expect(report.records).to.be.an('array').and.have.lengthOf(1);
       expect(report.records[0]).to.be.instanceof(Record);
       expect(report.testName).to.equal('LcovTest');
-    });
-  });
-
-  /**
-   * @test {Report.parse}
-   */
-  describe('.parse()', async () => {
-    const loadReport = promisify(readFile);
-    let reportPath = 'test/fixtures/lcov.info';
-
-    it('should have a test name', async () => {
-      let report = Report.parse(await loadReport(reportPath, 'utf8'));
-      expect(report.testName).to.equal('Example');
-    });
-
-    it('should contain three records', async () => {
-      let report = Report.parse(await loadReport(reportPath, 'utf8'));
-      expect(report.records).to.have.lengthOf(3);
-      expect(report.records[0]).to.be.instanceof(Record);
-      expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
-      expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
-      expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
-    });
-
-    it('should have detailed branch coverage', async () => {
-      let report = Report.parse(await loadReport(reportPath, 'utf8'));
-
-      let branches = report.records[1].branches;
-      expect(branches.found).to.equal(4);
-      expect(branches.hit).to.equal(4);
-
-      expect(branches.data).to.have.lengthOf(4);
-      expect(branches.data[0]).to.be.instanceof(BranchData);
-      expect(branches.data[0].lineNumber).to.equal(8);
-    });
-
-    it('should have detailed function coverage', async () => {
-      let report = Report.parse(await loadReport(reportPath, 'utf8'));
-
-      let functions = report.records[1].functions;
-      expect(functions.found).to.equal(1);
-      expect(functions.hit).to.equal(1);
-
-      expect(functions.data).to.have.lengthOf(1);
-      expect(functions.data[0]).to.be.instanceof(FunctionData);
-      expect(functions.data[0].functionName).to.equal('func1');
-    });
-
-    it('should have detailed line coverage', async () => {
-      let report = Report.parse(await loadReport(reportPath, 'utf8'));
-
-      let lines = report.records[1].lines;
-      expect(lines.found).to.equal(9);
-      expect(lines.hit).to.equal(9);
-
-      expect(lines.data).to.have.lengthOf(9);
-      expect(lines.data[0]).to.be.instanceof(LineData);
-      expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
-    });
-
-    it('should throw an error if the input is invalid', () => {
-      expect(() => Report.parse('ZZ')).to.throw('invalid LCOV format');
-    });
-
-    it('should throw an error if the report is empty', () => {
-      expect(() => Report.parse('TN:Example')).to.throw('coverage data is empty');
     });
   });
 
