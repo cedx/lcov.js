@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
+## Version 3.0.0
+- Breaking change: renamed the `fromJSON()` static methods to `fromJson`.
+- Changed the naming convention: acronyms and abbreviations are capitalized like regular words, except for two-letter acronyms.
+- Updated the package dependencies.
+
 ## Version 2.1.0
 - Removed the dependency on [Babel](https://babeljs.io) compiler.
 - Updated the package dependencies.
