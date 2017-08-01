@@ -9,15 +9,15 @@ const {BranchCoverage, FunctionCoverage, LineCoverage, Record} = require('../lib
 describe('Record', () => {
 
   /**
-   * @test {Record.fromJSON}
+   * @test {Record.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(Record.fromJSON('foo')).to.be.null;
+      expect(Record.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let record = Record.fromJSON({});
+      let record = Record.fromJson({});
       expect(record).to.be.instanceof(Record);
       expect(record.branches).to.be.null;
       expect(record.functions).to.be.null;
@@ -26,7 +26,7 @@ describe('Record', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let record = Record.fromJSON({
+      let record = Record.fromJson({
         branches: {},
         functions: {},
         lines: {},

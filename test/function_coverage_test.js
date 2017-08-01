@@ -9,15 +9,15 @@ const {FunctionCoverage, FunctionData} = require('../lib');
 describe('FunctionCoverage', () => {
 
   /**
-   * @test {FunctionCoverage.fromJSON}
+   * @test {FunctionCoverage.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(FunctionCoverage.fromJSON('foo')).to.be.null;
+      expect(FunctionCoverage.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let coverage = FunctionCoverage.fromJSON({});
+      let coverage = FunctionCoverage.fromJson({});
       expect(coverage).to.be.instanceof(FunctionCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
@@ -25,7 +25,7 @@ describe('FunctionCoverage', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let coverage = FunctionCoverage.fromJSON({
+      let coverage = FunctionCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
         hit: 11,

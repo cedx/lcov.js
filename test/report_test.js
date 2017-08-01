@@ -11,22 +11,22 @@ const {BranchData, FunctionData, LineData, Record, Report} = require('../lib');
 describe('Report', () => {
 
   /**
-   * @test {Report.fromJSON}
+   * @test {Report.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(Report.fromJSON('foo')).to.be.null;
+      expect(Report.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let report = Report.fromJSON({});
+      let report = Report.fromJson({});
       expect(report).to.be.instanceof(Report);
       expect(report.records).to.be.an('array').and.be.empty;
       expect(report.testName).to.be.empty;
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let report = Report.fromJSON({
+      let report = Report.fromJson({
         records: [{}],
         testName: 'LcovTest'
       });

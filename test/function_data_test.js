@@ -9,15 +9,15 @@ const {FunctionData} = require('../lib');
 describe('FunctionData', () => {
 
   /**
-   * @test {FunctionData.fromJSON}
+   * @test {FunctionData.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(FunctionData.fromJSON('foo')).to.be.null;
+      expect(FunctionData.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let data = FunctionData.fromJSON({});
+      let data = FunctionData.fromJson({});
       expect(data).to.be.instanceof(FunctionData);
       expect(data.executionCount).to.equal(0);
       expect(data.functionName).to.be.empty;
@@ -25,7 +25,7 @@ describe('FunctionData', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let data = FunctionData.fromJSON({
+      let data = FunctionData.fromJson({
         executionCount: 3,
         functionName: 'main',
         lineNumber: 127

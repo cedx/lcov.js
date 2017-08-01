@@ -9,15 +9,15 @@ const {BranchData} = require('../lib');
 describe('BranchData', () => {
 
   /**
-   * @test {BranchData.fromJSON}
+   * @test {BranchData.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(BranchData.fromJSON('foo')).to.be.null;
+      expect(BranchData.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let data = BranchData.fromJSON({});
+      let data = BranchData.fromJson({});
       expect(data).to.be.instanceof(BranchData);
       expect(data.blockNumber).to.equal(0);
       expect(data.branchNumber).to.equal(0);
@@ -26,7 +26,7 @@ describe('BranchData', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let data = BranchData.fromJSON({
+      let data = BranchData.fromJson({
         blockNumber: 3,
         branchNumber: 2,
         lineNumber: 127,

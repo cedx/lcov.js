@@ -9,15 +9,15 @@ const {BranchCoverage, BranchData} = require('../lib');
 describe('BranchCoverage', () => {
 
   /**
-   * @test {BranchCoverage.fromJSON}
+   * @test {BranchCoverage.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(BranchCoverage.fromJSON('foo')).to.be.null;
+      expect(BranchCoverage.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let coverage = BranchCoverage.fromJSON({});
+      let coverage = BranchCoverage.fromJson({});
       expect(coverage).to.be.instanceof(BranchCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
@@ -25,7 +25,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let coverage = BranchCoverage.fromJSON({
+      let coverage = BranchCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
         hit: 11,

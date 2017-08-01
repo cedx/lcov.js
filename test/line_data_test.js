@@ -9,15 +9,15 @@ const {LineData} = require('../lib');
 describe('LineData', () => {
 
   /**
-   * @test {LineData.fromJSON}
+   * @test {LineData.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(LineData.fromJSON('foo')).to.be.null;
+      expect(LineData.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let data = LineData.fromJSON({});
+      let data = LineData.fromJson({});
       expect(data).to.be.instanceof(LineData);
       expect(data.checksum).to.be.empty;
       expect(data.executionCount).to.equal(0);
@@ -25,7 +25,7 @@ describe('LineData', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let data = LineData.fromJSON({
+      let data = LineData.fromJson({
         checksum: 'ed076287532e86365e841e92bfc50d8c',
         executionCount: 3,
         lineNumber: 127

@@ -9,15 +9,15 @@ const {LineCoverage, LineData} = require('../lib');
 describe('LineCoverage', () => {
 
   /**
-   * @test {LineCoverage.fromJSON}
+   * @test {LineCoverage.fromJson}
    */
-  describe('.fromJSON()', () => {
+  describe('.fromJson()', () => {
     it('should return a null reference with a non-object value', () => {
-      expect(LineCoverage.fromJSON('foo')).to.be.null;
+      expect(LineCoverage.fromJson('foo')).to.be.null;
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let coverage = LineCoverage.fromJSON({});
+      let coverage = LineCoverage.fromJson({});
       expect(coverage).to.be.instanceof(LineCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
@@ -25,7 +25,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let coverage = LineCoverage.fromJSON({
+      let coverage = LineCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
         hit: 11,
