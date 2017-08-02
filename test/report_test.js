@@ -13,7 +13,7 @@ describe('Report', () => {
   /**
    * @test {Report.fromCoverage}
    */
-  describe('.fromCoverage()', async () => {
+  describe('.fromCoverage()', () => {
     const loadReport = promisify(readFile);
     let reportPath = 'test/fixtures/lcov.info';
 
