@@ -10,7 +10,7 @@
       "test": {"source": "test"},
       "brand": {
         "description": "Parse and format LCOV coverage reports, in JavaScript.",
-        "logo": "web/favicon.ico",
+        "logo": "www/favicon.ico",
         "repository": "https://github.com/cedx/lcov.js",
         "title": "LCOV Reports for JS"
       }
