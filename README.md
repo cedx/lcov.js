@@ -112,4 +112,4 @@ end_of_record
 - [Continuous integration](https://travis-ci.org/cedx/lcov.js)
 
 ## License
-[LCOV Reports for JS](https://github.com/cedx/lcov.js) is distributed under the Apache License, version 2.0.
+[LCOV Reports for JS](https://github.com/cedx/lcov.js) is distributed under the MIT License.
