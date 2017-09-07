@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
+## Version 3.1.0
+- Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
+- Updated the package dependencies.
+
 ## Version 3.0.0
 - Breaking change: renamed the `fromJSON()` static methods to `fromJson`.
 - Breaking change: renamed the `Report.parse()` static method to `fromCoverage`.
