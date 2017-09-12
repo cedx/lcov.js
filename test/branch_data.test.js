@@ -46,7 +46,7 @@ describe('BranchData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new BranchData).toJSON();
+      let map = new BranchData(0, 0, 0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.blockNumber).to.equal(0);
       expect(map.branchNumber).to.equal(0);
@@ -69,7 +69,7 @@ describe('BranchData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
-      expect(String(new BranchData)).to.equal('BRDA:0,0,0,-');
+      expect(String(new BranchData(0, 0, 0))).to.equal('BRDA:0,0,0,-');
       expect(String(new BranchData(127, 3, 2, 1))).to.equal('BRDA:127,3,2,1');
     });
   });

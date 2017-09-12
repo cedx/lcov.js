@@ -56,7 +56,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new LineCoverage(23, 11, [new LineData]).toJSON();
+      let map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);

@@ -43,7 +43,7 @@ describe('FunctionData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new FunctionData).toJSON();
+      let map = new FunctionData('', 0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.executionCount).to.equal(0);
       expect(map.functionName).to.be.empty;
@@ -64,12 +64,12 @@ describe('FunctionData', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
-      expect((new FunctionData).toString(true)).to.equal('FN:0,');
+      expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');
       expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');
     });
 
     it('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () => {
-      expect((new FunctionData).toString(false)).to.equal('FNDA:0,');
+      expect(new FunctionData('', 0).toString(false)).to.equal('FNDA:0,');
       expect(new FunctionData('main', 127, 3).toString(false)).to.equal('FNDA:3,main');
     });
   });

@@ -56,7 +56,7 @@ describe('FunctionCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new FunctionCoverage(23, 11, [new FunctionData]).toJSON();
+      let map = new FunctionCoverage(23, 11, [new FunctionData('', 0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
