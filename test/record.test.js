@@ -46,7 +46,7 @@ describe('Record', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new Record).toJSON();
+      let map = new Record('').toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.branches).to.be.null;
       expect(map.functions).to.be.null;
@@ -74,7 +74,7 @@ describe('Record', () => {
    */
   describe('#toString()', () => {
     it('should return a format like "SF:<sourceFile>\\n,end_of_record"', () => {
-      expect(String(new Record)).to.equal('SF:\nend_of_record');
+      expect(String(new Record(''))).to.equal('SF:\nend_of_record');
 
       let record = new Record('/home/cedx/lcov.js');
       record.branches = new BranchCoverage;
