@@ -2,6 +2,8 @@
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
 ## Version 4.0.0
+- Breaking change: changed the signature of most constructors.
+- Breaking change: using camel case instead of studly caps for the properties of the `Token` class.
 
 ## Version 3.1.0
 - Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.

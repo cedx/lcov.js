@@ -48,26 +48,26 @@ The `Report.toJSON()` instance method will return a map like this:
   "testName": "Example",
   "records": [
     {
-      "sourceFile": "/home/cedx/lcov.php/fixture.php",
+      "sourceFile": "/home/cedx/lcov.js/fixture.js",
       "branches": {
-        "data": [],
         "found": 0,
-        "hit": 0
+        "hit": 0,
+        "data": []
       },
       "functions": {
+        "found": 1,
+        "hit": 1,
         "data": [
           {"executionCount": 2, "functionName": "main", "lineNumber": 4}
-        ],
-        "found": 1,
-        "hit": 1
+        ]
       },
       "lines": {
+        "found": 2,
+        "hit": 2,
         "data": [
           {"checksum": "PF4Rz2r7RTliO9u6bZ7h6g", "executionCount": 2, "lineNumber": 6},
           {"checksum": "y7GE3Y4FyXCeXcrtqgSVzw", "executionCount": 2, "lineNumber": 9}
-        ],
-        "found": 2,
-        "hit": 2
+        ]
       }
     }
   ]
@@ -81,12 +81,13 @@ All you have to do is to create the adequate structure using these different cla
 ```javascript
 const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
 
-let record = new Record('/home/cedx/lcov.js/fixture.js');
-record.functions = new FunctionCoverage(1, 1);
-record.lines = new LineCoverage(2, 2, [
- new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
- new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
-]);
+let record = new Record('/home/cedx/lcov.js/fixture.js', {
+  functions: new FunctionCoverage(1, 1),
+  lines: new LineCoverage(2, 2, [
+   new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
+   new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+  ])
+});
 
 let report = new Report('Example', [record]);
 console.log(report.toString());
