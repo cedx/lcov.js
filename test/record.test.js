@@ -55,10 +55,11 @@ describe('Record', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let record = new Record('/home/cedx/lcov.js');
-      record.branches = new BranchCoverage;
-      record.functions = new FunctionCoverage;
-      record.lines = new LineCoverage;
+      let record = new Record('/home/cedx/lcov.js', {
+        branches: new BranchCoverage,
+        functions: new FunctionCoverage,
+        lines: new LineCoverage
+      });
 
       let map = record.toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
@@ -76,10 +77,11 @@ describe('Record', () => {
     it('should return a format like "SF:<sourceFile>\\n,end_of_record"', () => {
       expect(String(new Record(''))).to.equal('SF:\nend_of_record');
 
-      let record = new Record('/home/cedx/lcov.js');
-      record.branches = new BranchCoverage;
-      record.functions = new FunctionCoverage;
-      record.lines = new LineCoverage;
+      let record = new Record('/home/cedx/lcov.js', {
+        branches: new BranchCoverage,
+        functions: new FunctionCoverage,
+        lines: new LineCoverage
+      });
 
       expect(String(record)).to.equal(`SF:/home/cedx/lcov.js\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record`);
     });

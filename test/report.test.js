@@ -116,7 +116,7 @@ describe('Report', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new Report('LcovTest', [new Record]).toJSON();
+      let map = new Report('LcovTest', [new Record('')]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
       expect(map.records).to.be.an('array').and.have.lengthOf(1);
       expect(map.records[0]).to.be.an('object');
@@ -131,7 +131,7 @@ describe('Report', () => {
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;
 
-      let record = new Record;
+      let record = new Record('');
       expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
     });
   });
