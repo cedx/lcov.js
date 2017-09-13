@@ -23,7 +23,7 @@
     "nyc": "^11.2.1"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": ">=8.5.0"
   },
   "keywords": [
     "coverage",
