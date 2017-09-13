@@ -16,7 +16,7 @@ $ npm install --save @cedx/lcov
 
 ## Usage
 This package provides a set of classes representing a coverage report and its data.
-The [`Report`](https://github.com/cedx/lcov.js/blob/master/src/report.js) class, the main one, provides the parsing and formatting features.
+The [`Report`](https://github.com/cedx/lcov.js/blob/master/lib/report.js) class, the main one, provides the parsing and formatting features.
 
 ### Parse coverage data from a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) file
 The `Report.fromCoverage()` static method parses a coverage report provided as string, and returns a `Report` instance giving detailed information about this coverage report:
@@ -81,12 +81,14 @@ All you have to do is to create the adequate structure using these different cla
 ```javascript
 const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
 
+let lineCoverage = new LineCoverage(2, 2, [
+  new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
+  new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+]);
+
 let record = new Record('/home/cedx/lcov.js/fixture.js', {
   functions: new FunctionCoverage(1, 1),
-  lines: new LineCoverage(2, 2, [
-   new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
-   new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
-  ])
+  lines: lineCoverage
 });
 
 let report = new Report('Example', [record]);
