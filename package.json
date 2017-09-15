@@ -9,7 +9,7 @@
   "repository": "cedx/lcov.js",
   "version": "4.0.0",
   "devDependencies": {
-    "@cedx/coveralls": "^4.0.0",
+    "@cedx/coveralls": "^5.0.0",
     "@cedx/gulp-david": "^10.0.0",
     "chai": "^4.1.2",
     "del": "^3.0.0",
@@ -34,6 +34,6 @@
   ],
   "scripts": {
     "coverage": "coveralls var/lcov.info",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
+    "test": "nyc mocha"
   }
 }
