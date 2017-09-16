@@ -1,29 +1,88 @@
 'use strict';
 
 const {expect} = require('chai');
-const {readFile} = require('fs');
-const {promisify} = require('util');
 const {BranchData, FunctionData, LineData, Record, Report} = require('../lib');
 
 /**
  * @test {Report}
  */
 describe('Report', () => {
+  const coverage = `
+TN:Example
+
+SF:/home/cedx/lcov.js/fixture.js
+FN:4,main
+FNDA:2,main
+FNF:1
+FNH:1
+DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
+DA:7,2,yGMB6FhEEAd8OyASe3Ni1w
+DA:8,2,8F2cpOfOtP7xrzoeUaNfTg
+DA:9,2,y7GE3Y4FyXCeXcrtqgSVzw
+LF:4
+LH:4
+end_of_record
+
+SF:/home/cedx/lcov.js/func1.js
+FN:5,func1
+FNDA:4,func1
+FNF:1
+FNH:1
+BRDA:8,0,0,2
+BRDA:8,0,1,2
+BRDA:11,0,0,2
+BRDA:11,0,1,2
+BRF:4
+BRH:4
+DA:7,4,5kX7OTfHFcjnS98fjeVqNA
+DA:8,4,Z0wAKBAY/gWvszzK23gPjg
+DA:9,2,axfyTWsiE2y4xhwLfts4Hg
+DA:10,2,fu+5DeZoKYnvkzvK3Lt96Q
+DA:11,4,RY9SlOU8MfTJFeL6YlmwVQ
+DA:12,2,ZHrTdJHnvMtpEN3wqQEqbw
+DA:13,2,fu+5DeZoKYnvkzvK3Lt96Q
+DA:14,4,7/m6ZIVdeOR9WTEt9UzqSA
+DA:15,4,y7GE3Y4FyXCeXcrtqgSVzw
+LF:9
+LH:9
+end_of_record
+
+SF:/home/cedx/lcov.js/func2.js
+FN:5,func2
+FNDA:2,func2
+FNF:1
+FNH:1
+BRDA:8,0,0,2
+BRDA:8,0,1,0
+BRDA:11,0,0,0
+BRDA:11,0,1,2
+BRF:4
+BRH:2
+DA:7,2,5kX7OTfHFcjnS98fjeVqNA
+DA:8,2,Z0wAKBAY/gWvszzK23gPjg
+DA:9,2,axfyTWsiE2y4xhwLfts4Hg
+DA:10,2,fu+5DeZoKYnvkzvK3Lt96Q
+DA:11,2,RY9SlOU8MfTJFeL6YlmwVQ
+DA:12,0,ZHrTdJHnvMtpEN3wqQEqbw
+DA:13,0,fu+5DeZoKYnvkzvK3Lt96Q
+DA:14,2,7/m6ZIVdeOR9WTEt9UzqSA
+DA:15,2,y7GE3Y4FyXCeXcrtqgSVzw
+LF:9
+LH:7
+end_of_record
+`;
 
   /**
    * @test {Report.fromCoverage}
    */
   describe('.fromCoverage()', () => {
-    const loadReport = promisify(readFile);
-    let reportPath = 'test/fixtures/lcov.info';
+    let report = Report.fromCoverage(coverage);
 
     it('should have a test name', async () => {
-      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
       expect(report.testName).to.equal('Example');
     });
 
     it('should contain three records', async () => {
-      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
       expect(report.records).to.have.lengthOf(3);
       expect(report.records[0]).to.be.instanceof(Record);
       expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
@@ -32,8 +91,6 @@ describe('Report', () => {
     });
 
     it('should have detailed branch coverage', async () => {
-      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
-
       let branches = report.records[1].branches;
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
@@ -44,8 +101,6 @@ describe('Report', () => {
     });
 
     it('should have detailed function coverage', async () => {
-      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
-
       let functions = report.records[1].functions;
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
@@ -56,8 +111,6 @@ describe('Report', () => {
     });
 
     it('should have detailed line coverage', async () => {
-      let report = Report.fromCoverage(await loadReport(reportPath, 'utf8'));
-
       let lines = report.records[1].lines;
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
