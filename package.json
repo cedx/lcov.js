@@ -4,7 +4,7 @@
   "description": "Parse and format LCOV coverage reports.",
   "homepage": "https://github.com/cedx/lcov.js",
   "license": "MIT",
-  "main": "./lib/index",
+  "main": "./lib/index.js",
   "name": "@cedx/lcov",
   "repository": "cedx/lcov.js",
   "version": "4.0.0",
