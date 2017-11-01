@@ -2,6 +2,8 @@
 This file contains highlights of what changes on each version of the [LCOV Reports for JS](https://github.com/cedx/lcov.js) library.
 
 ## Version [4.1.0](https://github.com/cedx/lcov.js/compare/v4.0.0...v4.1.0)
+- Added support for browser testing.
+- Updated the package dependencies.
 
 ## Version [4.0.0](https://github.com/cedx/lcov.js/compare/v3.1.0...v4.0.0)
 - Breaking change: changed the signature of most constructors.
