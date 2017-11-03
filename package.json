@@ -9,7 +9,7 @@
   "repository": "cedx/lcov.js",
   "version": "4.1.0",
   "devDependencies": {
-    "@cedx/coveralls": "^5.0.0",
+    "@cedx/coveralls": "^5.1.0",
     "@cedx/gulp-david": "^11.0.0",
     "browserify": "^14.5.0",
     "chai": "^4.1.2",
