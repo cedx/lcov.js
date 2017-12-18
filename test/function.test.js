@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {FunctionCoverage, FunctionData} = require('../lib');
+const {FunctionCoverage, FunctionData} = require('../lib/index.js');
 
 /**
  * @test {FunctionCoverage}

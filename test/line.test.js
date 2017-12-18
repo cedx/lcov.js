@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {LineCoverage, LineData} = require('../lib');
+const {LineCoverage, LineData} = require('../lib/index.js');
 
 /**
  * @test {LineCoverage}

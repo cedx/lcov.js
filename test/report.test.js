@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {BranchData, FunctionData, LineData, Record, Report} = require('../lib');
+const {BranchData, FunctionData, LineData, Record, Report} = require('../lib/index.js');
 
 /**
  * @test {Report}
