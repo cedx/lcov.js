@@ -8,34 +8,28 @@ const eslint = require('gulp-eslint');
 const {normalize} = require('path');
 
 /**
- * Runs the default tasks.
- */
-gulp.task('default', ['test']);
-
-/**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'var/**/*']));
+gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'var/**/*', 'web']));
 
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', ['test:node'], () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
+gulp.task('coverage', () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
 
 /**
  * Checks the package dependencies.
  */
-gulp.task('deps', ['deps:outdated', 'deps:security']);
 gulp.task('deps:outdated', () => gulp.src('package.json').pipe(david()));
 gulp.task('deps:security', () => _exec('node_modules/.bin/nsp', ['check']));
+gulp.task('deps', gulp.series('deps:outdated', 'deps:security'));
 
 /**
  * Builds the documentation.
  */
-gulp.task('doc', async () => {
-  await del('doc/api');
-  return _exec('node_modules/.bin/esdoc');
-});
+gulp.task('doc:api', () => _exec('node_modules/.bin/esdoc'));
+gulp.task('doc:web', () => _exec('mkdocs', ['build']));
+gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 
 /**
  * Fixes the coding standards issues.
@@ -56,19 +50,19 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
 /**
  * Runs the unit tests.
  */
-gulp.task('test', ['test:browser', 'test:node']);
-
-gulp.task('test:browser', () => {
-  if (process.platform == 'win32') process.env.FIREFOX_BIN = 'firefox.exe';
-  return _exec('node_modules/.bin/karma', ['start', '--single-run']);
-});
-
+gulp.task('test:browser', () => _exec('node_modules/.bin/karma', ['start', '--single-run']));
 gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', gulp.series('test:browser', 'test:node'));
 
 /**
  * Watches for file changes.
  */
-gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], ['test:node']));
+gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], gulp.task('test:node')));
+
+/**
+ * Runs the default tasks.
+ */
+gulp.task('default', gulp.task('test'));
 
 /**
  * Spawns a new process using the specified command.
