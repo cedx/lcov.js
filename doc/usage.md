@@ -1,0 +1,100 @@
+path: blob/master/lib
+source: report.js
+
+# Usage
+**LCOV Reports for Dart** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
+The `Report` class, the main one, provides the parsing and formatting features.
+
+### Parse coverage data from a LCOV file
+The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
+
+```js
+const {Report} = require('@cedx/lcov');
+const {readFile} = require('fs');
+const {promisify} = require('util');
+
+async function main() {
+  const loadReport = promisify(readFile);
+  let coverage = await loadReport('lcov.info', 'utf8');
+
+  try {
+    let report = Report.fromCoverage(coverage);  
+    console.log(`The coverage report contains ${report.records.length} records:`);
+    console.log(report.toJSON());
+  }
+
+  catch (error) {
+    console.log('The LCOV report has an invalid format');
+  }
+}
+```
+
+The `Report.toJson()` instance method will return a map like this:
+
+```json
+{
+  "testName": "Example",
+  "records": [
+    {
+      "sourceFile": "/home/cedx/lcov.js/fixture.js",
+      "branches": {
+        "found": 0,
+        "hit": 0,
+        "data": []
+      },
+      "functions": {
+        "found": 1,
+        "hit": 1,
+        "data": [
+          {"functionName": "main", "lineNumber": 4, "executionCount": 2}
+        ]
+      },
+      "lines": {
+        "found": 2,
+        "hit": 2,
+        "data": [
+          {"lineNumber": 6, "executionCount": 2, "checksum": "PF4Rz2r7RTliO9u6bZ7h6g"},
+          {"lineNumber": 9, "executionCount": 2, "checksum": "y7GE3Y4FyXCeXcrtqgSVzw"}
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Format coverage data to the LCOV format
+Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
+All you have to do is to create the adequate structure using these different classes, and to export the final result:
+
+```js
+const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
+
+function main() {
+  let lineCoverage = new LineCoverage(2, 2, [
+    new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
+    new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+  ]);
+
+  let record = new Record('/home/cedx/lcov.js/fixture.js', {
+    functions: new FunctionCoverage(1, 1),
+    lines: lineCoverage
+  });
+
+  let report = new Report('Example', [record]);
+  console.log(report.toString());
+}
+```
+
+The `Report#toString()` method will return a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) report formatted like this:
+
+```
+TN:Example
+SF:/home/cedx/lcov.js/fixture.js
+FNF:1
+FNH:1
+DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
+DA:7,2,yGMB6FhEEAd8OyASe3Ni1w
+LF:2
+LH:2
+end_of_record
+```

@@ -1,9 +1,10 @@
-/.*/
+/.*
+
 /doc/
 /test/
 /var/
-/www/
+/web/
 
-/.*
 /*.iml
 /*.js
+/*.yml
