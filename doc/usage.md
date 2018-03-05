@@ -2,10 +2,10 @@ path: blob/master/lib
 source: report.js
 
 # Usage
-**LCOV Reports for Dart** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
+**LCOV Reports for JS** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
 The `Report` class, the main one, provides the parsing and formatting features.
 
-### Parse coverage data from a LCOV file
+## Parse coverage data from a LCOV file
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ```js
@@ -24,10 +24,13 @@ async function main() {
   }
 
   catch (error) {
-    console.log('The LCOV report has an invalid format');
+    console.log(`An error occurred: ${error.message}`);
   }
 }
 ```
+
+!!! info
+    A `LcovError` is thrown if any error occurred while parsing the coverage report.
 
 The `Report.toJson()` instance method will return a map like this:
 
@@ -62,7 +65,7 @@ The `Report.toJson()` instance method will return a map like this:
 }
 ```
 
-### Format coverage data to the LCOV format
+## Format coverage data to the LCOV format
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {BranchData, FunctionData, LineData, Record, Report} = require('../lib/index.js');
+const {BranchData, FunctionData, LineData, LcovError, Record, Report} = require('../lib/index.js');
 
 /**
  * @test {Report}
@@ -121,11 +121,11 @@ end_of_record
     });
 
     it('should throw an error if the input is invalid', () => {
-      expect(() => Report.fromCoverage('ZZ')).to.throw('invalid LCOV format');
+      expect(() => Report.fromCoverage('ZZ')).to.throw(LcovError, 'invalid LCOV format');
     });
 
     it('should throw an error if the report is empty', () => {
-      expect(() => Report.fromCoverage('TN:Example')).to.throw('coverage data is empty');
+      expect(() => Report.fromCoverage('TN:Example')).to.throw(LcovError, 'coverage data is empty');
     });
   });
 

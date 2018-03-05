@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.3.0](https://github.com/cedx/lcov.js/compare/v4.2.0...v4.3.0)
+- Added the `LcovError` class.
+
 ## Version [4.2.0](https://github.com/cedx/lcov.js/compare/v4.1.0...v4.2.0)
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
