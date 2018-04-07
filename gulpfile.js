@@ -68,7 +68,7 @@ gulp.task('default', gulp.task('test'));
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
  * @param {string[]} [args] The command arguments.
- * @param {object} [options] The settings to customize how the process is spawned.
+ * @param {Object} [options] The settings to customize how the process is spawned.
  * @return {Promise} Completes when the command is finally terminated.
  */
 async function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
