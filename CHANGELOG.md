@@ -2,6 +2,7 @@
 
 ## Version [4.4.0](https://github.com/cedx/lcov.js/compare/v4.3.0...v4.4.0)
 - Added the `offset` and `source` properties to the `LcovError` class.
+- Updated the package dependencies.
 
 ## Version [4.3.0](https://github.com/cedx/lcov.js/compare/v4.2.0...v4.3.0)
 - Added the `LcovError` class.
