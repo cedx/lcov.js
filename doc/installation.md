@@ -11,7 +11,7 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v10.0.0
+# v10.1.0
 
 npm --version
 # 5.6.0
