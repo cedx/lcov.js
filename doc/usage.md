@@ -10,12 +10,11 @@ The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge
 
 ```js
 const {Report} = require('@cedx/lcov');
-const {readFile} = require('fs/promises');
+const {promises} = require('fs');
 
 async function main() {
-  let coverage = await readFile('lcov.info', 'utf8');
-
   try {
+    let coverage = await promises.readFile('lcov.info', 'utf8');
     let report = Report.fromCoverage(coverage);  
     console.log(`The coverage report contains ${report.records.length} records:`);
     console.log(report.toJSON());
