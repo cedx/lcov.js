@@ -55,6 +55,16 @@ gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_mod
 gulp.task('test', gulp.series('test:browser', 'test:node'));
 
 /**
+ * Upgrades the project to the latest revision.
+ */
+gulp.task('upgrade', async () => {
+  await _exec('git', ['reset', '--hard']);
+  await _exec('git', ['fetch', '--all', '--prune']);
+  await _exec('git', ['pull', '--rebase']);
+  return _exec('npm', ['update']);
+});
+
+/**
  * Watches for file changes.
  */
 gulp.task('watch', () => gulp.watch(['lib/**/*.js', 'test/**/*.js'], gulp.task('test:node')));
