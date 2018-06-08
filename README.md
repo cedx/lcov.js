@@ -4,10 +4,10 @@
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.js) coverage reports, in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 ## Resources
-- [Documentation](https://cedx.github.io/lcov.js)
-- [API reference](https://cedx.github.io/lcov.js/api)
+- [Documentation](https://dev.belin.io/lcov.js)
+- [API reference](https://dev.belin.io/lcov.js/api)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
 - [GitHub repository](https://github.com/cedx/lcov.js)
 
 ## License
-[LCOV Reports for JS](https://cedx.github.io/lcov.js) is distributed under the MIT License.
+[LCOV Reports for JS](https://dev.belin.io/lcov.js) is distributed under the MIT License.
