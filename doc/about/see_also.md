@@ -5,7 +5,7 @@
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
 
 ## Testing
-- [Continuous integration](https://travis-ci.org/cedx/lcov.js)
+- [Continuous integration](https://travis-ci.com/cedx/lcov.js)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.js)
 
 ## Other implementations
