@@ -18,7 +18,7 @@
     "esdoc-node": "^1.0.3",
     "esdoc-standard-plugin": "^1.0.0",
     "gulp": "^4.0.0",
-    "gulp-eslint": "^4.0.2",
+    "gulp-eslint": "^5.0.0",
     "karma": "^2.0.4",
     "karma-browserify": "^5.3.0",
     "karma-chrome-launcher": "^2.2.0",
