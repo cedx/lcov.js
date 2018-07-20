@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = config => config.set({
   browsers: ['Chrome'],
   browserify: {debug: true},
