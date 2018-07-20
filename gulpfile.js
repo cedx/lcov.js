@@ -21,7 +21,7 @@ gulp.task('coverage', () => _exec('node_modules/.bin/coveralls', ['var/lcov.info
  * Checks the package dependencies.
  */
 gulp.task('deps:outdated', () => gulp.src('package.json').pipe(david()));
-gulp.task('deps:security', () => _exec('node_modules/.bin/nsp', ['check']));
+gulp.task('deps:security', () => _exec('npm', ['audit']));
 gulp.task('deps', gulp.series('deps:outdated', 'deps:security'));
 
 /**
