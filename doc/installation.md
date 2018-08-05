@@ -5,13 +5,13 @@ Before installing **LCOV Reports for JS**, you need to make sure you have [Node.
 and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! warning
-    LCOV Reports for JS requires Node.js >= **10.7.0**.
+    LCOV Reports for JS requires Node.js >= **10.8.0**.
     
 You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v10.7.0
+# v10.8.0
 
 npm --version
 # 6.1.0

@@ -1,5 +1,3 @@
-'use strict';
-
 const {expect} = require('chai');
 const {BranchCoverage, FunctionCoverage, LineCoverage, Record} = require('../lib/index.js');
 
