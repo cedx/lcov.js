@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
 const {promises} = require('fs');
 
