@@ -1,9 +1,9 @@
-const {Token} = require('./token.js');
+import {Token} from './token';
 
 /**
  * Provides details for function coverage.
  */
-class FunctionData {
+export class FunctionData {
 
   /**
    * Initializes a new instance of the class.
@@ -36,7 +36,7 @@ class FunctionData {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'FunctionData';
   }
 
@@ -45,7 +45,7 @@ class FunctionData {
    * @param {Object} map A JSON map representing a branch data.
    * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       typeof map.functionName == 'string' ? map.functionName : '',
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
@@ -57,7 +57,7 @@ class FunctionData {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       functionName: this.functionName,
       lineNumber: this.lineNumber,
@@ -80,7 +80,7 @@ class FunctionData {
 /**
  * Provides the coverage data of functions.
  */
-class FunctionCoverage {
+export class FunctionCoverage {
 
   /**
    * Initializes a new instance of the class.
@@ -113,7 +113,7 @@ class FunctionCoverage {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'FunctionCoverage';
   }
 
@@ -122,7 +122,7 @@ class FunctionCoverage {
    * @param {Object} map A JSON map representing a branch data.
    * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -134,7 +134,7 @@ class FunctionCoverage {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       found: this.found,
       hit: this.hit,
@@ -154,7 +154,3 @@ class FunctionCoverage {
     return lines.join('\n');
   }
 }
-
-// Module exports.
-exports.FunctionCoverage = FunctionCoverage;
-exports.FunctionData = FunctionData;
