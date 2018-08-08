@@ -1,13 +1,15 @@
-const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
-const {promises} = require('fs');
+import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
+import {promises} from 'fs';
 
 /**
  * Formats coverage data as LCOV report.
  */
-async function formatReport() {
+async function formatReport(): Promise<void> {
+  /* tslint:disable: no-console */
+
   try {
-    let coverage = await promises.readFile('lcov.info', 'utf8');
-    let report = Report.fromCoverage(coverage);
+    const coverage = await promises.readFile('lcov.info', 'utf8');
+    const report = Report.fromCoverage(coverage);
     console.log(`The coverage report contains ${report.records.length} records:`);
     console.log(report.toJSON());
   }
@@ -20,17 +22,19 @@ async function formatReport() {
 /**
  * Parses a LCOV report to coverage data.
  */
-function parseReport() {
-  let lineCoverage = new LineCoverage(2, 2, [
+function parseReport(): void {
+  /* tslint:disable: no-console */
+
+  const lineCoverage = new LineCoverage(2, 2, [
     new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
     new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
   ]);
 
-  let record = new Record('/home/cedx/lcov.js/fixture.js', {
+  const record = new Record('/home/cedx/lcov.js/fixture.js', {
     functions: new FunctionCoverage(1, 1),
     lines: lineCoverage
   });
 
-  let report = new Report('Example', [record]);
+  const report = new Report('Example', [record]);
   console.log(report.toString());
 }
