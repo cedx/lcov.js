@@ -1,8 +1,7 @@
 module.exports = config => config.set({
   browsers: ['Chrome'],
-  browserify: {debug: true},
   client: {mocha: {opts: true}},
-  frameworks: ['browserify', 'mocha'],
-  files: ['test/**/*.js'],
-  preprocessors: {'test/**/*.js': ['browserify']}
+  frameworks: ['karma-typescript', 'mocha'],
+  files: ['test/**/*.ts'],
+  preprocessors: {'test/**/*.ts': ['karma-typescript']}
 });
