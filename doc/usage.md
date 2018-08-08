@@ -8,9 +8,9 @@ The `Report` class, the main one, provides the parsing and formatting features.
 ## Parse coverage data from a LCOV file
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
-```js
-const {Report} = require('@cedx/lcov');
-const {promises} = require('fs');
+```ts
+const {Report} from '@cedx/lcov');
+const {promises} from 'fs');
 
 async function main() {
   try {
@@ -31,7 +31,7 @@ async function main() {
 
 The `Report.toJson()` instance method will return a map like this:
 
-```json
+```tson
 {
   "testName": "Example",
   "records": [
@@ -66,8 +66,8 @@ The `Report.toJson()` instance method will return a map like this:
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
-```js
-const {FunctionCoverage, LineCoverage, LineData, Record, Report} = require('@cedx/lcov');
+```ts
+const {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov');
 
 function main() {
   let lineCoverage = new LineCoverage(2, 2, [
