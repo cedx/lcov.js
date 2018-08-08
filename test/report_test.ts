@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {BranchData, FunctionData, LineData, LcovError, Record, Report} = require('../lib/index.js');
+import {expect} from 'chai';
+import {BranchData, FunctionData, LineData, LcovError, Record, Report} from '../lib';
 
 /**
  * @test {Report}

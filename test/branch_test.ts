@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {BranchCoverage, BranchData} = require('../lib/index.js');
+import {expect} from 'chai';
+import {BranchCoverage, BranchData} from '../lib';
 
 /**
  * @test {BranchCoverage}

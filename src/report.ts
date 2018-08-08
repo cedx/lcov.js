@@ -1,13 +1,13 @@
-const {BranchCoverage, BranchData} = require('./branch.js');
-const {FunctionCoverage, FunctionData} = require('./function.js');
-const {LineCoverage, LineData} = require('./line.js');
-const {Record} = require('./record.js');
-const {Token} = require('./token.js');
+const {BranchCoverage, BranchData} from './branch.js');
+const {FunctionCoverage, FunctionData} from './function.js');
+const {LineCoverage, LineData} from './line.js');
+const {Record} from './record.js');
+import {Token} from './token';
 
 /**
  * An exception caused by a parsing error.
  */
-class LcovError extends SyntaxError {
+export class LcovError extends SyntaxError {
 
   /**
    * Creates a new LCOV error.
@@ -77,7 +77,7 @@ class Report {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'Report';
   }
 
@@ -192,7 +192,7 @@ class Report {
    * @param {Object} map A JSON map representing a record.
    * @return {Report} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)).filter(item => item != null) : []
@@ -203,7 +203,7 @@ class Report {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       testName: this.testName,
       records: this.records.map(item => item.toJSON())
@@ -220,7 +220,3 @@ class Report {
     return lines.join('\n');
   }
 }
-
-// Module exports.
-exports.LcovError = LcovError;
-exports.Report = Report;

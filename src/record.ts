@@ -1,12 +1,12 @@
-const {BranchCoverage} = require('./branch.js');
-const {FunctionCoverage} = require('./function.js');
-const {LineCoverage} = require('./line.js');
-const {Token} = require('./token.js');
+const {BranchCoverage} from './branch.js');
+const {FunctionCoverage} from './function.js');
+const {LineCoverage} from './line.js');
+import {Token} from './token';
 
 /**
  * Provides the coverage data of a source file.
  */
-class Record {
+export class Record {
 
   /**
    * Initializes a new instance of the class.
@@ -44,7 +44,7 @@ class Record {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'Record';
   }
 
@@ -53,7 +53,7 @@ class Record {
    * @param {Object} map A JSON map representing a record.
    * @return {Record} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
       branches: BranchCoverage.fromJson(map.branches),
       functions: FunctionCoverage.fromJson(map.functions),
@@ -65,7 +65,7 @@ class Record {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       sourceFile: this.sourceFile,
       branches: this.branches ? this.branches.toJSON() : null,
@@ -87,6 +87,3 @@ class Record {
     return output.join('\n');
   }
 }
-
-// Module exports.
-exports.Record = Record;

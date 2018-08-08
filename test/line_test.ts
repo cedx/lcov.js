@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {LineCoverage, LineData} = require('../lib/index.js');
+import {expect} from 'chai';
+import {LineCoverage, LineData} from '../lib';
 
 /**
  * @test {LineCoverage}

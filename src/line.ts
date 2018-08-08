@@ -1,9 +1,9 @@
-const {Token} = require('./token.js');
+import {Token} from './token';
 
 /**
  * Provides details for line coverage.
  */
-class LineData {
+export class LineData {
 
   /**
    * Initializes a new instance of the class.
@@ -36,7 +36,7 @@ class LineData {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'LineData';
   }
 
@@ -45,7 +45,7 @@ class LineData {
    * @param {Object} map A JSON map representing a branch data.
    * @return {LineData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
@@ -57,7 +57,7 @@ class LineData {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       lineNumber: this.lineNumber,
       executionCount: this.executionCount,
@@ -78,7 +78,7 @@ class LineData {
 /**
  * Provides the coverage data of lines.
  */
-class LineCoverage {
+export class LineCoverage {
 
   /**
    * Initializes a new instance of the class.
@@ -111,7 +111,7 @@ class LineCoverage {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'LineCoverage';
   }
 
@@ -120,7 +120,7 @@ class LineCoverage {
    * @param {Object} map A JSON map representing a branch data.
    * @return {LineCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -132,7 +132,7 @@ class LineCoverage {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       found: this.found,
       hit: this.hit,
@@ -151,7 +151,3 @@ class LineCoverage {
     return lines.join('\n');
   }
 }
-
-// Module exports.
-exports.LineCoverage = LineCoverage;
-exports.LineData = LineData;

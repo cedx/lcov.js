@@ -1,49 +1,23 @@
-const {Token} = require('./token.js');
+import {Token} from './token';
 
 /**
  * Provides details for branch coverage.
  */
-class BranchData {
+export class BranchData {
 
   /**
    * Initializes a new instance of the class.
-   * @param {number} lineNumber The line number.
-   * @param {number} blockNumber The block number.
-   * @param {number} branchNumber The branch number.
-   * @param {number} [taken] A number indicating how often this branch was taken.
+   * @param lineNumber The line number.
+   * @param blockNumber The block number.
+   * @param branchNumber The branch number.
+   * @param [taken] A number indicating how often this branch was taken.
    */
-  constructor(lineNumber, blockNumber, branchNumber, taken = 0) {
-
-    /**
-     * The block number.
-     * @type {number}
-     */
-    this.blockNumber = Math.max(0, blockNumber);
-
-    /**
-     * The branch number.
-     * @type {number}
-     */
-    this.branchNumber = Math.max(0, branchNumber);
-
-    /**
-     * The line number.
-     * @type {number}
-     */
-    this.lineNumber = Math.max(0, lineNumber);
-
-    /**
-     * A number indicating how often this branch was taken.
-     * @type {number}
-     */
-    this.taken = Math.max(0, taken);
-  }
+  constructor(public lineNumber: number, public blockNumber: number, public branchNumber: number, public taken: number = 0) {}
 
   /**
    * The class name.
-   * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'BranchData';
   }
 
@@ -52,7 +26,7 @@ class BranchData {
    * @param {Object} map A JSON map representing a branch data.
    * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map): BranchData | null {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
@@ -65,7 +39,7 @@ class BranchData {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       lineNumber: this.lineNumber,
       blockNumber: this.blockNumber,
@@ -87,12 +61,12 @@ class BranchData {
 /**
  * Provides the coverage data of branches.
  */
-class BranchCoverage {
+export class BranchCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param {number} [found] The number of branches found.
-   * @param {number} [hit] The number of branches found.
+   * @param [found] The number of branches found.
+   * @param [hit] The number of branches found.
    * @param {BranchData[]} [data] The coverage data.
    */
   constructor(found = 0, hit = 0, data = []) {
@@ -120,7 +94,7 @@ class BranchCoverage {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  public get [Symbol.toStringTag](): string {
     return 'BranchCoverage';
   }
 
@@ -129,7 +103,7 @@ class BranchCoverage {
    * @param {Object} map A JSON map representing a branch data.
    * @return {BranchCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  static fromJson(map) {
+  public static fromJson(map) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -141,7 +115,7 @@ class BranchCoverage {
    * Converts this object to a map in JSON format.
    * @return {Object} The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  public toJSON() {
     return {
       found: this.found,
       hit: this.hit,
@@ -160,7 +134,3 @@ class BranchCoverage {
     return lines.join('\n');
   }
 }
-
-// Module exports.
-exports.BranchCoverage = BranchCoverage;
-exports.BranchData = BranchData;

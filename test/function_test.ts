@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {FunctionCoverage, FunctionData} = require('../lib/index.js');
+import {expect} from 'chai';
+import {FunctionCoverage, FunctionData} from '../lib';
 
 /**
  * @test {FunctionCoverage}
