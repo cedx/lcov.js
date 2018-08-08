@@ -16,4 +16,5 @@ rules:
   no-bitwise: false
   one-line: false
   quotemark: [true, single, avoid-escape, avoid-template]
+  trailing-comma: false
   triple-equals: false
