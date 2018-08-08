@@ -32,7 +32,8 @@
     "watchify": "^3.11.0"
   },
   "engines": {
-    "node": ">=10.8.0"
+    "node": ">=10.8.0",
+    "npm": ">=6.2.0"
   },
   "keywords": [
     "coverage",
