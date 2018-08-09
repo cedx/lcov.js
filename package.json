@@ -10,6 +10,7 @@
   "version": "4.4.0",
   "devDependencies": {
     "@cedx/coveralls": "^6.0.0",
+    "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.6",
     "chai": "^4.1.2",

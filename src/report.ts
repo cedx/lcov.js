@@ -179,7 +179,7 @@ class Report {
       }
     }
 
-    catch (err) {
+    catch {
       throw new LcovError('The coverage data has an invalid LCOV format', coverage);
     }
 
