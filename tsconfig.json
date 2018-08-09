@@ -6,6 +6,7 @@
     "outDir": "lib",
     "removeComments": true,
     "sourceMap": true,
+    "strict": true,
     "target": "es2017"
   }
 }
