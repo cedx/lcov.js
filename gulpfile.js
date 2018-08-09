@@ -47,7 +47,7 @@ gulp.task('lint', () => _exec('node_modules/.bin/tslint', sources));
  * Runs the unit tests.
  */
 gulp.task('test:browser', () => _exec('node_modules/.bin/karma', ['start', '--single-run']));
-gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha'), 'test/**/*.ts']));
+gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
 gulp.task('test', gulp.series('test:browser', 'test:node'));
 
 /**
@@ -57,7 +57,7 @@ gulp.task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
   await _exec('git', ['pull', '--rebase']);
-  await _exec('npm', ['install']);
+  await _exec('npm', ['install', '--ignore-scripts']);
   return _exec('npm', ['update']);
 });
 

@@ -39,9 +39,9 @@ export class LcovError extends SyntaxError {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let values = [`"${this.message}"`];
     if (this.offset >= 0) values.push(`offset: ${this.offset}`);
     return `${this.name}(${values.join(', ')})`;
@@ -77,7 +77,7 @@ class Report {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'Report';
   }
 
@@ -201,7 +201,7 @@ class Report {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -212,9 +212,9 @@ class Report {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];
     lines.push(...this.records.map(item => item.toString()));
     return lines.join('\n');

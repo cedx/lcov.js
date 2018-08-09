@@ -10,14 +10,14 @@ export class BranchData {
    * @param lineNumber The line number.
    * @param blockNumber The block number.
    * @param branchNumber The branch number.
-   * @param [taken] A number indicating how often this branch was taken.
+   * @param taken A number indicating how often this branch was taken.
    */
   constructor(public lineNumber: number, public blockNumber: number, public branchNumber: number, public taken: number = 0) {}
 
   /**
    * The class name.
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'BranchData';
   }
 
@@ -37,7 +37,7 @@ export class BranchData {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -50,9 +50,9 @@ export class BranchData {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
     return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
   }
@@ -94,7 +94,7 @@ export class BranchCoverage {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'BranchCoverage';
   }
 
@@ -113,7 +113,7 @@ export class BranchCoverage {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -125,9 +125,9 @@ export class BranchCoverage {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let lines = this.data.map(item => item.toString());
     lines.push(`${Token.branchesFound}:${this.found}`);
     lines.push(`${Token.branchesHit}:${this.hit}`);

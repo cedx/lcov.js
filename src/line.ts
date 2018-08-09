@@ -36,7 +36,7 @@ export class LineData {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'LineData';
   }
 
@@ -55,7 +55,7 @@ export class LineData {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -67,9 +67,9 @@ export class LineData {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
     return this.checksum.length ? `${value},${this.checksum}` : value;
   }
@@ -111,7 +111,7 @@ export class LineCoverage {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'LineCoverage';
   }
 
@@ -130,7 +130,7 @@ export class LineCoverage {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -142,9 +142,9 @@ export class LineCoverage {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let lines = this.data.map(item => item.toString());
     lines.push(`${Token.linesFound}:${this.found}`);
     lines.push(`${Token.linesHit}:${this.hit}`);
