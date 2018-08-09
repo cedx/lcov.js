@@ -36,7 +36,7 @@ export class FunctionData {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'FunctionData';
   }
 
@@ -55,7 +55,7 @@ export class FunctionData {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -68,7 +68,7 @@ export class FunctionData {
   /**
    * Returns a string representation of this object.
    * @param {boolean} asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
   toString(asDefinition = false) {
     let token = asDefinition ? Token.functionName : Token.functionData;
@@ -113,7 +113,7 @@ export class FunctionCoverage {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'FunctionCoverage';
   }
 
@@ -132,7 +132,7 @@ export class FunctionCoverage {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -144,9 +144,9 @@ export class FunctionCoverage {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let lines = this.data.map(item => item.toString(true));
     lines.push(...this.data.map(item => item.toString(false)));
     lines.push(`${Token.functionsFound}:${this.found}`);

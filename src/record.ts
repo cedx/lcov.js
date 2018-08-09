@@ -44,7 +44,7 @@ export class Record {
    * The class name.
    * @type {string}
    */
-  public get [Symbol.toStringTag](): string {
+  get [Symbol.toStringTag](): string {
     return 'Record';
   }
 
@@ -63,7 +63,7 @@ export class Record {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
   public toJSON() {
     return {
@@ -76,9 +76,9 @@ export class Record {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  public toString(): string {
     let output = [`${Token.sourceFile}:${this.sourceFile}`];
     if (this.functions) output.push(this.functions.toString());
     if (this.branches) output.push(this.branches.toString());
