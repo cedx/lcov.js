@@ -42,10 +42,10 @@ export class FunctionData {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
+   * @param map A JSON map representing a branch data.
    * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
+  public static fromJson(map: {[key: string]: any}) {
     return !map || typeof map != 'object' ? null : new this(
       typeof map.functionName == 'string' ? map.functionName : '',
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
@@ -57,7 +57,7 @@ export class FunctionData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       functionName: this.functionName,
       lineNumber: this.lineNumber,
@@ -71,8 +71,8 @@ export class FunctionData {
    * @return The string representation of this object.
    */
   toString(asDefinition = false) {
-    let token = asDefinition ? Token.functionName : Token.functionData;
-    let number = asDefinition ? this.lineNumber : this.executionCount;
+    const token = asDefinition ? Token.functionName : Token.functionData;
+    const number = asDefinition ? this.lineNumber : this.executionCount;
     return `${token}:${number},${this.functionName}`;
   }
 }
@@ -119,10 +119,10 @@ export class FunctionCoverage {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
+   * @param map A JSON map representing a branch data.
    * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
+  public static fromJson(map: {[key: string]: any}) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -134,7 +134,7 @@ export class FunctionCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       found: this.found,
       hit: this.hit,
@@ -147,7 +147,7 @@ export class FunctionCoverage {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let lines = this.data.map(item => item.toString(true));
+    const lines = this.data.map(item => item.toString(true));
     lines.push(...this.data.map(item => item.toString(false)));
     lines.push(`${Token.functionsFound}:${this.found}`);
     lines.push(`${Token.functionsHit}:${this.hit}`);

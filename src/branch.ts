@@ -23,10 +23,10 @@ export class BranchData {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
+   * @param map A JSON map representing a branch data.
    * @return {BranchData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map): BranchData | null {
+  public static fromJson(map: {[key: string]: any}): BranchData | null {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
@@ -39,7 +39,7 @@ export class BranchData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       lineNumber: this.lineNumber,
       blockNumber: this.blockNumber,
@@ -53,7 +53,7 @@ export class BranchData {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
+    const value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
     return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
   }
 }
@@ -65,34 +65,14 @@ export class BranchCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param [found] The number of branches found.
-   * @param [hit] The number of branches found.
-   * @param {BranchData[]} [data] The coverage data.
+   * @param found The number of branches found.
+   * @param hit The number of branches found.
+   * @param data The coverage data.
    */
-  constructor(found = 0, hit = 0, data = []) {
-
-    /**
-     * The coverage data.
-     * @type {BranchData[]}
-     */
-    this.data = data;
-
-    /**
-     * The number of branches found.
-     * @type {number}
-     */
-    this.found = Math.max(0, found);
-
-    /**
-     * The number of branches hit.
-     * @type {number}
-     */
-    this.hit = Math.max(0, hit);
-  }
+  constructor(public found: number = 0, public hit: number = 0, public data: BranchData[] = []) {}
 
   /**
    * The class name.
-   * @type {string}
    */
   get [Symbol.toStringTag](): string {
     return 'BranchCoverage';
@@ -100,11 +80,11 @@ export class BranchCoverage {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
-   * @return {BranchCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @param map A JSON map representing a branch data.
+   * @return The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
-    return !map || typeof map != 'object' ? null : new this(
+  public static fromJson(map: {[key: string]: any}): BranchCoverage {
+    return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(item => BranchData.fromJson(item)).filter(item => item != null) : []
@@ -115,11 +95,11 @@ export class BranchCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
+      data: this.data.map(item => item.toJSON()),
       found: this.found,
-      hit: this.hit,
-      data: this.data.map(item => item.toJSON())
+      hit: this.hit
     };
   }
 
@@ -128,7 +108,7 @@ export class BranchCoverage {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let lines = this.data.map(item => item.toString());
+    const lines = this.data.map(item => item.toString());
     lines.push(`${Token.branchesFound}:${this.found}`);
     lines.push(`${Token.branchesHit}:${this.hit}`);
     return lines.join('\n');

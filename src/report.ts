@@ -1,7 +1,7 @@
-const {BranchCoverage, BranchData} from './branch.js');
-const {FunctionCoverage, FunctionData} from './function.js');
-const {LineCoverage, LineData} from './line.js');
-const {Record} from './record.js');
+import {BranchCoverage, BranchData} from './branch';
+import {FunctionCoverage, FunctionData} from './function';
+import {LineCoverage, LineData} from './line';
+import {Record} from './record';
 import {Token} from './token';
 
 /**
@@ -15,7 +15,7 @@ export class LcovError extends SyntaxError {
    * @param {*} [source] The actual source input which caused the error.
    * @param {number} [offset] message The offset in `source` where the error was detected.
    */
-  constructor(message, source = null, offset = -1) {
+  constructor(message: string, source: any = null, offset: number = -1) {
     super(message);
 
     /**
@@ -42,7 +42,7 @@ export class LcovError extends SyntaxError {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let values = [`"${this.message}"`];
+    const values = [`"${this.message}"`];
     if (this.offset >= 0) values.push(`offset: ${this.offset}`);
     return `${this.name}(${values.join(', ')})`;
   }
@@ -87,20 +87,20 @@ class Report {
    * @return {Report} The resulting coverage report.
    * @throws {Error} A parsing error occurred.
    */
-  static fromCoverage(coverage) {
-    let report = new this;
+  public static fromCoverage(coverage) {
+    const report = new this;
 
     try {
-      let record;
+      let record: Record;
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
         if (!line.length) continue;
 
-        let parts = line.split(':');
+        const parts = line.split(':');
         if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new Error('Invalid token format');
 
-        let token = parts.shift();
-        let data = parts.join(':').split(',');
+        const token = parts.shift();
+        const data = parts.join(':').split(',');
 
         switch (token) {
           case Token.testName:
@@ -189,10 +189,10 @@ class Report {
 
   /**
    * Creates a new record from the specified JSON map.
-   * @param {Object} map A JSON map representing a record.
+   * @param map A JSON map representing a record.
    * @return {Report} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
+  public static fromJson(map: {[key: string]: any}) {
     return !map || typeof map != 'object' ? null : new this(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)).filter(item => item != null) : []
@@ -203,7 +203,7 @@ class Report {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       testName: this.testName,
       records: this.records.map(item => item.toJSON())
@@ -215,7 +215,7 @@ class Report {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];
+    const lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];
     lines.push(...this.records.map(item => item.toString()));
     return lines.join('\n');
   }

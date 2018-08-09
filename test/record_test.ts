@@ -15,7 +15,7 @@ describe('Record', () => {
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let record = Record.fromJson({});
+      const record = Record.fromJson({});
       expect(record).to.be.instanceof(Record);
       expect(record.branches).to.be.null;
       expect(record.functions).to.be.null;
@@ -24,7 +24,7 @@ describe('Record', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let record = Record.fromJson({
+      const record = Record.fromJson({
         branches: {},
         functions: {},
         lines: {},
@@ -44,7 +44,7 @@ describe('Record', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new Record('').toJSON();
+      const map = new Record('').toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.branches).to.be.null;
       expect(map.functions).to.be.null;
@@ -53,13 +53,13 @@ describe('Record', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let record = new Record('/home/cedx/lcov.js', {
+      const record = new Record('/home/cedx/lcov.js', {
         branches: new BranchCoverage,
         functions: new FunctionCoverage,
         lines: new LineCoverage
       });
 
-      let map = record.toJSON();
+      const map = record.toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.branches).to.be.an('object');
       expect(map.functions).to.be.an('object');
@@ -75,7 +75,7 @@ describe('Record', () => {
     it('should return a format like "SF:<sourceFile>\\n,end_of_record"', () => {
       expect(String(new Record(''))).to.equal('SF:\nend_of_record');
 
-      let record = new Record('/home/cedx/lcov.js', {
+      const record = new Record('/home/cedx/lcov.js', {
         branches: new BranchCoverage,
         functions: new FunctionCoverage,
         lines: new LineCoverage

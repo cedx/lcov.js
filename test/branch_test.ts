@@ -15,7 +15,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let coverage = BranchCoverage.fromJson({});
+      const coverage = BranchCoverage.fromJson({});
       expect(coverage).to.be.instanceof(BranchCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
@@ -23,7 +23,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let coverage = BranchCoverage.fromJson({
+      const coverage = BranchCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
         hit: 11,
@@ -44,7 +44,7 @@ describe('BranchCoverage', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new BranchCoverage).toJSON();
+      const map = (new BranchCoverage).toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.data).to.be.an('array').and.be.empty;
@@ -54,7 +54,7 @@ describe('BranchCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new BranchCoverage(23, 11, [new BranchData(0, 0, 0)]).toJSON();
+      const map = new BranchCoverage(23, 11, [new BranchData(0, 0, 0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
@@ -72,7 +72,7 @@ describe('BranchCoverage', () => {
     it('should return a format like "BRF:<found>\\n,BRH:<hit>"', () => {
       expect(String(new BranchCoverage)).to.equal('BRF:0\nBRH:0');
 
-      let data = new BranchData(127, 3, 2, 1);
+      const data = new BranchData(127, 3, 2, 1);
       expect(String(new BranchCoverage(23, 11, [data]))).to.equal(`${data}\nBRF:23\nBRH:11`);
     });
   });
@@ -92,7 +92,7 @@ describe('BranchData', () => {
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let data = BranchData.fromJson({});
+      const data = BranchData.fromJson({});
       expect(data).to.be.instanceof(BranchData);
       expect(data.blockNumber).to.equal(0);
       expect(data.branchNumber).to.equal(0);
@@ -101,7 +101,7 @@ describe('BranchData', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let data = BranchData.fromJson({
+      const data = BranchData.fromJson({
         blockNumber: 3,
         branchNumber: 2,
         lineNumber: 127,
@@ -121,7 +121,7 @@ describe('BranchData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new BranchData(0, 0, 0).toJSON();
+      const map = new BranchData(0, 0, 0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.blockNumber).to.equal(0);
       expect(map.branchNumber).to.equal(0);
@@ -130,7 +130,7 @@ describe('BranchData', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new BranchData(127, 3, 2, 1).toJSON();
+      const map = new BranchData(127, 3, 2, 1).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
       expect(map.blockNumber).to.equal(3);
       expect(map.branchNumber).to.equal(2);

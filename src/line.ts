@@ -42,10 +42,10 @@ export class LineData {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
+   * @param map A JSON map representing a branch data.
    * @return {LineData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
+  public static fromJson(map: {[key: string]: any}) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
@@ -57,7 +57,7 @@ export class LineData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       lineNumber: this.lineNumber,
       executionCount: this.executionCount,
@@ -70,7 +70,7 @@ export class LineData {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
+    const value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
     return this.checksum.length ? `${value},${this.checksum}` : value;
   }
 }
@@ -117,10 +117,10 @@ export class LineCoverage {
 
   /**
    * Creates a new branch data from the specified JSON map.
-   * @param {Object} map A JSON map representing a branch data.
+   * @param map A JSON map representing a branch data.
    * @return {LineCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
    */
-  public static fromJson(map) {
+  public static fromJson(map: {[key: string]: any}) {
     return !map || typeof map != 'object' ? null : new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -132,7 +132,7 @@ export class LineCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON() {
+  public toJSON(): {[key: string]: any} {
     return {
       found: this.found,
       hit: this.hit,
@@ -145,7 +145,7 @@ export class LineCoverage {
    * @return The string representation of this object.
    */
   public toString(): string {
-    let lines = this.data.map(item => item.toString());
+    const lines = this.data.map(item => item.toString());
     lines.push(`${Token.linesFound}:${this.found}`);
     lines.push(`${Token.linesHit}:${this.hit}`);
     return lines.join('\n');

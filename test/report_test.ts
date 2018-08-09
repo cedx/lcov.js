@@ -74,7 +74,7 @@ end_of_record
    * @test {Report.fromCoverage}
    */
   describe('.fromCoverage()', () => {
-    let report = Report.fromCoverage(coverage);
+    const report = Report.fromCoverage(coverage);
 
     it('should have a test name', async () => {
       expect(report.testName).to.equal('Example');
@@ -89,7 +89,7 @@ end_of_record
     });
 
     it('should have detailed branch coverage', async () => {
-      let branches = report.records[1].branches;
+      const branches = report.records[1].branches;
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
 
@@ -99,7 +99,7 @@ end_of_record
     });
 
     it('should have detailed function coverage', async () => {
-      let functions = report.records[1].functions;
+      const functions = report.records[1].functions;
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
 
@@ -109,7 +109,7 @@ end_of_record
     });
 
     it('should have detailed line coverage', async () => {
-      let lines = report.records[1].lines;
+      const lines = report.records[1].lines;
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
 
@@ -136,14 +136,14 @@ end_of_record
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let report = Report.fromJson({});
+      const report = Report.fromJson({});
       expect(report).to.be.instanceof(Report);
       expect(report.records).to.be.an('array').and.be.empty;
       expect(report.testName).to.be.empty;
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let report = Report.fromJson({
+      const report = Report.fromJson({
         records: [{}],
         testName: 'LcovTest'
       });
@@ -160,14 +160,14 @@ end_of_record
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new Report).toJSON();
+      const map = (new Report).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
       expect(map.records).to.be.an('array').and.be.empty;
       expect(map.testName).to.be.empty;
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new Report('LcovTest', [new Record('')]).toJSON();
+      const map = new Report('LcovTest', [new Record('')]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
       expect(map.records).to.be.an('array').and.have.lengthOf(1);
       expect(map.records[0]).to.be.an('object');
@@ -182,7 +182,7 @@ end_of_record
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;
 
-      let record = new Record('');
+      const record = new Record('');
       expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
     });
   });
