@@ -15,7 +15,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let coverage = LineCoverage.fromJson({});
+      const coverage = LineCoverage.fromJson({});
       expect(coverage).to.be.instanceof(LineCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
@@ -23,7 +23,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let coverage = LineCoverage.fromJson({
+      const coverage = LineCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
         hit: 11,
@@ -44,7 +44,7 @@ describe('LineCoverage', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = (new LineCoverage).toJSON();
+      const map = (new LineCoverage).toJSON();
 
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.data).to.be.an('array').and.be.empty;
@@ -54,7 +54,7 @@ describe('LineCoverage', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
+      const map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
@@ -72,7 +72,7 @@ describe('LineCoverage', () => {
     it('should return a format like "LF:<found>\\n,LH:<hit>"', () => {
       expect(String(new LineCoverage)).to.equal('LF:0\nLH:0');
 
-      let data = new LineData(127, 3);
+      const data = new LineData(127, 3);
       expect(String(new LineCoverage(23, 11, [data]))).to.equal(`${data}\nLF:23\nLH:11`);
     });
   });
@@ -92,7 +92,7 @@ describe('LineData', () => {
     });
 
     it('should return an instance with default values for an empty map', () => {
-      let data = LineData.fromJson({});
+      const data = LineData.fromJson({});
       expect(data).to.be.instanceof(LineData);
       expect(data.checksum).to.be.empty;
       expect(data.executionCount).to.equal(0);
@@ -100,7 +100,7 @@ describe('LineData', () => {
     });
 
     it('should return an initialized instance for a non-empty map', () => {
-      let data = LineData.fromJson({
+      const data = LineData.fromJson({
         checksum: 'ed076287532e86365e841e92bfc50d8c',
         executionCount: 3,
         lineNumber: 127
@@ -118,7 +118,7 @@ describe('LineData', () => {
    */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      let map = new LineData(0).toJSON();
+      const map = new LineData(0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.checksum).to.be.empty;
       expect(map.executionCount).to.equal(0);
@@ -126,7 +126,7 @@ describe('LineData', () => {
     });
 
     it('should return a non-empty map for an initialized instance', () => {
-      let map = new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c').toJSON();
+      const map = new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c').toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
       expect(map.checksum).to.equal('ed076287532e86365e841e92bfc50d8c');
       expect(map.executionCount).to.equal(3);
