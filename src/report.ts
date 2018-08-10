@@ -1,5 +1,6 @@
 import {BranchCoverage, BranchData} from './branch';
 import {FunctionCoverage, FunctionData} from './function';
+import {JsonMap} from './json';
 import {LineCoverage, LineData} from './line';
 import {Record} from './record';
 import {Token} from './token';
@@ -11,30 +12,13 @@ export class LcovError extends SyntaxError {
 
   /**
    * Creates a new LCOV error.
-   * @param {string} message A message describing the error.
-   * @param {*} [source] The actual source input which caused the error.
-   * @param {number} [offset] message The offset in `source` where the error was detected.
+   * @param message A message describing the error.
+   * @param source The actual source input which caused the error.
+   * @param offset The offset in `source` where the error was detected.
    */
-  constructor(message: string, source: any = null, offset: number = -1) {
+  constructor(message: string, public source: any = null, public offset: number = -1) {
     super(message);
-
-    /**
-     * The error name.
-     * @type {string}
-     */
     this.name = 'LcovError';
-
-    /**
-     * The offset in `source` where the error was detected.
-     * @type {number}
-     */
-    this.offset = offset;
-
-    /**
-     * The actual source input which caused the error.
-     * @type {*}
-     */
-    this.source = source;
   }
 
   /**
@@ -55,27 +39,13 @@ class Report {
 
   /**
    * Initializes a new instance of the class.
-   * @param {string} [testName] The test name.
-   * @param {Record[]} [records] The record list.
+   * @param testName The test name.
+   * @param records The record list.
    */
-  constructor(testName = '', records = []) {
-
-    /**
-     * The record list.
-     * @type {Record[]}
-     */
-    this.records = records;
-
-    /**
-     * The test name.
-     * @type {string}
-     */
-    this.testName = testName;
-  }
+  constructor(public testName: string = '', public records: Record[] = []) {}
 
   /**
    * The class name.
-   * @type {string}
    */
   get [Symbol.toStringTag](): string {
     return 'Report';
@@ -83,11 +53,11 @@ class Report {
 
   /**
    * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
-   * @param {string} coverage The coverage data.
-   * @return {Report} The resulting coverage report.
+   * @param coverage The coverage data.
+   * @return The resulting coverage report.
    * @throws {Error} A parsing error occurred.
    */
-  public static fromCoverage(coverage) {
+  public static fromCoverage(coverage: string): Report {
     const report = new this;
 
     try {
@@ -190,12 +160,12 @@ class Report {
   /**
    * Creates a new record from the specified JSON map.
    * @param map A JSON map representing a record.
-   * @return {Report} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return {Report} The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: {[key: string]: any}) {
-    return !map || typeof map != 'object' ? null : new this(
+  public static fromJson(map: JsonMap) {
+    return new this(
       typeof map.testName == 'string' ? map.testName : '',
-      Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)).filter(item => item != null) : []
+      Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)) : []
     );
   }
 
@@ -203,7 +173,7 @@ class Report {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): {[key: string]: any} {
+  public toJSON(): JsonMap {
     return {
       testName: this.testName,
       records: this.records.map(item => item.toJSON())
