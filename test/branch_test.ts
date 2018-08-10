@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {BranchCoverage, BranchData} from '../lib';
+import {BranchCoverage, BranchData} from '../src';
 
 /**
  * @test {BranchCoverage}

@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {LineCoverage, LineData} from '../lib';
+import {LineCoverage, LineData} from '../src';
 
 /**
  * @test {LineCoverage}

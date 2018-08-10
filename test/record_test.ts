@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../lib';
+import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 
 /**
  * @test {Record}

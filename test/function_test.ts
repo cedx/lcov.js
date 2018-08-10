@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {FunctionCoverage, FunctionData} from '../lib';
+import {FunctionCoverage, FunctionData} from '../src';
 
 /**
  * @test {FunctionCoverage}
