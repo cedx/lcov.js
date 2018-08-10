@@ -1,81 +1,5 @@
+import {JsonMap} from './json';
 import {Token} from './token';
-
-/**
- * Provides details for function coverage.
- */
-export class FunctionData {
-
-  /**
-   * Initializes a new instance of the class.
-   * @param {string} functionName The function name.
-   * @param {number} lineNumber The line number of the function start.
-   * @param {number} [executionCount] The execution count.
-   */
-  constructor(functionName, lineNumber, executionCount = 0) {
-
-    /**
-     * The execution count.
-     * @type {number}
-     */
-    this.executionCount = Math.max(0, executionCount);
-
-    /**
-     * The function name.
-     * @type {string}
-     */
-    this.functionName = functionName;
-
-    /**
-     * The line number of the function start.
-     * @type {number}
-     */
-    this.lineNumber = Math.max(0, lineNumber);
-  }
-
-  /**
-   * The class name.
-   * @type {string}
-   */
-  get [Symbol.toStringTag](): string {
-    return 'FunctionData';
-  }
-
-  /**
-   * Creates a new branch data from the specified JSON map.
-   * @param map A JSON map representing a branch data.
-   * @return {FunctionData} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
-   */
-  public static fromJson(map: {[key: string]: any}) {
-    return !map || typeof map != 'object' ? null : new this(
-      typeof map.functionName == 'string' ? map.functionName : '',
-      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
-      Number.isInteger(map.executionCount) ? map.executionCount : 0
-    );
-  }
-
-  /**
-   * Converts this object to a map in JSON format.
-   * @return The map in JSON format corresponding to this object.
-   */
-  public toJSON(): {[key: string]: any} {
-    return {
-      functionName: this.functionName,
-      lineNumber: this.lineNumber,
-      executionCount: this.executionCount
-    };
-  }
-
-  /**
-   * Returns a string representation of this object.
-   * @param {boolean} asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
-   * @return The string representation of this object.
-   */
-  toString(asDefinition = false) {
-    const token = asDefinition ? Token.functionName : Token.functionData;
-    const number = asDefinition ? this.lineNumber : this.executionCount;
-    return `${token}:${number},${this.functionName}`;
-  }
-}
 
 /**
  * Provides the coverage data of functions.
@@ -84,34 +8,14 @@ export class FunctionCoverage {
 
   /**
    * Initializes a new instance of the class.
-   * @param {number} [found] The number of functions found.
-   * @param {number} [hit] The number of functions found.
-   * @param {FunctionData[]} [data] The coverage data.
+   * @param found The number of functions found.
+   * @param hit The number of functions found.
+   * @param data The coverage data.
    */
-  constructor(found = 0, hit = 0, data = []) {
-
-    /**
-     * The coverage data.
-     * @type {FunctionData[]}
-     */
-    this.data = data;
-
-    /**
-     * The number of functions found.
-     * @type {number}
-     */
-    this.found = Math.max(0, found);
-
-    /**
-     * The number of functions hit.
-     * @type {number}
-     */
-    this.hit = Math.max(0, hit);
-  }
+  constructor(public found: number = 0, public hit: number = 0, public data: FunctionData[] = []) {}
 
   /**
    * The class name.
-   * @type {string}
    */
   get [Symbol.toStringTag](): string {
     return 'FunctionCoverage';
@@ -120,13 +24,13 @@ export class FunctionCoverage {
   /**
    * Creates a new branch data from the specified JSON map.
    * @param map A JSON map representing a branch data.
-   * @return {FunctionCoverage} The instance corresponding to the specified JSON map, or `null` if a parsing error occurred.
+   * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: {[key: string]: any}) {
-    return !map || typeof map != 'object' ? null : new this(
+  public static fromJson(map: JsonMap): FunctionCoverage {
+    return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
-      Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJson(item)).filter(item => item != null) : []
+      Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJson(item)) : []
     );
   }
 
@@ -134,11 +38,11 @@ export class FunctionCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): {[key: string]: any} {
+  public toJSON(): JsonMap {
     return {
+      data: this.data.map(item => item.toJSON()),
       found: this.found,
-      hit: this.hit,
-      data: this.data.map(item => item.toJSON())
+      hit: this.hit
     };
   }
 
@@ -152,5 +56,62 @@ export class FunctionCoverage {
     lines.push(`${Token.functionsFound}:${this.found}`);
     lines.push(`${Token.functionsHit}:${this.hit}`);
     return lines.join('\n');
+  }
+}
+
+/**
+ * Provides details for function coverage.
+ */
+export class FunctionData {
+
+  /**
+   * Initializes a new instance of the class.
+   * @param functionName The function name.
+   * @param lineNumber The line number of the function start.
+   * @param executionCount The execution count.
+   */
+  constructor(public functionName: string, public lineNumber: number, public executionCount: number = 0) {}
+
+  /**
+   * The class name.
+   */
+  get [Symbol.toStringTag](): string {
+    return 'FunctionData';
+  }
+
+  /**
+   * Creates a new branch data from the specified JSON map.
+   * @param map A JSON map representing a branch data.
+   * @return The instance corresponding to the specified JSON map.
+   */
+  public static fromJson(map: JsonMap): FunctionData {
+    return new this(
+      typeof map.functionName == 'string' ? map.functionName : '',
+      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      Number.isInteger(map.executionCount) ? map.executionCount : 0
+    );
+  }
+
+  /**
+   * Converts this object to a map in JSON format.
+   * @return The map in JSON format corresponding to this object.
+   */
+  public toJSON(): JsonMap {
+    return {
+      executionCount: this.executionCount,
+      functionName: this.functionName,
+      lineNumber: this.lineNumber
+    };
+  }
+
+  /**
+   * Returns a string representation of this object.
+   * @param asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
+   * @return The string representation of this object.
+   */
+  public toString(asDefinition: boolean = false): string {
+    const token = asDefinition ? Token.functionName : Token.functionData;
+    const count = asDefinition ? this.lineNumber : this.executionCount;
+    return `${token}:${count},${this.functionName}`;
   }
 }
