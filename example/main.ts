@@ -1,4 +1,6 @@
 /* tslint:disable: no-console */
+
+// @ts-ignore
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
