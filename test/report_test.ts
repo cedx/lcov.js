@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {BranchData, FunctionData, LineData, LcovError, Record, Report} from '../lib';
+import {BranchData, FunctionData, LineData, LcovError, Record, Report} from '../src';
 
 /**
  * @test {Report}
