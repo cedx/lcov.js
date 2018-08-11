@@ -1,4 +1,4 @@
-import {JsonMap} from './map';
+import {JsonMap} from './json_map';
 import {Token} from './token';
 
 /**
@@ -26,7 +26,7 @@ export class BranchCoverage {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap<any>): BranchCoverage {
+  public static fromJson(map: JsonMap): BranchCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -38,7 +38,7 @@ export class BranchCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap<any> {
+  public toJSON(): JsonMap {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
@@ -84,7 +84,7 @@ export class BranchData {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap<any>): BranchData {
+  public static fromJson(map: JsonMap): BranchData {
     return new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
@@ -97,7 +97,7 @@ export class BranchData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap<any> {
+  public toJSON(): JsonMap {
     return {
       blockNumber: this.blockNumber,
       branchNumber: this.branchNumber,

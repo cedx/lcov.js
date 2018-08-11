@@ -1,4 +1,4 @@
-import {JsonMap} from './map';
+import {JsonMap} from './json_map';
 import {Token} from './token';
 
 /**
@@ -26,7 +26,7 @@ export class FunctionCoverage {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap<any>): FunctionCoverage {
+  public static fromJson(map: JsonMap): FunctionCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -38,7 +38,7 @@ export class FunctionCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap<any> {
+  public toJSON(): JsonMap {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
@@ -84,7 +84,7 @@ export class FunctionData {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap<any>): FunctionData {
+  public static fromJson(map: JsonMap): FunctionData {
     return new this(
       typeof map.functionName == 'string' ? map.functionName : '',
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
@@ -96,7 +96,7 @@ export class FunctionData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap<any> {
+  public toJSON(): JsonMap {
     return {
       executionCount: this.executionCount,
       functionName: this.functionName,

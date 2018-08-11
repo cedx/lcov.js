@@ -1,7 +1,7 @@
 import {BranchCoverage} from './branch';
 import {FunctionCoverage} from './function';
+import {JsonMap} from './json_map';
 import {LineCoverage} from './line';
-import {JsonMap} from './map';
 import {Token} from './token';
 
 /**
@@ -48,7 +48,7 @@ export class Record {
    * @param map A JSON map representing a record.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap<any>): Record {
+  public static fromJson(map: JsonMap): Record {
     return new this(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
       branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
       functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
@@ -60,7 +60,7 @@ export class Record {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap<any> {
+  public toJSON(): JsonMap {
     return {
       branches: this.branches ? this.branches.toJSON() : null,
       functions: this.functions ? this.functions.toJSON() : null,
