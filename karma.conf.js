@@ -1,9 +1,9 @@
 module.exports = config => config.set({
   browsers: ['Chrome'],
-  files: ['test/**/*.ts'],
+  files: ['src/**/*.ts', 'test/**/*.ts'],
   frameworks: ['mocha', 'karma-typescript'],
   karmaTypescriptConfig: {
-    include: ['src/**/*.ts', 'test/**/*.ts'],
+    include: ['test/**/*.ts'],
     tsconfig: 'tsconfig.json'
   },
   preprocessors: {
