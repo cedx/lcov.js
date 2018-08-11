@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.5.0](https://github.com/cedx/lcov.js/compare/v4.4.0...v4.5.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+- Updated the package dependencies.
+
 ## Version [4.4.0](https://github.com/cedx/lcov.js/compare/v4.3.0...v4.4.0)
 - Added the `offset` and `source` properties to the `LcovError` class.
 - Updated the package dependencies.

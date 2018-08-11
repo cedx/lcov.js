@@ -1,5 +1,5 @@
-path: blob/master/lib
-source: report.js
+path: blob/master
+source: src/report.ts
 
 # Usage
 **LCOV Reports for JS** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
