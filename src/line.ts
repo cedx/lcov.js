@@ -1,4 +1,4 @@
-import {JsonMap} from './json';
+import {JsonMap} from './map';
 import {Token} from './token';
 
 /**
@@ -26,7 +26,7 @@ export class LineCoverage {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): LineCoverage {
+  public static fromJson(map: JsonMap<any>): LineCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -38,7 +38,7 @@ export class LineCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  public toJSON(): JsonMap<any> {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
@@ -83,7 +83,7 @@ export class LineData {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): LineData {
+  public static fromJson(map: JsonMap<any>): LineData {
     return new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
@@ -95,7 +95,7 @@ export class LineData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  public toJSON(): JsonMap<any> {
     return {
       checksum: this.checksum,
       executionCount: this.executionCount,

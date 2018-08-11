@@ -1,7 +1,7 @@
 import {BranchCoverage, BranchData} from './branch';
 import {FunctionCoverage, FunctionData} from './function';
-import {JsonMap} from './json';
 import {LineCoverage, LineData} from './line';
+import {JsonMap} from './map';
 import {Record} from './record';
 import {Token} from './token';
 
@@ -162,7 +162,7 @@ export class Report {
    * @param map A JSON map representing a record.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): Report {
+  public static fromJson(map: JsonMap<any>): Report {
     return new this(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)) : []
@@ -173,7 +173,7 @@ export class Report {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  public toJSON(): JsonMap<any> {
     return {
       records: this.records.map(item => item.toJSON()),
       testName: this.testName
