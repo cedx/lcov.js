@@ -55,7 +55,7 @@ export class Report {
    * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
    * @param coverage The coverage data.
    * @return The resulting coverage report.
-   * @throws {Error} A parsing error occurred.
+   * @throws {LcovError} A parsing error occurred.
    */
   public static fromCoverage(coverage: string): Report {
     const report = new this;
