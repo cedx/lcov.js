@@ -35,7 +35,7 @@ export class LcovError extends SyntaxError {
 /**
  * Represents a trace file, that is a coverage report.
  */
-class Report {
+export class Report {
 
   /**
    * Initializes a new instance of the class.
@@ -61,7 +61,7 @@ class Report {
     const report = new this;
 
     try {
-      let record: Record;
+      let record = new Record('');
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
         if (!line.length) continue;
@@ -87,12 +87,12 @@ class Report {
 
           case Token.functionName:
             if (data.length < 2) throw new Error('Invalid function name');
-            record.functions.data.push(new FunctionData(data[1], Number.parseInt(data[0], 10)));
+            record.functions!.data.push(new FunctionData(data[1], Number.parseInt(data[0], 10)));
             break;
 
           case Token.functionData:
             if (data.length < 2) throw new Error('Invalid function data');
-            record.functions.data.some(item => {
+            record.functions!.data.some(item => {
               if (item.functionName != data[1]) return false;
               item.executionCount = Number.parseInt(data[0], 10);
               return true;
@@ -100,16 +100,16 @@ class Report {
             break;
 
           case Token.functionsFound:
-            record.functions.found = Number.parseInt(data[0], 10);
+            record.functions!.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.functionsHit:
-            record.functions.hit = Number.parseInt(data[0], 10);
+            record.functions!.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.branchData:
             if (data.length < 4) throw new Error('Invalid branch data');
-            record.branches.data.push(new BranchData(
+            record.branches!.data.push(new BranchData(
               Number.parseInt(data[0], 10),
               Number.parseInt(data[1], 10),
               Number.parseInt(data[2], 10),
@@ -118,16 +118,16 @@ class Report {
             break;
 
           case Token.branchesFound:
-            record.branches.found = Number.parseInt(data[0], 10);
+            record.branches!.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.branchesHit:
-            record.branches.hit = Number.parseInt(data[0], 10);
+            record.branches!.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.lineData:
             if (data.length < 2) throw new Error('Invalid line data');
-            record.lines.data.push(new LineData(
+            record.lines!.data.push(new LineData(
               Number.parseInt(data[0], 10),
               Number.parseInt(data[1], 10),
               data.length >= 3 ? data[2] : ''
@@ -135,11 +135,11 @@ class Report {
             break;
 
           case Token.linesFound:
-            record.lines.found = Number.parseInt(data[0], 10);
+            record.lines!.found = Number.parseInt(data[0], 10);
             break;
 
           case Token.linesHit:
-            record.lines.hit = Number.parseInt(data[0], 10);
+            record.lines!.hit = Number.parseInt(data[0], 10);
             break;
 
           case Token.endOfRecord:
@@ -160,9 +160,9 @@ class Report {
   /**
    * Creates a new record from the specified JSON map.
    * @param map A JSON map representing a record.
-   * @return {Report} The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap) {
+  public static fromJson(map: JsonMap): Report {
     return new this(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)) : []
@@ -175,8 +175,8 @@ class Report {
    */
   public toJSON(): JsonMap {
     return {
-      testName: this.testName,
-      records: this.records.map(item => item.toJSON())
+      records: this.records.map(item => item.toJSON()),
+      testName: this.testName
     };
   }
 

@@ -1,3 +1,4 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 
@@ -10,10 +11,6 @@ describe('Record', () => {
    * @test {Record.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(Record.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
       expect(record).to.be.instanceof(Record);
