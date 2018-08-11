@@ -1,3 +1,4 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
 import {LineCoverage, LineData} from '../src';
 
@@ -10,10 +11,6 @@ describe('LineCoverage', () => {
    * @test {LineCoverage.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(LineCoverage.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
       expect(coverage).to.be.instanceof(LineCoverage);
@@ -26,7 +23,7 @@ describe('LineCoverage', () => {
       const coverage = LineCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
-        hit: 11,
+        hit: 11
       });
 
       expect(coverage).to.be.instanceof(LineCoverage);
@@ -45,10 +42,9 @@ describe('LineCoverage', () => {
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new LineCoverage).toJSON();
-
       expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.be.empty;
 
+      expect(map.data).to.be.an('array').and.be.empty;
       expect(map.found).to.equal(0);
       expect(map.hit).to.equal(0);
     });
@@ -59,7 +55,6 @@ describe('LineCoverage', () => {
 
       expect(map.data).to.be.an('array').and.have.lengthOf(1);
       expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
-
       expect(map.found).to.equal(23);
       expect(map.hit).to.equal(11);
     });
@@ -87,10 +82,6 @@ describe('LineData', () => {
    * @test {LineData.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(LineData.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});
       expect(data).to.be.instanceof(LineData);

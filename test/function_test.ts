@@ -1,3 +1,4 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
 import {FunctionCoverage, FunctionData} from '../src';
 
@@ -10,10 +11,6 @@ describe('FunctionCoverage', () => {
    * @test {FunctionCoverage.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(FunctionCoverage.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const coverage = FunctionCoverage.fromJson({});
       expect(coverage).to.be.instanceof(FunctionCoverage);
@@ -26,7 +23,7 @@ describe('FunctionCoverage', () => {
       const coverage = FunctionCoverage.fromJson({
         data: [{lineNumber: 127}],
         found: 23,
-        hit: 11,
+        hit: 11
       });
 
       expect(coverage).to.be.instanceof(FunctionCoverage);
@@ -87,10 +84,6 @@ describe('FunctionData', () => {
    * @test {FunctionData.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(FunctionData.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const data = FunctionData.fromJson({});
       expect(data).to.be.instanceof(FunctionData);

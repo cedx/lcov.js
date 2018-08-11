@@ -12,17 +12,17 @@ export class Record {
   /**
    * The branch coverage.
    */
-  public branches?: BranchCoverage;
+  public branches: BranchCoverage | null;
 
   /**
    * The function coverage.
    */
-  public functions?: FunctionCoverage;
+  public functions: FunctionCoverage | null;
 
   /**
    * The line coverage.
    */
-  public lines?: LineCoverage;
+  public lines: LineCoverage | null;
 
   /**
    * Initializes a new instance of the class.
@@ -30,7 +30,7 @@ export class Record {
    * @param options An object specifying values used to initialize this instance.
    */
   constructor(public sourceFile: string, options: Partial<RecordOptions> = {}) {
-    const {branches, functions, lines} = options;
+    const {branches = null, functions = null, lines = null} = options;
     this.branches = branches;
     this.functions = functions;
     this.lines = lines;
@@ -46,13 +46,13 @@ export class Record {
   /**
    * Creates a new record from the specified JSON map.
    * @param map A JSON map representing a record.
-   * @return {Record} The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON map.
    */
   public static fromJson(map: JsonMap): Record {
     return new this(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
-      branches: BranchCoverage.fromJson(map.branches),
-      functions: FunctionCoverage.fromJson(map.functions),
-      lines: LineCoverage.fromJson(map.lines)
+      branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
+      functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
+      lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines) : null
     });
   }
 
@@ -91,15 +91,15 @@ export interface RecordOptions {
   /**
    * The branch coverage.
    */
-  branches: BranchCoverage;
+  branches: BranchCoverage | null;
 
   /**
    * The function coverage.
    */
-  functions: FunctionCoverage;
+  functions: FunctionCoverage | null;
 
   /**
    * The line coverage.
    */
-  lines: LineCoverage;
+  lines: LineCoverage | null;
 }

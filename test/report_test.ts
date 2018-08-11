@@ -1,5 +1,6 @@
+/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {BranchData, FunctionData, LineData, LcovError, Record, Report} from '../src';
+import {BranchCoverage, BranchData, FunctionCoverage, FunctionData, LcovError, LineCoverage, LineData, Record, Report} from '../src';
 
 /**
  * @test {Report}
@@ -89,7 +90,7 @@ end_of_record
     });
 
     it('should have detailed branch coverage', async () => {
-      const branches = report.records[1].branches;
+      const branches = report.records[1].branches as BranchCoverage;
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
 
@@ -99,7 +100,7 @@ end_of_record
     });
 
     it('should have detailed function coverage', async () => {
-      const functions = report.records[1].functions;
+      const functions = report.records[1].functions as FunctionCoverage;
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
 
@@ -109,7 +110,7 @@ end_of_record
     });
 
     it('should have detailed line coverage', async () => {
-      const lines = report.records[1].lines;
+      const lines = report.records[1].lines as LineCoverage;
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
 
@@ -131,10 +132,6 @@ end_of_record
    * @test {Report.fromJson}
    */
   describe('.fromJson()', () => {
-    it('should return a null reference with a non-object value', () => {
-      expect(Report.fromJson('foo')).to.be.null;
-    });
-
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
       expect(report).to.be.instanceof(Report);
