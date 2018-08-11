@@ -9,10 +9,10 @@ The `Report` class, the main one, provides the parsing and formatting features.
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
 ```ts
-const {Report} from '@cedx/lcov');
-const {promises} from 'fs');
+import {Report} from '@cedx/lcov';
+import {promises} from 'fs';
 
-async function main() {
+async function main(): Promise<void> {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');
     const report = Report.fromCoverage(coverage);  
@@ -29,7 +29,7 @@ async function main() {
 !!! info
     A `LcovError` is thrown if any error occurred while parsing the coverage report.
 
-The `Report.toJson()` instance method will return a map like this:
+The `Report.toJSON()` instance method will return a [JSON](https://www.json.org) map like this:
 
 ```tson
 {
@@ -67,9 +67,9 @@ Each provided class has a dedicated `toString()` instance method returning the c
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
 ```ts
-const {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov');
+import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 
-function main() {
+function main(): void {
   const lineCoverage = new LineCoverage(2, 2, [
     new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
     new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')

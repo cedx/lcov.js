@@ -5,5 +5,5 @@ module.exports = {
   gitRevision: 'master',
   mode: 'modules',
   name: 'LCOV Reports for JS',
-  out: 'doc/api',
+  out: 'doc/api'
 };
