@@ -16,7 +16,7 @@ export class LcovError extends SyntaxError {
    * @param source The actual source input which caused the error.
    * @param offset The offset in `source` where the error was detected.
    */
-  constructor(message: string, public source: any = null, public offset: number = -1) {
+  constructor(message: string, public source: string | null = null, public offset: number = -1) {
     super(message);
     this.name = 'LcovError';
   }
