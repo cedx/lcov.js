@@ -46,9 +46,7 @@ gulp.task('lint', () => _exec('node_modules/.bin/tslint', sources));
 /**
  * Runs the unit tests.
  */
-gulp.task('test:browser', () => _exec('node_modules/.bin/karma', ['start', '--single-run']));
-gulp.task('test:node', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
-gulp.task('test', gulp.series('test:browser', 'test:node'));
+gulp.task('test', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
 
 /**
  * Upgrades the project to the latest revision.
@@ -66,7 +64,7 @@ gulp.task('upgrade', async () => {
  */
 gulp.task('watch', () => {
   gulp.watch('src/**/*.ts', {ignoreInitial: false}, gulp.task('build'));
-  gulp.watch('test/**/*.ts', gulp.task('test:node'));
+  gulp.watch('test/**/*.ts', gulp.task('test'));
 });
 
 /**
