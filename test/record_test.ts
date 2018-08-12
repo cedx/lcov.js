@@ -12,7 +12,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
    * @test {Record.fromJson}
    */
   @test('It should initialize the instance from a JSON map')
-  public testFromJson() {
+  public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let record = Record.fromJson({});
     expect(record).to.be.instanceof(Record);

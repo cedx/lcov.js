@@ -86,7 +86,7 @@ end_of_record
    * @test {Report.fromCoverage}
    */
   @test('It should initialize the instance from a coverage report')
-  public testFromCoverage() {
+  public testFromCoverage(): void {
     const report = Report.fromCoverage(ReportTest.coverage);
 
     // It should have a test name.
@@ -137,7 +137,7 @@ end_of_record
    * @test {Report.fromJson}
    */
   @test('It should initialize the instance from a JSON map')
-  public testFromJson() {
+  public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let report = Report.fromJson({});
     expect(report).to.be.instanceof(Report);

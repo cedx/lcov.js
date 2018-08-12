@@ -12,7 +12,7 @@ import {FunctionCoverage, FunctionData} from '../src';
    * @test {FunctionCoverage.fromJson}
    */
   @test('It should initialize the instance from a JSON map')
-  public testFromJson() {
+  public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let coverage = FunctionCoverage.fromJson({});
     expect(coverage).to.be.instanceof(FunctionCoverage);
@@ -82,7 +82,7 @@ import {FunctionCoverage, FunctionData} from '../src';
    * @test {FunctionData.fromJson}
    */
   @test('It should initialize the instance from a JSON map')
-  public testFromJson() {
+  public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let data = FunctionData.fromJson({});
     expect(data).to.be.instanceof(FunctionData);
