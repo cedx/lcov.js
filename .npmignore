@@ -12,4 +12,4 @@
 /*.yaml
 /*.yml
 /tsconfig.json
-/lib/*.map
+/lib/**/*.map
