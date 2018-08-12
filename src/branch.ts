@@ -1,4 +1,4 @@
-import {JsonMap} from './json_map';
+import {JsonMap} from './map';
 import {Token} from './token';
 
 /**

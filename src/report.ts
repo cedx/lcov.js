@@ -1,7 +1,7 @@
 import {BranchCoverage, BranchData} from './branch';
 import {FunctionCoverage, FunctionData} from './function';
-import {JsonMap} from './json_map';
 import {LineCoverage, LineData} from './line';
+import {JsonMap} from './map';
 import {Record} from './record';
 import {Token} from './token';
 
