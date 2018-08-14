@@ -1,5 +1,10 @@
 # Changelog
 
+## Version [4.6.0](https://github.com/cedx/lcov.js/compare/v4.5.0...v4.6.0)
+- Ported the unit tests to classes with experimental decorators.
+- Removed a cyclic dependency.
+- Updated the package dependencies.
+
 ## Version [4.5.0](https://github.com/cedx/lcov.js/compare/v4.4.0...v4.5.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
 - Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
