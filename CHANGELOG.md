@@ -3,6 +3,7 @@
 ## Version [4.5.0](https://github.com/cedx/lcov.js/compare/v4.4.0...v4.5.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
 - Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
 - Updated the package dependencies.
 
 ## Version [4.4.0](https://github.com/cedx/lcov.js/compare/v4.3.0...v4.4.0)
