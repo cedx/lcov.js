@@ -11,8 +11,7 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchCoverage.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let coverage = BranchCoverage.fromJson({});
     expect(coverage).to.be.instanceof(BranchCoverage);
@@ -39,8 +38,7 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchCoverage#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = (new BranchCoverage).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(3);
@@ -62,8 +60,8 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchCoverage#toString}
    */
-  @test('It should return a format like "BRF:<found>\\\\n,BRH:<hit>"')
-  public testToString(): void {
+  @test public testToString(): void {
+    // It should return a format like "BRF:<found>\\\\n,BRH:<hit>".
     expect(String(new BranchCoverage)).to.equal('BRF:0\nBRH:0');
 
     const data = new BranchData(127, 3, 2, 1);
@@ -79,8 +77,7 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchData.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let data = BranchData.fromJson({});
     expect(data).to.be.instanceof(BranchData);
@@ -107,8 +104,7 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchData#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = new BranchData(0, 0, 0).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(4);
@@ -129,8 +125,8 @@ import {BranchCoverage, BranchData} from '../src';
   /**
    * @test {BranchData#toString}
    */
-  @test('It should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"')
-  public testToString(): void {
+  @test public testToString(): void {
+    // It should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>".
     expect(String(new BranchData(0, 0, 0))).to.equal('BRDA:0,0,0,-');
     expect(String(new BranchData(127, 3, 2, 1))).to.equal('BRDA:127,3,2,1');
   }

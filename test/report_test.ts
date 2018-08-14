@@ -85,8 +85,7 @@ end_of_record
   /**
    * @test {Report.fromCoverage}
    */
-  @test('It should initialize the instance from a coverage report')
-  public testFromCoverage(): void {
+  @test public testFromCoverage(): void {
     const report = Report.fromCoverage(ReportTest.coverage);
 
     // It should have a test name.
@@ -136,8 +135,7 @@ end_of_record
   /**
    * @test {Report.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let report = Report.fromJson({});
     expect(report).to.be.instanceof(Report);
@@ -159,8 +157,7 @@ end_of_record
   /**
    * @test {Report#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = (new Report).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(2);
@@ -178,8 +175,8 @@ end_of_record
   /**
    * @test {Report#toString}
    */
-  @test('It should return a format like "TN:<testName>"')
-  public testToString(): void {
+  @test public testToString(): void {
+    // It should return a format like "TN:<testName>".
     expect(String(new Report)).to.be.empty;
 
     const record = new Record('');

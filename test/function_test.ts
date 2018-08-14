@@ -11,8 +11,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let coverage = FunctionCoverage.fromJson({});
     expect(coverage).to.be.instanceof(FunctionCoverage);
@@ -39,8 +38,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = (new FunctionCoverage).toJSON();
 
@@ -64,8 +62,8 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage#toString}
    */
-  @test('It should return a format like "FNF:<found>\\\\n,FNH:<hit>"')
-  public testToString(): void {
+  @test public testToString(): void {
+    // It should return a format like "FNF:<found>\\\\n,FNH:<hit>".
     expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
 
     const coverage = new FunctionCoverage(23, 11, [new FunctionData('main', 127, 3)]);
@@ -81,8 +79,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let data = FunctionData.fromJson({});
     expect(data).to.be.instanceof(FunctionData);
@@ -106,8 +103,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = new FunctionData('', 0).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(3);
@@ -126,8 +122,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData#toString}
    */
-  @test('It should return a format like "FN:<lineNumber>,<functionName>" or "FNDA:<executionCount>,<functionName>"')
-  public testToString(): void {
+  @test public testToString(): void {
     // It should return a format like "FN:<lineNumber>,<functionName>" when used as definition.
     expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');
     expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');

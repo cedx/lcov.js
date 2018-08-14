@@ -11,8 +11,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
   /**
    * @test {Record.fromJson}
    */
-  @test('It should initialize the instance from a JSON map')
-  public testFromJson(): void {
+  @test public testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let record = Record.fromJson({});
     expect(record).to.be.instanceof(Record);
@@ -39,8 +38,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
   /**
    * @test {Record#toJSON}
    */
-  @test('It should return a JSON map corresponding to the instance properties')
-  public testToJson(): void {
+  @test public testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = new Record('').toJSON();
     expect(Object.keys(map)).to.have.lengthOf(4);
@@ -67,8 +65,8 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
   /**
    * @test {Record#toString}
    */
-  @test('It should return a format like "SF:<sourceFile>\\\\n,end_of_record"')
-  public testToString(): void {
+  @test public testToString(): void {
+    // It should return a format like "SF:<sourceFile>\\\\n,end_of_record".
     expect(String(new Record(''))).to.equal('SF:\nend_of_record');
 
     const record = new Record('/home/cedx/lcov.js', {
