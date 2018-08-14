@@ -7,4 +7,4 @@ sudo: false
 install: npm install
 before_script: npm --global install @cedx/coveralls
 script: npm test
-after_success: coveralls var/coverage.xml
+after_success: coveralls var/lcov.info
