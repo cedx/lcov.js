@@ -11,7 +11,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage.fromJson}
    */
-  @test public testFromJson(): void {
+  @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let coverage = FunctionCoverage.fromJson({});
     expect(coverage).to.be.instanceof(FunctionCoverage);
@@ -38,7 +38,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage#toJSON}
    */
-  @test public testToJson(): void {
+  @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = (new FunctionCoverage).toJSON();
 
@@ -62,7 +62,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionCoverage#toString}
    */
-  @test public testToString(): void {
+  @test testToString(): void {
     // It should return a format like "FNF:<found>\\\\n,FNH:<hit>".
     expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
 
@@ -79,7 +79,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData.fromJson}
    */
-  @test public testFromJson(): void {
+  @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let data = FunctionData.fromJson({});
     expect(data).to.be.instanceof(FunctionData);
@@ -103,7 +103,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData#toJSON}
    */
-  @test public testToJson(): void {
+  @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = new FunctionData('', 0).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(3);
@@ -122,7 +122,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   /**
    * @test {FunctionData#toString}
    */
-  @test public testToString(): void {
+  @test testToString(): void {
     // It should return a format like "FN:<lineNumber>,<functionName>" when used as definition.
     expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');
     expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');

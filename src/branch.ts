@@ -26,7 +26,7 @@ export class BranchCoverage {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): BranchCoverage {
+  static fromJson(map: JsonMap): BranchCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -38,7 +38,7 @@ export class BranchCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
@@ -50,7 +50,7 @@ export class BranchCoverage {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const lines = this.data.map(item => item.toString());
     lines.push(`${Token.branchesFound}:${this.found}`);
     lines.push(`${Token.branchesHit}:${this.hit}`);
@@ -84,7 +84,7 @@ export class BranchData {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): BranchData {
+  static fromJson(map: JsonMap): BranchData {
     return new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
@@ -97,7 +97,7 @@ export class BranchData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       blockNumber: this.blockNumber,
       branchNumber: this.branchNumber,
@@ -110,7 +110,7 @@ export class BranchData {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
     return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
   }

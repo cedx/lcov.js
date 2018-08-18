@@ -12,17 +12,17 @@ export class Record {
   /**
    * The branch coverage.
    */
-  public branches: BranchCoverage | null;
+  branches: BranchCoverage | null;
 
   /**
    * The function coverage.
    */
-  public functions: FunctionCoverage | null;
+  functions: FunctionCoverage | null;
 
   /**
    * The line coverage.
    */
-  public lines: LineCoverage | null;
+  lines: LineCoverage | null;
 
   /**
    * Initializes a new instance of the class.
@@ -48,7 +48,7 @@ export class Record {
    * @param map A JSON map representing a record.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): Record {
+  static fromJson(map: JsonMap): Record {
     return new this(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
       branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
       functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
@@ -60,7 +60,7 @@ export class Record {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       branches: this.branches ? this.branches.toJSON() : null,
       functions: this.functions ? this.functions.toJSON() : null,
@@ -73,7 +73,7 @@ export class Record {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const output = [`${Token.sourceFile}:${this.sourceFile}`];
     if (this.functions) output.push(this.functions.toString());
     if (this.branches) output.push(this.branches.toString());

@@ -17,7 +17,7 @@ import {
   /**
    * A sample coverage report.
    */
-  public static readonly coverage: string = `
+  static readonly coverage: string = `
 TN:Example
 
 SF:/home/cedx/lcov.js/fixture.js
@@ -85,7 +85,7 @@ end_of_record
   /**
    * @test {Report.fromCoverage}
    */
-  @test public testFromCoverage(): void {
+  @test testFromCoverage(): void {
     const report = Report.fromCoverage(ReportTest.coverage);
 
     // It should have a test name.
@@ -135,7 +135,7 @@ end_of_record
   /**
    * @test {Report.fromJson}
    */
-  @test public testFromJson(): void {
+  @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
     let report = Report.fromJson({});
     expect(report).to.be.instanceof(Report);
@@ -157,7 +157,7 @@ end_of_record
   /**
    * @test {Report#toJSON}
    */
-  @test public testToJson(): void {
+  @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
     let map = (new Report).toJSON();
     expect(Object.keys(map)).to.have.lengthOf(2);
@@ -175,7 +175,7 @@ end_of_record
   /**
    * @test {Report#toString}
    */
-  @test public testToString(): void {
+  @test testToString(): void {
     // It should return a format like "TN:<testName>".
     expect(String(new Report)).to.be.empty;
 

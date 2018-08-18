@@ -25,7 +25,7 @@ export class LcovError extends SyntaxError {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const values = [`"${this.message}"`];
     if (this.offset >= 0) values.push(`offset: ${this.offset}`);
     return `${this.name}(${values.join(', ')})`;
@@ -57,7 +57,7 @@ export class Report {
    * @return The resulting coverage report.
    * @throws {LcovError} A parsing error occurred.
    */
-  public static fromCoverage(coverage: string): Report {
+  static fromCoverage(coverage: string): Report {
     const report = new this;
 
     try {
@@ -162,7 +162,7 @@ export class Report {
    * @param map A JSON map representing a record.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): Report {
+  static fromJson(map: JsonMap): Report {
     return new this(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)) : []
@@ -173,7 +173,7 @@ export class Report {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       records: this.records.map(item => item.toJSON()),
       testName: this.testName
@@ -184,7 +184,7 @@ export class Report {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];
     lines.push(...this.records.map(item => item.toString()));
     return lines.join('\n');

@@ -26,7 +26,7 @@ export class LineCoverage {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): LineCoverage {
+  static fromJson(map: JsonMap): LineCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -38,7 +38,7 @@ export class LineCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
@@ -50,7 +50,7 @@ export class LineCoverage {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const lines = this.data.map(item => item.toString());
     lines.push(`${Token.linesFound}:${this.found}`);
     lines.push(`${Token.linesHit}:${this.hit}`);
@@ -83,7 +83,7 @@ export class LineData {
    * @param map A JSON map representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
-  public static fromJson(map: JsonMap): LineData {
+  static fromJson(map: JsonMap): LineData {
     return new this(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
@@ -95,7 +95,7 @@ export class LineData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  public toJSON(): JsonMap {
+  toJSON(): JsonMap {
     return {
       checksum: this.checksum,
       executionCount: this.executionCount,
@@ -107,7 +107,7 @@ export class LineData {
    * Returns a string representation of this object.
    * @return The string representation of this object.
    */
-  public toString(): string {
+  toString(): string {
     const value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
     return this.checksum.length ? `${value},${this.checksum}` : value;
   }
