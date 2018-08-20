@@ -83,7 +83,7 @@ end_of_record
 `;
 
   /**
-   * @test {Report.fromCoverage}
+   * Tests the `Report.fromCoverage()` method.
    */
   @test testFromCoverage(): void {
     const report = Report.fromCoverage(ReportTest.coverage);
@@ -133,7 +133,7 @@ end_of_record
   }
 
   /**
-   * @test {Report.fromJson}
+   * Tests the `Report.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -155,7 +155,7 @@ end_of_record
   }
 
   /**
-   * @test {Report#toJSON}
+   * Tests the `Report#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -173,7 +173,7 @@ end_of_record
   }
 
   /**
-   * @test {Report#toString}
+   * Tests the `Report#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "TN:<testName>".

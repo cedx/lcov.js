@@ -9,7 +9,7 @@ import {FunctionCoverage, FunctionData} from '../src';
 @suite class FunctionCoverageTest {
 
   /**
-   * @test {FunctionCoverage.fromJson}
+   * Tests the `FunctionCoverage.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -36,7 +36,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   }
 
   /**
-   * @test {FunctionCoverage#toJSON}
+   * Tests the `FunctionCoverage#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -60,7 +60,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   }
 
   /**
-   * @test {FunctionCoverage#toString}
+   * Tests the `FunctionCoverage#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "FNF:<found>\\\\n,FNH:<hit>".
@@ -77,7 +77,7 @@ import {FunctionCoverage, FunctionData} from '../src';
 @suite class FunctionDataTest {
 
   /**
-   * @test {FunctionData.fromJson}
+   * Tests the `FunctionData.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -101,7 +101,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   }
 
   /**
-   * @test {FunctionData#toJSON}
+   * Tests the `FunctionData#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -120,7 +120,7 @@ import {FunctionCoverage, FunctionData} from '../src';
   }
 
   /**
-   * @test {FunctionData#toString}
+   * Tests the `FunctionData#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "FN:<lineNumber>,<functionName>" when used as definition.

@@ -9,7 +9,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 @suite class RecordTest {
 
   /**
-   * @test {Record.fromJson}
+   * Tests the `Record.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -36,7 +36,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
   }
 
   /**
-   * @test {Record#toJSON}
+   * Tests the `Record#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -63,7 +63,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
   }
 
   /**
-   * @test {Record#toString}
+   * Tests the `Record#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "SF:<sourceFile>\\\\n,end_of_record".

@@ -9,7 +9,7 @@ import {BranchCoverage, BranchData} from '../src';
 @suite class BranchCoverageTest {
 
   /**
-   * @test {BranchCoverage.fromJson}
+   * Tests the `BranchCoverage.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -36,7 +36,7 @@ import {BranchCoverage, BranchData} from '../src';
   }
 
   /**
-   * @test {BranchCoverage#toJSON}
+   * Tests the `BranchCoverage#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -58,7 +58,7 @@ import {BranchCoverage, BranchData} from '../src';
   }
 
   /**
-   * @test {BranchCoverage#toString}
+   * Tests the `BranchCoverage#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "BRF:<found>\\\\n,BRH:<hit>".
@@ -75,7 +75,7 @@ import {BranchCoverage, BranchData} from '../src';
 @suite class BranchDataTest {
 
   /**
-   * @test {BranchData.fromJson}
+   * Tests the `BranchData.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -102,7 +102,7 @@ import {BranchCoverage, BranchData} from '../src';
   }
 
   /**
-   * @test {BranchData#toJSON}
+   * Tests the `BranchData#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -123,7 +123,7 @@ import {BranchCoverage, BranchData} from '../src';
   }
 
   /**
-   * @test {BranchData#toString}
+   * Tests the `BranchData#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>".

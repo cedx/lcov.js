@@ -9,7 +9,7 @@ import {LineCoverage, LineData} from '../src';
 @suite class LineCoverageTest {
 
   /**
-   * @test {LineCoverage.fromJson}
+   * Tests the `LineCoverage.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -36,7 +36,7 @@ import {LineCoverage, LineData} from '../src';
   }
 
   /**
-   * @test {LineCoverage#toJSON}
+   * Tests the `LineCoverage#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -58,7 +58,7 @@ import {LineCoverage, LineData} from '../src';
   }
 
   /**
-   * @test {LineCoverage#toString}
+   * Tests the `LineCoverage#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "LF:<found>\\\\n,LH:<hit>".
@@ -75,7 +75,7 @@ import {LineCoverage, LineData} from '../src';
 @suite class LineDataTest {
 
   /**
-   * @test {LineData.fromJson}
+   * Tests the `LineData.fromJson()` method.
    */
   @test testFromJson(): void {
     // It should return an instance with default values for an empty map.
@@ -99,7 +99,7 @@ import {LineCoverage, LineData} from '../src';
   }
 
   /**
-   * @test {LineData#toJSON}
+   * Tests the `LineData#toJSON()` method.
    */
   @test testToJson(): void {
     // It should return a map with default values for a newly created instance.
@@ -118,7 +118,7 @@ import {LineCoverage, LineData} from '../src';
   }
 
   /**
-   * @test {LineData#toString}
+   * Tests the `LineData#toString()` method.
    */
   @test testToString(): void {
     // It should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]".
