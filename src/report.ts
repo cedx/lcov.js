@@ -38,7 +38,7 @@ export class LcovError extends SyntaxError {
 export class Report {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new report.
    * @param testName The test name.
    * @param records The record list.
    */

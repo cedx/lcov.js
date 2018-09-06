@@ -25,7 +25,7 @@ export class Record {
   lines: LineCoverage | null;
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new record.
    * @param sourceFile The path to the source file.
    * @param options An object specifying values used to initialize this instance.
    */

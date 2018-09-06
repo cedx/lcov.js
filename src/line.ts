@@ -7,7 +7,7 @@ import {Token} from './token';
 export class LineCoverage {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new line coverage.
    * @param found The number of lines found.
    * @param hit The number of lines found.
    * @param data The coverage data.
@@ -64,7 +64,7 @@ export class LineCoverage {
 export class LineData {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new line data.
    * @param lineNumber The line number.
    * @param executionCount The execution count.
    * @param checksum The data checksum.

@@ -7,7 +7,7 @@ import {Token} from './token';
 export class FunctionCoverage {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new function coverage.
    * @param found The number of functions found.
    * @param hit The number of functions found.
    * @param data The coverage data.
@@ -65,7 +65,7 @@ export class FunctionCoverage {
 export class FunctionData {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new function data.
    * @param functionName The function name.
    * @param lineNumber The line number of the function start.
    * @param executionCount The execution count.

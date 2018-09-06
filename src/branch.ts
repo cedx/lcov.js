@@ -7,7 +7,7 @@ import {Token} from './token';
 export class BranchCoverage {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new branch coverage.
    * @param found The number of branches found.
    * @param hit The number of branches found.
    * @param data The coverage data.
@@ -64,7 +64,7 @@ export class BranchCoverage {
 export class BranchData {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new branch data.
    * @param lineNumber The line number.
    * @param blockNumber The block number.
    * @param branchNumber The branch number.
