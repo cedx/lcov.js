@@ -18,12 +18,14 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 /**
  * Builds the project.
  */
-gulp.task('build', () => _exec('tsc'));
+gulp.task('build:cjs', () => _exec('tsc'));
+gulp.task('build:dist', () => _exec('webpack'));
+gulp.task('build', gulp.series('build:cjs', 'build:dist'));
 
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
+gulp.task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /**
  * Uploads the results of the code coverage.

@@ -1,6 +1,7 @@
 /.*/
 !/.vscode/
 
+/build/
 /doc/about/changelog.md
 /doc/about/license.md
 /doc/api/

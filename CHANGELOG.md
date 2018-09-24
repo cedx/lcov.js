@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.7.0](https://github.com/cedx/lcov.js/compare/v4.6.0...v4.7.0)
+- TODO
+
 ## Version [4.6.0](https://github.com/cedx/lcov.js/compare/v4.5.0...v4.6.0)
 - Ported the unit tests to classes with experimental decorators.
 - Removed a cyclic dependency.
