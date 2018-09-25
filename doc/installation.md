@@ -5,16 +5,16 @@ Before installing **LCOV Reports for JS**, you need to make sure you have [Node.
 and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! warning
-    LCOV Reports for JS requires Node.js >= **10.9.0**.
+    LCOV Reports for JS requires Node.js >= **10.11.0**.
     
 You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v10.9.0
+# v10.11.0
 
 npm --version
-# 6.2.0
+# 6.4.1
 ```
 
 !!! info
@@ -35,4 +35,23 @@ Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ```ts
 import * as lcov from '@cedx/lcov';
+```
+
+!!! info
+    This library is packaged as [CommonJS modules](https://nodejs.org/api/modules.html).  
+    To consume it in a browser, you must use a dedicated tool chain, like a build system coupled with a bundler.
+
+### 3. Use it
+See the [usage information](usage.md).
+
+## Installing from a content delivery network
+This library is also available as a ready-made bundle.
+To install it, add this code snippet to the `<head>` of your HTML document:
+
+```html
+<!-- jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@cedx/lcov/build/lcov.js"></script>
+
+<!-- UNPKG -->
+<script src="https://unpkg.com/@cedx/lcov/build/lcov.js"></script>
 ```
