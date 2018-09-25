@@ -12,6 +12,20 @@
       const {FunctionCoverage, LineCoverage, LineData, Record, Report} = LCOV;
 
       // Format coverage data as LCOV report.
+      const lineCoverage = new LineCoverage(2, 2, [
+        new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
+        new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
+      ]);
+
+      const record = new Record('/home/cedx/lcov.js/fixture.js', {
+        functions: new FunctionCoverage(1, 1),
+        lines: lineCoverage
+      });
+
+      const report = new Report('Example', [record]);
+      console.log(report.toString());
+
+      // Parse a LCOV report to coverage data.
       const coverage = `
 TN:Example
 SF:/home/cedx/lcov.js/fixture.js
@@ -36,20 +50,6 @@ end_of_record`;
       catch (error) {
         console.log(`An error occurred: ${error.message}`);
       }
-
-      // Parse a LCOV report to coverage data.
-      const lineCoverage = new LineCoverage(2, 2, [
-        new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
-        new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
-      ]);
-
-      const record = new Record('/home/cedx/lcov.js/fixture.js', {
-        functions: new FunctionCoverage(1, 1),
-        lines: lineCoverage
-      });
-
-      const report = new Report('Example', [record]);
-      console.log(report.toString());
     </script>
   </body>
 </html>
