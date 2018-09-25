@@ -10,8 +10,7 @@ module.exports = {
   },
   output: {
     filename: 'lcov.js',
-    library: 'Lcov',
-    libraryExport: 'Lcov',
+    library: 'LCOV',
     libraryTarget: 'window',
     path: join(__dirname, 'build')
   }

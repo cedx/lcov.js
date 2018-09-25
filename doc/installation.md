@@ -1,8 +1,7 @@
 # Installation
 
 ## Requirements
-Before installing **LCOV Reports for JS**, you need to make sure you have [Node.js](https://nodejs.org)
-and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
+Before installing **LCOV Reports for JS**, you need to make sure you have [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! warning
     LCOV Reports for JS requires Node.js >= **10.11.0**.
@@ -54,4 +53,12 @@ To install it, add this code snippet to the `<head>` of your HTML document:
 
 <!-- UNPKG -->
 <script src="https://unpkg.com/@cedx/lcov/build/lcov.js"></script>
+```
+
+The classes of this library are exposed as `LCOV` property on the `window` global object:
+
+```html
+<script>
+  const {Record, Report, ...} = LCOV;
+</script>
 ```
