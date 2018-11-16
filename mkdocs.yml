@@ -27,7 +27,7 @@ markdown_extensions:
 - codehilite
 - meta
 
-pages:
+nav:
 - Overview: index.md
 - Installation: installation.md
 - Usage: usage.md
