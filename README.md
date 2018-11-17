@@ -8,7 +8,7 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 - [Documentation](https://dev.belin.io/lcov.js)
 - [API reference](https://dev.belin.io/lcov.js/api)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
-- [GitHub repository](https://github.com/cedx/lcov.js)
+- [Git repository](https://git.belin.io/cedx/lcov.js)
 
 ## License
 [LCOV Reports for JS](https://dev.belin.io/lcov.js) is distributed under the MIT License.

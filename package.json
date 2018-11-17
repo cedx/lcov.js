@@ -1,13 +1,12 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
   "browser": "./build/lcov.js",
-  "bugs": "https://github.com/cedx/lcov.js/issues",
+  "bugs": "https://git.belin.io/cedx/lcov.js/issues",
   "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
   "homepage": "https://dev.belin.io/lcov.js",
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "@cedx/lcov",
-  "repository": "cedx/lcov.js",
   "types": "./lib/index.d.ts",
   "version": "4.7.0",
   "devDependencies": {
@@ -40,6 +39,10 @@
     "parser",
     "test"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.belin.io/cedx/lcov.js.git"
+  },
   "scripts": {
     "coverage": "gulp coverage",
     "prepare": "gulp build",
