@@ -6,9 +6,9 @@ site_url: https://dev.belin.io/lcov.js
 docs_dir: doc
 site_dir: web
 
-repo_name: Gitea
+repo_name: Gitea/Belin.io
 repo_url: https://git.belin.io/cedx/lcov.js
-edit_uri: ''
+edit_uri: _edit/master/doc/
 
 copyright: Copyright &copy; 2017 - 2018 Cédric Belin
 google_analytics:
