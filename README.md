@@ -11,7 +11,7 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 ## Development
 - [Git repository](https://git.belin.io/cedx/lcov.js)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
-- [Submit an issue](https://git.belin.io/cedx/lcov.js/issues)
+- [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
 ## License
 [LCOV Reports for JS](https://dev.belin.io/lcov.js) is distributed under the MIT License.
