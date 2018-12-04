@@ -2,7 +2,6 @@ dist: trusty
 language: node_js
 node_js: [10, 11]
 notifications: {email: false}
-sudo: false
 
 install: npm install
 before_script: npm --global install @cedx/coveralls
