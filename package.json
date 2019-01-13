@@ -8,7 +8,7 @@
   "name": "@cedx/lcov",
   "repository": "github:cedx/lcov.js",
   "types": "./lib/index.d.ts",
-  "version": "4.7.0",
+  "version": "4.8.0",
   "author": {
     "email": "cedric@belin.io",
     "name": "Cédric Belin",
