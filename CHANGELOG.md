@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.8.0](https://github.com/cedx/lcov.js/compare/v4.7.0...v4.8.0)
+- Updated the package dependencies.
+- Updated the URL of the Git repository.
+
 ## Version [4.7.0](https://github.com/cedx/lcov.js/compare/v4.6.0...v4.7.0)
 - Added support for a redistributable bundle.
 
