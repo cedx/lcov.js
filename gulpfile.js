@@ -21,8 +21,9 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
  * Builds the project.
  */
 gulp.task('build:cjs', () => _exec('tsc'));
-gulp.task('build:dist', () => _exec('webpack'));
-gulp.task('build', gulp.series('build:cjs', 'build:dist'));
+gulp.task('build:iife', () => _exec('rollup', ['--config']));
+gulp.task('build:minify', () => _exec('minify', ['build/lcov.js', '--outFile=build/lcov.min.js']));
+gulp.task('build', gulp.series('build:cjs', 'build:iife', 'build:minify'));
 
 /**
  * Deletes all generated files and reset any saved state.
