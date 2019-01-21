@@ -12,12 +12,10 @@ import {
 /**
  * Tests the features of the `Record` class.
  */
-@suite class ReportTest {
+describe('ReportTest', () => {
 
-  /**
-   * A sample coverage report.
-   */
-  static readonly coverage: string = `
+  // A sample coverage report.
+  const coverage = `
 TN:Example
 
 SF:/home/cedx/lcov.js/fixture.js
@@ -85,101 +83,113 @@ end_of_record
   /**
    * Tests the `Report.fromCoverage()` method.
    */
-  @test testFromCoverage(): void {
-    const report = Report.fromCoverage(ReportTest.coverage);
+  describe('.FromCoverage()', () => {
+    const report = Report.fromCoverage(coverage);
 
-    // It should have a test name.
-    expect(report.testName).to.equal('Example');
+    it('should have a test name', () => {
+      expect(report.testName).to.equal('Example');
+    });
 
-    // It should contain three records.
-    expect(report.records).to.have.lengthOf(3);
-    expect(report.records[0]).to.be.instanceof(Record);
-    expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
-    expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
-    expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
+    it('should contain three records', () => {
+      expect(report.records).to.have.lengthOf(3);
+      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
+      expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
+      expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
+    });
 
-    // It should have detailed branch coverage.
-    const branches = report.records[1].branches as BranchCoverage;
-    expect(branches.found).to.equal(4);
-    expect(branches.hit).to.equal(4);
+    it('should have detailed branch coverage', () => {
+      const branches = report.records[1].branches as BranchCoverage;
+      expect(branches.found).to.equal(4);
+      expect(branches.hit).to.equal(4);
 
-    expect(branches.data).to.have.lengthOf(4);
-    expect(branches.data[0]).to.be.instanceof(BranchData);
-    expect(branches.data[0].lineNumber).to.equal(8);
+      expect(branches.data).to.have.lengthOf(4);
+      expect(branches.data[0]).to.be.instanceof(BranchData);
+      expect(branches.data[0].lineNumber).to.equal(8);
+    });
 
-    // It should have detailed function coverage.
-    const functions = report.records[1].functions as FunctionCoverage;
-    expect(functions.found).to.equal(1);
-    expect(functions.hit).to.equal(1);
+    it('should have detailed function coverage', () => {
+      const functions = report.records[1].functions as FunctionCoverage;
+      expect(functions.found).to.equal(1);
+      expect(functions.hit).to.equal(1);
 
-    expect(functions.data).to.have.lengthOf(1);
-    expect(functions.data[0]).to.be.instanceof(FunctionData);
-    expect(functions.data[0].functionName).to.equal('func1');
+      expect(functions.data).to.have.lengthOf(1);
+      expect(functions.data[0]).to.be.instanceof(FunctionData);
+      expect(functions.data[0].functionName).to.equal('func1');
+    });
 
-    // It should have detailed line coverage.
-    const lines = report.records[1].lines as LineCoverage;
-    expect(lines.found).to.equal(9);
-    expect(lines.hit).to.equal(9);
+    it('should have detailed line coverage', () => {
+      const lines = report.records[1].lines as LineCoverage;
+      expect(lines.found).to.equal(9);
+      expect(lines.hit).to.equal(9);
 
-    expect(lines.data).to.have.lengthOf(9);
-    expect(lines.data[0]).to.be.instanceof(LineData);
-    expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
+      expect(lines.data).to.have.lengthOf(9);
+      expect(lines.data[0]).to.be.instanceof(LineData);
+      expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
+    });
 
-    // It should throw an error if the input is invalid.
-    expect(() => Report.fromCoverage('ZZ')).to.throw(LcovError, 'invalid LCOV format');
+    it('should throw an error if the input is invalid', () => {
+      expect(() => Report.fromCoverage('ZZ')).to.throw(LcovError, 'invalid LCOV format');
+    });
 
-    // It should throw an error if the report is empty.
-    expect(() => Report.fromCoverage('TN:Example')).to.throw(LcovError, 'coverage data is empty');
-  }
+    it('should throw an error if the report is empty', () => {
+      expect(() => Report.fromCoverage('TN:Example')).to.throw(LcovError, 'coverage data is empty');
+    });
+  });
 
   /**
    * Tests the `Report.fromJson()` method.
    */
-  @test testFromJson(): void {
-    // It should return an instance with default values for an empty map.
-    let report = Report.fromJson({});
-    expect(report).to.be.instanceof(Report);
-    expect(report.records).to.be.an('array').and.be.empty;
-    expect(report.testName).to.be.empty;
-
-    // It should return an initialized instance for a non-empty map.
-    report = Report.fromJson({
-      records: [{}],
-      testName: 'LcovTest'
+  describe('.fromJson()', () => {
+    it('should return an instance with default values for an empty map', () => {
+      const report = Report.fromJson({});
+      expect(report).to.be.instanceof(Report);
+      expect(report.records).to.be.an('array').and.be.empty;
+      expect(report.testName).to.be.empty;
     });
 
-    expect(report).to.be.instanceof(Report);
-    expect(report.records).to.be.an('array').and.have.lengthOf(1);
-    expect(report.records[0]).to.be.instanceof(Record);
-    expect(report.testName).to.equal('LcovTest');
-  }
+    it('should return an initialized instance for a non-empty map', () => {
+      const report = Report.fromJson({
+        records: [{}],
+        testName: 'LcovTest'
+      });
+
+      expect(report).to.be.instanceof(Report);
+      expect(report.records).to.be.an('array').and.have.lengthOf(1);
+      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.testName).to.equal('LcovTest');
+    });
+  });
 
   /**
    * Tests the `Report#toJSON()` method.
    */
-  @test testToJson(): void {
-    // It should return a map with default values for a newly created instance.
-    let map = (new Report).toJSON();
-    expect(Object.keys(map)).to.have.lengthOf(2);
-    expect(map.records).to.be.an('array').and.be.empty;
-    expect(map.testName).to.be.empty;
+  describe('#toJSON()', () => {
+    it('should return a map with default values for a newly created instance', () => {
+      const map = (new Report).toJSON();
+      expect(Object.keys(map)).to.have.lengthOf(2);
+      expect(map.records).to.be.an('array').and.be.empty;
+      expect(map.testName).to.be.empty;
+    });
 
-    // It should return a non-empty map for an initialized instance.
-    map = new Report('LcovTest', [new Record('')]).toJSON();
-    expect(Object.keys(map)).to.have.lengthOf(2);
-    expect(map.records).to.be.an('array').and.have.lengthOf(1);
-    expect(map.records[0]).to.be.an('object');
-    expect(map.testName).to.equal('LcovTest');
-  }
+    it('should return a non-empty map for an initialized instance', () => {
+      const map = new Report('LcovTest', [new Record('')]).toJSON();
+      expect(Object.keys(map)).to.have.lengthOf(2);
+      expect(map.records).to.be.an('array').and.have.lengthOf(1);
+      expect(map.records[0]).to.be.an('object');
+      expect(map.testName).to.equal('LcovTest');
+    });
+  });
 
   /**
    * Tests the `Report#toString()` method.
    */
-  @test testToString(): void {
-    // It should return a format like "TN:<testName>".
-    expect(String(new Report)).to.be.empty;
+  describe('#toString()', () => {
+    it('should return a format like "TN:<testName>"', () => {
+      expect(String(new Report)).to.be.empty;
 
-    const record = new Record('');
-    expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
-  }
-}
+      const record = new Record('');
+      expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
+    });
+  });
+});
