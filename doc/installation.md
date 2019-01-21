@@ -50,10 +50,10 @@ To install it, add this code snippet to the `<head>` of your HTML document:
 
 ```html
 <!-- jsDelivr -->
-<script src="https://cdn.jsdelivr.net/npm/@cedx/lcov/build/lcov.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@cedx/lcov/build/lcov.min.js"></script>
 
 <!-- UNPKG -->
-<script src="https://unpkg.com/@cedx/lcov/build/lcov.js"></script>
+<script src="https://unpkg.com/@cedx/lcov/build/lcov.min.js"></script>
 ```
 
 The classes of this library are exposed as `LCOV` property on the `window` global object:
