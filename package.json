@@ -28,9 +28,9 @@
     "source-map-support": "^0.5.10",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.1",
-    "typedoc": "^0.14.1",
-    "typescript": "^3.2.2",
-    "webpack": "^4.28.4",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   },
   "engines": {
