@@ -29,7 +29,7 @@ gulp.task('build', async () => {
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'lib', 'var/**/*', 'web']));
+gulp.task('clean', () => del(['.nyc_output', 'build', 'coverage', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /**
  * Uploads the results of the code coverage.
@@ -64,7 +64,9 @@ gulp.task('serve', () => _exec('http-server', ['example', '-o']));
 /**
  * Runs the test suites.
  */
-gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test:browser', () => _exec('karma', ['start']));
+gulp.task('test:node', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', gulp.parallel('test:browser', 'test:node'));
 
 /**
  * Upgrades the project to the latest revision.

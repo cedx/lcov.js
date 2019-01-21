@@ -2,6 +2,7 @@
 !/.vscode/
 
 /build/
+/coverage/
 /doc/api/
 /lib/
 /node_modules/
