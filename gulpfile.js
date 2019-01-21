@@ -84,7 +84,7 @@ gulp.task('upgrade', async () => {
  */
 gulp.task('watch', () => {
   gulp.watch('src/**/*.ts', {ignoreInitial: false}, gulp.task('build'));
-  gulp.watch('test/**/*.ts', gulp.task('test'));
+  gulp.watch('test/**/*.ts', gulp.task('test:node'));
 });
 
 /**
