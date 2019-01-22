@@ -1,5 +1,10 @@
 # Changelog
 
+## Version [5.0.0](https://github.com/cedx/lcov.js/compare/v4.8.0...v5.0.0)
+- Breaking change: the browser classes are exposed as `lcov` property instead of `LCOV`.
+- Replaced [Webpack](https://webpack.js.org) bundler by [Rollup](https://rollupjs.org) and [Babel Minify](https://github.com/babel/minify).
+- Updated the package dependencies.
+
 ## Version [4.8.0](https://github.com/cedx/lcov.js/compare/v4.7.0...v4.8.0)
 - Updated the package dependencies.
 - Updated the URL of the Git repository.

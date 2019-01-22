@@ -1,5 +1,5 @@
 site_name: LCOV Reports for JS
-site_description: Parse and format LCOV coverage reports, in JavaScript.
+site_description: Parse and format LCOV coverage reports, in JavaScript.  The best way to share your code coverage stats.
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://dev.belin.io/lcov.js
 
