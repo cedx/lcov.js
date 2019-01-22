@@ -1,12 +1,11 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 
 /**
  * Tests the features of the `Record` class.
  */
-describe('RecordTest', () => {
+describe('Record', () => {
 
   /**
    * Tests the `Record.fromJson()` method.

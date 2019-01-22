@@ -1,12 +1,11 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
 import {FunctionCoverage, FunctionData} from '../src';
 
 /**
  * Tests the features of the `FunctionCoverage` class.
  */
-describe('FunctionCoverageTest', () => {
+describe('FunctionCoverage', () => {
 
   /**
    * Tests the `FunctionCoverage.fromJson()` method.
@@ -79,7 +78,7 @@ describe('FunctionCoverageTest', () => {
 /**
  * Tests the features of the `FunctionData` class.
  */
-describe('FunctionDataTest', () => {
+describe('FunctionData', () => {
 
   /**
    * Tests the `FunctionData.fromJson()` method.

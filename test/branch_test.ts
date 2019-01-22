@@ -1,12 +1,11 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
 import {BranchCoverage, BranchData} from '../src';
 
 /**
  * Tests the features of the `BranchCoverage` class.
  */
-describe('BranchCoverageTest', () => {
+describe('BranchCoverage', () => {
 
   /**
    * Tests the `BranchCoverage.fromJson()` method.
@@ -77,7 +76,7 @@ describe('BranchCoverageTest', () => {
 /**
  * Tests the features of the `BranchData` class.
  */
-describe('BranchDataTest', () => {
+describe('BranchData', () => {
 
   /**
    * Tests the `BranchData.fromJson()` method.

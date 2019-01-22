@@ -1,12 +1,11 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
 import {LineCoverage, LineData} from '../src';
 
 /**
  * Tests the features of the `LineCoverage` class.
  */
-describe('LineCoverageTest', () => {
+describe('LineCoverage', () => {
 
   /**
    * Tests the `LineCoverage.fromJson()` method.
@@ -77,7 +76,7 @@ describe('LineCoverageTest', () => {
 /**
  * Tests the features of the `LineData` class.
  */
-describe('LineDataTest', () => {
+describe('LineData', () => {
 
   /**
    * Tests the `LineData.fromJson()` method.

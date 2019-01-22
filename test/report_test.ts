@@ -1,6 +1,5 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {suite, test} from 'mocha-typescript';
 import {
   BranchCoverage, BranchData,
   FunctionCoverage, FunctionData,
@@ -12,7 +11,7 @@ import {
 /**
  * Tests the features of the `Record` class.
  */
-describe('ReportTest', () => {
+describe('Report', () => {
 
   // A sample coverage report.
   const coverage = `
