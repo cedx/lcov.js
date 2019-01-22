@@ -11,7 +11,7 @@
 
     <script>
       // Import the classes.
-      const {FunctionCoverage, LineCoverage, LineData, Record, Report} = LCOV;
+      const {FunctionCoverage, LineCoverage, LineData, Record, Report} = window.lcov;
 
       // Format coverage data as LCOV report.
       const lineCoverage = new LineCoverage(2, 2, [

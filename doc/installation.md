@@ -56,10 +56,10 @@ To install it, add this code snippet to the `<head>` of your HTML document:
 <script src="https://unpkg.com/@cedx/lcov/build/lcov.min.js"></script>
 ```
 
-The classes of this library are exposed as `LCOV` property on the `window` global object:
+The classes of this library are exposed as `lcov` property on the `window` global object:
 
 ```html
 <script>
-  const {Record, Report, ...} = LCOV;
+  const {Record, Report, ...} = window.lcov;
 </script>
 ```
