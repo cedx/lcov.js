@@ -3,10 +3,10 @@
   "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
   "homepage": "https://dev.belin.io/lcov.js",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "lib/index",
   "name": "@cedx/lcov",
   "repository": "github:cedx/lcov.js",
-  "types": "./lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "version": "5.0.0",
   "author": {
     "email": "cedric@belin.io",
