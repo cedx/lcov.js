@@ -7,19 +7,17 @@ import {Token} from './token';
 export class LineCoverage {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'LineCoverage';
+
+  /**
    * Creates a new line coverage.
    * @param found The number of lines found.
    * @param hit The number of lines found.
    * @param data The coverage data.
    */
   constructor(public found: number = 0, public hit: number = 0, public data: LineData[] = []) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'LineCoverage';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.
@@ -64,19 +62,17 @@ export class LineCoverage {
 export class LineData {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'LineData';
+
+  /**
    * Creates a new line data.
    * @param lineNumber The line number.
    * @param executionCount The execution count.
    * @param checksum The data checksum.
    */
   constructor(public lineNumber: number, public executionCount: number = 0, public checksum: string = '') {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'LineData';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.

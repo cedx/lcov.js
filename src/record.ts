@@ -10,6 +10,11 @@ import {Token} from './token';
 export class Record {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'Record';
+
+  /**
    * The branch coverage.
    */
   branches: BranchCoverage | null;
@@ -34,13 +39,6 @@ export class Record {
     this.branches = branches;
     this.functions = functions;
     this.lines = lines;
-  }
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'Record';
   }
 
   /**

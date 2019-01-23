@@ -7,19 +7,17 @@ import {Token} from './token';
 export class FunctionCoverage {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'FunctionCoverage';
+
+  /**
    * Creates a new function coverage.
    * @param found The number of functions found.
    * @param hit The number of functions found.
    * @param data The coverage data.
    */
   constructor(public found: number = 0, public hit: number = 0, public data: FunctionData[] = []) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'FunctionCoverage';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.
@@ -65,19 +63,17 @@ export class FunctionCoverage {
 export class FunctionData {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'FunctionData';
+
+  /**
    * Creates a new function data.
    * @param functionName The function name.
    * @param lineNumber The line number of the function start.
    * @param executionCount The execution count.
    */
   constructor(public functionName: string, public lineNumber: number, public executionCount: number = 0) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'FunctionData';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.

@@ -7,19 +7,17 @@ import {Token} from './token';
 export class BranchCoverage {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'BranchCoverage';
+
+  /**
    * Creates a new branch coverage.
    * @param found The number of branches found.
    * @param hit The number of branches found.
    * @param data The coverage data.
    */
   constructor(public found: number = 0, public hit: number = 0, public data: BranchData[] = []) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'BranchCoverage';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.
@@ -64,6 +62,11 @@ export class BranchCoverage {
 export class BranchData {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'BranchData';
+
+  /**
    * Creates a new branch data.
    * @param lineNumber The line number.
    * @param blockNumber The block number.
@@ -71,13 +74,6 @@ export class BranchData {
    * @param taken A number indicating how often this branch was taken.
    */
   constructor(public lineNumber: number, public blockNumber: number, public branchNumber: number, public taken: number = 0) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'BranchData';
-  }
 
   /**
    * Creates a new branch data from the specified JSON map.

@@ -38,18 +38,16 @@ export class LcovError extends SyntaxError {
 export class Report {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'Report';
+
+  /**
    * Creates a new report.
    * @param testName The test name.
    * @param records The record list.
    */
   constructor(public testName: string = '', public records: Record[] = []) {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'Report';
-  }
 
   /**
    * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
