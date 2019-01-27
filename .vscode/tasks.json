@@ -4,12 +4,22 @@
     {
       "group": {"isDefault": true, "kind": "build"},
       "problemMatcher": [],
+      "task": "default",
+      "type": "gulp"
+    },
+    {
+      "problemMatcher": [],
       "task": "build",
       "type": "gulp"
     },
     {
       "problemMatcher": [],
       "task": "clean",
+      "type": "gulp"
+    },
+    {
+      "problemMatcher": [],
+      "task": "coverage",
       "type": "gulp"
     },
     {
