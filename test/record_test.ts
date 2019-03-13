@@ -13,7 +13,7 @@ describe('Record', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
-      expect(record).to.be.instanceof(Record);
+      expect(record).to.be.an.instanceof(Record);
       expect(record.branches).to.be.null;
       expect(record.functions).to.be.null;
       expect(record.lines).to.be.null;
@@ -28,10 +28,10 @@ describe('Record', () => {
         sourceFile: '/home/cedx/lcov.js'
       });
 
-      expect(record).to.be.instanceof(Record);
-      expect(record.branches).to.be.instanceof(BranchCoverage);
-      expect(record.functions).to.be.instanceof(FunctionCoverage);
-      expect(record.lines).to.be.instanceof(LineCoverage);
+      expect(record).to.be.an.instanceof(Record);
+      expect(record.branches).to.be.an.instanceof(BranchCoverage);
+      expect(record.functions).to.be.an.instanceof(FunctionCoverage);
+      expect(record.lines).to.be.an.instanceof(LineCoverage);
       expect(record.sourceFile).to.equal('/home/cedx/lcov.js');
     });
   });

@@ -13,7 +13,7 @@ describe('LineCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
-      expect(coverage).to.be.instanceof(LineCoverage);
+      expect(coverage).to.be.an.instanceof(LineCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
       expect(coverage.hit).to.equal(0);
@@ -26,9 +26,9 @@ describe('LineCoverage', () => {
         hit: 11
       });
 
-      expect(coverage).to.be.instanceof(LineCoverage);
+      expect(coverage).to.be.an.instanceof(LineCoverage);
       expect(coverage.data).to.be.an('array').and.have.lengthOf(1);
-      expect(coverage.data[0]).to.be.instanceof(LineData);
+      expect(coverage.data[0]).to.be.an.instanceof(LineData);
       expect(coverage.data[0].lineNumber).to.equal(127);
 
       expect(coverage.found).to.equal(23);
@@ -84,7 +84,7 @@ describe('LineData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});
-      expect(data).to.be.instanceof(LineData);
+      expect(data).to.be.an.instanceof(LineData);
       expect(data.checksum).to.be.empty;
       expect(data.executionCount).to.equal(0);
       expect(data.lineNumber).to.equal(0);
@@ -97,7 +97,7 @@ describe('LineData', () => {
         lineNumber: 127
       });
 
-      expect(data).to.be.instanceof(LineData);
+      expect(data).to.be.an.instanceof(LineData);
       expect(data.checksum).to.equal('ed076287532e86365e841e92bfc50d8c');
       expect(data.executionCount).to.equal(3);
       expect(data.lineNumber).to.equal(127);

@@ -13,7 +13,7 @@ describe('FunctionCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = FunctionCoverage.fromJson({});
-      expect(coverage).to.be.instanceof(FunctionCoverage);
+      expect(coverage).to.be.an.instanceof(FunctionCoverage);
       expect(coverage.data).to.be.an('array').and.be.empty;
       expect(coverage.found).to.equal(0);
       expect(coverage.hit).to.equal(0);
@@ -26,9 +26,9 @@ describe('FunctionCoverage', () => {
         hit: 11
       });
 
-      expect(coverage).to.be.instanceof(FunctionCoverage);
+      expect(coverage).to.be.an.instanceof(FunctionCoverage);
       expect(coverage.data).to.be.an('array').and.have.lengthOf(1);
-      expect(coverage.data[0]).to.be.instanceof(FunctionData);
+      expect(coverage.data[0]).to.be.an.instanceof(FunctionData);
       expect(coverage.data[0].lineNumber).to.equal(127);
 
       expect(coverage.found).to.equal(23);
@@ -86,7 +86,7 @@ describe('FunctionData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = FunctionData.fromJson({});
-      expect(data).to.be.instanceof(FunctionData);
+      expect(data).to.be.an.instanceof(FunctionData);
       expect(data.executionCount).to.equal(0);
       expect(data.functionName).to.be.empty;
       expect(data.lineNumber).to.equal(0);
@@ -99,7 +99,7 @@ describe('FunctionData', () => {
         lineNumber: 127
       });
 
-      expect(data).to.be.instanceof(FunctionData);
+      expect(data).to.be.an.instanceof(FunctionData);
       expect(data.executionCount).to.equal(3);
       expect(data.functionName).to.equal('main');
       expect(data.lineNumber).to.equal(127);

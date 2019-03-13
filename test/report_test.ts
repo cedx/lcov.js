@@ -91,7 +91,7 @@ end_of_record
 
     it('should contain three records', () => {
       expect(report.records).to.have.lengthOf(3);
-      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.records[0]).to.be.an.instanceof(Record);
       expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
       expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
       expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
@@ -103,7 +103,7 @@ end_of_record
       expect(branches.hit).to.equal(4);
 
       expect(branches.data).to.have.lengthOf(4);
-      expect(branches.data[0]).to.be.instanceof(BranchData);
+      expect(branches.data[0]).to.be.an.instanceof(BranchData);
       expect(branches.data[0].lineNumber).to.equal(8);
     });
 
@@ -113,7 +113,7 @@ end_of_record
       expect(functions.hit).to.equal(1);
 
       expect(functions.data).to.have.lengthOf(1);
-      expect(functions.data[0]).to.be.instanceof(FunctionData);
+      expect(functions.data[0]).to.be.an.instanceof(FunctionData);
       expect(functions.data[0].functionName).to.equal('func1');
     });
 
@@ -123,7 +123,7 @@ end_of_record
       expect(lines.hit).to.equal(9);
 
       expect(lines.data).to.have.lengthOf(9);
-      expect(lines.data[0]).to.be.instanceof(LineData);
+      expect(lines.data[0]).to.be.an.instanceof(LineData);
       expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
     });
 
@@ -142,7 +142,7 @@ end_of_record
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
-      expect(report).to.be.instanceof(Report);
+      expect(report).to.be.an.instanceof(Report);
       expect(report.records).to.be.an('array').and.be.empty;
       expect(report.testName).to.be.empty;
     });
@@ -153,9 +153,9 @@ end_of_record
         testName: 'LcovTest'
       });
 
-      expect(report).to.be.instanceof(Report);
+      expect(report).to.be.an.instanceof(Report);
       expect(report.records).to.be.an('array').and.have.lengthOf(1);
-      expect(report.records[0]).to.be.instanceof(Record);
+      expect(report.records[0]).to.be.an.instanceof(Record);
       expect(report.testName).to.equal('LcovTest');
     });
   });
