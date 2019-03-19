@@ -7,11 +7,6 @@ import {Token} from './token';
 export class BranchCoverage {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'BranchCoverage';
-
-  /**
    * Creates a new branch coverage.
    * @param found The number of branches found.
    * @param hit The number of branches found.
@@ -60,11 +55,6 @@ export class BranchCoverage {
  * Provides details for branch coverage.
  */
 export class BranchData {
-
-  /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'BranchData';
 
   /**
    * Creates a new branch data.

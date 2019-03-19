@@ -10,11 +10,6 @@ import {Token} from './token';
 export class Record {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Record';
-
-  /**
    * The branch coverage.
    */
   branches: BranchCoverage | null;

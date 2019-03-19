@@ -7,11 +7,6 @@ import {Token} from './token';
 export class FunctionCoverage {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'FunctionCoverage';
-
-  /**
    * Creates a new function coverage.
    * @param found The number of functions found.
    * @param hit The number of functions found.
@@ -61,11 +56,6 @@ export class FunctionCoverage {
  * Provides details for function coverage.
  */
 export class FunctionData {
-
-  /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'FunctionData';
 
   /**
    * Creates a new function data.

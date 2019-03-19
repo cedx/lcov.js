@@ -38,11 +38,6 @@ export class LcovError extends SyntaxError {
 export class Report {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Report';
-
-  /**
    * Creates a new report.
    * @param testName The test name.
    * @param records The record list.

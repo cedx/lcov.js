@@ -7,11 +7,6 @@ import {Token} from './token';
 export class LineCoverage {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'LineCoverage';
-
-  /**
    * Creates a new line coverage.
    * @param found The number of lines found.
    * @param hit The number of lines found.
@@ -60,11 +55,6 @@ export class LineCoverage {
  * Provides details for line coverage.
  */
 export class LineData {
-
-  /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'LineData';
 
   /**
    * Creates a new line data.
