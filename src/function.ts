@@ -20,7 +20,7 @@ export class FunctionCoverage {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): FunctionCoverage {
-    return new this(
+    return new FunctionCoverage(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(FunctionData.fromJson) : []
@@ -71,7 +71,7 @@ export class FunctionData {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): FunctionData {
-    return new this(
+    return new FunctionData(
       typeof map.functionName == 'string' ? map.functionName : '',
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0

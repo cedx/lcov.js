@@ -20,7 +20,7 @@ export class BranchCoverage {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): BranchCoverage {
-    return new this(
+    return new BranchCoverage(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(BranchData.fromJson) : []
@@ -71,7 +71,7 @@ export class BranchData {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): BranchData {
-    return new this(
+    return new BranchData(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
       Number.isInteger(map.branchNumber) ? map.branchNumber : 0,

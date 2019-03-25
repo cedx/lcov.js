@@ -42,7 +42,7 @@ export class Record {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): Record {
-    return new this(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
+    return new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
       branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
       functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
       lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines) : null

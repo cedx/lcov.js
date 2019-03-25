@@ -51,7 +51,7 @@ export class Report {
    * @throws {LcovError} A parsing error occurred.
    */
   static fromCoverage(coverage: string): Report {
-    const report = new this;
+    const report = new Report;
 
     try {
       let record!: Record;
@@ -156,7 +156,7 @@ export class Report {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): Report {
-    return new this(
+    return new Report(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(Record.fromJson) : []
     );

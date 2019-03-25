@@ -20,7 +20,7 @@ export class LineCoverage {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): LineCoverage {
-    return new this(
+    return new LineCoverage(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
       Array.isArray(map.data) ? map.data.map(LineData.fromJson) : []
@@ -70,7 +70,7 @@ export class LineData {
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonMap): LineData {
-    return new this(
+    return new LineData(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
       typeof map.checksum == 'string' ? map.checksum : ''
