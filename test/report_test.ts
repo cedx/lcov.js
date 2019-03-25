@@ -82,7 +82,7 @@ end_of_record
   /**
    * Tests the `Report.fromCoverage()` method.
    */
-  describe('.FromCoverage()', () => {
+  describe('.fromCoverage()', () => {
     const report = Report.fromCoverage(coverage);
 
     it('should have a test name', () => {
