@@ -158,7 +158,7 @@ export class Report {
   static fromJson(map: JsonMap): Report {
     return new this(
       typeof map.testName == 'string' ? map.testName : '',
-      Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item)) : []
+      Array.isArray(map.records) ? map.records.map(Record.fromJson) : []
     );
   }
 

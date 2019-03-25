@@ -23,7 +23,7 @@ export class FunctionCoverage {
     return new this(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
-      Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJson(item)) : []
+      Array.isArray(map.data) ? map.data.map(FunctionData.fromJson) : []
     );
   }
 
