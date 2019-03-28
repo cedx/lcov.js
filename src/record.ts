@@ -77,7 +77,7 @@ export class Record {
 }
 
 /**
- * Defines the options of a `Record` instance.
+ * Defines the options of a [[Record` instance.
  */
 export interface RecordOptions {
 
