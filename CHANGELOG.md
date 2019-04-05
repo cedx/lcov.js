@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [5.1.0](https://github.com/cedx/lcov.js/compare/v5.0.0...v5.1.0)
+- Added support for [ECMAScript modules](https://nodejs.org/api/esm.html).
+- Updated the package dependencies.
+
 ## Version [5.0.0](https://github.com/cedx/lcov.js/compare/v4.8.0...v5.0.0)
 - Breaking change: the browser classes are exposed as `lcov` property instead of `LCOV`.
 - Replaced [Webpack](https://webpack.js.org) bundler by [Rollup](https://rollupjs.org) and [Babel Minify](https://github.com/babel/minify).
