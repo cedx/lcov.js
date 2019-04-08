@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [5.1.1](https://github.com/cedx/lcov.js/compare/v5.1.0...v5.1.1)
+- Fixed the [GitHub issue #3](https://github.com/cedx/lcov.js/issues/3): the browser bundle was not deployed on CDNs.
+
 ## Version [5.1.0](https://github.com/cedx/lcov.js/compare/v5.0.0...v5.1.0)
 - Added support for [ECMAScript modules](https://nodejs.org/api/esm.html).
 - Updated the package dependencies.
