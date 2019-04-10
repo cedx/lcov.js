@@ -10,10 +10,15 @@ module.exports = config => config.set({
     include: ['test/**/*.ts'],
     tsconfig: 'tsconfig.json'
   },
+  plugins: [
+    require('karma-firefox-launcher'),
+    require('karma-mocha'),
+    require('karma-typescript')
+  ],
   preprocessors: {
     'src/**/*.ts': ['karma-typescript'],
     'test/**/*.ts': ['karma-typescript']
   },
-  reporters: ['progress', 'karma-typescript'],
+  reporters: ['progress'],
   singleRun: true
 });
