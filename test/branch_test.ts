@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {BranchCoverage, BranchData} from '../src';
 
 /**
- * Tests the features of the `BranchCoverage` class.
+ * Tests the features of the [[BranchCoverage]] class.
  */
 describe('BranchCoverage', () => {
 
@@ -74,7 +74,7 @@ describe('BranchCoverage', () => {
 });
 
 /**
- * Tests the features of the `BranchData` class.
+ * Tests the features of the [[BranchData]] class.
  */
 describe('BranchData', () => {
 

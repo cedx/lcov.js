@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {LineCoverage, LineData} from '../src';
 
 /**
- * Tests the features of the `LineCoverage` class.
+ * Tests the features of the [[LineCoverage]] class.
  */
 describe('LineCoverage', () => {
 
@@ -74,7 +74,7 @@ describe('LineCoverage', () => {
 });
 
 /**
- * Tests the features of the `LineData` class.
+ * Tests the features of the [[LineData]] class.
  */
 describe('LineData', () => {
 

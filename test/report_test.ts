@@ -9,7 +9,7 @@ import {
 } from '../src';
 
 /**
- * Tests the features of the `Record` class.
+ * Tests the features of the [[Report]] class.
  */
 describe('Report', () => {
 

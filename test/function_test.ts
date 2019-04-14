@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {FunctionCoverage, FunctionData} from '../src';
 
 /**
- * Tests the features of the `FunctionCoverage` class.
+ * Tests the features of the [[FunctionCoverage]] class.
  */
 describe('FunctionCoverage', () => {
 
@@ -76,7 +76,7 @@ describe('FunctionCoverage', () => {
 });
 
 /**
- * Tests the features of the `FunctionData` class.
+ * Tests the features of the [[FunctionData]] class.
  */
 describe('FunctionData', () => {
 

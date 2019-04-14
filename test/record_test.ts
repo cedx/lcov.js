@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 
 /**
- * Tests the features of the `Record` class.
+ * Tests the features of the [[Record]] class.
  */
 describe('Record', () => {
 
