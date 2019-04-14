@@ -68,7 +68,11 @@ task('serve', () => _exec('http-server', ['example', '-o']));
 /**
  * Runs the test suites.
  */
-task('test:browser', () => _exec('karma', ['start', 'test/karma.conf.js']));
+task('test:browser', async () => {
+  await _exec('karma', ['start', 'test/karma.conf.js']);
+  return del('test/coverage');
+});
+
 task('test:node', () => _exec('nyc', [
   '--nycrc-path=test/.nycrc',
   normalize('node_modules/.bin/mocha'),
