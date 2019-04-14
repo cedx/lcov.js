@@ -1,9 +1,13 @@
 dist: xenial
+env: [TEST_ENV=browser, TEST_ENV=node]
 language: node_js
 node_js: [10, 11]
 notifications: {email: false}
 
-install: npm install
-before_script: npm --global install @cedx/coveralls
-script: npm test
+install:
+  - npm install --global @cedx/coveralls
+  - npm install --global gulp-cli
+  - npm install
+
+script: gulp test:${TEST_ENV}
 after_success: coveralls var/lcov.info

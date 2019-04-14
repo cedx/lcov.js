@@ -53,6 +53,6 @@
     "coverage": "gulp coverage",
     "prepare": "gulp build",
     "start": "gulp watch",
-    "test": "gulp test:node"
+    "test": "gulp test"
   }
 }
