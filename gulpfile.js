@@ -21,7 +21,7 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
  * Builds the project.
  */
 task('build:browser', async () => {
-  await _exec('rollup', ['--config=rollup.config.js']);
+  await _exec('rollup', ['--config=src/rollup.config.js']);
   return _exec('minify', ['build/lcov.js', '--out-file=build/lcov.min.js']);
 });
 
