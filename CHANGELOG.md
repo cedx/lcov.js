@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [5.2.0](https://github.com/cedx/lcov.js/compare/v5.1.1...v5.2.0)
+- Modified the package layout.
+- Updated the package dependencies.
+
 ## Version [5.1.1](https://github.com/cedx/lcov.js/compare/v5.1.0...v5.1.1)
 - Fixed the [GitHub issue #3](https://github.com/cedx/lcov.js/issues/3): the browser bundle was not deployed on CDNs.
 

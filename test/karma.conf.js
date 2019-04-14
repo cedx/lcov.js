@@ -4,7 +4,7 @@ module.exports = config => config.set({
   frameworks: ['mocha', 'karma-typescript'],
   karmaTypescriptConfig: {
     coverageOptions: {instrumentation: false},
-    include: ['test/**/*_test.ts'],
+    include: ['**/*_test.ts'],
     tsconfig: '../tsconfig.json'
   },
   plugins: [
