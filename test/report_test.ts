@@ -8,9 +8,7 @@ import {
   Record, Report
 } from '../src';
 
-/**
- * Tests the features of the [[Report]] class.
- */
+/** Tests the features of the [[Report]] class. */
 describe('Report', () => {
 
   // A sample coverage report.
@@ -79,9 +77,7 @@ LH:7
 end_of_record
 `;
 
-  /**
-   * Tests the `Report.fromCoverage()` method.
-   */
+  /** Tests the `Report.fromCoverage()` method. */
   describe('.fromCoverage()', () => {
     const report = Report.fromCoverage(coverage);
 
@@ -136,9 +132,7 @@ end_of_record
     });
   });
 
-  /**
-   * Tests the `Report.fromJson()` method.
-   */
+  /** Tests the `Report.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
@@ -160,9 +154,7 @@ end_of_record
     });
   });
 
-  /**
-   * Tests the `Report#toJSON()` method.
-   */
+  /** Tests the `Report#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new Report).toJSON();
@@ -180,9 +172,7 @@ end_of_record
     });
   });
 
-  /**
-   * Tests the `Report#toString()` method.
-   */
+  /** Tests the `Report#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;

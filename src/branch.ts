@@ -1,9 +1,7 @@
 import {JsonMap} from './map';
 import {Token} from './token';
 
-/**
- * Provides the coverage data of branches.
- */
+/** Provides the coverage data of branches. */
 export class BranchCoverage {
 
   /**
@@ -51,9 +49,7 @@ export class BranchCoverage {
   }
 }
 
-/**
- * Provides details for branch coverage.
- */
+/** Provides details for branch coverage. */
 export class BranchData {
 
   /**

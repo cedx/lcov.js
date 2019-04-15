@@ -2,14 +2,10 @@
 import {expect} from 'chai';
 import {FunctionCoverage, FunctionData} from '../src';
 
-/**
- * Tests the features of the [[FunctionCoverage]] class.
- */
+/** Tests the features of the [[FunctionCoverage]] class. */
 describe('FunctionCoverage', () => {
 
-  /**
-   * Tests the `FunctionCoverage.fromJson()` method.
-   */
+  /** Tests the `FunctionCoverage.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = FunctionCoverage.fromJson({});
@@ -36,9 +32,7 @@ describe('FunctionCoverage', () => {
     });
   });
 
-  /**
-   * Tests the `FunctionCoverage#toJSON()` method.
-   */
+  /** Tests the `FunctionCoverage#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new FunctionCoverage).toJSON();
@@ -62,9 +56,7 @@ describe('FunctionCoverage', () => {
     });
   });
 
-  /**
-   * Tests the `FunctionCoverage#toString()` method.
-   */
+  /** Tests the `FunctionCoverage#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "FNF:<found>\\\\n,FNH:<hit>"', () => {
       expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
@@ -75,14 +67,10 @@ describe('FunctionCoverage', () => {
   });
 });
 
-/**
- * Tests the features of the [[FunctionData]] class.
- */
+/** Tests the features of the [[FunctionData]] class. */
 describe('FunctionData', () => {
 
-  /**
-   * Tests the `FunctionData.fromJson()` method.
-   */
+  /** Tests the `FunctionData.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = FunctionData.fromJson({});
@@ -106,9 +94,7 @@ describe('FunctionData', () => {
     });
   });
 
-  /**
-   * Tests the `FunctionData#toJSON()` method.
-   */
+  /** Tests the `FunctionData#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new FunctionData('', 0).toJSON();
@@ -127,9 +113,7 @@ describe('FunctionData', () => {
     });
   });
 
-  /**
-   * Tests the `FunctionData#toString()` method.
-   */
+  /** Tests the `FunctionData#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
       expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');

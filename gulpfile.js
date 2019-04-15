@@ -11,15 +11,10 @@ const _path = 'PATH' in process.env ? process.env.PATH : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
-/**
- * The file patterns providing the list of source files.
- * @type {string[]}
- */
+/** @type {string[]} The file patterns providing the list of source files. */
 const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
-/**
- * Builds the project.
- */
+/** Builds the project. */
 task('build:browser', async () => {
   await _exec('rollup', ['--config=src/rollup.config.js']);
   return _exec('minify', ['build/lcov.js', '--out-file=build/lcov.min.js']);
@@ -30,19 +25,13 @@ task('build:esm', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
 task('build:rename', () => src('lib/**/*.js').pipe(rename({extname: '.mjs'})).pipe(dest('lib')));
 task('build', series('build:esm', 'build:rename', 'build:cjs', 'build:browser'));
 
-/**
- * Deletes all generated files and reset any saved state.
- */
+/** Deletes all generated files and reset any saved state. */
 task('clean', () => del(['.nyc_output', 'build', 'coverage', 'doc/api', 'lib', 'var/**/*', 'web']));
 
-/**
- * Uploads the results of the code coverage.
- */
+/** Uploads the results of the code coverage. */
 task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 
-/**
- * Builds the documentation.
- */
+/** Builds the documentation. */
 task('doc', async () => {
   for (const path of ['CHANGELOG.md', 'LICENSE.md']) await promises.copyFile(path, `doc/about/${path.toLowerCase()}`);
   await _exec('typedoc', ['--options', 'doc/typedoc.js']);
@@ -50,14 +39,10 @@ task('doc', async () => {
   return del(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yml', 'web/typedoc.js']);
 });
 
-/**
- * Fixes the coding standards issues.
- */
+/** Fixes the coding standards issues. */
 task('fix', () => _exec('tslint', ['--fix', ...sources]));
 
-/**
- * Performs the static analysis of source code.
- */
+/** Performs the static analysis of source code. */
 task('lint', () => _exec('tslint', sources));
 
 /**
@@ -65,9 +50,7 @@ task('lint', () => _exec('tslint', sources));
  */
 task('serve', () => _exec('http-server', ['example', '-o']));
 
-/**
- * Runs the test suites.
- */
+/** Runs the test suites. */
 task('test:browser', async () => {
   if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
   await _exec('karma', ['start', 'test/karma.conf.js']);
@@ -83,9 +66,7 @@ task('test:node', () => _exec('nyc', [
 
 task('test', parallel('test:browser', 'test:node'));
 
-/**
- * Upgrades the project to the latest revision.
- */
+/** Upgrades the project to the latest revision. */
 task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
@@ -94,17 +75,13 @@ task('upgrade', async () => {
   return _exec('npm', ['update', '--dev']);
 });
 
-/**
- * Watches for file changes.
- */
+/** Watches for file changes. */
 task('watch', () => {
   watch('src/**/*.ts', {ignoreInitial: false}, task('build'));
   watch('test/**/*.ts', task('test:node'));
 });
 
-/**
- * Runs the default tasks.
- */
+/** Runs the default tasks. */
 task('default', task('build'));
 
 /**

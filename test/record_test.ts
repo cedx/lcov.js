@@ -2,14 +2,10 @@
 import {expect} from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
 
-/**
- * Tests the features of the [[Record]] class.
- */
+/** Tests the features of the [[Record]] class. */
 describe('Record', () => {
 
-  /**
-   * Tests the `Record.fromJson()` method.
-   */
+  /** Tests the `Record.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
@@ -36,9 +32,7 @@ describe('Record', () => {
     });
   });
 
-  /**
-   * Tests the `Record#toJSON()` method.
-   */
+  /** Tests the `Record#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new Record('').toJSON();
@@ -65,9 +59,7 @@ describe('Record', () => {
     });
   });
 
-  /**
-   * Tests the `Record#toString()` method.
-   */
+  /** Tests the `Record#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "SF:<sourceFile>\\\\n,end_of_record"', () => {
       expect(String(new Record(''))).to.equal('SF:\nend_of_record');

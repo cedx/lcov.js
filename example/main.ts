@@ -4,9 +4,7 @@
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
-/**
- * Formats coverage data as LCOV report.
- */
+/** Formats coverage data as LCOV report. */
 function formatReport(): void {
   const lineCoverage = new LineCoverage(2, 2, [
     new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
@@ -22,9 +20,7 @@ function formatReport(): void {
   console.log(report.toString());
 }
 
-/**
- * Parses a LCOV report to coverage data.
- */
+/** Parses a LCOV report to coverage data. */
 async function parseReport(): Promise<void> {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');

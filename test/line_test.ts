@@ -2,14 +2,10 @@
 import {expect} from 'chai';
 import {LineCoverage, LineData} from '../src';
 
-/**
- * Tests the features of the [[LineCoverage]] class.
- */
+/** Tests the features of the [[LineCoverage]] class. */
 describe('LineCoverage', () => {
 
-  /**
-   * Tests the `LineCoverage.fromJson()` method.
-   */
+  /** Tests the `LineCoverage.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
@@ -36,9 +32,7 @@ describe('LineCoverage', () => {
     });
   });
 
-  /**
-   * Tests the `LineCoverage#toJSON()` method.
-   */
+  /** Tests the `LineCoverage#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new LineCoverage).toJSON();
@@ -60,9 +54,7 @@ describe('LineCoverage', () => {
     });
   });
 
-  /**
-   * Tests the `LineCoverage#toString()` method.
-   */
+  /** Tests the `LineCoverage#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "LF:<found>\\\\n,LH:<hit>"', () => {
       expect(String(new LineCoverage)).to.equal('LF:0\nLH:0');
@@ -73,14 +65,10 @@ describe('LineCoverage', () => {
   });
 });
 
-/**
- * Tests the features of the [[LineData]] class.
- */
+/** Tests the features of the [[LineData]] class. */
 describe('LineData', () => {
 
-  /**
-   * Tests the `LineData.fromJson()` method.
-   */
+  /** Tests the `LineData.fromJson()` method. */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});
@@ -104,9 +92,7 @@ describe('LineData', () => {
     });
   });
 
-  /**
-   * Tests the `LineData#toJSON()` method.
-   */
+  /** Tests the `LineData#toJSON()` method. */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new LineData(0).toJSON();
@@ -125,9 +111,7 @@ describe('LineData', () => {
     });
   });
 
-  /**
-   * Tests the `LineData#toString()` method.
-   */
+  /** Tests the `LineData#toString()` method. */
   describe('#toString()', () => {
     it('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () => {
       expect(String(new LineData(0))).to.equal('DA:0,0');

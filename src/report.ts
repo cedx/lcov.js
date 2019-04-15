@@ -5,9 +5,7 @@ import {JsonMap} from './map';
 import {Record} from './record';
 import {Token} from './token';
 
-/**
- * An exception caused by a parsing error.
- */
+/** An exception caused by a parsing error. */
 export class LcovError extends SyntaxError {
 
   /**
@@ -32,9 +30,7 @@ export class LcovError extends SyntaxError {
   }
 }
 
-/**
- * Represents a trace file, that is a coverage report.
- */
+/** Represents a trace file, that is a coverage report. */
 export class Report {
 
   /**

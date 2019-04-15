@@ -4,24 +4,16 @@ import {LineCoverage} from './line';
 import {JsonMap} from './map';
 import {Token} from './token';
 
-/**
- * Provides the coverage data of a source file.
- */
+/** Provides the coverage data of a source file. */
 export class Record {
 
-  /**
-   * The branch coverage.
-   */
+  /** The branch coverage. */
   branches: BranchCoverage | null;
 
-  /**
-   * The function coverage.
-   */
+  /** The function coverage. */
   functions: FunctionCoverage | null;
 
-  /**
-   * The line coverage.
-   */
+  /** The line coverage. */
   lines: LineCoverage | null;
 
   /**
@@ -76,23 +68,15 @@ export class Record {
   }
 }
 
-/**
- * Defines the options of a [[Record` instance.
- */
+/** Defines the options of a [[Record` instance. */
 export interface RecordOptions {
 
-  /**
-   * The branch coverage.
-   */
+  /** The branch coverage. */
   branches: BranchCoverage | null;
 
-  /**
-   * The function coverage.
-   */
+  /** The function coverage. */
   functions: FunctionCoverage | null;
 
-  /**
-   * The line coverage.
-   */
+  /** The line coverage. */
   lines: LineCoverage | null;
 }

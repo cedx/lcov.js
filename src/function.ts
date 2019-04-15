@@ -1,9 +1,7 @@
 import {JsonMap} from './map';
 import {Token} from './token';
 
-/**
- * Provides the coverage data of functions.
- */
+/** Provides the coverage data of functions. */
 export class FunctionCoverage {
 
   /**
@@ -52,9 +50,7 @@ export class FunctionCoverage {
   }
 }
 
-/**
- * Provides details for function coverage.
- */
+/** Provides details for function coverage. */
 export class FunctionData {
 
   /**

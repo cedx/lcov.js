@@ -1,9 +1,7 @@
 import {JsonMap} from './map';
 import {Token} from './token';
 
-/**
- * Provides the coverage data of lines.
- */
+/** Provides the coverage data of lines. */
 export class LineCoverage {
 
   /**
@@ -51,9 +49,7 @@ export class LineCoverage {
   }
 }
 
-/**
- * Provides details for line coverage.
- */
+/** Provides details for line coverage. */
 export class LineData {
 
   /**
