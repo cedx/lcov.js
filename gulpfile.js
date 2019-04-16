@@ -6,13 +6,16 @@ const {dest, parallel, series, src, task, watch} = require('gulp');
 const rename = require('gulp-rename');
 const {delimiter, normalize, resolve} = require('path');
 
+/**
+ * The file patterns providing the list of source files.
+ * @type {string[]}
+ */
+const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
-
-/** @type {string[]} The file patterns providing the list of source files. */
-const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 /** Builds the project. */
 task('build:browser', async () => {
