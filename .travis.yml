@@ -1,3 +1,4 @@
+addons: {firefox: latest}
 dist: xenial
 env: [PLATFORM=browser, PLATFORM=node]
 language: node_js
@@ -10,4 +11,4 @@ install:
   - npm install
 
 script: gulp test:${PLATFORM}
-after_success: coveralls var/lcov.info
+after_success: npm run-script coverage
