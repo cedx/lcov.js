@@ -4,6 +4,7 @@ env: [PLATFORM=browser, PLATFORM=node]
 language: node_js
 node_js: '10'
 notifications: {email: false}
+os: [linux, osx, windows]
 
 install:
   - npm install --global @cedx/coveralls
