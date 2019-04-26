@@ -19,17 +19,6 @@ export class LcovError extends SyntaxError {
     this.name = 'LcovError';
   }
 
-  /**
-   * Returns a string representation of this object.
-   * @return The string representation of this object.
-   */
-  toString(): string {
-    const values = [`"${this.message}"`];
-    if (this.offset >= 0) values.push(`offset: ${this.offset}`);
-    return `${this.name}(${values.join(', ')})`;
-  }
-}
-
 /** Represents a trace file, that is a coverage report. */
 export class Report {
 
