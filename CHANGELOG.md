@@ -1,5 +1,13 @@
 # Changelog
 
+## Version [6.0.0](https://github.com/cedx/lcov.js/compare/v5.2.0...v6.0.0)
+- Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Replaced [TypeDoc](https://typedoc.org) documentation generator by [ESDoc](https://esdoc.org).
+- Replaced [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
+- Updated the package dependencies.
+
 ## Version [5.2.0](https://github.com/cedx/lcov.js/compare/v5.1.1...v5.2.0)
 - Modified the package layout.
 - Updated the package dependencies.
