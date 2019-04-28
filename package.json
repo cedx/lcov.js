@@ -3,11 +3,11 @@
   "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
   "homepage": "https://dev.belin.io/lcov.js",
   "license": "MIT",
-  "main": "lib/index",
-  "module": "lib/index.mjs",
+  "main": "lib/index.js",
   "name": "@cedx/lcov",
   "repository": "github:cedx/lcov.js",
-  "types": "lib/index.d.ts",
+  "type": "commonjs",
+  "types": "lib/types.d.ts",
   "version": "5.2.0",
   "author": {
     "email": "cedric@belin.io",
@@ -15,14 +15,15 @@
     "url": "https://belin.io"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^11.13.7",
     "babel-minify": "^0.5.0",
     "chai": "^4.2.0",
     "del": "^4.1.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.16.0",
+    "esm": "^3.2.22",
     "gulp": "^4.0.1",
-    "gulp-rename": "^1.4.0",
     "http-server": "^0.11.1",
     "karma": "^4.1.0",
     "karma-firefox-launcher": "^1.1.0",
@@ -31,12 +32,7 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.0",
     "rollup": "^1.10.1",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "source-map-support": "^0.5.12",
-    "ts-node": "^8.1.0",
-    "tslint": "^5.16.0",
-    "typedoc": "^0.14.2",
-    "typescript": "^3.4.5"
+    "rollup-plugin-node-resolve": "^4.2.3"
   },
   "engines": {
     "node": ">=12.0.0",
@@ -51,7 +47,6 @@
   ],
   "scripts": {
     "coverage": "gulp coverage",
-    "prepare": "gulp build",
     "start": "gulp watch",
     "test": "gulp test"
   }
