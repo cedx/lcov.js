@@ -1,5 +1,4 @@
 all: true
-extension: .ts
-include: [src/**/*.ts]
+include: [lib/**/*.js]
 report-dir: var
 reporter: [lcovonly]

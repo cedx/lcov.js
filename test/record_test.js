@@ -1,11 +1,10 @@
-/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src';
+import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../lib/index.js';
 
-/** Tests the features of the [[Record]] class. */
+/** @test {Record} */
 describe('Record', () => {
 
-  /** Tests the `Record.fromJson()` method. */
+  /** @test {Record.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
@@ -32,7 +31,7 @@ describe('Record', () => {
     });
   });
 
-  /** Tests the `Record#toJSON()` method. */
+  /** @test {Record#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new Record('').toJSON();
@@ -59,7 +58,7 @@ describe('Record', () => {
     });
   });
 
-  /** Tests the `Record#toString()` method. */
+  /** @test {Record#toString} */
   describe('#toString()', () => {
     it('should return a format like "SF:<sourceFile>\\\\n,end_of_record"', () => {
       expect(String(new Record(''))).to.equal('SF:\nend_of_record');

@@ -1,14 +1,7 @@
-/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {
-  BranchCoverage, BranchData,
-  FunctionCoverage, FunctionData,
-  LcovError,
-  LineCoverage, LineData,
-  Record, Report
-} from '../src';
+import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
-/** Tests the features of the [[Report]] class. */
+/** @test {Report} */
 describe('Report', () => {
 
   // A sample coverage report.
@@ -77,7 +70,7 @@ LH:7
 end_of_record
 `;
 
-  /** Tests the `Report.fromCoverage()` method. */
+  /** @test {Report.fromCoverage} */
   describe('.fromCoverage()', () => {
     const report = Report.fromCoverage(coverage);
 
@@ -94,7 +87,7 @@ end_of_record
     });
 
     it('should have detailed branch coverage', () => {
-      const branches = report.records[1].branches as BranchCoverage;
+      const {branches} = report.records[1]; // eslint-disable-line prefer-destructuring
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
 
@@ -104,7 +97,7 @@ end_of_record
     });
 
     it('should have detailed function coverage', () => {
-      const functions = report.records[1].functions as FunctionCoverage;
+      const {functions} = report.records[1]; // eslint-disable-line prefer-destructuring
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
 
@@ -114,7 +107,7 @@ end_of_record
     });
 
     it('should have detailed line coverage', () => {
-      const lines = report.records[1].lines as LineCoverage;
+      const {lines} = report.records[1]; // eslint-disable-line prefer-destructuring
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
 
@@ -132,7 +125,7 @@ end_of_record
     });
   });
 
-  /** Tests the `Report.fromJson()` method. */
+  /** @test {Report.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
@@ -154,7 +147,7 @@ end_of_record
     });
   });
 
-  /** Tests the `Report#toJSON()` method. */
+  /** @test {Report#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new Report).toJSON();
@@ -172,7 +165,7 @@ end_of_record
     });
   });
 
-  /** Tests the `Report#toString()` method. */
+  /** @test {Report#toString} */
   describe('#toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;
