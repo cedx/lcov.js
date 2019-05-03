@@ -8,7 +8,7 @@ import {delimiter, normalize, resolve} from 'path';
  * The file patterns providing the list of source files.
  * @type {string[]}
  */
-const sources = ['*.js', 'example', 'lib', 'test'];
+const sources = ['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'];
 
 // Shortcuts.
 const {parallel, task, watch} = gulp;
@@ -40,15 +40,10 @@ task('doc', async () => {
 });
 
 /** Fixes the coding standards issues. */
-task('fix', () => _exec('tslint', ['--config', 'etc/tslint.yaml', '--fix', ...sources]));
+task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sources]));
 
 /** Performs the static analysis of source code. */
-task('lint', () => _exec('tslint', ['--config', 'etc/tslint.yaml', ...sources]));
-
-/**
- * Starts the development server.
- */
-task('serve', () => _exec('http-server', ['example', '-o']));
+task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Runs the test suites. */
 task('test:browser', async () => {
@@ -56,7 +51,7 @@ task('test:browser', async () => {
   return _exec('karma', ['start', 'etc/karma.js']);
 });
 
-task('test:node', () => _exec('nyc', ['--nycrc-path=etc/nyc.yaml', 'node_modules/.bin/mocha', '--config=etc/mocha.yaml']));
+task('test:node', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
 task('test', parallel('test:browser', 'test:node'));
 
 /** Upgrades the project to the latest revision. */
@@ -78,7 +73,7 @@ task('default', task('build'));
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
  * @param {string[]} [args] The command arguments.
- * @param {Partial<SpawnOptions>} [options] The settings to customize how the process is spawned.
+ * @param {SpawnOptions} [options] The settings to customize how the process is spawned.
  * @return {Promise<void>} Completes when the command is finally terminated.
  */
 function _exec(command, args = [], options = {}) {
@@ -86,3 +81,18 @@ function _exec(command, args = [], options = {}) {
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : fulfill())
   );
 }
+
+/**
+ * @typedef {object} SpawnOptions
+ * @property {string} [argv0] Explicitly set the value of `argv[0]` sent to the child process.
+ * @property {string} [cwd] Current working directory of the child process.
+ * @property {boolean} [detached] Prepare child to run independently of its parent process.
+ * @property {object} [env] Environment key-value pairs.
+ * @property {number} [gid] Sets the group identity of the process.
+ * @property {boolean|string} [shell] If `true`, runs command inside of a shell. A different shell can be specified as a string.
+ * @property {Array|string} [stdio] Child's stdio configuration.
+ * @property {number} [timeout] In milliseconds the maximum amount of time the process is allowed to run.
+ * @property {number} [uid] Sets the user identity of the process.
+ * @property {boolean} [windowsHide] Hide the subprocess console window that would normally be created on Windows systems.
+ * @property {boolean} [windowsVerbatimArguments] No quoting or escaping of arguments is done on Windows.
+ */
