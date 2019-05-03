@@ -6,7 +6,6 @@
     {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
     {"name": "esdoc-standard-plugin", "option": {
       "accessor": {"access": ["public", "protected"]},
-      "test": {"source": "test"},
       "brand": {
         "description": "Parse and format to LCOV your code coverage reports, in JavaScript. The best way to share your code coverage stats.",
         "logo": "doc/img/favicon.ico",
