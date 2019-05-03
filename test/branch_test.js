@@ -1,10 +1,8 @@
 import {expect} from 'chai';
 import {BranchCoverage, BranchData} from '../lib/index.js';
 
-/** @test {BranchCoverage} */
+/** Tests the features of the `BranchCoverage` class. */
 describe('BranchCoverage', () => {
-
-  /** @test {BranchCoverage.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = BranchCoverage.fromJson({});
@@ -31,7 +29,6 @@ describe('BranchCoverage', () => {
     });
   });
 
-  /** @test {BranchCoverage#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new BranchCoverage).toJSON();
@@ -53,7 +50,6 @@ describe('BranchCoverage', () => {
     });
   });
 
-  /** @test {BranchCoverage#toString} */
   describe('#toString()', () => {
     it('should return a format like "BRF:<found>\\\\n,BRH:<hit>"', () => {
       expect(String(new BranchCoverage)).to.equal('BRF:0\nBRH:0');
@@ -64,10 +60,8 @@ describe('BranchCoverage', () => {
   });
 });
 
-/** @test {BranchData} */
+/** Tests the features of the `BranchData` class. */
 describe('BranchData', () => {
-
-  /** @test {BranchData.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = BranchData.fromJson({});
@@ -94,7 +88,6 @@ describe('BranchData', () => {
     });
   });
 
-  /** @test {BranchData#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new BranchData(0, 0, 0).toJSON();
@@ -115,7 +108,6 @@ describe('BranchData', () => {
     });
   });
 
-  /** @test {BranchData#toString} */
   describe('#toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
       expect(String(new BranchData(0, 0, 0))).to.equal('BRDA:0,0,0,-');

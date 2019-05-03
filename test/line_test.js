@@ -1,10 +1,8 @@
 import {expect} from 'chai';
 import {LineCoverage, LineData} from '../lib/index.js';
 
-/** @test {LineCoverage} */
+/** Tests the features of the `LineCoverage` class. */
 describe('LineCoverage', () => {
-
-  /** @test {LineCoverage.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
@@ -31,7 +29,6 @@ describe('LineCoverage', () => {
     });
   });
 
-  /** @test {LineCoverage#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new LineCoverage).toJSON();
@@ -53,7 +50,6 @@ describe('LineCoverage', () => {
     });
   });
 
-  /** @test {LineCoverage#toString} */
   describe('#toString()', () => {
     it('should return a format like "LF:<found>\\\\n,LH:<hit>"', () => {
       expect(String(new LineCoverage)).to.equal('LF:0\nLH:0');
@@ -64,10 +60,8 @@ describe('LineCoverage', () => {
   });
 });
 
-/** @test {LineData} */
+/** Tests the features of the `LineData` class. */
 describe('LineData', () => {
-
-  /** @test {LineData.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});
@@ -91,7 +85,6 @@ describe('LineData', () => {
     });
   });
 
-  /** @test {LineData#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new LineData(0).toJSON();
@@ -110,7 +103,6 @@ describe('LineData', () => {
     });
   });
 
-  /** @test {LineData#toString} */
   describe('#toString()', () => {
     it('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () => {
       expect(String(new LineData(0))).to.equal('DA:0,0');

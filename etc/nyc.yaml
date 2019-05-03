@@ -1,4 +1,0 @@
-all: true
-include: [lib/**/*.js]
-report-dir: var
-reporter: [lcovonly]

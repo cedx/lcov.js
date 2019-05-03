@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
-/** @test {Report} */
+/** Tests the features of the `Report` class. */
 describe('Report', () => {
 
   // A sample coverage report.
@@ -70,7 +70,6 @@ LH:7
 end_of_record
 `;
 
-  /** @test {Report.fromCoverage} */
   describe('.fromCoverage()', () => {
     const report = Report.fromCoverage(coverage);
 
@@ -125,7 +124,6 @@ end_of_record
     });
   });
 
-  /** @test {Report.fromJson} */
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
@@ -147,7 +145,6 @@ end_of_record
     });
   });
 
-  /** @test {Report#toJSON} */
   describe('#toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new Report).toJSON();
@@ -165,7 +162,6 @@ end_of_record
     });
   });
 
-  /** @test {Report#toString} */
   describe('#toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;
