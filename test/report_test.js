@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
-/** Tests the features of the `Report` class. */
+/** Tests the features of the {@link Report} class. */
 describe('Report', () => {
 
   // A sample coverage report.

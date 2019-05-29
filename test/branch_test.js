@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {BranchCoverage, BranchData} from '../lib/index.js';
 
-/** Tests the features of the `BranchCoverage` class. */
+/** Tests the features of the {@link BranchCoverage} class. */
 describe('BranchCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
@@ -60,7 +60,7 @@ describe('BranchCoverage', () => {
   });
 });
 
-/** Tests the features of the `BranchData` class. */
+/** Tests the features of the {@link BranchData} class. */
 describe('BranchData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {

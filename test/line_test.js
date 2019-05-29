@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {LineCoverage, LineData} from '../lib/index.js';
 
-/** Tests the features of the `LineCoverage` class. */
+/** Tests the features of the {@link LineCoverage} class. */
 describe('LineCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
@@ -60,7 +60,7 @@ describe('LineCoverage', () => {
   });
 });
 
-/** Tests the features of the `LineData` class. */
+/** Tests the features of the {@link LineData} class. */
 describe('LineData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
