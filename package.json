@@ -17,12 +17,10 @@
     "babel-minify": "^0.5.0",
     "chai": "^4.2.0",
     "del": "^4.1.1",
-    "esdoc": "^1.1.0",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.16.0",
     "esm": "^3.2.22",
     "gulp": "^4.0.2",
+    "jsdoc": "^3.6.2",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
@@ -30,6 +28,7 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "rollup": "^1.11.3"
+    "tidy-jsdoc": "^0.3.1"
   },
   "engines": {
     "node": ">=12.1.0",
