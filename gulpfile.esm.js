@@ -34,7 +34,7 @@ task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 /** Builds the documentation. */
 task('doc', async () => {
   for (const path of ['CHANGELOG.md', 'LICENSE.md']) await copyFile(path, `doc/about/${path.toLowerCase()}`);
-  await _exec('esdoc', ['-c', 'etc/esdoc.json']);
+  await _exec('jsdoc', ['--configure', 'etc/jsdoc.json']);
   await _exec('mkdocs', ['build', '--config-file=etc/mkdocs.yaml']);
   return del(['doc/about/changelog.md', 'doc/about/license.md']);
 });
@@ -46,7 +46,7 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Runs the test suites. */
-task('test:browser', async () => {
+task('test:browser', () => {
   if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
   return _exec('karma', ['start', 'etc/karma.js']);
 });
