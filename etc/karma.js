@@ -1,17 +1,21 @@
-const {join} = require('path');
-const sources = [join(__dirname, '../src/**/*.ts'), join(__dirname, '../test/**/*_test.ts')];
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
 
 module.exports = config => config.set({
+  basePath: require('path').resolve(__dirname, '..'),
   browsers: ['FirefoxHeadless'],
-  files: sources,
-  frameworks: ['mocha', 'karma-typescript'],
-  karmaTypescriptConfig: {
-    coverageOptions: {exclude: /_test\.ts$/i},
-    include: sources,
-    reports: {lcovonly: {directory: join(__dirname, '..'), filename: 'lcov.info', subdirectory: 'var'}},
-    tsconfig: '../tsconfig.json'
+  files: [
+    {pattern: 'lib/**/*.js', type: 'module'},
+    {pattern: 'test/**/*.js', type: 'module'}
+  ],
+  frameworks: ['mocha'],
+  preprocessors: {
+    '**/*.js': ['rollup']
   },
-  preprocessors: {[join(__dirname, '../**/*.ts')]: ['karma-typescript']},
-  reporters: ['progress', 'karma-typescript'],
+  reporters: ['progress'],
+  rollupPreprocessor: {
+    output: {format: 'iife', name: 'lcov', sourcemap: 'inline'},
+    plugins: [resolve(), commonjs()]
+  },
   singleRun: true
 });
