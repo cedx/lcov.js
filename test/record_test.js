@@ -1,8 +1,10 @@
-import {expect} from 'chai';
+import chai from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../lib/index.js';
 
 /** Tests the features of the {@link Record} class. */
 describe('Record', () => {
+  const {expect} = chai;
+
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
