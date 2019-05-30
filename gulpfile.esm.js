@@ -12,7 +12,7 @@ const sources = ['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'];
 
 // Shortcuts.
 const {parallel, task, watch} = gulp;
-const {copyFile} = promises;
+const {access, copyFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH : '';
@@ -29,7 +29,16 @@ task('build', async () => {
 task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
-task('coverage', () => _exec('coveralls', ['var/lcov.info']));
+task('coverage', async () => {
+  try {
+    await access('var/lcov.info');
+    return _exec('coveralls', ['var/lcov.info']);
+  }
+
+  catch {
+    return Promise.resolve();
+  }
+});
 
 /** Builds the documentation. */
 task('doc', async () => {

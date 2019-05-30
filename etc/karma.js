@@ -1,8 +1,9 @@
+const {resolve} = require('path');
 const commonjs = require('rollup-plugin-commonjs');
-const resolve = require('rollup-plugin-node-resolve');
+const nodeResolve = require('rollup-plugin-node-resolve');
 
 module.exports = config => config.set({
-  basePath: require('path').resolve(__dirname, '..'),
+  basePath: resolve(__dirname, '..'),
   browsers: ['FirefoxHeadless'],
   files: [
     {pattern: 'lib/**/*.js', type: 'module'},
@@ -10,12 +11,12 @@ module.exports = config => config.set({
   ],
   frameworks: ['mocha'],
   preprocessors: {
-    '**/*.js': ['rollup']
+    'test/**/*.js': ['rollup']
   },
   reporters: ['progress'],
   rollupPreprocessor: {
-    output: {format: 'iife', name: 'lcov', sourcemap: 'inline'},
-    plugins: [resolve(), commonjs()]
+    output: {format: 'iife', name: 'lcov'},
+    plugins: [nodeResolve(), commonjs()]
   },
   singleRun: true
 });
