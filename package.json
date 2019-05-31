@@ -38,6 +38,7 @@
   },
   "keywords": [
     "coverage",
+    "esm",
     "formatter",
     "lcov",
     "parser",
