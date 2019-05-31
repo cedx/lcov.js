@@ -1,4 +1,4 @@
-const {resolve} = require('path');
+const {normalize, resolve} = require('path');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 
@@ -16,7 +16,7 @@ module.exports = config => config.set({
   reporters: ['progress'],
   rollupPreprocessor: {
     onwarn: (warning, warn) => {
-      if (warning.code == 'CIRCULAR_DEPENDENCY' && warning.importer.includes('node_modules/chai')) return;
+      if (warning.code == 'CIRCULAR_DEPENDENCY' && warning.importer.includes(normalize('node_modules/chai'))) return;
       warn(warning);
     },
     output: {format: 'iife', name: 'lcov'},
