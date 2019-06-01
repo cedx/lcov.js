@@ -19,7 +19,7 @@ function formatReport() { // eslint-disable-line no-unused-vars
 
 /**
  * Parses a LCOV report to coverage data.
- * @return {Promise<void>} Completes when the program is terminated.
+ * @return {Promise} Completes when the program is terminated.
  */
 async function parseReport() { // eslint-disable-line no-unused-vars
   try {
