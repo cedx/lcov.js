@@ -73,7 +73,10 @@ task('upgrade', async () => {
 });
 
 /** Watches for file changes. */
-task('watch', () => watch('test/**/*.js', task('test')));
+task('watch', () => {
+  watch('lib/**/*.js', {ignoreInitial: false}, task('build'));
+  watch('test/**/*.js', task('test'));
+});
 
 /** Runs the default tasks. */
 task('default', task('build'));
