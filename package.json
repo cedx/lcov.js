@@ -45,6 +45,7 @@
   ],
   "scripts": {
     "coverage": "gulp coverage",
+    "prepack": "gulp build",
     "start": "gulp watch",
     "test": "gulp test"
   }
