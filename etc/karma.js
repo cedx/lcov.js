@@ -6,7 +6,6 @@ module.exports = config => config.set({
   basePath: resolve(__dirname, '..'),
   browsers: ['FirefoxHeadless'],
   files: [
-    {pattern: 'lib/**/*.js', type: 'module'},
     {pattern: 'test/**/*.js', type: 'module'}
   ],
   frameworks: ['mocha'],
