@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
 /** Formats coverage data as LCOV report. */
-function formatReport() { // eslint-disable-line no-unused-vars
+function formatReport() {
   const lineCoverage = new LineCoverage(2, 2, [
     new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
     new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
@@ -21,7 +22,7 @@ function formatReport() { // eslint-disable-line no-unused-vars
  * Parses a LCOV report to coverage data.
  * @return {Promise} Completes when the program is terminated.
  */
-async function parseReport() { // eslint-disable-line no-unused-vars
+async function parseReport() {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');
     const report = Report.fromCoverage(coverage);
