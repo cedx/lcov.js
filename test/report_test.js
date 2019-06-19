@@ -1,10 +1,7 @@
-import chai from 'chai';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
 /** Tests the features of the {@link Report} class. */
 describe('Report', () => {
-  const {expect} = chai;
-
   // A sample coverage report.
   const coverage = `
 TN:Example

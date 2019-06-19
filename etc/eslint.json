@@ -6,6 +6,9 @@
     "node": true
   },
   "extends": "eslint:recommended",
+  "globals": {
+    "expect": "readonly"
+  },
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module"

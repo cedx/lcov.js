@@ -2,6 +2,9 @@
   "check-leaks": true,
   "recursive": true,
   "reporter": "spec",
-  "require": "esm",
+  "require": [
+    "esm",
+    "chai/register-expect"
+  ],
   "ui": "bdd"
 }
