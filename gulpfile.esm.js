@@ -55,11 +55,7 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Runs the test suites. */
-task('test:browser', () => {
-  if (process.platform == 'win32') process.env.FIREFOX_BIN = 'C:\\Program Files\\Mozilla\\Firefox\\firefox.exe';
-  return _exec('karma', ['start', 'etc/karma.js']);
-});
-
+task('test:browser', () => _exec('karma', ['start', 'etc/karma.js']));
 task('test:node', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
 task('test', parallel('test:browser', 'test:node'));
 

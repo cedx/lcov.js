@@ -1,6 +1,6 @@
 module.exports = config => config.set({
   basePath: require('path').resolve(__dirname, '..'),
-  browsers: ['FirefoxHeadless'],
+  browsers: ['ChromeHeadless'],
   files: [
     {pattern: 'lib/**/*.js', type: 'module'},
     {pattern: 'test/**/*.js', type: 'module'}
