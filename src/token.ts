@@ -1,45 +1,42 @@
-/**
- * Provides the list of tokens supported by the parser.
- * @enum {string}
- */
-export const Token = Object.freeze({
+/** Provides the list of tokens supported by the parser. */
+export enum Token {
 
   /** The coverage data of a branch. */
-  branchesFound: 'BRF',
+  branchesFound = 'BRF',
 
   /** The number of branches found. */
-  branchesHit: 'BRH',
+  branchesHit = 'BRH',
 
   /** The number of branches hit. */
-  branchData: 'BRDA',
+  branchData = 'BRDA',
 
   /** The end of a section. */
-  endOfRecord: 'end_of_record',
+  endOfRecord = 'end_of_record',
 
   /** The coverage data of a function. */
-  functionData: 'FNDA',
+  functionData = 'FNDA',
 
   /** A function name. */
-  functionName: 'FN',
+  functionName = 'FN',
 
   /** The number of functions found. */
-  functionsFound: 'FNF',
+  functionsFound = 'FNF',
 
   /** The number of functions hit. */
-  functionsHit: 'FNH',
+  functionsHit = 'FNH',
 
   /** The coverage data of a line. */
-  lineData: 'DA',
+  lineData = 'DA',
 
   /** The number of lines found. */
-  linesFound: 'LF',
+  linesFound = 'LF',
 
   /** The number of lines hit. */
-  linesHit: 'LH',
+  linesHit = 'LH',
 
   /** The path to a source file. */
-  sourceFile: 'SF',
+  sourceFile = 'SF',
 
   /** A test name. */
-  testName: 'TN'
-});
+  testName = 'TN'
+}

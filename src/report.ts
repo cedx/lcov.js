@@ -1,38 +1,22 @@
-import {BranchCoverage, BranchData} from './branch.js';
-import {FunctionCoverage, FunctionData} from './function.js';
-import {LineCoverage, LineData} from './line.js';
-import {Record} from './record.js';
-import {Token} from './token.js';
+import {BranchCoverage, BranchData} from './branch';
+import {FunctionCoverage, FunctionData} from './function';
+import {JsonMap} from './json_map';
+import {LineCoverage, LineData} from './line';
+import {Record} from './record';
+import {Token} from './token';
 
 /** An exception caused by a parsing error. */
 export class LcovError extends SyntaxError {
 
   /**
    * Creates a new LCOV error.
-   * @param {string} message A message describing the error.
-   * @param {?string} [source] The actual source input which caused the error.
-   * @param {number} [offset] The offset in `source` where the error was detected.
+   * @param message A message describing the error.
+   * @param source The actual source input which caused the error.
+   * @param offset The offset in `source` where the error was detected.
    */
-  constructor(message, source = null, offset = -1) {
+  constructor(message: string, readonly source: string|null = null, readonly offset: number = -1) {
     super(message);
-
-    /**
-     * A name for the type of error.
-     * @type {string}
-     */
     this.name = 'LcovError';
-
-    /**
-     * The offset in `source` where the error was detected.
-     * @type {number}
-     */
-    this.offset = offset;
-
-    /**
-     * The actual source input which caused the error.
-     * @type {?string}
-     */
-    this.source = source;
   }
 }
 
@@ -41,35 +25,22 @@ export class Report {
 
   /**
    * Creates a new report.
-   * @param {string} [testName] The test name.
-   * @param {Record[]} [records] The record list.
+   * @param testName The test name.
+   * @param records The record list.
    */
-  constructor(testName = '', records = []) {
-
-    /**
-     * The record list.
-     * @type {Record[]}
-     */
-    this.records = records;
-
-    /**
-     * The test name.
-     * @type {string}
-     */
-    this.testName = testName;
-  }
+  constructor(public testName: string = '', public records: Record[] = []) {}
 
   /**
    * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
-   * @param {string} coverage The coverage data.
-   * @return {Report} The resulting coverage report.
+   * @param coverage The coverage data.
+   * @return The resulting coverage report.
    * @throws {LcovError} A parsing error occurred.
    */
-  static fromCoverage(coverage) {
+  static fromCoverage(coverage: string): Report {
     const report = new Report;
 
     try {
-      let record;
+      let record!: Record;
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
         if (!line.length) continue;
@@ -95,12 +66,12 @@ export class Report {
 
           case Token.functionName:
             if (data.length < 2) throw new Error('Invalid function name');
-            record.functions.data.push(new FunctionData(data[1], Number.parseInt(data[0])));
+            record.functions!.data.push(new FunctionData(data[1], Number.parseInt(data[0])));
             break;
 
           case Token.functionData:
             if (data.length < 2) throw new Error('Invalid function data');
-            record.functions.data.some(item => {
+            record.functions!.data.some(item => {
               if (item.functionName != data[1]) return false;
               item.executionCount = Number.parseInt(data[0]);
               return true;
@@ -108,16 +79,16 @@ export class Report {
             break;
 
           case Token.functionsFound:
-            record.functions.found = Number.parseInt(data[0]);
+            record.functions!.found = Number.parseInt(data[0]);
             break;
 
           case Token.functionsHit:
-            record.functions.hit = Number.parseInt(data[0]);
+            record.functions!.hit = Number.parseInt(data[0]);
             break;
 
           case Token.branchData:
             if (data.length < 4) throw new Error('Invalid branch data');
-            record.branches.data.push(new BranchData(
+            record.branches!.data.push(new BranchData(
               Number.parseInt(data[0]),
               Number.parseInt(data[1]),
               Number.parseInt(data[2]),
@@ -126,16 +97,16 @@ export class Report {
             break;
 
           case Token.branchesFound:
-            record.branches.found = Number.parseInt(data[0]);
+            record.branches!.found = Number.parseInt(data[0]);
             break;
 
           case Token.branchesHit:
-            record.branches.hit = Number.parseInt(data[0]);
+            record.branches!.hit = Number.parseInt(data[0]);
             break;
 
           case Token.lineData:
             if (data.length < 2) throw new Error('Invalid line data');
-            record.lines.data.push(new LineData(
+            record.lines!.data.push(new LineData(
               Number.parseInt(data[0]),
               Number.parseInt(data[1]),
               data.length >= 3 ? data[2] : ''
@@ -143,11 +114,11 @@ export class Report {
             break;
 
           case Token.linesFound:
-            record.lines.found = Number.parseInt(data[0]);
+            record.lines!.found = Number.parseInt(data[0]);
             break;
 
           case Token.linesHit:
-            record.lines.hit = Number.parseInt(data[0]);
+            record.lines!.hit = Number.parseInt(data[0]);
             break;
 
           case Token.endOfRecord:
@@ -167,10 +138,10 @@ export class Report {
 
   /**
    * Creates a new report from the specified JSON map.
-   * @param {Object<string, *>} map A JSON map representing a report.
-   * @return {Report} The instance corresponding to the specified JSON map.
+   * @param map A JSON map representing a report.
+   * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map) {
+  static fromJson(map: JsonMap): Report {
     return new Report(
       typeof map.testName == 'string' ? map.testName : '',
       Array.isArray(map.records) ? map.records.map(Record.fromJson) : []
@@ -179,9 +150,9 @@ export class Report {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object<string, *>} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  toJSON(): JsonMap {
     return {
       records: this.records.map(item => item.toJSON()),
       testName: this.testName
@@ -190,9 +161,9 @@ export class Report {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     const lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];
     lines.push(...this.records.map(item => item.toString()));
     return lines.join('\n');

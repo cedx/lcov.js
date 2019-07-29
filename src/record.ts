@@ -1,58 +1,39 @@
-import {BranchCoverage} from './branch.js';
-import {FunctionCoverage} from './function.js';
-import {LineCoverage} from './line.js';
-import {Token} from './token.js';
-
-/**
- * Defines the options of a {@link Record} instance.
- * @typedef {object} RecordOptions
- * @property {BranchCoverage} [branches] The branch coverage.
- * @property {FunctionCoverage} [functions] The function coverage.
- * @property {LineCoverage} [lines] The line coverage.
- */
+import {BranchCoverage} from './branch';
+import {FunctionCoverage} from './function';
+import {JsonMap} from './json_map';
+import {LineCoverage} from './line';
+import {Token} from './token';
 
 /** Provides the coverage data of a source file. */
 export class Record {
 
+  /** The branch coverage. */
+  branches: BranchCoverage|null;
+
+  /** The function coverage. */
+  functions: FunctionCoverage|null;
+
+  /** The line coverage. */
+  lines: LineCoverage|null;
+
   /**
    * Creates a new record.
-   * @param {string} sourceFile The path to the source file.
-   * @param {RecordOptions} [options] An object specifying values used to initialize this instance.
+   * @param sourceFile The path to the source file.
+   * @param options An object specifying values used to initialize this instance.
    */
-  constructor(sourceFile, options = {}) {
+  constructor(public sourceFile: string, options: Partial<RecordOptions> = {}) {
     const {branches = null, functions = null, lines = null} = options;
-
-    /**
-     * The branch coverage.
-     * @type {?BranchCoverage}
-     */
     this.branches = branches;
-
-    /**
-     * The function coverage.
-     * @type {?FunctionCoverage}
-     */
     this.functions = functions;
-
-    /**
-     * The line coverage.
-     * @type {?LineCoverage}
-     */
     this.lines = lines;
-
-    /**
-     * The path to the source file.
-     * @type {string}
-     */
-    this.sourceFile = sourceFile;
   }
 
   /**
    * Creates a new record from the specified JSON map.
-   * @param {Object<string, *>} map A JSON map representing a record.
-   * @return {Record} The instance corresponding to the specified JSON map.
+   * @param map A JSON map representing a record.
+   * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map) {
+  static fromJson(map: JsonMap): Record {
     return new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
       branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
       functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
@@ -62,9 +43,9 @@ export class Record {
 
   /**
    * Converts this object to a map in JSON format.
-   * @return {Object<string, *>} The map in JSON format corresponding to this object.
+   * @return The map in JSON format corresponding to this object.
    */
-  toJSON() {
+  toJSON(): JsonMap {
     return {
       branches: this.branches ? this.branches.toJSON() : null,
       functions: this.functions ? this.functions.toJSON() : null,
@@ -75,9 +56,9 @@ export class Record {
 
   /**
    * Returns a string representation of this object.
-   * @return {string} The string representation of this object.
+   * @return The string representation of this object.
    */
-  toString() {
+  toString(): string {
     const output = [`${Token.sourceFile}:${this.sourceFile}`];
     if (this.functions) output.push(this.functions.toString());
     if (this.branches) output.push(this.branches.toString());
@@ -85,4 +66,17 @@ export class Record {
     output.push(Token.endOfRecord);
     return output.join('\n');
   }
+}
+
+/** Defines the options of a [[Record]] instance. */
+export interface RecordOptions {
+
+  /** The branch coverage. */
+  branches: BranchCoverage|null;
+
+  /** The function coverage. */
+  functions: FunctionCoverage|null;
+
+  /** The line coverage. */
+  lines: LineCoverage|null;
 }
