@@ -42,7 +42,7 @@ export class FunctionData {
    * @param asDefinition Whether to return the function definition (e.g. name and line number) instead of its data (e.g. name and execution count).
    * @return The string representation of this object.
    */
-  toString(asDefinition: boolean = false) {
+  toString(asDefinition: boolean = false): string {
     const token = asDefinition ? Token.functionName : Token.functionData;
     const count = asDefinition ? this.lineNumber : this.executionCount;
     return `${token}:${count},${this.functionName}`;
