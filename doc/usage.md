@@ -1,5 +1,5 @@
 path: blob/master
-source: lib/report.js
+source: src/report.ts
 
 # Usage
 **LCOV Reports for JS** provides a set of classes representing a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report and its data.
@@ -8,11 +8,11 @@ The `Report` class, the main one, provides the parsing and formatting features.
 ## Parse coverage data from a LCOV file
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
-```js
+```ts
 import {Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
-async function main() {
+async function main(): Promise<void> {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');
     const report = Report.fromCoverage(coverage);  
@@ -31,7 +31,7 @@ async function main() {
 
 The `Report.toJSON()` instance method will return a [JSON](https://www.json.org) map like this:
 
-```json
+```tson
 {
   "testName": "Example",
   "records": [
@@ -66,7 +66,7 @@ The `Report.toJSON()` instance method will return a [JSON](https://www.json.org)
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
-```js
+```ts
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 
 function main() {
