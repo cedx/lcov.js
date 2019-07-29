@@ -1,11 +1,16 @@
 # Changelog
 
+## Version [6.1.0](https://github.com/cedx/lcov.js/compare/v6.0.0...v6.1.0)
+- Due to strong user demand, restored the [TypeScript](https://www.typescriptlang.org) source code.
+- Raised the [Node.js](https://nodejs.org) constraint.
+- Replaced the [JSDoc](https://jsdoc.app) documentation generator by [TypeDoc](https://typedoc.org).
+
 ## Version [6.0.0](https://github.com/cedx/lcov.js/compare/v5.2.0...v6.0.0)
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
-- Replaced [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
-- Replaced [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
+- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [TypeScript](https://www.typescriptlang.org).
+- Replaced the [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
+- Replaced the [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
 - Updated the package dependencies.
 
 ## Version [5.2.0](https://github.com/cedx/lcov.js/compare/v5.1.1...v5.2.0)
@@ -13,7 +18,7 @@
 - Updated the package dependencies.
 
 ## Version [5.1.1](https://github.com/cedx/lcov.js/compare/v5.1.0...v5.1.1)
-- Fixed the [GitHub issue #3](https://github.com/cedx/lcov.js/issues/3): the browser bundle was not deployed on CDNs.
+- Fixed the [issue #3](https://github.com/cedx/lcov.js/issues/3): the browser bundle was not deployed on CDNs.
 
 ## Version [5.1.0](https://github.com/cedx/lcov.js/compare/v5.0.0...v5.1.0)
 - Added support for [ECMAScript modules](https://nodejs.org/api/esm.html).
@@ -21,7 +26,7 @@
 
 ## Version [5.0.0](https://github.com/cedx/lcov.js/compare/v4.8.0...v5.0.0)
 - Breaking change: the browser classes are exposed as `lcov` property instead of `LCOV`.
-- Replaced [Webpack](https://webpack.js.org) bundler by [Rollup](https://rollupjs.org) and [Babel Minify](https://github.com/babel/minify).
+- Replaced the [Webpack](https://webpack.js.org) bundler by [Rollup](https://rollupjs.org) and [Babel Minify](https://github.com/babel/minify).
 - Updated the package dependencies.
 
 ## Version [4.8.0](https://github.com/cedx/lcov.js/compare/v4.7.0...v4.8.0)
@@ -38,8 +43,8 @@
 
 ## Version [4.5.0](https://github.com/cedx/lcov.js/compare/v4.4.0...v4.5.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
-- Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
-- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
+- Replaced the [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced the [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
 - Updated the package dependencies.
 
 ## Version [4.4.0](https://github.com/cedx/lcov.js/compare/v4.3.0...v4.4.0)
