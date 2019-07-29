@@ -1,7 +1,10 @@
-import {FunctionCoverage, FunctionData} from '../lib/index.js';
+import * as chai from 'chai';
+import {FunctionCoverage, FunctionData} from '../src/index';
 
-/** Tests the features of the {@link FunctionCoverage} class. */
+/** Tests the features of the [[FunctionCoverage]] class. */
 describe('FunctionCoverage', () => {
+  const {expect} = chai;
+
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = FunctionCoverage.fromJson({});
@@ -61,8 +64,10 @@ describe('FunctionCoverage', () => {
   });
 });
 
-/** Tests the features of the {@link FunctionData} class. */
+/** Tests the features of the [[FunctionData]] class. */
 describe('FunctionData', () => {
+  const {expect} = chai;
+
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = FunctionData.fromJson({});

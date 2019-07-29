@@ -1,7 +1,10 @@
-import {LineCoverage, LineData} from '../lib/index.js';
+import * as chai from 'chai';
+import {LineCoverage, LineData} from '../src/index';
 
-/** Tests the features of the {@link LineCoverage} class. */
+/** Tests the features of the [[LineCoverage]] class. */
 describe('LineCoverage', () => {
+  const {expect} = chai;
+
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
@@ -59,8 +62,10 @@ describe('LineCoverage', () => {
   });
 });
 
-/** Tests the features of the {@link LineData} class. */
+/** Tests the features of the [[LineData]] class. */
 describe('LineData', () => {
+  const {expect} = chai;
+
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});

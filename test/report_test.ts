@@ -1,7 +1,10 @@
-import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
+import * as chai from 'chai';
+import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../src/index';
 
-/** Tests the features of the {@link Report} class. */
+/** Tests the features of the [[Report]] class. */
 describe('Report', () => {
+  const {expect} = chai;
+
   // A sample coverage report.
   const coverage = `
 TN:Example
@@ -84,7 +87,7 @@ end_of_record
     });
 
     it('should have detailed branch coverage', () => {
-      const {branches} = report.records[1]; // eslint-disable-line prefer-destructuring
+      const branches = report.records[1].branches!;
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
 
@@ -94,7 +97,7 @@ end_of_record
     });
 
     it('should have detailed function coverage', () => {
-      const {functions} = report.records[1]; // eslint-disable-line prefer-destructuring
+      const functions = report.records[1].functions!;
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
 
@@ -104,7 +107,7 @@ end_of_record
     });
 
     it('should have detailed line coverage', () => {
-      const {lines} = report.records[1]; // eslint-disable-line prefer-destructuring
+      const lines = report.records[1].lines!;
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
 
