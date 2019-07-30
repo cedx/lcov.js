@@ -1,18 +1,12 @@
 dist: xenial
-notifications: {email: false}
-
-addons: {chrome: stable}
+env: [NODE_OPTIONS="--experimental-modules --no-warnings"]
 language: node_js
 node_js: node
-
-env:
-  - PLATFORM="browser" NODE_OPTIONS="--experimental-modules --no-warnings"
-  - PLATFORM="node" NODE_OPTIONS="--experimental-modules --no-warnings"
+notifications: {email: false}
 
 install:
   - npm install --global @cedx/coveralls
-  - npm install --global gulp-cli
   - npm install
 
-script: gulp test:${PLATFORM}
+script: npm test
 after_success: npm run-script coverage
