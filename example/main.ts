@@ -20,7 +20,10 @@ function formatReport(): void {
   console.log(report.toString());
 }
 
-/** Parses a LCOV report to coverage data. */
+/**
+ * Parses a LCOV report to coverage data.
+ * @return Completes when the parsing is terminated.
+ */
 async function parseReport(): Promise<void> {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');
