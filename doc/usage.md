@@ -31,7 +31,7 @@ async function main(): Promise<void> {
 
 The `Report.toJSON()` instance method will return a [JSON](https://www.json.org) map like this:
 
-```tson
+```json
 {
   "testName": "Example",
   "records": [

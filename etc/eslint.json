@@ -10,9 +10,6 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "globals": {
-    "expect": "readonly"
-  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2019,
