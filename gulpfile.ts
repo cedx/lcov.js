@@ -9,7 +9,7 @@ import {delimiter, normalize, resolve} from 'path';
 const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
-const {dest, parallel, series, src, task, watch} = gulp;
+const {dest, series, src, task, watch} = gulp;
 const {access, copyFile} = promises;
 
 // Initialize the build system.
