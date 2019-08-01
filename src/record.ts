@@ -8,13 +8,13 @@ import {Token} from './token';
 export class Record {
 
   /** The branch coverage. */
-  branches: BranchCoverage|null;
+  branches?: BranchCoverage;
 
   /** The function coverage. */
-  functions: FunctionCoverage|null;
+  functions?: FunctionCoverage;
 
   /** The line coverage. */
-  lines: LineCoverage|null;
+  lines?: LineCoverage;
 
   /**
    * Creates a new record.
@@ -22,7 +22,7 @@ export class Record {
    * @param options An object specifying values used to initialize this instance.
    */
   constructor(public sourceFile: string, options: Partial<RecordOptions> = {}) {
-    const {branches = null, functions = null, lines = null} = options;
+    const {branches, functions, lines} = options;
     this.branches = branches;
     this.functions = functions;
     this.lines = lines;
@@ -35,9 +35,9 @@ export class Record {
    */
   static fromJson(map: JsonMap): Record {
     return new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
-      branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : null,
-      functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : null,
-      lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines) : null
+      branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : undefined,
+      functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : undefined,
+      lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines) : undefined
     });
   }
 
@@ -72,11 +72,11 @@ export class Record {
 export interface RecordOptions {
 
   /** The branch coverage. */
-  branches: BranchCoverage|null;
+  branches: BranchCoverage;
 
   /** The function coverage. */
-  functions: FunctionCoverage|null;
+  functions: FunctionCoverage;
 
   /** The line coverage. */
-  lines: LineCoverage|null;
+  lines: LineCoverage;
 }

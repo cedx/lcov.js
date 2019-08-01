@@ -9,9 +9,9 @@ describe('Record', () => {
     it('should return an instance with default values for an empty map', () => {
       const record = Record.fromJson({});
       expect(record).to.be.an.instanceof(Record);
-      expect(record.branches).to.be.null;
-      expect(record.functions).to.be.null;
-      expect(record.lines).to.be.null;
+      expect(record.branches).to.be.undefined;
+      expect(record.functions).to.be.undefined;
+      expect(record.lines).to.be.undefined;
       expect(record.sourceFile).to.be.empty;
     });
 
