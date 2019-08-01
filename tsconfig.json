@@ -4,6 +4,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2019"
+    "target": "esnext"
   }
 }
