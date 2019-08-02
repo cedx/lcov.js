@@ -10,7 +10,7 @@ const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'
 
 // Shortcuts.
 const {dest, series, src, task, watch} = gulp;
-const {access, copyFile} = promises;
+const {copyFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH! : '';
