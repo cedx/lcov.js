@@ -6,7 +6,7 @@ notifications: {email: false}
 
 install:
   - npm install --global @cedx/coveralls
-  - npm install
+  - npm install --ignore-scripts
 
 script: npm test
 after_success: npm run-script coverage
