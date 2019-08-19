@@ -31,7 +31,7 @@ task('build', series('build:js', 'build:fix', 'build:dist'));
 task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
-task('coverage', async () => _exec('coveralls', ['var/lcov.info']));
+task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 
 /** Builds the documentation. */
 task('doc', async () => {
