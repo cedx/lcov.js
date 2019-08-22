@@ -1,4 +1,4 @@
-import {JsonMap} from './json_map';
+import {JsonObject} from './json_object';
 import {Token} from './token';
 
 /** Provides details for line coverage. */
@@ -17,7 +17,7 @@ export class LineData {
    * @param map A JSON map representing a line data.
    * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map: JsonMap): LineData {
+  static fromJson(map: JsonObject): LineData {
     return new LineData(
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
       Number.isInteger(map.executionCount) ? map.executionCount : 0,
@@ -29,7 +29,7 @@ export class LineData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  toJSON(): JsonMap {
+  toJSON(): JsonObject {
     return {
       checksum: this.checksum,
       executionCount: this.executionCount,
@@ -63,7 +63,7 @@ export class LineCoverage {
    * @param map A JSON map representing a line coverage.
    * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map: JsonMap): LineCoverage {
+  static fromJson(map: JsonObject): LineCoverage {
     return new LineCoverage(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -75,7 +75,7 @@ export class LineCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  toJSON(): JsonMap {
+  toJSON(): JsonObject {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,

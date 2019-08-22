@@ -1,4 +1,4 @@
-import {JsonMap} from './json_map';
+import {JsonObject} from './json_object';
 import {Token} from './token';
 
 /** Provides details for function coverage. */
@@ -17,7 +17,7 @@ export class FunctionData {
    * @param map A JSON map representing a function data.
    * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map: JsonMap): FunctionData {
+  static fromJson(map: JsonObject): FunctionData {
     return new FunctionData(
       typeof map.functionName == 'string' ? map.functionName : '',
       Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
@@ -29,7 +29,7 @@ export class FunctionData {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  toJSON(): JsonMap {
+  toJSON(): JsonObject {
     return {
       executionCount: this.executionCount,
       functionName: this.functionName,
@@ -65,7 +65,7 @@ export class FunctionCoverage {
    * @param map A JSON map representing a function coverage.
    * @return The instance corresponding to the specified JSON map.
    */
-  static fromJson(map: JsonMap): FunctionCoverage {
+  static fromJson(map: JsonObject): FunctionCoverage {
     return new FunctionCoverage(
       Number.isInteger(map.found) ? map.found : 0,
       Number.isInteger(map.hit) ? map.hit : 0,
@@ -77,7 +77,7 @@ export class FunctionCoverage {
    * Converts this object to a map in JSON format.
    * @return The map in JSON format corresponding to this object.
    */
-  toJSON(): JsonMap {
+  toJSON(): JsonObject {
     return {
       data: this.data.map(item => item.toJSON()),
       found: this.found,
