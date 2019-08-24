@@ -13,8 +13,8 @@ export class LineData {
   constructor(public lineNumber: number, public executionCount: number = 0, public checksum: string = '') {}
 
   /**
-   * Creates a new line data from the specified JSON map.
-   * @param map A JSON map representing a line data.
+   * Creates a new line data from the specified JSON object.
+   * @param map A JSON object representing a line data.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): LineData {
@@ -59,8 +59,8 @@ export class LineCoverage {
   constructor(public found: number = 0, public hit: number = 0, public data: LineData[] = []) {}
 
   /**
-   * Creates a new line coverage from the specified JSON map.
-   * @param map A JSON map representing a line coverage.
+   * Creates a new line coverage from the specified JSON object.
+   * @param map A JSON object representing a line coverage.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): LineCoverage {

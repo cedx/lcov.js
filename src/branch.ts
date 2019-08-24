@@ -14,8 +14,8 @@ export class BranchData {
   constructor(public lineNumber: number, public blockNumber: number, public branchNumber: number, public taken: number = 0) {}
 
   /**
-   * Creates a new branch data from the specified JSON map.
-   * @param map A JSON map representing a branch data.
+   * Creates a new branch data from the specified JSON object.
+   * @param map A JSON object representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): BranchData {
@@ -62,8 +62,8 @@ export class BranchCoverage {
   constructor(public found: number = 0, public hit: number = 0, public data: BranchData[] = []) {}
 
   /**
-   * Creates a new branch data from the specified JSON map.
-   * @param map A JSON map representing a branch data.
+   * Creates a new branch data from the specified JSON object.
+   * @param map A JSON object representing a branch data.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): BranchCoverage {

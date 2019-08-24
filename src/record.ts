@@ -29,8 +29,8 @@ export class Record {
   }
 
   /**
-   * Creates a new record from the specified JSON map.
-   * @param map A JSON map representing a record.
+   * Creates a new record from the specified JSON object.
+   * @param map A JSON object representing a record.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): Record {

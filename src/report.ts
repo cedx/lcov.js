@@ -137,8 +137,8 @@ export class Report {
   }
 
   /**
-   * Creates a new report from the specified JSON map.
-   * @param map A JSON map representing a report.
+   * Creates a new report from the specified JSON object.
+   * @param map A JSON object representing a report.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): Report {

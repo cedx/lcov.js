@@ -13,8 +13,8 @@ export class FunctionData {
   constructor(public functionName: string, public lineNumber: number, public executionCount: number = 0) {}
 
   /**
-   * Creates a new function data from the specified JSON map.
-   * @param map A JSON map representing a function data.
+   * Creates a new function data from the specified JSON object.
+   * @param map A JSON object representing a function data.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): FunctionData {
@@ -61,8 +61,8 @@ export class FunctionCoverage {
   constructor(public found: number = 0, public hit: number = 0, public data: FunctionData[] = []) {}
 
   /**
-   * Creates a new function coverage from the specified JSON map.
-   * @param map A JSON map representing a function coverage.
+   * Creates a new function coverage from the specified JSON object.
+   * @param map A JSON object representing a function coverage.
    * @return The instance corresponding to the specified JSON map.
    */
   static fromJson(map: JsonObject): FunctionCoverage {
