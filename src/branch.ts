@@ -16,7 +16,7 @@ export class BranchData {
   /**
    * Creates a new branch data from the specified JSON object.
    * @param map A JSON object representing a branch data.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): BranchData {
     return new BranchData(
@@ -64,7 +64,7 @@ export class BranchCoverage {
   /**
    * Creates a new branch data from the specified JSON object.
    * @param map A JSON object representing a branch data.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): BranchCoverage {
     return new BranchCoverage(

@@ -15,7 +15,7 @@ export class FunctionData {
   /**
    * Creates a new function data from the specified JSON object.
    * @param map A JSON object representing a function data.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): FunctionData {
     return new FunctionData(
@@ -63,7 +63,7 @@ export class FunctionCoverage {
   /**
    * Creates a new function coverage from the specified JSON object.
    * @param map A JSON object representing a function coverage.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): FunctionCoverage {
     return new FunctionCoverage(

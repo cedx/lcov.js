@@ -15,7 +15,7 @@ export class LineData {
   /**
    * Creates a new line data from the specified JSON object.
    * @param map A JSON object representing a line data.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): LineData {
     return new LineData(
@@ -61,7 +61,7 @@ export class LineCoverage {
   /**
    * Creates a new line coverage from the specified JSON object.
    * @param map A JSON object representing a line coverage.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): LineCoverage {
     return new LineCoverage(

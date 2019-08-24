@@ -31,7 +31,7 @@ export class Record {
   /**
    * Creates a new record from the specified JSON object.
    * @param map A JSON object representing a record.
-   * @return The instance corresponding to the specified JSON map.
+   * @return The instance corresponding to the specified JSON object.
    */
   static fromJson(map: JsonObject): Record {
     return new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
