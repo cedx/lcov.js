@@ -8,7 +8,7 @@ The `Report` class, the main one, provides the parsing and formatting features.
 ## Parse coverage data from a LCOV file
 The `Report.fromCoverage()` static method parses a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage report provided as string, and creates a `Report` instance giving detailed information about this coverage report:
 
-```ts
+```typescript
 import {Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
@@ -66,7 +66,7 @@ The `Report.toJSON()` instance method will return a [JSON](https://www.json.org)
 Each provided class has a dedicated `toString()` instance method returning the corresponding data formatted as [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
-```ts
+```typescript
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 
 function main() {
