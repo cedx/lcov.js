@@ -39,11 +39,6 @@
     },
     {
       "problemMatcher": [],
-      "task": "serve",
-      "type": "gulp"
-    },
-    {
-      "problemMatcher": [],
       "task": "test",
       "type": "gulp"
     },
