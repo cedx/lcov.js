@@ -6,7 +6,7 @@
 - [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/lcov.js)
+- [Continuous integration](https://github.com/cedx/lcov.js/actions)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.js)
 
 ## Other implementations
