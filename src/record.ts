@@ -1,6 +1,6 @@
 import {BranchCoverage} from './branch';
 import {FunctionCoverage} from './function';
-import {JsonObject} from './json_object';
+import {JsonObject} from './json';
 import {LineCoverage} from './line';
 import {Token} from './token';
 
@@ -35,9 +35,9 @@ export class Record {
    */
   static fromJson(map: JsonObject): Record {
     return new Record(typeof map.sourceFile == 'string' ? map.sourceFile : '', {
-      branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches) : undefined,
-      functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions) : undefined,
-      lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines) : undefined
+      branches: typeof map.branches == 'object' && map.branches ? BranchCoverage.fromJson(map.branches as JsonObject) : undefined,
+      functions: typeof map.functions == 'object' && map.functions ? FunctionCoverage.fromJson(map.functions as JsonObject) : undefined,
+      lines: typeof map.lines == 'object' && map.lines ? LineCoverage.fromJson(map.lines as JsonObject) : undefined
     });
   }
 

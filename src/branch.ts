@@ -1,4 +1,4 @@
-import {JsonObject} from './json_object';
+import {JsonObject} from './json';
 import {Token} from './token';
 
 /** Provides details for branch coverage. */
@@ -20,10 +20,10 @@ export class BranchData {
    */
   static fromJson(map: JsonObject): BranchData {
     return new BranchData(
-      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
-      Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
-      Number.isInteger(map.branchNumber) ? map.branchNumber : 0,
-      Number.isInteger(map.taken) ? map.taken : 0
+      typeof map.lineNumber == 'number' && Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      typeof map.blockNumber == 'number' && Number.isInteger(map.blockNumber) ? map.blockNumber : 0,
+      typeof map.branchNumber == 'number' && Number.isInteger(map.branchNumber) ? map.branchNumber : 0,
+      typeof map.taken == 'number' && Number.isInteger(map.taken) ? map.taken : 0
     );
   }
 
@@ -68,9 +68,9 @@ export class BranchCoverage {
    */
   static fromJson(map: JsonObject): BranchCoverage {
     return new BranchCoverage(
-      Number.isInteger(map.found) ? map.found : 0,
-      Number.isInteger(map.hit) ? map.hit : 0,
-      Array.isArray(map.data) ? map.data.map(BranchData.fromJson) : []
+      typeof map.found == 'number' && Number.isInteger(map.found) ? map.found : 0,
+      typeof map.hit == 'number' && Number.isInteger(map.hit) ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => BranchData.fromJson(item as JsonObject)) : []
     );
   }
 

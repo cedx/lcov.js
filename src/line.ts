@@ -1,4 +1,4 @@
-import {JsonObject} from './json_object';
+import {JsonObject} from './json';
 import {Token} from './token';
 
 /** Provides details for line coverage. */
@@ -19,8 +19,8 @@ export class LineData {
    */
   static fromJson(map: JsonObject): LineData {
     return new LineData(
-      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
-      Number.isInteger(map.executionCount) ? map.executionCount : 0,
+      typeof map.lineNumber == 'number' && Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      typeof map.executionCount == 'number' && Number.isInteger(map.executionCount) ? map.executionCount : 0,
       typeof map.checksum == 'string' ? map.checksum : ''
     );
   }
@@ -65,9 +65,9 @@ export class LineCoverage {
    */
   static fromJson(map: JsonObject): LineCoverage {
     return new LineCoverage(
-      Number.isInteger(map.found) ? map.found : 0,
-      Number.isInteger(map.hit) ? map.hit : 0,
-      Array.isArray(map.data) ? map.data.map(LineData.fromJson) : []
+      typeof map.found == 'number' && Number.isInteger(map.found) ? map.found : 0,
+      typeof map.hit == 'number' && Number.isInteger(map.hit) ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => LineData.fromJson(item as JsonObject)) : []
     );
   }
 

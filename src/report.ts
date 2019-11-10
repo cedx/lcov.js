@@ -1,6 +1,6 @@
 import {BranchCoverage, BranchData} from './branch';
 import {FunctionCoverage, FunctionData} from './function';
-import {JsonObject} from './json_object';
+import {JsonObject} from './json';
 import {LineCoverage, LineData} from './line';
 import {Record} from './record';
 import {Token} from './token';
@@ -144,7 +144,7 @@ export class Report {
   static fromJson(map: JsonObject): Report {
     return new Report(
       typeof map.testName == 'string' ? map.testName : '',
-      Array.isArray(map.records) ? map.records.map(Record.fromJson) : []
+      Array.isArray(map.records) ? map.records.map(item => Record.fromJson(item as JsonObject)) : []
     );
   }
 

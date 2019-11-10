@@ -1,4 +1,4 @@
-import {JsonObject} from './json_object';
+import {JsonObject} from './json';
 import {Token} from './token';
 
 /** Provides details for function coverage. */
@@ -20,8 +20,8 @@ export class FunctionData {
   static fromJson(map: JsonObject): FunctionData {
     return new FunctionData(
       typeof map.functionName == 'string' ? map.functionName : '',
-      Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
-      Number.isInteger(map.executionCount) ? map.executionCount : 0
+      typeof map.lineNumber == 'number' && Number.isInteger(map.lineNumber) ? map.lineNumber : 0,
+      typeof map.executionCount == 'number' && Number.isInteger(map.executionCount) ? map.executionCount : 0
     );
   }
 
@@ -67,9 +67,9 @@ export class FunctionCoverage {
    */
   static fromJson(map: JsonObject): FunctionCoverage {
     return new FunctionCoverage(
-      Number.isInteger(map.found) ? map.found : 0,
-      Number.isInteger(map.hit) ? map.hit : 0,
-      Array.isArray(map.data) ? map.data.map(FunctionData.fromJson) : []
+      typeof map.found == 'number' && Number.isInteger(map.found) ? map.found : 0,
+      typeof map.hit == 'number' && Number.isInteger(map.hit) ? map.hit : 0,
+      Array.isArray(map.data) ? map.data.map(item => FunctionData.fromJson(item as JsonObject)) : []
     );
   }
 

@@ -45,7 +45,7 @@ end_of_record`;
 
       try {
         const report = Report.fromCoverage(coverage);
-        console.log(`The coverage report contains ${report.records.length} records:`);
+        console.log(`The coverage report contains ${report.records.length} record(s):`);
         console.log(report.toJSON());
       }
 
