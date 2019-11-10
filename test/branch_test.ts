@@ -1,5 +1,6 @@
 import * as chai from 'chai';
 import {BranchCoverage, BranchData} from '../src/index';
+import {Json} from '../src/json';
 
 /** Tests the features of the [[BranchCoverage]] class. */
 describe('BranchCoverage', () => {
@@ -45,8 +46,9 @@ describe('BranchCoverage', () => {
       const map = new BranchCoverage(23, 11, [new BranchData(0, 0, 0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
 
-      expect(map.data).to.be.an('array').and.have.lengthOf(1);
-      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
+      const data = map.data as Json[];
+      expect(data).to.be.an('array').and.have.lengthOf(1);
+      expect(data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
       expect(map.found).to.equal(23);
       expect(map.hit).to.equal(11);
     });

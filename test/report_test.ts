@@ -1,5 +1,6 @@
 import * as chai from 'chai';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../src/index';
+import {Json} from '../src/json';
 
 /** Tests the features of the [[Report]] class. */
 describe('Report', () => {
@@ -157,8 +158,10 @@ end_of_record
     it('should return a non-empty map for an initialized instance', () => {
       const map = new Report('LcovTest', [new Record('')]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
-      expect(map.records).to.be.an('array').and.have.lengthOf(1);
-      expect(map.records[0]).to.be.an('object');
+
+      const records = map.records as Json[];
+      expect(records).to.be.an('array').and.have.lengthOf(1);
+      expect(records[0]).to.be.an('object');
       expect(map.testName).to.equal('LcovTest');
     });
   });
