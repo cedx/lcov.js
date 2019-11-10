@@ -1,6 +1,5 @@
 import * as chai from 'chai';
-import {FunctionCoverage, FunctionData} from '../src/index';
-import {Json} from '../src/json';
+import {FunctionCoverage, FunctionData, Json} from '../src/index';
 
 /** Tests the features of the [[FunctionCoverage]] class. */
 describe('FunctionCoverage', () => {

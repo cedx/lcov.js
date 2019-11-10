@@ -1,6 +1,5 @@
 import * as chai from 'chai';
-import {LineCoverage, LineData} from '../src/index';
-import {Json} from '../src/json';
+import {Json, LineCoverage, LineData} from '../src/index';
 
 /** Tests the features of the [[LineCoverage]] class. */
 describe('LineCoverage', () => {

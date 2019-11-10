@@ -1,6 +1,5 @@
 import * as chai from 'chai';
-import {BranchCoverage, BranchData} from '../src/index';
-import {Json} from '../src/json';
+import {BranchCoverage, BranchData, Json} from '../src/index';
 
 /** Tests the features of the [[BranchCoverage]] class. */
 describe('BranchCoverage', () => {

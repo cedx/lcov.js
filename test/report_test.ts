@@ -1,6 +1,5 @@
 import * as chai from 'chai';
-import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../src/index';
-import {Json} from '../src/json';
+import {BranchData, FunctionData, Json, LcovError, LineData, Record, Report} from '../src/index';
 
 /** Tests the features of the [[Report]] class. */
 describe('Report', () => {
