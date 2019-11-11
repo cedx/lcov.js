@@ -3,7 +3,7 @@
   "include": ["**/*.ts"],
   "compilerOptions": {
     "declaration": true,
-    "module": "esnext",
+    "module": "es2015",
     "outDir": "../lib"
   }
 }
