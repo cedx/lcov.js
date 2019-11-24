@@ -1,5 +1,10 @@
 # Changelog
 
+## Version [6.2.0](https://github.com/cedx/lcov.js/compare/v6.1.0...v6.2.0)
+- Replaced [`babel-minify`](https://github.com/babel/minify) by [`terser`](https://terser.org) for minification.
+- Updated the package dependencies.
+- Using the null coalescing operator.
+
 ## Version [6.1.0](https://github.com/cedx/lcov.js/compare/v6.0.0...v6.1.0)
 - Due to strong user demand, restored the [TypeScript](https://www.typescriptlang.org) source code.
 - Raised the [Node.js](https://nodejs.org) constraint.
