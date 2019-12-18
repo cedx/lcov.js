@@ -1,9 +1,9 @@
-/* eslint-disable no-console, @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console, @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unused-vars */
 import {FunctionCoverage, LineCoverage, LineData, Record, Report} from '@cedx/lcov';
 import {promises} from 'fs';
 
 /** Formats coverage data as LCOV report. */
-function formatReport(): void {
+function formatReport() {
   const lineCoverage = new LineCoverage(2, 2, [
     new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
     new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
@@ -20,9 +20,9 @@ function formatReport(): void {
 
 /**
  * Parses a LCOV report to coverage data.
- * @return Completes when the parsing is terminated.
+ * @return {Promise<void>} Completes when the parsing is terminated.
  */
-async function parseReport(): Promise<void> {
+async function parseReport() {
   try {
     const coverage = await promises.readFile('lcov.info', 'utf8');
     const report = Report.fromCoverage(coverage);
