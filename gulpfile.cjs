@@ -27,7 +27,7 @@ task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
 task('build', series('build:js', 'build:fix', 'build:dist'));
 
 /** Deletes all generated files and reset any saved state. */
-task('clean', () => del(['.nyc_output', 'build', 'doc/api', 'lib', 'var/**/*', 'web']));
+task('clean', () => del(['build', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
 task('coverage', () => _exec('coveralls', ['var/lcov.info']));
