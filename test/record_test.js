@@ -1,5 +1,5 @@
-import * as chai from 'chai';
-import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../src/index';
+import chai from 'chai';
+import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../lib/index.js';
 
 /** Tests the features of the [[Record]] class. */
 describe('Record', () => {
