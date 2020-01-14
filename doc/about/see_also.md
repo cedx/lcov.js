@@ -2,6 +2,7 @@
 
 ## Development
 - [API reference](https://dev.belin.io/lcov.js/api)
+- [GitHub package](https://github.com/cedx/lcov.js/packages)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
 - [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
