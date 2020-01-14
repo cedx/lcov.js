@@ -1,7 +1,7 @@
 import chai from 'chai';
 import {FunctionCoverage, FunctionData} from '../lib/index.js';
 
-/** Tests the features of the [[FunctionCoverage]] class. */
+/** Tests the features of the {@link FunctionCoverage} class. */
 describe('FunctionCoverage', () => {
   const {expect} = chai;
 
@@ -60,7 +60,7 @@ describe('FunctionCoverage', () => {
   });
 });
 
-/** Tests the features of the [[FunctionData]] class. */
+/** Tests the features of the {@link FunctionData} class. */
 describe('FunctionData', () => {
   const {expect} = chai;
 

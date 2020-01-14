@@ -1,7 +1,7 @@
 import chai from 'chai';
 import {BranchCoverage, BranchData} from '../lib/index.js';
 
-/** Tests the features of the [[BranchCoverage]] class. */
+/** Tests the features of the {@link BranchCoverage} class. */
 describe('BranchCoverage', () => {
   const {expect} = chai;
 
@@ -60,7 +60,7 @@ describe('BranchCoverage', () => {
   });
 });
 
-/** Tests the features of the [[BranchData]] class. */
+/** Tests the features of the {@link BranchData} class. */
 describe('BranchData', () => {
   const {expect} = chai;
 

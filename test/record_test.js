@@ -1,7 +1,7 @@
 import chai from 'chai';
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from '../lib/index.js';
 
-/** Tests the features of the [[Record]] class. */
+/** Tests the features of the {@link Record} class. */
 describe('Record', () => {
   const {expect} = chai;
 
