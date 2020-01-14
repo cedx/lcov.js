@@ -1,5 +1,5 @@
-import * as chai from 'chai';
-import {BranchData, FunctionData, Json, LcovError, LineData, Record, Report} from '../src/index';
+import chai from 'chai';
+import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
 /** Tests the features of the [[Report]] class. */
 describe('Report', () => {
@@ -87,7 +87,7 @@ end_of_record
     });
 
     it('should have detailed branch coverage', () => {
-      const branches = report.records[1].branches!;
+      const branches = report.records[1].branches;
       expect(branches.found).to.equal(4);
       expect(branches.hit).to.equal(4);
 
@@ -97,7 +97,7 @@ end_of_record
     });
 
     it('should have detailed function coverage', () => {
-      const functions = report.records[1].functions!;
+      const functions = report.records[1].functions;
       expect(functions.found).to.equal(1);
       expect(functions.hit).to.equal(1);
 
@@ -107,7 +107,7 @@ end_of_record
     });
 
     it('should have detailed line coverage', () => {
-      const lines = report.records[1].lines!;
+      const lines = report.records[1].lines;
       expect(lines.found).to.equal(9);
       expect(lines.hit).to.equal(9);
 
@@ -157,10 +157,8 @@ end_of_record
     it('should return a non-empty map for an initialized instance', () => {
       const map = new Report('LcovTest', [new Record('')]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
-
-      const records = map.records as Json[];
-      expect(records).to.be.an('array').and.have.lengthOf(1);
-      expect(records[0]).to.be.an('object');
+      expect(map.records).to.be.an('array').and.have.lengthOf(1);
+      expect(map.records[0]).to.be.an('object');
       expect(map.testName).to.equal('LcovTest');
     });
   });

@@ -1,5 +1,5 @@
-import * as chai from 'chai';
-import {Json, LineCoverage, LineData} from '../src/index';
+import chai from 'chai';
+import {LineCoverage, LineData} from '../lib/index.js';
 
 /** Tests the features of the [[LineCoverage]] class. */
 describe('LineCoverage', () => {
@@ -35,7 +35,6 @@ describe('LineCoverage', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new LineCoverage).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
-
       expect(map.data).to.be.an('array').and.be.empty;
       expect(map.found).to.equal(0);
       expect(map.hit).to.equal(0);
@@ -44,10 +43,8 @@ describe('LineCoverage', () => {
     it('should return a non-empty map for an initialized instance', () => {
       const map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
-
-      const data = map.data as Json[];
-      expect(data).to.be.an('array').and.have.lengthOf(1);
-      expect(data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
+      expect(map.data).to.be.an('array').and.have.lengthOf(1);
+      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
       expect(map.found).to.equal(23);
       expect(map.hit).to.equal(11);
     });
