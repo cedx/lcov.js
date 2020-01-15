@@ -15,7 +15,7 @@
     "url": "https://belin.io"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.1.7",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
     "c8": "^7.0.1",
@@ -27,7 +27,7 @@
     "mocha": "7.0.0-esm1",
     "rollup": "^1.29.0",
     "terser": "^4.6.3",
-    "typedoc": "^0.16.2",
+    "typedoc": "^0.16.4",
     "typescript": "^3.7.4"
   },
   "engines": {
