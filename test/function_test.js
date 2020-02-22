@@ -31,7 +31,7 @@ describe('FunctionCoverage', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new FunctionCoverage).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
@@ -50,7 +50,7 @@ describe('FunctionCoverage', () => {
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "FNF:<found>\\\\n,FNH:<hit>"', () => {
       expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
 
@@ -87,7 +87,7 @@ describe('FunctionData', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new FunctionData('', 0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
@@ -105,7 +105,7 @@ describe('FunctionData', () => {
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
       expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');
       expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');

@@ -31,7 +31,7 @@ describe('BranchCoverage', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new BranchCoverage).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(3);
@@ -50,7 +50,7 @@ describe('BranchCoverage', () => {
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "BRF:<found>\\\\n,BRH:<hit>"', () => {
       expect(String(new BranchCoverage)).to.equal('BRF:0\nBRH:0');
 
@@ -90,7 +90,7 @@ describe('BranchData', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new BranchData(0, 0, 0).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
@@ -110,7 +110,7 @@ describe('BranchData', () => {
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>"', () => {
       expect(String(new BranchData(0, 0, 0))).to.equal('BRDA:0,0,0,-');
       expect(String(new BranchData(127, 3, 2, 1))).to.equal('BRDA:127,3,2,1');

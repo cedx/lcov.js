@@ -146,7 +146,7 @@ end_of_record
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = (new Report).toJSON();
       expect(Object.keys(map)).to.have.lengthOf(2);
@@ -163,7 +163,7 @@ end_of_record
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
       expect(String(new Report)).to.be.empty;
 

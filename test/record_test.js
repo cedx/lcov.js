@@ -31,7 +31,7 @@ describe('Record', () => {
     });
   });
 
-  describe('#toJSON()', () => {
+  describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new Record('').toJSON();
       expect(Object.keys(map)).to.have.lengthOf(4);
@@ -57,7 +57,7 @@ describe('Record', () => {
     });
   });
 
-  describe('#toString()', () => {
+  describe('.toString()', () => {
     it('should return a format like "SF:<sourceFile>\\\\n,end_of_record"', () => {
       expect(String(new Record(''))).to.equal('SF:\nend_of_record');
 
