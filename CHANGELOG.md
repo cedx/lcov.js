@@ -76,7 +76,7 @@
 - Breaking change: using camel case instead of studly caps for the properties of the `Token` class.
 
 ## Version [3.1.0](https://github.com/cedx/lcov.js/compare/v3.0.0...v3.1.0)
-- Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 - Updated the package dependencies.
 

@@ -85,7 +85,7 @@ function main() {
 }
 ```
 
-The `Report#toString()` method will return a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) report formatted like this:
+The `Report.toString()` method will return a [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) report formatted like this:
 
 ```
 TN:Example
