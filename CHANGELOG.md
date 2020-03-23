@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [6.4.0](https://github.com/cedx/lcov.js/compare/v6.3.0...v6.4.0)
+- Updated the package dependencies.
+
 ## Version [6.3.0](https://github.com/cedx/lcov.js/compare/v6.2.0...v6.3.0)
 - Updated the package dependencies.
 
