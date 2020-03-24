@@ -1,136 +1,68 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
+import {readFileSync} from 'fs';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
 /** Tests the features of the {@link Report} class. */
 describe('Report', () => {
-  const {expect} = chai;
-
-  // A sample coverage report.
-  const coverage = `
-TN:Example
-
-SF:/home/cedx/lcov.js/fixture.js
-FN:4,main
-FNDA:2,main
-FNF:1
-FNH:1
-DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
-DA:7,2,yGMB6FhEEAd8OyASe3Ni1w
-DA:8,2,8F2cpOfOtP7xrzoeUaNfTg
-DA:9,2,y7GE3Y4FyXCeXcrtqgSVzw
-LF:4
-LH:4
-end_of_record
-
-SF:/home/cedx/lcov.js/func1.js
-FN:5,func1
-FNDA:4,func1
-FNF:1
-FNH:1
-BRDA:8,0,0,2
-BRDA:8,0,1,2
-BRDA:11,0,0,2
-BRDA:11,0,1,2
-BRF:4
-BRH:4
-DA:7,4,5kX7OTfHFcjnS98fjeVqNA
-DA:8,4,Z0wAKBAY/gWvszzK23gPjg
-DA:9,2,axfyTWsiE2y4xhwLfts4Hg
-DA:10,2,fu+5DeZoKYnvkzvK3Lt96Q
-DA:11,4,RY9SlOU8MfTJFeL6YlmwVQ
-DA:12,2,ZHrTdJHnvMtpEN3wqQEqbw
-DA:13,2,fu+5DeZoKYnvkzvK3Lt96Q
-DA:14,4,7/m6ZIVdeOR9WTEt9UzqSA
-DA:15,4,y7GE3Y4FyXCeXcrtqgSVzw
-LF:9
-LH:9
-end_of_record
-
-SF:/home/cedx/lcov.js/func2.js
-FN:5,func2
-FNDA:2,func2
-FNF:1
-FNH:1
-BRDA:8,0,0,2
-BRDA:8,0,1,0
-BRDA:11,0,0,0
-BRDA:11,0,1,2
-BRF:4
-BRH:2
-DA:7,2,5kX7OTfHFcjnS98fjeVqNA
-DA:8,2,Z0wAKBAY/gWvszzK23gPjg
-DA:9,2,axfyTWsiE2y4xhwLfts4Hg
-DA:10,2,fu+5DeZoKYnvkzvK3Lt96Q
-DA:11,2,RY9SlOU8MfTJFeL6YlmwVQ
-DA:12,0,ZHrTdJHnvMtpEN3wqQEqbw
-DA:13,0,fu+5DeZoKYnvkzvK3Lt96Q
-DA:14,2,7/m6ZIVdeOR9WTEt9UzqSA
-DA:15,2,y7GE3Y4FyXCeXcrtqgSVzw
-LF:9
-LH:7
-end_of_record
-`;
-
   describe('.fromCoverage()', () => {
-    const report = Report.fromCoverage(coverage);
+    const report = Report.fromCoverage(readFileSync('test/fixtures/lcov.info', 'utf8'));
 
     it('should have a test name', () => {
-      expect(report.testName).to.equal('Example');
+      assert.equal(report.testName, 'Example');
     });
 
     it('should contain three records', () => {
-      expect(report.records).to.have.lengthOf(3);
-      expect(report.records[0]).to.be.an.instanceof(Record);
-      expect(report.records[0].sourceFile).to.equal('/home/cedx/lcov.js/fixture.js');
-      expect(report.records[1].sourceFile).to.equal('/home/cedx/lcov.js/func1.js');
-      expect(report.records[2].sourceFile).to.equal('/home/cedx/lcov.js/func2.js');
+      assert.equal(report.records.length, 3);
+      assert(report.records[0] instanceof Record);
+      assert.equal(report.records[0].sourceFile, '/home/cedx/lcov.js/fixture.js');
+      assert.equal(report.records[1].sourceFile, '/home/cedx/lcov.js/func1.js');
+      assert.equal(report.records[2].sourceFile, '/home/cedx/lcov.js/func2.js');
     });
 
     it('should have detailed branch coverage', () => {
       const branches = report.records[1].branches;
-      expect(branches.found).to.equal(4);
-      expect(branches.hit).to.equal(4);
+      assert.equal(branches.found, 4);
+      assert.equal(branches.hit, 4);
 
-      expect(branches.data).to.have.lengthOf(4);
-      expect(branches.data[0]).to.be.an.instanceof(BranchData);
-      expect(branches.data[0].lineNumber).to.equal(8);
+      assert.equal(branches.data.length, 4);
+      assert(branches.data[0] instanceof BranchData);
+      assert.equal(branches.data[0].lineNumber, 8);
     });
 
     it('should have detailed function coverage', () => {
       const functions = report.records[1].functions;
-      expect(functions.found).to.equal(1);
-      expect(functions.hit).to.equal(1);
+      assert.equal(functions.found, 1);
+      assert.equal(functions.hit, 1);
 
-      expect(functions.data).to.have.lengthOf(1);
-      expect(functions.data[0]).to.be.an.instanceof(FunctionData);
-      expect(functions.data[0].functionName).to.equal('func1');
+      assert.equal(functions.data.length, 1);
+      assert(functions.data[0] instanceof FunctionData);
+      assert.equal(functions.data[0].functionName, 'func1');
     });
 
     it('should have detailed line coverage', () => {
       const lines = report.records[1].lines;
-      expect(lines.found).to.equal(9);
-      expect(lines.hit).to.equal(9);
+      assert.equal(lines.found, 9);
+      assert.equal(lines.hit, 9);
 
-      expect(lines.data).to.have.lengthOf(9);
-      expect(lines.data[0]).to.be.an.instanceof(LineData);
-      expect(lines.data[0].checksum).to.equal('5kX7OTfHFcjnS98fjeVqNA');
+      assert.equal(lines.data.length, 9);
+      assert(lines.data[0] instanceof LineData);
+      assert.equal(lines.data[0].checksum, '5kX7OTfHFcjnS98fjeVqNA');
     });
 
     it('should throw an error if the input is invalid', () => {
-      expect(() => Report.fromCoverage('ZZ')).to.throw(LcovError, 'invalid LCOV format');
+      assert.throws(() => Report.fromCoverage('ZZ'), LcovError);
     });
 
     it('should throw an error if the report is empty', () => {
-      expect(() => Report.fromCoverage('TN:Example')).to.throw(LcovError, 'coverage data is empty');
+      assert.throws(() => Report.fromCoverage('TN:Example'), LcovError);
     });
   });
 
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const report = Report.fromJson({});
-      expect(report).to.be.an.instanceof(Report);
-      expect(report.records).to.be.an('array').and.be.empty;
-      expect(report.testName).to.be.empty;
+      assert.equal(report.records.length, 0);
+      assert.equal(report.testName.length, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -139,36 +71,38 @@ end_of_record
         testName: 'LcovTest'
       });
 
-      expect(report).to.be.an.instanceof(Report);
-      expect(report.records).to.be.an('array').and.have.lengthOf(1);
-      expect(report.records[0]).to.be.an.instanceof(Record);
-      expect(report.testName).to.equal('LcovTest');
+      assert.equal(report.records.length, 1);
+      assert(report.records[0] instanceof Record);
+      assert.equal(report.testName, 'LcovTest');
     });
   });
 
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      const map = (new Report).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(2);
-      expect(map.records).to.be.an('array').and.be.empty;
-      expect(map.testName).to.be.empty;
+      const map = new Report().toJSON();
+      assert.equal(Object.keys(map).length, 2);
+      assert(Array.isArray(map.records));
+      assert.equal(map.records.length, 0);
+      assert.equal(map.testName.length, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       const map = new Report('LcovTest', [new Record('')]).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(2);
-      expect(map.records).to.be.an('array').and.have.lengthOf(1);
-      expect(map.records[0]).to.be.an('object');
-      expect(map.testName).to.equal('LcovTest');
+      assert.equal(Object.keys(map).length, 2);
+      assert(Array.isArray(map.records));
+      assert.equal(map.records.length, 1);
+      assert.ok(map.records[0]);
+      assert.equal(typeof map.records[0], 'object');
+      assert.equal(map.testName, 'LcovTest');
     });
   });
 
   describe('.toString()', () => {
     it('should return a format like "TN:<testName>"', () => {
-      expect(String(new Report)).to.be.empty;
+      assert.equal(String(new Report).length, 0);
 
       const record = new Record('');
-      expect(String(new Report('LcovTest', [record]))).to.equal(`TN:LcovTest\n${record}`);
+      assert.equal(String(new Report('LcovTest', [record])), `TN:LcovTest\n${record}`);
     });
   });
 });

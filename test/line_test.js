@@ -1,17 +1,14 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
 import {LineCoverage, LineData} from '../lib/index.js';
 
 /** Tests the features of the {@link LineCoverage} class. */
 describe('LineCoverage', () => {
-  const {expect} = chai;
-
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = LineCoverage.fromJson({});
-      expect(coverage).to.be.an.instanceof(LineCoverage);
-      expect(coverage.data).to.be.an('array').and.be.empty;
-      expect(coverage.found).to.equal(0);
-      expect(coverage.hit).to.equal(0);
+      assert.equal(coverage.data.length, 0);
+      assert.equal(coverage.found, 0);
+      assert.equal(coverage.hit, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -21,56 +18,57 @@ describe('LineCoverage', () => {
         hit: 11
       });
 
-      expect(coverage).to.be.an.instanceof(LineCoverage);
-      expect(coverage.data).to.be.an('array').and.have.lengthOf(1);
-      expect(coverage.data[0]).to.be.an.instanceof(LineData);
-      expect(coverage.data[0].lineNumber).to.equal(127);
+      assert.equal(coverage.data.length, 1);
+      assert(coverage.data[0] instanceof LineData);
+      assert.equal(coverage.data[0].lineNumber, 127);
 
-      expect(coverage.found).to.equal(23);
-      expect(coverage.hit).to.equal(11);
+      assert.equal(coverage.found, 23);
+      assert.equal(coverage.hit, 11);
     });
   });
 
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      const map = (new LineCoverage).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.be.empty;
-      expect(map.found).to.equal(0);
-      expect(map.hit).to.equal(0);
+      const map = new LineCoverage().toJSON();
+      assert.equal(Object.keys(map).length, 3);
+      assert(Array.isArray(map.data));
+      assert.equal(map.data.length, 0);
+      assert.equal(map.found, 0);
+      assert.equal(map.hit, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       const map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.have.lengthOf(1);
-      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
-      expect(map.found).to.equal(23);
-      expect(map.hit).to.equal(11);
+      assert.equal(Object.keys(map).length, 3);
+      assert(Array.isArray(map.data));
+      assert.equal(map.data.length, 1);
+
+      assert.ok(map.data[0]);
+      assert.equal(typeof map.data[0], 'object');
+      assert.equal(typeof map.data[0].lineNumber, 'number');
+      assert.equal(map.found, 23);
+      assert.equal(map.hit, 11);
     });
   });
 
   describe('.toString()', () => {
     it('should return a format like "LF:<found>\\\\n,LH:<hit>"', () => {
-      expect(String(new LineCoverage)).to.equal('LF:0\nLH:0');
+      assert.equal(String(new LineCoverage), 'LF:0\nLH:0');
 
       const data = new LineData(127, 3);
-      expect(String(new LineCoverage(23, 11, [data]))).to.equal(`${data}\nLF:23\nLH:11`);
+      assert.equal(String(new LineCoverage(23, 11, [data])), `${data}\nLF:23\nLH:11`);
     });
   });
 });
 
 /** Tests the features of the {@link LineData} class. */
 describe('LineData', () => {
-  const {expect} = chai;
-
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = LineData.fromJson({});
-      expect(data).to.be.an.instanceof(LineData);
-      expect(data.checksum).to.be.empty;
-      expect(data.executionCount).to.equal(0);
-      expect(data.lineNumber).to.equal(0);
+      assert.equal(data.checksum.length, 0);
+      assert.equal(data.executionCount, 0);
+      assert.equal(data.lineNumber, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -80,35 +78,34 @@ describe('LineData', () => {
         lineNumber: 127
       });
 
-      expect(data).to.be.an.instanceof(LineData);
-      expect(data.checksum).to.equal('ed076287532e86365e841e92bfc50d8c');
-      expect(data.executionCount).to.equal(3);
-      expect(data.lineNumber).to.equal(127);
+      assert.equal(data.checksum, 'ed076287532e86365e841e92bfc50d8c');
+      assert.equal(data.executionCount, 3);
+      assert.equal(data.lineNumber, 127);
     });
   });
 
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new LineData(0).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.checksum).to.be.empty;
-      expect(map.executionCount).to.equal(0);
-      expect(map.lineNumber).to.equal(0);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.checksum.length, 0);
+      assert.equal(map.executionCount, 0);
+      assert.equal(map.lineNumber, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       const map = new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c').toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.checksum).to.equal('ed076287532e86365e841e92bfc50d8c');
-      expect(map.executionCount).to.equal(3);
-      expect(map.lineNumber).to.equal(127);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.checksum, 'ed076287532e86365e841e92bfc50d8c');
+      assert.equal(map.executionCount, 3);
+      assert.equal(map.lineNumber, 127);
     });
   });
 
   describe('.toString()', () => {
     it('should return a format like "DA:<lineNumber>,<executionCount>[,<checksum>]"', () => {
-      expect(String(new LineData(0))).to.equal('DA:0,0');
-      expect(String(new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c'))).to.equal('DA:127,3,ed076287532e86365e841e92bfc50d8c');
+      assert.equal(String(new LineData(0)), 'DA:0,0');
+      assert.equal(String(new LineData(127, 3, 'ed076287532e86365e841e92bfc50d8c')), 'DA:127,3,ed076287532e86365e841e92bfc50d8c');
     });
   });
 });

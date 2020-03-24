@@ -1,17 +1,14 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
 import {FunctionCoverage, FunctionData} from '../lib/index.js';
 
 /** Tests the features of the {@link FunctionCoverage} class. */
 describe('FunctionCoverage', () => {
-  const {expect} = chai;
-
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const coverage = FunctionCoverage.fromJson({});
-      expect(coverage).to.be.an.instanceof(FunctionCoverage);
-      expect(coverage.data).to.be.an('array').and.be.empty;
-      expect(coverage.found).to.equal(0);
-      expect(coverage.hit).to.equal(0);
+      assert.equal(coverage.data.length, 0);
+      assert.equal(coverage.found, 0);
+      assert.equal(coverage.hit, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -21,56 +18,58 @@ describe('FunctionCoverage', () => {
         hit: 11
       });
 
-      expect(coverage).to.be.an.instanceof(FunctionCoverage);
-      expect(coverage.data).to.be.an('array').and.have.lengthOf(1);
-      expect(coverage.data[0]).to.be.an.instanceof(FunctionData);
-      expect(coverage.data[0].lineNumber).to.equal(127);
+      assert.equal(coverage.data.length, 1);
+      assert(coverage.data[0] instanceof FunctionData);
+      assert.equal(coverage.data[0].lineNumber, 127);
 
-      expect(coverage.found).to.equal(23);
-      expect(coverage.hit).to.equal(11);
+      assert.equal(coverage.found, 23);
+      assert.equal(coverage.hit, 11);
     });
   });
 
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
-      const map = (new FunctionCoverage).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.be.empty;
-      expect(map.found).to.equal(0);
-      expect(map.hit).to.equal(0);
+      const map = new FunctionCoverage().toJSON();
+      assert.equal(Object.keys(map).length, 3);
+
+      assert(Array.isArray(map.data));
+      assert.equal(map.data.length, 0);
+      assert.equal(map.found, 0);
+      assert.equal(map.hit, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       const map = new FunctionCoverage(23, 11, [new FunctionData('', 0)]).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.data).to.be.an('array').and.have.lengthOf(1);
-      expect(map.data[0]).to.be.an('object').and.have.property('lineNumber').that.is.a('number');
-      expect(map.found).to.equal(23);
-      expect(map.hit).to.equal(11);
+      assert.equal(Object.keys(map).length, 3);
+      assert(Array.isArray(map.data));
+      assert.equal(map.data.length, 1);
+
+      assert.ok(map.data[0]);
+      assert.equal(typeof map.data[0], 'object');
+      assert.equal(typeof map.data[0].lineNumber, 'number');
+      assert.equal(map.found, 23);
+      assert.equal(map.hit, 11);
     });
   });
 
   describe('.toString()', () => {
     it('should return a format like "FNF:<found>\\\\n,FNH:<hit>"', () => {
-      expect(String(new FunctionCoverage)).to.equal('FNF:0\nFNH:0');
+      assert.equal(String(new FunctionCoverage), 'FNF:0\nFNH:0');
 
       const coverage = new FunctionCoverage(23, 11, [new FunctionData('main', 127, 3)]);
-      expect(String(coverage)).to.equal('FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11');
+      assert.equal(String(coverage), 'FN:127,main\nFNDA:3,main\nFNF:23\nFNH:11');
     });
   });
 });
 
 /** Tests the features of the {@link FunctionData} class. */
 describe('FunctionData', () => {
-  const {expect} = chai;
-
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
       const data = FunctionData.fromJson({});
-      expect(data).to.be.an.instanceof(FunctionData);
-      expect(data.executionCount).to.equal(0);
-      expect(data.functionName).to.be.empty;
-      expect(data.lineNumber).to.equal(0);
+      assert.equal(data.executionCount, 0);
+      assert.equal(data.functionName.length, 0);
+      assert.equal(data.lineNumber, 0);
     });
 
     it('should return an initialized instance for a non-empty map', () => {
@@ -80,40 +79,39 @@ describe('FunctionData', () => {
         lineNumber: 127
       });
 
-      expect(data).to.be.an.instanceof(FunctionData);
-      expect(data.executionCount).to.equal(3);
-      expect(data.functionName).to.equal('main');
-      expect(data.lineNumber).to.equal(127);
+      assert.equal(data.executionCount, 3);
+      assert.equal(data.functionName, 'main');
+      assert.equal(data.lineNumber, 127);
     });
   });
 
   describe('.toJSON()', () => {
     it('should return a map with default values for a newly created instance', () => {
       const map = new FunctionData('', 0).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.executionCount).to.equal(0);
-      expect(map.functionName).to.be.empty;
-      expect(map.lineNumber).to.equal(0);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.executionCount, 0);
+      assert.equal(map.functionName.length, 0);
+      assert.equal(map.lineNumber, 0);
     });
 
     it('should return a non-empty map for an initialized instance', () => {
       const map = new FunctionData('main', 127, 3).toJSON();
-      expect(Object.keys(map)).to.have.lengthOf(3);
-      expect(map.executionCount).to.equal(3);
-      expect(map.functionName).to.equal('main');
-      expect(map.lineNumber).to.equal(127);
+      assert.equal(Object.keys(map).length, 3);
+      assert.equal(map.executionCount, 3);
+      assert.equal(map.functionName, 'main');
+      assert.equal(map.lineNumber, 127);
     });
   });
 
   describe('.toString()', () => {
     it('should return a format like "FN:<lineNumber>,<functionName>" when used as definition', () => {
-      expect(new FunctionData('', 0).toString(true)).to.equal('FN:0,');
-      expect(new FunctionData('main', 127, 3).toString(true)).to.equal('FN:127,main');
+      assert.equal(new FunctionData('', 0).toString(true), 'FN:0,');
+      assert.equal(new FunctionData('main', 127, 3).toString(true), 'FN:127,main');
     });
 
     it('should return a format like "FNDA:<executionCount>,<functionName>" when used as data', () => {
-      expect(new FunctionData('', 0).toString(false)).to.equal('FNDA:0,');
-      expect(new FunctionData('main', 127, 3).toString(false)).to.equal('FNDA:3,main');
+      assert.equal(new FunctionData('', 0).toString(false), 'FNDA:0,');
+      assert.equal(new FunctionData('main', 127, 3).toString(false), 'FNDA:3,main');
     });
   });
 });
