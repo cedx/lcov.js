@@ -53,7 +53,7 @@ describe('FunctionCoverage', () => {
   });
 
   describe('.toString()', () => {
-    it('should return a format like "FNF:<found>\\\\n,FNH:<hit>"', () => {
+    it(String.raw`should return a format like "FNF:<found>\nFNH:<hit>"`, () => {
       assert.equal(String(new FunctionCoverage), 'FNF:0\nFNH:0');
 
       const coverage = new FunctionCoverage(23, 11, [new FunctionData('main', 127, 3)]);

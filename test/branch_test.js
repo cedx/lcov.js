@@ -52,7 +52,7 @@ describe('BranchCoverage', () => {
   });
 
   describe('.toString()', () => {
-    it('should return a format like "BRF:<found>\\\\n,BRH:<hit>"', () => {
+    it(String.raw`should return a format like "BRF:<found>\nBRH:<hit>"`, () => {
       assert.equal(String(new BranchCoverage), 'BRF:0\nBRH:0');
 
       const data = new BranchData(127, 3, 2, 1);

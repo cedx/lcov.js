@@ -52,7 +52,7 @@ describe('LineCoverage', () => {
   });
 
   describe('.toString()', () => {
-    it('should return a format like "LF:<found>\\\\n,LH:<hit>"', () => {
+    it(String.raw`should return a format like "LF:<found>\nLH:<hit>"`, () => {
       assert.equal(String(new LineCoverage), 'LF:0\nLH:0');
 
       const data = new LineData(127, 3);

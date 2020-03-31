@@ -57,7 +57,7 @@ describe('Record', () => {
   });
 
   describe('.toString()', () => {
-    it('should return a format like "SF:<sourceFile>\\\\n,end_of_record"', () => {
+    it(String.raw`should return a format like "SF:<sourceFile>\nend_of_record"`, () => {
       assert.equal(String(new Record('')), 'SF:\nend_of_record');
 
       const record = new Record('/home/cedx/lcov.js', {
