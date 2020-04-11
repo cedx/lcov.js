@@ -24,7 +24,7 @@
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
     "mocha": "^7.1.1",
-    "rollup": "^2.4.0",
+    "rollup": "^2.6.0",
     "terser": "^4.6.11",
     "typedoc": "^0.17.4",
     "typescript": "^3.8.3"
