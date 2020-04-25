@@ -1,11 +1,10 @@
 {
-  "bugs": "https://github.com/cedx/lcov.js/issues",
+  "bugs": "https://git.belin.io/cedx/lcov.js/issues",
   "description": "Parse and format to LCOV your code coverage reports. The best way to share your code coverage stats.",
-  "homepage": "https://dev.belin.io/lcov.js",
+  "homepage": "https://docs.belin.io/lcov.js",
   "license": "MIT",
   "main": "lib/index.js",
   "name": "@cedx/lcov",
-  "repository": "github:cedx/lcov.js",
   "type": "module",
   "types": "lib/index.d.ts",
   "version": "6.4.0",
@@ -48,6 +47,10 @@
     "parser",
     "test"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.belin.io/cedx/lcov.js.git"
+  },
   "scripts": {
     "coverage": "gulp coverage",
     "prepack": "gulp",

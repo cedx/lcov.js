@@ -7,14 +7,14 @@ in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [Ty
 > This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 ## Documentation
-- [User guide](https://dev.belin.io/lcov.js)
-- [API reference](https://dev.belin.io/lcov.js/api)
+- [User guide](https://docs.belin.io/lcov.js)
+- [API reference](https://api.belin.io/lcov.js)
 
 ## Development
-- [Git repository](https://github.com/cedx/lcov.js)
+- [Git repository](https://git.belin.io/cedx/lcov.js)
 - [GitHub package](https://github.com/cedx/lcov.js/packages)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
-- [Submit an issue](https://github.com/cedx/lcov.js/issues)
+- [Submit an issue](https://git.belin.io/cedx/lcov.js/issues)
 
 ## License
-[LCOV Reports for JS](https://dev.belin.io/lcov.js) is distributed under the MIT License.
+[LCOV Reports for JS](https://docs.belin.io/lcov.js) is distributed under the MIT License.
