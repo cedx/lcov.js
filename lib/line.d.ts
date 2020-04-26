@@ -1,4 +1,4 @@
-import { JsonObject } from './json';
+import { JsonObject } from './json.js';
 /** Provides details for line coverage. */
 export declare class LineData {
     lineNumber: number;

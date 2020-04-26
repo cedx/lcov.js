@@ -1,7 +1,7 @@
-import { BranchCoverage } from './branch';
-import { FunctionCoverage } from './function';
-import { JsonObject } from './json';
-import { LineCoverage } from './line';
+import { BranchCoverage } from './branch.js';
+import { FunctionCoverage } from './function.js';
+import { JsonObject } from './json.js';
+import { LineCoverage } from './line.js';
 /** Provides the coverage data of a source file. */
 export declare class Record {
     sourceFile: string;

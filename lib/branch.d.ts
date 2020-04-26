@@ -1,4 +1,4 @@
-import { JsonObject } from './json';
+import { JsonObject } from './json.js';
 /** Provides details for branch coverage. */
 export declare class BranchData {
     lineNumber: number;

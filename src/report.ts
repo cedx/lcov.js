@@ -1,9 +1,9 @@
-import {BranchCoverage, BranchData} from './branch';
-import {FunctionCoverage, FunctionData} from './function';
-import {JsonObject} from './json';
-import {LineCoverage, LineData} from './line';
-import {Record} from './record';
-import {Token} from './token';
+import {BranchCoverage, BranchData} from './branch.js';
+import {FunctionCoverage, FunctionData} from './function.js';
+import {JsonObject} from './json.js';
+import {LineCoverage, LineData} from './line.js';
+import {Record} from './record.js';
+import {Token} from './token.js';
 
 /** An exception caused by a parsing error. */
 export class LcovError extends SyntaxError {

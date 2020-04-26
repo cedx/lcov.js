@@ -1,5 +1,5 @@
-import { JsonObject } from './json';
-import { Record } from './record';
+import { JsonObject } from './json.js';
+import { Record } from './record.js';
 /** An exception caused by a parsing error. */
 export declare class LcovError extends SyntaxError {
     readonly source: string;

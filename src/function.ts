@@ -1,5 +1,5 @@
-import {JsonObject} from './json';
-import {Token} from './token';
+import {JsonObject} from './json.js';
+import {Token} from './token.js';
 
 /** Provides details for function coverage. */
 export class FunctionData {

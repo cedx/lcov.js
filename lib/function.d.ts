@@ -1,4 +1,4 @@
-import { JsonObject } from './json';
+import { JsonObject } from './json.js';
 /** Provides details for function coverage. */
 export declare class FunctionData {
     functionName: string;
