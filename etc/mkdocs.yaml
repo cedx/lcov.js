@@ -22,6 +22,9 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: 'https://linkedin.com/in/cedxbelin'
 
+extra_css:
+  - css/mkdocs.css
+
 markdown_extensions:
   - admonition
   - codehilite
@@ -38,11 +41,13 @@ nav:
       - See also: about/see_also.md
 
 theme:
+  favicon: img/favicon.ico
+  features:
+    - instant
   icon:
     logo: fontawesome/solid/book-reader
     repo: fontawesome/brands/git-alt
   name: material
-  favicon: img/favicon.ico
   palette:
     accent: yellow
     primary: yellow
