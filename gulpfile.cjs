@@ -1,6 +1,5 @@
 const {spawn} = require('child_process');
 const del = require('del');
-const {promises} = require('fs');
 const {dest, series, src, task, watch} = require('gulp');
 const replace = require('gulp-replace');
 const {delimiter, normalize, resolve} = require('path');
@@ -40,9 +39,8 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.yaml', '--fix', 'src/**/
 task('lint', () => _exec('eslint', ['--config=etc/eslint.yaml', 'src/**/*.ts']));
 
 /** Publishes the package to the registry. */
-task('publish:github', () => _exec('npm', ['publish', '--registry=https://npm.pkg.github.com']));
 task('publish:npm', () => _exec('npm', ['publish', '--registry=https://registry.npmjs.org']));
-task('publish', series('clean', 'publish:github', 'publish:npm'));
+task('publish', series('clean', 'publish:npm'));
 
 /** Runs the test suites. */
 const mocha = ['node_modules/.bin/mocha', '--recursive'];
