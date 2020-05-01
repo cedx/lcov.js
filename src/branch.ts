@@ -92,8 +92,7 @@ export class BranchCoverage {
    */
   toString(): string {
     const lines = this.data.map(item => item.toString());
-    lines.push(`${Token.branchesFound}:${this.found}`);
-    lines.push(`${Token.branchesHit}:${this.hit}`);
+    lines.push(`${Token.branchesFound}:${this.found}`, `${Token.branchesHit}:${this.hit}`);
     return lines.join('\n');
   }
 }
