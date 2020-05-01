@@ -2,13 +2,13 @@
 .* text
 
 *.cjs text
-*.cmd text
 *.http text
 *.info text
 *.js text
 *.json text
 *.md text
 *.mjs text
+*.ps1 text
 *.ts text
 *.txt text
 *.yaml text
