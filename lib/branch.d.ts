@@ -38,7 +38,7 @@ export declare class BranchCoverage {
     /**
      * Creates a new branch coverage.
      * @param found The number of branches found.
-     * @param hit The number of branches found.
+     * @param hit The number of branches hit.
      * @param data The coverage data.
      */
     constructor(found?: number, hit?: number, data?: BranchData[]);
