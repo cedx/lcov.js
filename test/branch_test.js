@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {BranchCoverage, BranchData} from '../lib/index.js';
 
-/** Tests the features of the {@link BranchCoverage} class. */
+/** Tests the features of the `BranchCoverage` class. */
 describe('BranchCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
@@ -61,7 +61,7 @@ describe('BranchCoverage', () => {
   });
 });
 
-/** Tests the features of the {@link BranchData} class. */
+/** Tests the features of the `BranchData` class. */
 describe('BranchData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {

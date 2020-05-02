@@ -2,7 +2,7 @@ import {strict as assert} from 'assert';
 import {readFileSync} from 'fs';
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from '../lib/index.js';
 
-/** Tests the features of the {@link Report} class. */
+/** Tests the features of the `Report` class. */
 describe('Report', () => {
   describe('.fromCoverage()', () => {
     const report = Report.fromCoverage(readFileSync('test/fixtures/lcov.info', 'utf8'));

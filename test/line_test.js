@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {LineCoverage, LineData} from '../lib/index.js';
 
-/** Tests the features of the {@link LineCoverage} class. */
+/** Tests the features of the `LineCoverage` class. */
 describe('LineCoverage', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
@@ -61,7 +61,7 @@ describe('LineCoverage', () => {
   });
 });
 
-/** Tests the features of the {@link LineData} class. */
+/** Tests the features of the `LineData` class. */
 describe('LineData', () => {
   describe('.fromJson()', () => {
     it('should return an instance with default values for an empty map', () => {
