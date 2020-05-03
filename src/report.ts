@@ -71,11 +71,10 @@ export class Report {
 
           case Token.functionData:
             if (data.length < 2) throw new Error('Invalid function data');
-            record.functions!.data.some(item => {
-              if (item.functionName != data[1]) return false;
+            for (const item of record.functions!.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
               item.executionCount = Number.parseInt(data[0]);
-              return true;
-            });
+              break;
+            }
             break;
 
           case Token.functionsFound:
