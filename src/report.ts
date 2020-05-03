@@ -40,7 +40,7 @@ export class Report {
     const report = new Report;
 
     try {
-      let record = new Record('');
+      let record!: Record;
       for (let line of coverage.split(/\r?\n/g)) {
         line = line.trim();
         if (!line.length) continue;
