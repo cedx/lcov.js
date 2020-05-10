@@ -2,7 +2,7 @@
 ![Runtime](https://img.shields.io/node/v/@cedx/lcov.svg) ![Release](https://img.shields.io/npm/v/@cedx/lcov.svg) ![License](https://img.shields.io/npm/l/@cedx/lcov.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/lcov.svg) ![Dependencies](https://david-dm.org/cedx/lcov.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.js/badge.svg) ![Build](https://github.com/cedx/lcov.js/workflows/build/badge.svg)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
-in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [TypeScript](https://www.typescriptlang.org).
+in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
 > This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
