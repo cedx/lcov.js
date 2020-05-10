@@ -123,6 +123,9 @@ export class Report {
           case Token.endOfRecord:
             report.records.push(record);
             break;
+
+          default:
+            throw new Error('Unknown token');
         }
       }
     }
