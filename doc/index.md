@@ -1,5 +1,5 @@
 # LCOV Reports <small>for JS</small>
-![Runtime](https://img.shields.io/node/v/@cedx/lcov.svg) ![Release](https://img.shields.io/npm/v/@cedx/lcov.svg) ![License](https://img.shields.io/npm/l/@cedx/lcov.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/lcov.svg) ![Dependencies](https://david-dm.org/cedx/lcov.js.svg) ![Coverage](https://coveralls.io/repos/github/cedx/lcov.js/badge.svg) ![Build](https://github.com/cedx/lcov.js/workflows/build/badge.svg)
+![Runtime](https://badgen.net/npm/node/@cedx/lcov) ![Release](https://badgen.net/npm/v/@cedx/lcov) ![License](https://badgen.net/npm/license/@cedx/lcov) ![Downloads](https://badgen.net/npm/dt/@cedx/lcov) ![Dependencies](https://badgen.net/david/dep/cedx/lcov.js) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.js) ![Build](https://badgen.net/github/checks/cedx/lcov.js)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
 in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
