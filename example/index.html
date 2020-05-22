@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>LCOV for JS</title>
-    <script src="https://cdn.jsdelivr.net/npm/@cedx/lcov/build/lcov.min.js"></script>
-  </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>LCOV for JS</title>
+		<script src="https://cdn.jsdelivr.net/npm/@cedx/lcov/build/lcov.min.js"></script>
+	</head>
 
-  <body>
-    <p>Open the console provided by the development tools of your browser...</p>
+	<body>
+		<p>Open the console provided by the development tools of your browser...</p>
 
-    <script>
-      // Import the classes.
-      const {FunctionCoverage, LineCoverage, LineData, Record, Report} = window.lcov;
+		<script>
+			// Import the classes.
+			const {FunctionCoverage, LineCoverage, LineData, Record, Report} = window.lcov;
 
-      // Format coverage data as LCOV report.
-      const lineCoverage = new LineCoverage(2, 2, [
-        new LineData(6, 2, 'PF4Rz2r7RTliO9u6bZ7h6g'),
-        new LineData(7, 2, 'yGMB6FhEEAd8OyASe3Ni1w')
-      ]);
+			// Format coverage data as LCOV report.
+			const lineCoverage = new LineCoverage(2, 2, [
+				new LineData(6, 2, "PF4Rz2r7RTliO9u6bZ7h6g"),
+				new LineData(7, 2, "yGMB6FhEEAd8OyASe3Ni1w")
+			]);
 
-      const record = new Record('/home/cedx/lcov.js/fixture.js', {
-        functions: new FunctionCoverage(1, 1),
-        lines: lineCoverage
-      });
+			const record = new Record("/home/cedx/lcov.js/fixture.js", {
+				functions: new FunctionCoverage(1, 1),
+				lines: lineCoverage
+			});
 
-      const report = new Report('Example', [record]);
-      console.log(report.toString());
+			const report = new Report("Example", [record]);
+			console.log(report.toString());
 
-      // Parse a LCOV report to coverage data.
-      const coverage = `
+			// Parse a LCOV report to coverage data.
+			const coverage = `
 TN:Example
 SF:/home/cedx/lcov.js/fixture.js
 FN:4,main
@@ -43,15 +43,15 @@ LF:4
 LH:4
 end_of_record`;
 
-      try {
-        const report = Report.fromCoverage(coverage);
-        console.log(`The coverage report contains ${report.records.length} record(s):`);
-        console.log(report.toJSON());
-      }
+			try {
+				const report = Report.fromCoverage(coverage);
+				console.log(`The coverage report contains ${report.records.length} record(s):`);
+				console.log(report.toJSON());
+			}
 
-      catch (error) {
-        console.log(`An error occurred: ${error.message}`);
-      }
-    </script>
-  </body>
+			catch (error) {
+				console.log(`An error occurred: ${error.message}`);
+			}
+		</script>
+	</body>
 </html>

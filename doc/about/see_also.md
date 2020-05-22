@@ -8,7 +8,3 @@
 ## Testing
 - [Continuous integration](https://github.com/cedx/lcov.js/actions)
 - [Code coverage](https://coveralls.io/github/cedx/lcov.js)
-
-## Other implementations
-- Dart: [LCOV Reports for Dart](https://docs.belin.io/lcov.dart)
-- PHP: [LCOV Reports for PHP](https://docs.belin.io/lcov.php)

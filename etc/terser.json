@@ -1,5 +1,5 @@
 {
-  "compress": true,
-  "ecma": 2020,
-  "mangle": true
+	"compress": true,
+	"ecma": 2020,
+	"mangle": true
 }

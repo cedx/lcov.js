@@ -4,14 +4,15 @@
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
 in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
+!!! danger
+	This package has been renamed to [`@cedx/lcov.hx`](https://docs.belin.io/lcov.hx), and its version number resetted.  
+	Please update your `package.json` file.
+	
 ## Quick start
 Install the latest version of **LCOV Reports for JS** with [npm](https://www.npmjs.com):
 
-```shell
+``` shell
 npm install @cedx/lcov
 ```
-
-!!! info
-    This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 For detailed instructions, see the [installation guide](installation.md).
