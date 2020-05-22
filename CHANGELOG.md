@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [7.1.0](https://git.belin.io/cedx/lcov.js/compare/v7.0.0...v7.1.0)
+- Replaced the build system based on [Gulp](https://gulpjs.com) by [PowerShell](https://docs.microsoft.com/en-us/powershell) scripts.
+- Updated the package dependencies.
+
 ## Version [7.0.0](https://git.belin.io/cedx/lcov.js/compare/v6.4.0...v7.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Dropped support for [GitHub Packages](https://github.com/features/packages).
