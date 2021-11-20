@@ -1,4 +1,4 @@
-import {strict as assert} from "assert";
+import assert from "assert/strict";
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from "../lib/index.js";
 
 /** Tests the features of the `Record` class. */

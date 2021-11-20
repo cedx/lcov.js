@@ -1,4 +1,4 @@
-import {strict as assert} from "assert";
+import assert from "assert/strict";
 import {LineCoverage, LineData} from "../lib/index.js";
 
 /** Tests the features of the `LineCoverage` class. */

@@ -1,4 +1,4 @@
-import {strict as assert} from "assert";
+import assert from "assert/strict";
 import {readFileSync} from "fs";
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from "../lib/index.js";
 
