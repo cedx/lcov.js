@@ -1,21 +1,18 @@
 # LCOV Reports for JS
-![Runtime](https://badgen.net/npm/node/@cedx/lcov) ![Release](https://badgen.net/npm/v/@cedx/lcov) ![Types](https://badgen.net/npm/types/@cedx/lcov) ![License](https://badgen.net/npm/license/@cedx/lcov) ![Downloads](https://badgen.net/npm/dt/@cedx/lcov) ![Dependencies](https://badgen.net/david/dep/cedx/lcov.js) ![Coverage](https://badgen.net/coveralls/c/github/cedx/lcov.js) ![Build](https://badgen.net/github/checks/cedx/lcov.js)
+![Runtime](https://flat.badgen.net/npm/node/@cedx/lcov) ![Release](https://flat.badgen.net/npm/v/@cedx/lcov) ![License](https://flat.badgen.net/npm/license/@cedx/lcov) ![Downloads](https://flat.badgen.net/npm/dt/@cedx/lcov) ![Coverage](https://flat.badgen.net/coveralls/c/bitbucket/cedx/lcov.js)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
 in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
-> WARNING:  
-> This package has been renamed to `@cedx/lcov.hx`, and its version number resetted.
-> Please update your `package.json` file.
+> WARNING: this package is **abandoned** and no longer maintained.
 
 ## Documentation
-- [User guide](https://docs.belin.io/lcov.hx)
-- [API reference](https://api.belin.io/lcov.hx)
+- [User guide](https://bitbucket.org/cedx/lcov.js/wiki)
 
 ## Development
-- [Git repository](https://git.belin.io/cedx/lcov.hx)
-- [npm package](https://www.npmjs.com/package/@cedx/lcov.hx)
-- [Submit an issue](https://git.belin.io/cedx/lcov.hx/issues)
+- [Git repository](https://bitbucket.org/cedx/lcov.js)
+- [npm package](https://www.npmjs.com/package/@cedx/lcov)
+- [Submit an issue](https://bitbucket.org/cedx/lcov.js/issues)
 
 ## License
-[LCOV Reports for JS](https://docs.belin.io/lcov.hx) is distributed under the MIT License.
+[LCOV Reports for JS](https://bitbucket.org/cedx/lcov.js) is distributed under the MIT License.
