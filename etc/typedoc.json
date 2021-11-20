@@ -1,10 +1,11 @@
 {
+	"entryPoints": ["../src/index.ts"],
 	"excludePrivate": true,
-	"gitRevision": "master",
+	"githubPages": true,
+	"gitRevision": "main",
 	"hideGenerator": true,
-	"mode": "file",
 	"name": "LCOV Reports for JS",
-	"out": "doc/api",
+	"out": "../docs",
 	"readme": "none",
-	"tsconfig": "src/tsconfig.json"
+	"tsconfig": "../src/tsconfig.json"
 }
