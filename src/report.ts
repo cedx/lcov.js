@@ -53,7 +53,7 @@ export class Report {
 
 				switch (token) {
 					case Token.testName:
-						report.testName = data[0]; // eslint-disable-line prefer-destructuring
+						report.testName = data[0];
 						break;
 
 					case Token.sourceFile:
@@ -71,7 +71,7 @@ export class Report {
 
 					case Token.functionData:
 						if (data.length < 2) throw new Error("Invalid function data");
-						for (const item of record.functions!.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
+						for (const item of record.functions!.data) if (item.functionName == data[1]) {
 							item.executionCount = Number.parseInt(data[0]);
 							break;
 						}
