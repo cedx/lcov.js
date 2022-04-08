@@ -43,7 +43,7 @@
 	"scripts": {
 		"build": "tsc --project src/tsconfig.json",
 		"doc": "typedoc --options etc/typedoc.json && pwsh tool/doc.ps1",
-		"prepack": "pwsh tool/dist.ps1",
+		"prepack": "npm run build",
 		"test": "npm run build && c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
 	}
 }
