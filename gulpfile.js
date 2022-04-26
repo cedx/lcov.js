@@ -45,6 +45,11 @@ export async function publish() {
 	for (const command of [["tag"], ["push", "origin"]]) await exec("git", [...command, `v${version}`]);
 }
 
+/** Runs the test suite. */
+export function test() {
+	return exec("npx", ["c8", "--all", "--include=lib/**/*.js", "--report-dir=var", "--reporter=lcovonly", "node_modules/.bin/mocha", "--recursive"]);
+}
+
 /** Watches for file changes. */
 export function watch() {
 	return exec("npx", ["tsc", "--project", "lib/jsconfig.json", "--watch"]);
