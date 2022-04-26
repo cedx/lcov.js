@@ -33,7 +33,7 @@ export class Report {
 	/**
 	 * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
 	 * @param coverage The coverage data.
-	 * @return The resulting coverage report.
+	 * @returns The resulting coverage report.
 	 * @throws [[LcovError]] A parsing error occurred.
 	 */
 	static fromCoverage(coverage: string): Report {
@@ -141,7 +141,7 @@ export class Report {
 	/**
 	 * Creates a new report from the specified JSON object.
 	 * @param map A JSON object representing a report.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): Report {
 		return new Report(
@@ -152,7 +152,7 @@ export class Report {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -163,7 +163,7 @@ export class Report {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const lines = this.testName.length ? [`${Token.testName}:${this.testName}`] : [];

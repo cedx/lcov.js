@@ -19,7 +19,7 @@ function formatReport() {
 
 /**
  * Parses a LCOV report to coverage data.
- * @return {Promise<void>} Completes when the parsing is terminated.
+ * @returns {Promise<void>} Completes when the parsing is terminated.
  */
 async function parseReport() {
 	try {

@@ -15,7 +15,7 @@ export class LineData {
 	/**
 	 * Creates a new line data from the specified JSON object.
 	 * @param map A JSON object representing a line data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): LineData {
 		return new LineData(
@@ -27,7 +27,7 @@ export class LineData {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -39,7 +39,7 @@ export class LineData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
@@ -61,7 +61,7 @@ export class LineCoverage {
 	/**
 	 * Creates a new line coverage from the specified JSON object.
 	 * @param map A JSON object representing a line coverage.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): LineCoverage {
 		return new LineCoverage(
@@ -73,7 +73,7 @@ export class LineCoverage {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -85,7 +85,7 @@ export class LineCoverage {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const lines = this.data.map(item => item.toString());

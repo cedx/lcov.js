@@ -31,7 +31,7 @@ export class Record {
 	/**
 	 * Creates a new record from the specified JSON object.
 	 * @param map A JSON object representing a record.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): Record {
 		return new Record(typeof map.sourceFile == "string" ? map.sourceFile : "", {
@@ -43,7 +43,7 @@ export class Record {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -56,7 +56,7 @@ export class Record {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const output = [`${Token.sourceFile}:${this.sourceFile}`];

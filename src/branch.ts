@@ -1,7 +1,8 @@
 import {JsonObject} from "./json.js";
-import {Token} from "./token.js";
 
-/** Provides details for branch coverage. */
+/**
+ * Provides details for branch coverage.
+ */
 export class BranchData {
 
 	/**
@@ -16,7 +17,7 @@ export class BranchData {
 	/**
 	 * Creates a new branch data from the specified JSON object.
 	 * @param map A JSON object representing a branch data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): BranchData {
 		return new BranchData(
@@ -29,7 +30,7 @@ export class BranchData {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -42,7 +43,7 @@ export class BranchData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
@@ -64,7 +65,7 @@ export class BranchCoverage {
 	/**
 	 * Creates a new branch data from the specified JSON object.
 	 * @param map A JSON object representing a branch data.
-	 * @return The instance corresponding to the specified JSON object.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(map: JsonObject): BranchCoverage {
 		return new BranchCoverage(
@@ -76,7 +77,7 @@ export class BranchCoverage {
 
 	/**
 	 * Converts this object to a map in JSON format.
-	 * @return The map in JSON format corresponding to this object.
+	 * @returns The map in JSON format corresponding to this object.
 	 */
 	toJSON(): JsonObject {
 		return {
@@ -88,7 +89,7 @@ export class BranchCoverage {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @return The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
 	toString(): string {
 		const lines = this.data.map(item => item.toString());
