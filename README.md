@@ -4,8 +4,6 @@
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
 in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 
-> WARNING: this package is **abandoned** and no longer maintained.
-
 ## Documentation
 - [User guide](https://github.com/cedx/lcov.js/wiki)
 - [API reference](https://cedx.github.io/lcov.js)
