@@ -1,7 +1,7 @@
 {
 	"env": {
-		"browser": true,
 		"es2022": true,
+		"mocha": true,
 		"node": true
 	},
 	"extends": "eslint:recommended",
@@ -40,7 +40,7 @@
 		"dot-notation": "error",
 		"eqeqeq": "off",
 		"func-name-matching": "error",
-		"func-names": ["error", "as-needed"],
+		"func-names": "off",
 		"func-style": ["error", "declaration", {"allowArrowFunctions": true}],
 		"grouped-accessor-pairs": "error",
 		"guard-for-in": "error",
@@ -49,7 +49,7 @@
 		"init-declarations": "error",
 		"max-depth": "error",
 		"max-lines": "error",
-		"max-lines-per-function": "error",
+		"max-lines-per-function": ["error", {"max": 100}],
 		"max-nested-callbacks": "error",
 		"max-params": ["error", 4],
 		"max-statements": "error",
@@ -178,7 +178,7 @@
 		"max-len": ["error", {"code": 160}],
 		"max-statements-per-line": ["error", {"max": 3}],
 		"multiline-ternary": ["error", "always-multiline"],
-		"new-parens": ["error", "never"],
+		"new-parens": "off",
 		"newline-per-chained-call": ["error", {"ignoreChainWithDepth": 3}],
 		"no-extra-parens": "error",
 		"no-multi-spaces": "error",
