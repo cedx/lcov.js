@@ -1,25 +1,27 @@
 import assert from "assert/strict";
 import {FunctionCoverage, FunctionData} from "../lib/index.js";
 
-/** Tests the features of the `FunctionCoverage` class. */
+/**
+ * Tests the features of the {@link FunctionCoverage} class.
+ */
 describe("FunctionCoverage", function() {
-	describe(".fromJson()", function() {
+	describe("constructor", function() {
 		it("should return an instance with default values for an empty map", function() {
-			const coverage = FunctionCoverage.fromJson({});
+			const coverage = new FunctionCoverage;
 			assert.equal(coverage.data.length, 0);
 			assert.equal(coverage.found, 0);
 			assert.equal(coverage.hit, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
-			const coverage = FunctionCoverage.fromJson({
+			const coverage = new FunctionCoverage({
 				data: [{lineNumber: 127}],
 				found: 23,
 				hit: 11
 			});
 
 			assert.equal(coverage.data.length, 1);
-			assert(coverage.data[0] instanceof FunctionData);
+			assert.ok(coverage.data[0] instanceof FunctionData);
 			assert.equal(coverage.data[0].lineNumber, 127);
 
 			assert.equal(coverage.found, 23);
@@ -32,7 +34,7 @@ describe("FunctionCoverage", function() {
 			const map = new FunctionCoverage().toJSON();
 			assert.equal(Object.keys(map).length, 3);
 
-			assert(Array.isArray(map.data));
+			assert.ok(Array.isArray(map.data));
 			assert.equal(map.data.length, 0);
 			assert.equal(map.found, 0);
 			assert.equal(map.hit, 0);
@@ -41,7 +43,7 @@ describe("FunctionCoverage", function() {
 		it("should return a non-empty map for an initialized instance", function() {
 			const map = new FunctionCoverage(23, 11, [new FunctionData("", 0)]).toJSON();
 			assert.equal(Object.keys(map).length, 3);
-			assert(Array.isArray(map.data));
+			assert.ok(Array.isArray(map.data));
 			assert.equal(map.data.length, 1);
 
 			assert.ok(map.data[0]);
@@ -62,18 +64,20 @@ describe("FunctionCoverage", function() {
 	});
 });
 
-/** Tests the features of the `FunctionData` class. */
+/**
+ * Tests the features of the {@link FunctionData} class.
+ */
 describe("FunctionData", function() {
-	describe(".fromJson()", function() {
+	describe("constructor", function() {
 		it("should return an instance with default values for an empty map", function() {
-			const data = FunctionData.fromJson({});
+			const data = new FunctionData;
 			assert.equal(data.executionCount, 0);
 			assert.equal(data.functionName.length, 0);
 			assert.equal(data.lineNumber, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
-			const data = FunctionData.fromJson({
+			const data = new FunctionData({
 				executionCount: 3,
 				functionName: "main",
 				lineNumber: 127
