@@ -1,5 +1,5 @@
 {
-	"include": ["*.js"],
+	"include": ["*.js", "lib/**/*.js", "test/**/*.js"],
 	"compilerOptions": {
 		"checkJs": true,
 		"esModuleInterop": true,

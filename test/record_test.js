@@ -1,11 +1,13 @@
 import assert from "assert/strict";
 import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from "../lib/index.js";
 
-/** Tests the features of the `Record` class. */
+/**
+ * Tests the features of the {@link Record} class.
+ */
 describe("Record", function() {
 	describe(".fromJson()", function() {
 		it("should return an instance with default values for an empty map", function() {
-			const record = Record.fromJson({});
+			const record = new Record;
 			assert.equal(record.branches, undefined);
 			assert.equal(record.functions, undefined);
 			assert.equal(record.lines, undefined);
@@ -13,16 +15,16 @@ describe("Record", function() {
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
-			const record = Record.fromJson({
+			const record = new Record({
 				branches: {},
 				functions: {},
 				lines: {},
 				sourceFile: "/home/cedx/lcov.js"
 			});
 
-			assert(record.branches instanceof BranchCoverage);
-			assert(record.functions instanceof FunctionCoverage);
-			assert(record.lines instanceof LineCoverage);
+			assert.ok(record.branches instanceof BranchCoverage);
+			assert.ok(record.functions instanceof FunctionCoverage);
+			assert.ok(record.lines instanceof LineCoverage);
 			assert.equal(record.sourceFile, "/home/cedx/lcov.js");
 		});
 	});

@@ -2,7 +2,9 @@ import assert from "assert/strict";
 import {readFileSync} from "fs";
 import {BranchData, FunctionData, LcovError, LineData, Record, Report} from "../lib/index.js";
 
-/** Tests the features of the `Report` class. */
+/**
+ * Tests the features of the {@link Report} class.
+ */
 describe("Report", function() {
 	describe(".fromCoverage()", function() {
 		const report = Report.fromCoverage(readFileSync("test/fixtures/lcov.info", "utf8"));
@@ -13,7 +15,7 @@ describe("Report", function() {
 
 		it("should contain three records", function() {
 			assert.equal(report.records.length, 3);
-			assert(report.records[0] instanceof Record);
+			assert.ok(report.records[0] instanceof Record);
 			assert.equal(report.records[0].sourceFile, "/home/cedx/lcov.js/fixture.js");
 			assert.equal(report.records[1].sourceFile, "/home/cedx/lcov.js/func1.js");
 			assert.equal(report.records[2].sourceFile, "/home/cedx/lcov.js/func2.js");
@@ -25,7 +27,7 @@ describe("Report", function() {
 			assert.equal(branches.hit, 4);
 
 			assert.equal(branches.data.length, 4);
-			assert(branches.data[0] instanceof BranchData);
+			assert.ok(branches.data[0] instanceof BranchData);
 			assert.equal(branches.data[0].lineNumber, 8);
 		});
 
@@ -35,7 +37,7 @@ describe("Report", function() {
 			assert.equal(functions.hit, 1);
 
 			assert.equal(functions.data.length, 1);
-			assert(functions.data[0] instanceof FunctionData);
+			assert.ok(functions.data[0] instanceof FunctionData);
 			assert.equal(functions.data[0].functionName, "func1");
 		});
 
@@ -45,7 +47,7 @@ describe("Report", function() {
 			assert.equal(lines.hit, 9);
 
 			assert.equal(lines.data.length, 9);
-			assert(lines.data[0] instanceof LineData);
+			assert.ok(lines.data[0] instanceof LineData);
 			assert.equal(lines.data[0].checksum, "5kX7OTfHFcjnS98fjeVqNA");
 		});
 
@@ -72,7 +74,7 @@ describe("Report", function() {
 			});
 
 			assert.equal(report.records.length, 1);
-			assert(report.records[0] instanceof Record);
+			assert.ok(report.records[0] instanceof Record);
 			assert.equal(report.testName, "LcovTest");
 		});
 	});
@@ -81,7 +83,7 @@ describe("Report", function() {
 		it("should return a map with default values for a newly created instance", function() {
 			const map = new Report().toJSON();
 			assert.equal(Object.keys(map).length, 2);
-			assert(Array.isArray(map.records));
+			assert.ok(Array.isArray(map.records));
 			assert.equal(map.records.length, 0);
 			assert.equal(map.testName.length, 0);
 		});
@@ -89,7 +91,7 @@ describe("Report", function() {
 		it("should return a non-empty map for an initialized instance", function() {
 			const map = new Report("LcovTest", [new Record("")]).toJSON();
 			assert.equal(Object.keys(map).length, 2);
-			assert(Array.isArray(map.records));
+			assert.ok(Array.isArray(map.records));
 			assert.equal(map.records.length, 1);
 			assert.ok(map.records[0]);
 			assert.equal(typeof map.records[0], "object");

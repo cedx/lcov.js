@@ -3,9 +3,6 @@ import {cp, readFile} from "node:fs/promises";
 import del from "del";
 import gulp from "gulp";
 
-// The file patterns providing the list of source files.
-const sources = ["*.js", "lib/**/*.js"];
-
 /** The default task. */
 export default gulp.series(
 	clean,
@@ -28,14 +25,11 @@ export async function doc() {
 	return cp("www/favicon.ico", "docs/favicon.ico");
 }
 
-/** Fixes the coding standards issues. */
-export function fix() {
-	return exec("npx", ["eslint", "--config=etc/eslint.json", "--fix", ...sources]);
-}
-
 /** Performs the static analysis of source code. */
-export function lint() {
-	return exec("npx", ["eslint", "--config=etc/eslint.json", ...sources]);
+export async function lint() {
+	const sources = JSON.parse(await readFile("jsconfig.json", "utf8")).include;
+	await exec("npx", ["eslint", "--config=etc/eslint.json", ...sources]);
+	return exec("npx", ["tsc", "--project", "jsconfig.json"]);
 }
 
 /** Publishes the package in the registry. */
@@ -52,7 +46,7 @@ export function test() {
 
 /** Watches for file changes. */
 export function watch() {
-	return exec("npx", ["tsc", "--project", "lib/jsconfig.json", "--watch"]);
+	return exec("npx", ["tsc", "--project", "jsconfig.json", "--watch"]);
 }
 
 /**
