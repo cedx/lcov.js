@@ -138,7 +138,7 @@
 		"prefer-spread": "error",
 		"prefer-template": "error",
 		"quote-props": ["error", "as-needed"],
-		"radix": "error",
+		"radix": ["error", "as-needed"],
 		"require-await": "off",
 		"require-unicode-regexp": "off",
 		"sort-imports": "off",
