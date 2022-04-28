@@ -1,25 +1,27 @@
 import assert from "assert/strict";
 import {LineCoverage, LineData} from "../lib/index.js";
 
-/** Tests the features of the `LineCoverage` class. */
+/**
+ * Tests the features of the {@link LineCoverage} class.
+ */
 describe("LineCoverage", function() {
-	describe(".fromJson()", function() {
+	describe("constructor", function() {
 		it("should return an instance with default values for an empty map", function() {
-			const coverage = LineCoverage.fromJson({});
+			const coverage = new LineCoverage;
 			assert.equal(coverage.data.length, 0);
 			assert.equal(coverage.found, 0);
 			assert.equal(coverage.hit, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
-			const coverage = LineCoverage.fromJson({
+			const coverage = new LineCoverage({
 				data: [{lineNumber: 127}],
 				found: 23,
 				hit: 11
 			});
 
 			assert.equal(coverage.data.length, 1);
-			assert(coverage.data[0] instanceof LineData);
+			assert.ok(coverage.data[0] instanceof LineData);
 			assert.equal(coverage.data[0].lineNumber, 127);
 
 			assert.equal(coverage.found, 23);
@@ -31,7 +33,7 @@ describe("LineCoverage", function() {
 		it("should return a map with default values for a newly created instance", function() {
 			const map = new LineCoverage().toJSON();
 			assert.equal(Object.keys(map).length, 3);
-			assert(Array.isArray(map.data));
+			assert.ok(Array.isArray(map.data));
 			assert.equal(map.data.length, 0);
 			assert.equal(map.found, 0);
 			assert.equal(map.hit, 0);
@@ -40,7 +42,7 @@ describe("LineCoverage", function() {
 		it("should return a non-empty map for an initialized instance", function() {
 			const map = new LineCoverage(23, 11, [new LineData(0)]).toJSON();
 			assert.equal(Object.keys(map).length, 3);
-			assert(Array.isArray(map.data));
+			assert.ok(Array.isArray(map.data));
 			assert.equal(map.data.length, 1);
 
 			assert.ok(map.data[0]);
@@ -61,18 +63,20 @@ describe("LineCoverage", function() {
 	});
 });
 
-/** Tests the features of the `LineData` class. */
+/**
+ * Tests the features of the {@link LineData} class.
+ */
 describe("LineData", function() {
-	describe(".fromJson()", function() {
+	describe("constructor", function() {
 		it("should return an instance with default values for an empty map", function() {
-			const data = LineData.fromJson({});
+			const data = new LineData;
 			assert.equal(data.checksum.length, 0);
 			assert.equal(data.executionCount, 0);
 			assert.equal(data.lineNumber, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
-			const data = LineData.fromJson({
+			const data = new LineData({
 				checksum: "ed076287532e86365e841e92bfc50d8c",
 				executionCount: 3,
 				lineNumber: 127
