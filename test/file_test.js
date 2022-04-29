@@ -11,7 +11,7 @@ describe("Record", function() {
 			assert.equal(record.branches, undefined);
 			assert.equal(record.functions, undefined);
 			assert.equal(record.lines, undefined);
-			assert.equal(record.sourceFile.length, 0);
+			assert.equal(record.path.length, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", function() {
@@ -19,13 +19,13 @@ describe("Record", function() {
 				branches: {},
 				functions: {},
 				lines: {},
-				sourceFile: "/home/cedx/lcov.js"
+				path: "/home/cedx/lcov.js"
 			});
 
 			assert.ok(record.branches instanceof BranchCoverage);
 			assert.ok(record.functions instanceof FunctionCoverage);
 			assert.ok(record.lines instanceof LineCoverage);
-			assert.equal(record.sourceFile, "/home/cedx/lcov.js");
+			assert.equal(record.path, "/home/cedx/lcov.js");
 		});
 	});
 
@@ -36,7 +36,7 @@ describe("Record", function() {
 			assert.equal(map.branches, null);
 			assert.equal(map.functions, null);
 			assert.equal(map.lines, null);
-			assert.equal(map.sourceFile.length, 0);
+			assert.equal(map.path.length, 0);
 		});
 
 		it("should return a non-empty map for an initialized instance", function() {
@@ -54,12 +54,12 @@ describe("Record", function() {
 			assert.equal(typeof map.functions, "object");
 			assert.ok(map.lines);
 			assert.equal(typeof map.lines, "object");
-			assert.equal(map.sourceFile, "/home/cedx/lcov.js");
+			assert.equal(map.path, "/home/cedx/lcov.js");
 		});
 	});
 
 	describe(".toString()", function() {
-		it(String.raw`should return a format like "SF:<sourceFile>\nend_of_record"`, function() {
+		it(String.raw`should return a format like "SF:<path>\nend_of_record"`, function() {
 			assert.equal(String(new Record("")), "SF:\nend_of_record");
 
 			const record = new Record("/home/cedx/lcov.js", {

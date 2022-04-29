@@ -16,9 +16,9 @@ describe("Report", function() {
 		it("should contain three records", function() {
 			assert.equal(report.records.length, 3);
 			assert.ok(report.records[0] instanceof Record);
-			assert.equal(report.records[0].sourceFile, "/home/cedx/lcov.js/fixture.js");
-			assert.equal(report.records[1].sourceFile, "/home/cedx/lcov.js/func1.js");
-			assert.equal(report.records[2].sourceFile, "/home/cedx/lcov.js/func2.js");
+			assert.equal(report.records[0].path, "/home/cedx/lcov.js/fixture.js");
+			assert.equal(report.records[1].path, "/home/cedx/lcov.js/func1.js");
+			assert.equal(report.records[2].path, "/home/cedx/lcov.js/func2.js");
 		});
 
 		it("should have detailed branch coverage", function() {
