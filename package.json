@@ -43,7 +43,8 @@
 		"formatter",
 		"lcov",
 		"parser",
-		"test"
+		"test",
+		"writer"
 	],
 	"scripts": {
 		"prepack": "gulp",
