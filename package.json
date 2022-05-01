@@ -1,5 +1,4 @@
 {
-	"bin": "./bin/clover2lcov.js",
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
 	"exports": "./lib/index.js",

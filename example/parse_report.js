@@ -12,5 +12,5 @@ try {
 }
 
 catch (error) {
-	console.log(error);
+	console.log(error instanceof SyntaxError ? error.message : error);
 }
