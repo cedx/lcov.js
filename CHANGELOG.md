@@ -1,5 +1,14 @@
 # Changelog
 
+## Version [8.0.0](https://github.com/cedx/lcov.js/compare/v7.1.0...v8.0.0)
+- Breaking change: dropped the browser bundle.
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: removed the `LcovError` class and replaced it by the `SyntaxError` one.
+- Breaking change: renamed the `Record` class to `File`.
+- Breaking change: renamed the `Report.fromCoverage()` method to `fromString()`.
+- Breaking change: using optional named arguments for the model constructors.
+- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+
 ## Version [7.1.0](https://github.com/cedx/lcov.js/compare/v7.0.0...v7.1.0)
 - Replaced the build system based on [Gulp](https://gulpjs.com) by [PowerShell](https://docs.microsoft.com/en-us/powershell) scripts.
 - Updated the package dependencies.
