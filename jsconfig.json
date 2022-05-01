@@ -1,10 +1,12 @@
 {
-	"include": ["*.js", "lib/**/*.js", "test/**/*.js"],
+	"include": ["*.js", "example/*.js", "lib/**/*.js", "test/**/*.js"],
 	"compilerOptions": {
+		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
 		"module": "es2022",
 		"moduleResolution": "node",
+		"paths": {"@cedx/lcov": ["."]},
 		"strict": true,
 		"target": "es2022"
 	}
