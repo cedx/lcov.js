@@ -24,7 +24,7 @@ function formatReport() {
 async function parseReport() {
 	try {
 		const coverage = await promises.readFile("lcov.info", "utf8");
-		const report = Report.fromCoverage(coverage);
+		const report = Report.fromString(coverage);
 		console.log(`The coverage report contains ${report.records.length} records:`);
 		console.log(report.toJSON());
 	}
