@@ -1,27 +1,21 @@
 import assert from "assert/strict";
-import {BranchCoverage, FunctionCoverage, LineCoverage, Record} from "../lib/index.js";
+import {BranchCoverage, File, FunctionCoverage, LineCoverage} from "../lib/index.js";
 
 /**
- * Tests the features of the {@link Record} class.
+ * Tests the features of the {@link File} class.
  */
-describe("Record", function() {
-	describe(".fromJson()", function() {
-		it("should return an instance with default values for an empty map", function() {
-			const record = new Record;
-			assert.equal(record.branches, undefined);
-			assert.equal(record.functions, undefined);
-			assert.equal(record.lines, undefined);
+describe("File", () => {
+	describe(".fromJson()", () => {
+		it("should return an instance with default values for an empty map", () => {
+			const record = File.fromJson({});
+			assert.equal(record.branches, null);
+			assert.equal(record.functions, null);
+			assert.equal(record.lines, null);
 			assert.equal(record.path.length, 0);
 		});
 
-		it("should return an initialized instance for a non-empty map", function() {
-			const record = new Record({
-				branches: {},
-				functions: {},
-				lines: {},
-				path: "/home/cedx/lcov.js"
-			});
-
+		it("should return an initialized instance for a non-empty map", () => {
+			const record = File.fromJson({branches: {}, functions: {}, lines: {}, path: "/home/cedx/lcov.js"});
 			assert.ok(record.branches instanceof BranchCoverage);
 			assert.ok(record.functions instanceof FunctionCoverage);
 			assert.ok(record.lines instanceof LineCoverage);
@@ -29,9 +23,9 @@ describe("Record", function() {
 		});
 	});
 
-	describe(".toJSON()", function() {
-		it("should return a map with default values for a newly created instance", function() {
-			const map = new Record("").toJSON();
+	describe(".toJSON()", () => {
+		it("should return a map with default values for a newly created instance", () => {
+			const map = new File("").toJSON();
 			assert.equal(Object.keys(map).length, 4);
 			assert.equal(map.branches, null);
 			assert.equal(map.functions, null);
@@ -39,8 +33,8 @@ describe("Record", function() {
 			assert.equal(map.path.length, 0);
 		});
 
-		it("should return a non-empty map for an initialized instance", function() {
-			const record = new Record("/home/cedx/lcov.js", {
+		it("should return a non-empty map for an initialized instance", () => {
+			const record = new File("/home/cedx/lcov.js", {
 				branches: new BranchCoverage,
 				functions: new FunctionCoverage,
 				lines: new LineCoverage
@@ -58,16 +52,11 @@ describe("Record", function() {
 		});
 	});
 
-	describe(".toString()", function() {
-		it(String.raw`should return a format like "SF:<path>\nend_of_record"`, function() {
-			assert.equal(String(new Record("")), "SF:\nend_of_record");
+	describe(".toString()", () => {
+		it("should return a format like 'SF:<path>\\nend_of_record'", () => {
+			assert.equal(String(new File("")), "SF:\nend_of_record");
 
-			const record = new Record("/home/cedx/lcov.js", {
-				branches: new BranchCoverage,
-				functions: new FunctionCoverage,
-				lines: new LineCoverage
-			});
-
+			const record = new File("/home/cedx/lcov.js", {branches: new BranchCoverage, functions: new FunctionCoverage, lines: new LineCoverage});
 			assert.equal(String(record), `SF:/home/cedx/lcov.js\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record`);
 		});
 	});

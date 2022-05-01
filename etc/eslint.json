@@ -167,7 +167,7 @@
 		"function-paren-newline": ["error", "consistent"],
 		"generator-star-spacing": "error",
 		"implicit-arrow-linebreak": "error",
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", {"SwitchCase": 1}],
 		"jsx-quotes": "error",
 		"key-spacing": "error",
 		"keyword-spacing": "error",

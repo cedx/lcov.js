@@ -16,8 +16,10 @@ describe("BranchCoverage", () => {
 		it("should return an initialized instance for a non-empty map", () => {
 			const coverage = BranchCoverage.fromJson({data: [{lineNumber: 127}], found: 23, hit: 11});
 			assert.equal(coverage.data.length, 1);
-			assert.ok(coverage.data[0] instanceof BranchData);
-			assert.equal(coverage.data[0].lineNumber, 127);
+
+			const [data] = coverage.data;
+			assert.ok(data instanceof BranchData);
+			assert.equal(data.lineNumber, 127);
 			assert.equal(coverage.found, 23);
 			assert.equal(coverage.hit, 11);
 		});
@@ -38,9 +40,11 @@ describe("BranchCoverage", () => {
 			assert.equal(Object.keys(map).length, 3);
 			assert.ok(Array.isArray(map.data));
 			assert.equal(map.data.length, 1);
-			assert.ok(map.data[0]);
-			assert.equal(typeof map.data[0], "object");
-			assert.equal(typeof map.data[0].lineNumber, "number");
+
+			const [data] = map.data;
+			assert.ok(data);
+			assert.equal(typeof data, "object");
+			assert.equal(typeof data.lineNumber, "number");
 			assert.equal(map.found, 23);
 			assert.equal(map.hit, 11);
 		});
