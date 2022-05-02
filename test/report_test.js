@@ -75,7 +75,7 @@ describe("Report", () => {
 
 	describe(".toJSON()", () => {
 		it("should return a map with default values for a newly created instance", () => {
-			const map = new Report().toJSON();
+			const map = new Report("").toJSON();
 			assert.equal(Object.keys(map).length, 2);
 			assert.ok(Array.isArray(map.files));
 			assert.equal(map.files.length, 0);
@@ -97,7 +97,7 @@ describe("Report", () => {
 
 	describe(".toString()", () => {
 		it("should return a format like 'TN:<testName>'", () => {
-			assert.equal(String(new Report).length, 0);
+			assert.equal(String(new Report("")).length, 0);
 
 			const file = new File("");
 			assert.equal(String(new Report("LcovTest", [file])), `TN:LcovTest\n${file}`);

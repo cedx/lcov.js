@@ -16,12 +16,12 @@ describe("LineCoverage", () => {
 		it("should return an initialized instance for a non-empty map", () => {
 			const coverage = LineCoverage.fromJson({data: [{lineNumber: 127}], found: 23, hit: 11});
 			assert.equal(coverage.data.length, 1);
+			assert.equal(coverage.found, 23);
+			assert.equal(coverage.hit, 11);
 
 			const [data] = coverage.data;
 			assert.ok(data instanceof LineData);
 			assert.equal(data.lineNumber, 127);
-			assert.equal(coverage.found, 23);
-			assert.equal(coverage.hit, 11);
 		});
 	});
 
