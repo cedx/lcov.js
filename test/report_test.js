@@ -1,6 +1,6 @@
 import assert from "assert/strict";
 import {readFileSync} from "fs";
-import {BranchData, File, FunctionData, LineData, Report} from "../lib/index.js";
+import {BranchData, FunctionData, LineData, Report, SourceFile} from "../lib/index.js";
 
 /**
  * Tests the features of the {@link Report} class.
@@ -10,16 +10,16 @@ describe("Report", () => {
 		const report = Report.fromString(readFileSync("test/fixtures/lcov.info", "utf8"));
 		it("should have a test name", () => assert.equal(report.testName, "Example"));
 
-		it("should contain three files", () => {
-			assert.equal(report.files.length, 3);
-			assert.ok(report.files[0] instanceof File);
-			assert.equal(report.files[0].path, "/home/cedx/lcov.js/fixture.js");
-			assert.equal(report.files[1].path, "/home/cedx/lcov.js/func1.js");
-			assert.equal(report.files[2].path, "/home/cedx/lcov.js/func2.js");
+		it("should contain three source files", () => {
+			assert.equal(report.sourceFiles.length, 3);
+			assert.ok(report.sourceFiles[0] instanceof SourceFile);
+			assert.equal(report.sourceFiles[0].path, "/home/cedx/lcov.js/fixture.js");
+			assert.equal(report.sourceFiles[1].path, "/home/cedx/lcov.js/func1.js");
+			assert.equal(report.sourceFiles[2].path, "/home/cedx/lcov.js/func2.js");
 		});
 
 		it("should have detailed branch coverage", () => {
-			const {branches} = report.files[1]; // eslint-disable-line prefer-destructuring
+			const {branches} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
 			assert.ok(branches);
 			assert.equal(branches.found, 4);
 			assert.equal(branches.hit, 4);
@@ -31,7 +31,7 @@ describe("Report", () => {
 		});
 
 		it("should have detailed function coverage", () => {
-			const {functions} = report.files[1]; // eslint-disable-line prefer-destructuring
+			const {functions} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
 			assert.ok(functions);
 			assert.equal(functions.found, 1);
 			assert.equal(functions.hit, 1);
@@ -43,7 +43,7 @@ describe("Report", () => {
 		});
 
 		it("should have detailed line coverage", () => {
-			const {lines} = report.files[1]; // eslint-disable-line prefer-destructuring
+			const {lines} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
 			assert.ok(lines);
 			assert.equal(lines.found, 9);
 			assert.equal(lines.hit, 9);
@@ -61,14 +61,14 @@ describe("Report", () => {
 	describe(".fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const report = Report.fromJson({});
-			assert.equal(report.files.length, 0);
+			assert.equal(report.sourceFiles.length, 0);
 			assert.equal(report.testName.length, 0);
 		});
 
 		it("should return an initialized instance for a non-empty map", () => {
-			const report = Report.fromJson({files: [{}], testName: "LcovTest"});
-			assert.equal(report.files.length, 1);
-			assert.ok(report.files[0] instanceof File);
+			const report = Report.fromJson({sourceFiles: [{}], testName: "LcovTest"});
+			assert.equal(report.sourceFiles.length, 1);
+			assert.ok(report.sourceFiles[0] instanceof SourceFile);
 			assert.equal(report.testName, "LcovTest");
 		});
 	});
@@ -77,20 +77,20 @@ describe("Report", () => {
 		it("should return a map with default values for a newly created instance", () => {
 			const map = new Report("").toJSON();
 			assert.equal(Object.keys(map).length, 2);
-			assert.ok(Array.isArray(map.files));
-			assert.equal(map.files.length, 0);
+			assert.ok(Array.isArray(map.sourceFiles));
+			assert.equal(map.sourceFiles.length, 0);
 			assert.equal(map.testName.length, 0);
 		});
 
 		it("should return a non-empty map for an initialized instance", () => {
-			const map = new Report("LcovTest", [new File("")]).toJSON();
+			const map = new Report("LcovTest", [new SourceFile("")]).toJSON();
 			assert.equal(Object.keys(map).length, 2);
-			assert.ok(Array.isArray(map.files));
-			assert.equal(map.files.length, 1);
+			assert.ok(Array.isArray(map.sourceFiles));
+			assert.equal(map.sourceFiles.length, 1);
 
-			const [file] = map.files;
-			assert.ok(file);
-			assert.equal(typeof file, "object");
+			const [sourceFile] = map.sourceFiles;
+			assert.ok(sourceFile);
+			assert.equal(typeof sourceFile, "object");
 			assert.equal(map.testName, "LcovTest");
 		});
 	});
@@ -99,8 +99,8 @@ describe("Report", () => {
 		it("should return a format like 'TN:<testName>'", () => {
 			assert.equal(String(new Report("")).length, 0);
 
-			const file = new File("");
-			assert.equal(String(new Report("LcovTest", [file])), `TN:LcovTest\n${file}`);
+			const sourceFile = new SourceFile("");
+			assert.equal(String(new Report("LcovTest", [sourceFile])), `TN:LcovTest\n${sourceFile}`);
 		});
 	});
 });

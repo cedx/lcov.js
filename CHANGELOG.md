@@ -4,8 +4,8 @@
 - Breaking change: dropped the browser bundle.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `LcovError` class and replaced it by the `SyntaxError` one.
-- Breaking change: renamed the `Record` class to `File`.
-- Breaking change: renamed the `Report.records` property to `files`.
+- Breaking change: renamed the `Record` class to `SourceFile`.
+- Breaking change: renamed the `Report.records` property to `sourceFiles`.
 - Breaking change: renamed the `Report.fromCoverage()` method to `fromString()`.
 - Breaking change: using optional named arguments for the model constructors.
 - Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
