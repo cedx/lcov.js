@@ -1,13 +1,13 @@
 import assert from "assert/strict";
-import {BranchCoverage, File, FunctionCoverage, LineCoverage} from "../lib/index.js";
+import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "../lib/index.js";
 
 /**
- * Tests the features of the {@link File} class.
+ * Tests the features of the {@link SourceFile} class.
  */
-describe("File", () => {
+describe("SourceFile", () => {
 	describe(".fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
-			const record = File.fromJson({});
+			const record = SourceFile.fromJson({});
 			assert.equal(record.branches, null);
 			assert.equal(record.functions, null);
 			assert.equal(record.lines, null);
@@ -15,7 +15,7 @@ describe("File", () => {
 		});
 
 		it("should return an initialized instance for a non-empty map", () => {
-			const record = File.fromJson({branches: {}, functions: {}, lines: {}, path: "/home/cedx/lcov.js"});
+			const record = SourceFile.fromJson({branches: {}, functions: {}, lines: {}, path: "/home/cedx/lcov.js"});
 			assert.ok(record.branches instanceof BranchCoverage);
 			assert.ok(record.functions instanceof FunctionCoverage);
 			assert.ok(record.lines instanceof LineCoverage);
@@ -25,7 +25,7 @@ describe("File", () => {
 
 	describe(".toJSON()", () => {
 		it("should return a map with default values for a newly created instance", () => {
-			const map = new File("").toJSON();
+			const map = new SourceFile("").toJSON();
 			assert.equal(Object.keys(map).length, 4);
 			assert.equal(map.branches, null);
 			assert.equal(map.functions, null);
@@ -34,7 +34,7 @@ describe("File", () => {
 		});
 
 		it("should return a non-empty map for an initialized instance", () => {
-			const record = new File("/home/cedx/lcov.js", {
+			const record = new SourceFile("/home/cedx/lcov.js", {
 				branches: new BranchCoverage,
 				functions: new FunctionCoverage,
 				lines: new LineCoverage
@@ -54,9 +54,9 @@ describe("File", () => {
 
 	describe(".toString()", () => {
 		it("should return a format like 'SF:<path>\\nend_of_record'", () => {
-			assert.equal(String(new File("")), "SF:\nend_of_record");
+			assert.equal(String(new SourceFile("")), "SF:\nend_of_record");
 
-			const record = new File("/home/cedx/lcov.js", {branches: new BranchCoverage, functions: new FunctionCoverage, lines: new LineCoverage});
+			const record = new SourceFile("/home/cedx/lcov.js", {branches: new BranchCoverage, functions: new FunctionCoverage, lines: new LineCoverage});
 			assert.equal(String(record), `SF:/home/cedx/lcov.js\n${record.functions}\n${record.branches}\n${record.lines}\nend_of_record`);
 		});
 	});
