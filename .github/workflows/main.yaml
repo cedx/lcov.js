@@ -17,7 +17,6 @@ jobs:
         run: npm test
       - name: Collect code coverage
         if: success()
-        uses: coverallsapp/github-action@master
+        uses: codecov/codecov-action@v2
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          path-to-lcov: var/lcov.info
+          files: var/lcov.info
