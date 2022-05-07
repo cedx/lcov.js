@@ -7,7 +7,7 @@ import {BranchData, FunctionData, LineData, Report, SourceFile} from "../lib/ind
  */
 describe("Report", () => {
 	describe(".fromString()", () => {
-		const report = Report.fromString(readFileSync("test/fixtures/lcov.info", "utf8"));
+		const report = Report.fromString(readFileSync("test/fixture/lcov.info", "utf8"));
 		it("should have a test name", () => assert.equal(report.testName, "Example"));
 
 		it("should contain three source files", () => {
