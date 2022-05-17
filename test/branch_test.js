@@ -1,4 +1,4 @@
-import assert from "assert/strict";
+import assert from "node:assert/strict";
 import {BranchCoverage, BranchData} from "../lib/index.js";
 
 /**
