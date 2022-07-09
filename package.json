@@ -1,13 +1,13 @@
 {
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
-	"exports": "./lib/index.js",
+	"exports": "./src/index.js",
 	"homepage": "https://github.com/cedx/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
 	"repository": "github:cedx/lcov.js",
 	"type": "module",
-	"types": "./share/index.d.ts",
+	"types": "./lib/index.d.ts",
 	"version": "8.0.0",
 	"author": {
 		"email": "cedric@belin.io",
@@ -32,7 +32,7 @@
 	},
 	"files": [
 		"lib/",
-		"share/"
+		"src/"
 	],
 	"funding": {
 		"type": "github",
@@ -48,6 +48,6 @@
 	],
 	"scripts": {
 		"prepack": "gulp",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node --test"
+		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test"
 	}
 }

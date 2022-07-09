@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "../lib/index.js";
+import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "../src/index.js";
 
 test("SourceFile.fromJson()", async ctx => {
 	await ctx.test("should return an instance with default values for an empty map", () => {

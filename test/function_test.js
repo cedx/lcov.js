@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {FunctionCoverage, FunctionData} from "../lib/index.js";
+import {FunctionCoverage, FunctionData} from "../src/index.js";
 
 test("FunctionCoverage.fromJson()", async ctx => {
 	await ctx.test("should return an instance with default values for an empty map", () => {

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {readFileSync} from "fs";
-import {BranchData, FunctionData, LineData, Report, SourceFile} from "../lib/index.js";
+import {BranchData, FunctionData, LineData, Report, SourceFile} from "../src/index.js";
 
 test("Report.fromString()", async ctx => {
 	const report = Report.fromString(readFileSync("test/fixture/lcov.info", "utf8"));

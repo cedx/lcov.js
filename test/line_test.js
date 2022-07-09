@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {LineCoverage, LineData} from "../lib/index.js";
+import {LineCoverage, LineData} from "../src/index.js";
 
 test("LineCoverage.fromJson()", async ctx => {
 	await ctx.test("should return an instance with default values for an empty map", () => {
