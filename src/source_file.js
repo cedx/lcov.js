@@ -58,19 +58,6 @@ export class SourceFile {
 	}
 
 	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			branches: this.branches ? this.branches.toJSON() : null,
-			functions: this.functions ? this.functions.toJSON() : null,
-			lines: this.lines ? this.lines.toJSON() : null,
-			path: this.path
-		};
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * @returns {string} The string representation of this object.
 	 */

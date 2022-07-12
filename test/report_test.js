@@ -70,28 +70,6 @@ test("Report.fromJson()", async ctx => {
 	});
 });
 
-test("Report.toJSON()", async ctx => {
-	await ctx.test("should return a map with default values for a newly created instance", () => {
-		const map = new Report("").toJSON();
-		assert.equal(Object.keys(map).length, 2);
-		assert.ok(Array.isArray(map.sourceFiles));
-		assert.equal(map.sourceFiles.length, 0);
-		assert.equal(map.testName.length, 0);
-	});
-
-	await ctx.test("should return a non-empty map for an initialized instance", () => {
-		const map = new Report("LcovTest", [new SourceFile("")]).toJSON();
-		assert.equal(Object.keys(map).length, 2);
-		assert.ok(Array.isArray(map.sourceFiles));
-		assert.equal(map.sourceFiles.length, 1);
-
-		const [sourceFile] = map.sourceFiles;
-		assert.ok(sourceFile);
-		assert.equal(typeof sourceFile, "object");
-		assert.equal(map.testName, "LcovTest");
-	});
-});
-
 test("Report.toString()", async ctx => {
 	await ctx.test("should return a format like 'TN:<testName>'", () => {
 		assert.equal(String(new Report("")).length, 0);

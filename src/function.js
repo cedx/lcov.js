@@ -47,18 +47,6 @@ export class FunctionData {
 	}
 
 	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			executionCount: this.executionCount,
-			functionName: this.functionName,
-			lineNumber: this.lineNumber
-		};
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * @param {boolean} [asDefinition] Whether to return the function definition instead of its data.
 	 * @returns {string} The string representation of this object.
@@ -122,18 +110,6 @@ export class FunctionCoverage {
 			found: Number.isInteger(json.found) ? json.found : 0,
 			hit: Number.isInteger(json.hit) ? json.hit : 0
 		});
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			data: this.data.map(item => item.toJSON()),
-			found: this.found,
-			hit: this.hit
-		};
 	}
 
 	/**

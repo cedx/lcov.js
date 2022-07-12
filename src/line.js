@@ -47,18 +47,6 @@ export class LineData {
 	}
 
 	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			checksum: this.checksum,
-			executionCount: this.executionCount,
-			lineNumber: this.lineNumber
-		};
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * @returns {string} The string representation of this object.
 	 */
@@ -120,18 +108,6 @@ export class LineCoverage {
 			found: Number.isInteger(json.found) ? json.found : 0,
 			hit: Number.isInteger(json.hit) ? json.hit : 0
 		});
-	}
-
-	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			data: this.data.map(item => item.toJSON()),
-			found: this.found,
-			hit: this.hit
-		};
 	}
 
 	/**

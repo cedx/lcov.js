@@ -126,17 +126,6 @@ export class Report {
 	}
 
 	/**
-	 * Converts this object to a map in JSON format.
-	 * @returns {Record<string, any>} The map in JSON format corresponding to this object.
-	 */
-	toJSON() {
-		return {
-			sourceFiles: this.sourceFiles.map(item => item.toJSON()),
-			testName: this.testName
-		};
-	}
-
-	/**
 	 * Returns a string representation of this object.
 	 * @returns {string} The string representation of this object.
 	 */

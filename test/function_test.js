@@ -22,31 +22,6 @@ test("FunctionCoverage.fromJson()", async ctx => {
 	});
 });
 
-test("FunctionCoverage.toJSON()", async ctx => {
-	await ctx.test("should return a map with default values for a newly created instance", () => {
-		const map = new FunctionCoverage().toJSON();
-		assert.equal(Object.keys(map).length, 3);
-		assert.ok(Array.isArray(map.data));
-		assert.equal(map.data.length, 0);
-		assert.equal(map.found, 0);
-		assert.equal(map.hit, 0);
-	});
-
-	await ctx.test("should return a non-empty map for an initialized instance", () => {
-		const map = new FunctionCoverage({data: [new FunctionData], found: 23, hit: 11}).toJSON();
-		assert.equal(Object.keys(map).length, 3);
-		assert.ok(Array.isArray(map.data));
-		assert.equal(map.data.length, 1);
-
-		const [data] = map.data;
-		assert.ok(data);
-		assert.equal(typeof data, "object");
-		assert.equal(typeof data.lineNumber, "number");
-		assert.equal(map.found, 23);
-		assert.equal(map.hit, 11);
-	});
-});
-
 test("FunctionCoverage.toString()", async ctx => {
 	await ctx.test("should return a format like 'FNF:<found>\\nFNH:<hit>'", () => {
 		assert.equal(String(new FunctionCoverage), "FNF:0\nFNH:0");
@@ -69,24 +44,6 @@ test("FunctionData.fromJson()", async ctx => {
 		assert.equal(data.executionCount, 3);
 		assert.equal(data.functionName, "main");
 		assert.equal(data.lineNumber, 127);
-	});
-});
-
-test("FunctionData.toJSON()", async ctx => {
-	await ctx.test("should return a map with default values for a newly created instance", () => {
-		const map = new FunctionData().toJSON();
-		assert.equal(Object.keys(map).length, 3);
-		assert.equal(map.executionCount, 0);
-		assert.equal(map.functionName.length, 0);
-		assert.equal(map.lineNumber, 0);
-	});
-
-	await ctx.test("should return a non-empty map for an initialized instance", () => {
-		const map = new FunctionData({executionCount: 3, functionName: "main", lineNumber: 127}).toJSON();
-		assert.equal(Object.keys(map).length, 3);
-		assert.equal(map.executionCount, 3);
-		assert.equal(map.functionName, "main");
-		assert.equal(map.lineNumber, 127);
 	});
 });
 
