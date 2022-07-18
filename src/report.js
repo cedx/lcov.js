@@ -50,7 +50,7 @@ export class Report {
 	 * @returns {Report} The resulting coverage report.
 	 * @throws {SyntaxError} A parsing error occurred.
 	 */
-	static fromString(coverage) {
+	static parse(coverage) {
 		const report = new this("");
 		let offset = 0;
 		let sourceFile = new SourceFile("");

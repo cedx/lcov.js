@@ -8,8 +8,23 @@ import {BranchData, FunctionData, LineData, Report, SourceFile} from "../src/ind
  * Tests the features of the {@link Report} class.
  */
 describe("Report", () => {
-	describe(".fromString()", () => {
-		const report = Report.fromString(readFileSync("test/fixture/lcov.info", "utf8"));
+	describe(".fromJson()", () => {
+		it("should return an instance with default values for an empty map", () => {
+			const report = Report.fromJson({});
+			assert.equal(report.sourceFiles.length, 0);
+			assert.equal(report.testName.length, 0);
+		});
+
+		it("should return an initialized instance for a non-empty map", () => {
+			const report = Report.fromJson({sourceFiles: [{}], testName: "LcovTest"});
+			assert.equal(report.sourceFiles.length, 1);
+			assert.ok(report.sourceFiles[0] instanceof SourceFile);
+			assert.equal(report.testName, "LcovTest");
+		});
+	});
+
+	describe(".parse()", () => {
+		const report = Report.parse(readFileSync("test/fixture/lcov.info", "utf8"));
 		it("should have a test name", () => assert.equal(report.testName, "Example"));
 
 		it("should contain three source files", () => {
@@ -56,23 +71,8 @@ describe("Report", () => {
 			assert.equal(data.checksum, "5kX7OTfHFcjnS98fjeVqNA");
 		});
 
-		it("should throw an error if the input is invalid", () => assert.throws(() => Report.fromString("ZZ"), SyntaxError));
-		it("should throw an error if the report is empty", () => assert.throws(() => Report.fromString("TN:Example"), SyntaxError));
-	});
-
-	describe(".fromJson()", () => {
-		it("should return an instance with default values for an empty map", () => {
-			const report = Report.fromJson({});
-			assert.equal(report.sourceFiles.length, 0);
-			assert.equal(report.testName.length, 0);
-		});
-
-		it("should return an initialized instance for a non-empty map", () => {
-			const report = Report.fromJson({sourceFiles: [{}], testName: "LcovTest"});
-			assert.equal(report.sourceFiles.length, 1);
-			assert.ok(report.sourceFiles[0] instanceof SourceFile);
-			assert.equal(report.testName, "LcovTest");
-		});
+		it("should throw an error if the input is invalid", () => assert.throws(() => Report.parse("ZZ"), SyntaxError));
+		it("should throw an error if the report is empty", () => assert.throws(() => Report.parse("TN:Example"), SyntaxError));
 	});
 
 	describe(".toString()", () => {
