@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-// @ts-expect-error TS2614
 import {describe, it} from "node:test";
 import {readFileSync} from "fs";
 import {BranchData, FunctionData, LineData, Report, SourceFile} from "../src/index.js";
