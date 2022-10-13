@@ -68,7 +68,7 @@ export class Report {
 
 			switch (token) {
 				// eslint-disable-next-line prefer-destructuring
-				case Token.testName: if (!report.testName) report.testName = data[0]; break;
+				case Token.testName: report.testName ||= data[0]; break;
 				case Token.endOfRecord: report.sourceFiles.push(sourceFile); break;
 
 				case Token.branchData:
