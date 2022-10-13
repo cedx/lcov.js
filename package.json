@@ -1,34 +1,36 @@
 {
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
-	"exports": "./src/index.js",
 	"homepage": "https://github.com/cedx/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
 	"repository": "github:cedx/lcov.js",
 	"type": "module",
-	"types": "./lib/index.d.ts",
-	"version": "8.0.0",
+	"version": "8.0.1",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.18.9",
+		"@babel/eslint-parser": "^7.19.1",
 		"@babel/plugin-syntax-import-assertions": "^7.18.6",
 		"@types/gulp": "^4.0.9",
-		"@types/node": "^18.6.2",
+		"@types/node": "^18.8.5",
 		"c8": "^7.12.0",
 		"del": "^7.0.0",
-		"eslint": "^8.20.0",
+		"eslint": "^8.25.0",
 		"execa": "^6.1.0",
 		"gulp": "^4.0.2",
-		"typedoc": "^0.23.9",
-		"typescript": "^4.7.4"
+		"typedoc": "^0.23.16",
+		"typescript": "^4.8.4"
 	},
 	"engines": {
 		"node": ">=18.0.0"
+	},
+	"exports": {
+		"types": "./lib/index.d.ts",
+		"import": "./src/index.js"
 	},
 	"files": [
 		"lib/",
