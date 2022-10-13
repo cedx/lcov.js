@@ -5,12 +5,10 @@
 *.css text diff=css
 *.html text diff=html
 *.http text
-*.info text
 *.js text
 *.json text
 *.md text diff=markdown
 *.mjs text
-*.scss text diff=css
 *.svg text
 *.ts text
 *.txt text

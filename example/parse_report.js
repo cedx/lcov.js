@@ -10,7 +10,6 @@ try {
 	console.log(`The coverage report contains ${report.sourceFiles.length} source files:`);
 	console.log(JSON.stringify(report));
 }
-
 catch (error) {
 	console.log(error instanceof SyntaxError ? error.message : error);
 }
