@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [8.0.1](https://github.com/cedx/lcov.js/compare/v8.0.0...v8.0.1)
+- Fixed the [TypeScript](https://www.typescriptlang.org) typings.
+
 ## Version [8.0.0](https://github.com/cedx/lcov.js/compare/v7.1.0...v8.0.0)
 - Breaking change: dropped the browser bundle.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
@@ -8,10 +11,10 @@
 - Breaking change: renamed the `Report.records` property to `sourceFiles`.
 - Breaking change: renamed the `Report.fromCoverage()` method to `fromString()`.
 - Breaking change: using optional named arguments for the model constructors.
-- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Ported the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
 ## Version [7.1.0](https://github.com/cedx/lcov.js/compare/v7.0.0...v7.1.0)
-- Replaced the build system based on [Gulp](https://gulpjs.com) by [PowerShell](https://docs.microsoft.com/en-us/powershell) scripts.
+- Replaced the build system based on [Gulp](https://gulpjs.com) by [PowerShell](https://learn.microsoft.com/powershell) scripts.
 - Updated the package dependencies.
 
 ## Version [7.0.0](https://github.com/cedx/lcov.js/compare/v6.4.0...v7.0.0)
@@ -39,7 +42,7 @@
 ## Version [6.0.0](https://github.com/cedx/lcov.js/compare/v5.2.0...v6.0.0)
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - Replaced the [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
 - Replaced the [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
 - Updated the package dependencies.
@@ -99,7 +102,7 @@
 - Breaking change: using camel case instead of studly caps for the properties of the `Token` class.
 
 ## Version [3.1.0](https://github.com/cedx/lcov.js/compare/v3.0.0...v3.1.0)
-- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 - Updated the package dependencies.
 
