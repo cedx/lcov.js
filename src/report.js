@@ -61,7 +61,7 @@ export class Report {
 			if (!line) continue;
 
 			const parts = line.split(":");
-			if (parts.length < 2 && parts[0] != Token.endOfRecord) throw new SyntaxError(`Invalid token format at line #${offset}.`);
+			if (parts.length < 2 && parts[0] != Token.endOfRecord) throw SyntaxError(`Invalid token format at line #${offset}.`);
 
 			const token = parts.shift();
 			const data = parts.join(":").split(",");
@@ -72,7 +72,7 @@ export class Report {
 				case Token.endOfRecord: report.sourceFiles.push(sourceFile); break;
 
 				case Token.branchData:
-					if (data.length < 4) throw new SyntaxError(`Invalid branch data at line #${offset}.`);
+					if (data.length < 4) throw SyntaxError(`Invalid branch data at line #${offset}.`);
 					sourceFile.branches?.data.push(new BranchData({
 						blockNumber: Number.parseInt(data[1]),
 						branchNumber: Number.parseInt(data[2]),
@@ -82,7 +82,7 @@ export class Report {
 					break;
 
 				case Token.functionData:
-					if (data.length < 2) throw new SyntaxError(`Invalid function data at line #${offset}.`);
+					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) {
 						item.executionCount = Number.parseInt(data[0]);
 						break;
@@ -90,12 +90,12 @@ export class Report {
 					break;
 
 				case Token.functionName:
-					if (data.length < 2) throw new SyntaxError(`Invalid function name at line #${offset}.`);
+					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
 					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number.parseInt(data[0])}));
 					break;
 
 				case Token.lineData:
-					if (data.length < 2) throw new SyntaxError(`Invalid line data at line #${offset}.`);
+					if (data.length < 2) throw SyntaxError(`Invalid line data at line #${offset}.`);
 					sourceFile.lines?.data.push(new LineData({
 						checksum: data.length >= 3 ? data[2] : "",
 						executionCount: Number.parseInt(data[1]),
@@ -117,11 +117,11 @@ export class Report {
 				case Token.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number.parseInt(data[0]); break;
 				case Token.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number.parseInt(data[0]); break;
 				case Token.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number.parseInt(data[0]); break;
-				default: throw new SyntaxError(`Unknown token at line #${offset}.`);
+				default: throw SyntaxError(`Unknown token at line #${offset}.`);
 			}
 		}
 
-		if (!report.sourceFiles.length) throw new SyntaxError("The coverage data is empty or invalid.");
+		if (!report.sourceFiles.length) throw SyntaxError("The coverage data is empty or invalid.");
 		return report;
 	}
 
