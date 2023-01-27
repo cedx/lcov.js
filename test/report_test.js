@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
 import {readFileSync} from "fs";
-import {BranchData, FunctionData, LineData, Report, SourceFile} from "../src/index.js";
+import {BranchData, FunctionData, LineData, Report, SourceFile} from "#lcov";
 
 /**
  * Tests the features of the {@link Report} class.

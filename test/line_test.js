@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {LineCoverage, LineData} from "../src/index.js";
+import {LineCoverage, LineData} from "#lcov";
 
 /**
  * Tests the features of the {@link LineCoverage} class.

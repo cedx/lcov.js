@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {BranchCoverage, BranchData} from "../src/index.js";
+import {BranchCoverage, BranchData} from "#lcov";
 
 /**
  * Tests the features of the {@link BranchCoverage} class.

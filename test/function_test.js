@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {FunctionCoverage, FunctionData} from "../src/index.js";
+import {FunctionCoverage, FunctionData} from "#lcov";
 
 /**
  * Tests the features of the {@link FunctionCoverage} class.
