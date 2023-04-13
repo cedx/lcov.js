@@ -1,5 +1,5 @@
 # LCOV Reports for JS
-![Runtime](https://badgen.net/npm/node/@cedx/lcov) ![Release](https://badgen.net/npm/v/@cedx/lcov) ![License](https://badgen.net/npm/license/@cedx/lcov) ![Downloads](https://badgen.net/npm/dt/@cedx/lcov) ![Coverage](https://badgen.net/codecov/c/github/cedx/lcov.js)
+![Node.js](https://badgen.net/npm/node/@cedx/lcov) ![npm](https://badgen.net/npm/v/@cedx/lcov) ![License](https://badgen.net/npm/license/@cedx/lcov) ![Downloads](https://badgen.net/npm/dt/@cedx/lcov) ![Coverage](https://badgen.net/codecov/c/github/cedx/lcov.js)
 
 Parse and format [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) coverage reports,
 in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
