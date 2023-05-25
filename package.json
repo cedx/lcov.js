@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
-	"homepage": "https://github.com/cedx/lcov.js",
+	"homepage": "https://docs.belin.io/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
 	"repository": "github:cedx/lcov.js",
@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.2.1",
+		"@types/node": "^20.2.4",
 		"c8": "^7.13.0",
 		"eslint": "^8.41.0",
 		"typedoc": "^0.24.7",
