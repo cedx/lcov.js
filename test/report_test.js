@@ -23,7 +23,7 @@ describe("Report", () => {
 	});
 
 	describe(".parse()", () => {
-		const report = Report.parse(readFileSync("test/fixture/lcov.info", "utf8"));
+		const report = Report.parse(readFileSync("share/lcov.info", "utf8"));
 		it("should have a test name", () => assert.equal(report.testName, "Example"));
 
 		it("should contain three source files", () => {
