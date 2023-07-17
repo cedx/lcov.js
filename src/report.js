@@ -45,7 +45,7 @@ export class Report {
 	}
 
 	/**
-	 * Parses the specified coverage data in [LCOV](http://ltp.sourceforge.net/coverage/lcov.php) format.
+	 * Parses the specified coverage data in LCOV format.
 	 * @param {string} coverage The LCOV coverage data.
 	 * @returns {Report} The resulting coverage report.
 	 * @throws {SyntaxError} A parsing error occurred.
