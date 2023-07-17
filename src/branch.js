@@ -30,7 +30,7 @@ export class BranchData {
 	taken;
 
 	/**
-	 * Creates a new branch data.
+	 * Creates new branch data.
 	 * @param {BranchDataOptions} [options] An object providing values to initialize this instance.
 	 */
 	constructor(options = {}) {
@@ -41,8 +41,8 @@ export class BranchData {
 	}
 
 	/**
-	 * Creates a new branch data from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a branch data.
+	 * Creates new branch data from the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing branch data.
 	 * @returns {BranchData} The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json) {

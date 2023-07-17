@@ -24,7 +24,7 @@ export class LineData {
 	lineNumber;
 
 	/**
-	 * Creates a new line data.
+	 * Creates new line data.
 	 * @param {LineDataOptions} [options] An object providing values to initialize this instance.
 	 */
 	constructor(options = {}) {
@@ -34,8 +34,8 @@ export class LineData {
 	}
 
 	/**
-	 * Creates a new line data from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a line data.
+	 * Creates new line data from the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing line data.
 	 * @returns {LineData} The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json) {

@@ -24,7 +24,7 @@ export class FunctionData {
 	lineNumber;
 
 	/**
-	 * Creates a new function data.
+	 * Creates new function data.
 	 * @param {FunctionDataOptions} [options] An object providing values to initialize this instance.
 	 */
 	constructor(options = {}) {
@@ -34,8 +34,8 @@ export class FunctionData {
 	}
 
 	/**
-	 * Creates a new function data from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a function data.
+	 * Creates new function data from the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing function data.
 	 * @returns {FunctionData} The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json) {
