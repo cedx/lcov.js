@@ -6,7 +6,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "#lcov"
  * Tests the features of the {@link SourceFile} class.
  */
 describe("SourceFile", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const record = SourceFile.fromJson({});
 			assert.equal(record.branches, null);
@@ -24,7 +24,7 @@ describe("SourceFile", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'SF:<path>\\nend_of_record'", () => {
 			assert.equal(String(new SourceFile("")), "SF:\nend_of_record");
 

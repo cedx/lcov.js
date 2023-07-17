@@ -6,7 +6,7 @@ import {BranchCoverage, BranchData} from "#lcov";
  * Tests the features of the {@link BranchCoverage} class.
  */
 describe("BranchCoverage", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const coverage = BranchCoverage.fromJson({});
 			assert.equal(coverage.data.length, 0);
@@ -26,7 +26,7 @@ describe("BranchCoverage", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'BRF:<found>\\nBRH:<hit>'", () => {
 			assert.equal(String(new BranchCoverage), "BRF:0\nBRH:0");
 
@@ -40,7 +40,7 @@ describe("BranchCoverage", () => {
  * Tests the features of the {@link BranchData} class.
  */
 describe("BranchData", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const data = BranchData.fromJson({});
 			assert.equal(data.blockNumber, 0);
@@ -58,7 +58,7 @@ describe("BranchData", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'BRDA:<lineNumber>,<blockNumber>,<branchNumber>,<taken>'", () => {
 			assert.equal(String(new BranchData), "BRDA:0,0,0,-");
 			assert.equal(String(new BranchData({blockNumber: 3, branchNumber: 2, lineNumber: 127, taken: 1})), "BRDA:127,3,2,1");

@@ -6,7 +6,7 @@ import {LineCoverage, LineData} from "#lcov";
  * Tests the features of the {@link LineCoverage} class.
  */
 describe("LineCoverage", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const coverage = LineCoverage.fromJson({});
 			assert.equal(coverage.data.length, 0);
@@ -26,7 +26,7 @@ describe("LineCoverage", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'LF:<found>\\nLH:<hit>'", () => {
 			assert.equal(String(new LineCoverage), "LF:0\nLH:0");
 
@@ -40,7 +40,7 @@ describe("LineCoverage", () => {
  * Tests the features of the {@link LineData} class.
  */
 describe("LineData", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const data = LineData.fromJson({});
 			assert.equal(data.checksum.length, 0);
@@ -56,7 +56,7 @@ describe("LineData", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'DA:<lineNumber>,<executionCount>[,<checksum>]'", () => {
 			assert.equal(String(new LineData), "DA:0,0");
 

@@ -7,7 +7,7 @@ import {BranchData, FunctionData, LineData, Report, SourceFile} from "#lcov";
  * Tests the features of the {@link Report} class.
  */
 describe("Report", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const report = Report.fromJson({});
 			assert.equal(report.sourceFiles.length, 0);
@@ -22,7 +22,7 @@ describe("Report", () => {
 		});
 	});
 
-	describe(".parse()", () => {
+	describe("parse()", () => {
 		const report = Report.parse(readFileSync("share/lcov.info", "utf8"));
 		it("should have a test name", () => assert.equal(report.testName, "Example"));
 
@@ -74,7 +74,7 @@ describe("Report", () => {
 		it("should throw an error if the report is empty", () => assert.throws(() => Report.parse("TN:Example"), SyntaxError));
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'TN:<testName>'", () => {
 			assert.equal(String(new Report("")).length, 0);
 

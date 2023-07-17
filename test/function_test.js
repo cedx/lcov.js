@@ -6,7 +6,7 @@ import {FunctionCoverage, FunctionData} from "#lcov";
  * Tests the features of the {@link FunctionCoverage} class.
  */
 describe("FunctionCoverage", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const coverage = FunctionCoverage.fromJson({});
 			assert.equal(coverage.data.length, 0);
@@ -26,7 +26,7 @@ describe("FunctionCoverage", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'FNF:<found>\\nFNH:<hit>'", () => {
 			assert.equal(String(new FunctionCoverage), "FNF:0\nFNH:0");
 
@@ -40,7 +40,7 @@ describe("FunctionCoverage", () => {
  * Tests the features of the {@link FunctionData} class.
  */
 describe("FunctionData", () => {
-	describe(".fromJson()", () => {
+	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
 			const data = FunctionData.fromJson({});
 			assert.equal(data.executionCount, 0);
@@ -56,7 +56,7 @@ describe("FunctionData", () => {
 		});
 	});
 
-	describe(".toString()", () => {
+	describe("toString()", () => {
 		it("should return a format like 'FN:<lineNumber>,<functionName>' when used as definition", () => {
 			assert.equal(new FunctionData().toString(true), "FN:0,");
 			assert.equal(new FunctionData({executionCount: 3, functionName: "main", lineNumber: 127}).toString(true), "FN:127,main");
