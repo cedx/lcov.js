@@ -45,7 +45,13 @@
 		"writer"
 	],
 	"scripts": {
-		"prepack": "lix Dist",
+		"build": "tsc --project src/jsconfig.json",
+		"clean": "node scripts/clean.js",
+		"doc": "typedoc --options etc/typedoc.json && node scripts/doc.js",
+		"dist": "npm run clean && npm run build",
+		"lint": "tsc --project jsconfig.json && eslint --config=etc/eslint.json example scripts src test",
+		"postpublish": "node scripts/publish.js",
+		"prepack": "npm run dist",
 		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test --test-reporter=spec"
 	}
 }
