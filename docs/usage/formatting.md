@@ -32,4 +32,4 @@ LH:2
 end_of_record
 ```
 
-> See the [API reference](https://docs.belin.io/lcov.js) of this library for detailed information on the available classes.
+> See the [API reference](api/) of this library for detailed information on the available classes.
