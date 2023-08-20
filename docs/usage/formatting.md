@@ -20,7 +20,7 @@ console.log(report.toString());
 
 The `Report.toString()` method will return a [LCOV](https://github.com/linux-test-project/lcov) report formatted like this:
 
-```
+```lcov
 TN:Example
 SF:/home/cedx/lcov.js/fixture.js
 FNF:1
