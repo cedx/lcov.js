@@ -4,7 +4,7 @@
 	"homepage": "https://docs.belin.io/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
-	"repository": "github:cedx/lcov.js",
+	"repository": "cedx/lcov.js",
 	"type": "module",
 	"version": "8.0.1",
 	"author": {
@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"devDependencies": {
-		"@types/node": "^20.8.0",
+		"@types/node": "^20.8.2",
 		"c8": "^8.0.1",
 		"eslint": "^8.50.0",
 		"typedoc": "^0.25.1",
