@@ -130,8 +130,9 @@ export class Report {
 	 * @returns {string} The string representation of this object.
 	 */
 	toString() {
-		const lines = this.testName ? [`${Token.testName}:${this.testName}`] : [];
-		lines.push(...this.sourceFiles.map(item => item.toString()));
-		return lines.join("\n");
+		return [
+			...this.testName ? [`${Token.testName}:${this.testName}`] : [],
+			...this.sourceFiles.map(item => item.toString())
+		].join("\n");
 	}
 }
