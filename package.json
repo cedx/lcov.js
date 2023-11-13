@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
-	"homepage": "https://docs.belin.io/lcov.js",
+	"homepage": "https://cedx.github.io/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
 	"repository": "cedx/lcov.js",

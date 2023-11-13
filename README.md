@@ -5,8 +5,8 @@ Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage rep
 in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
 ## Documentation
-- [User guide](https://docs.belin.io/lcov.js)
-- [API reference](https://docs.belin.io/lcov.js/api)
+- [User guide](https://cedx.github.io/lcov.js)
+- [API reference](https://cedx.github.io/lcov.js/api)
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.js)
@@ -14,4 +14,4 @@ in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
 ## License
-[LCOV Reports for JS](https://docs.belin.io/lcov.js) is distributed under the MIT License.
+[LCOV Reports for JS](https://cedx.github.io/lcov.js) is distributed under the MIT License.
