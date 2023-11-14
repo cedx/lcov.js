@@ -14,4 +14,4 @@ in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
 ## License
-[LCOV Reports for JS](https://cedx.github.io/lcov.js) is distributed under the MIT License.
+[LCOV Reports for JS](https://github.com/cedx/lcov.js) is distributed under the MIT License.
