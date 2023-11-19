@@ -21,7 +21,7 @@ describe("FunctionCoverage", () => {
 			assert.equal(coverage.hit, 11);
 
 			const [data] = coverage.data;
-			assert.ok(data instanceof FunctionData);
+			assert(data instanceof FunctionData);
 			assert.equal(data.lineNumber, 127);
 		});
 	});

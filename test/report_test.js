@@ -17,7 +17,7 @@ describe("Report", () => {
 		it("should return an initialized instance for a non-empty map", () => {
 			const report = Report.fromJson({sourceFiles: [{}], testName: "LcovTest"});
 			assert.equal(report.sourceFiles.length, 1);
-			assert.ok(report.sourceFiles[0] instanceof SourceFile);
+			assert(report.sourceFiles[0] instanceof SourceFile);
 			assert.equal(report.testName, "LcovTest");
 		});
 	});
@@ -28,7 +28,7 @@ describe("Report", () => {
 
 		it("should contain three source files", () => {
 			assert.equal(report.sourceFiles.length, 3);
-			assert.ok(report.sourceFiles[0] instanceof SourceFile);
+			assert(report.sourceFiles[0] instanceof SourceFile);
 			assert.equal(report.sourceFiles[0].path, "/home/cedx/lcov.js/fixture.js");
 			assert.equal(report.sourceFiles[1].path, "/home/cedx/lcov.js/func1.js");
 			assert.equal(report.sourceFiles[2].path, "/home/cedx/lcov.js/func2.js");
@@ -36,37 +36,37 @@ describe("Report", () => {
 
 		it("should have detailed branch coverage", () => {
 			const {branches} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
-			assert.ok(branches);
+			assert(branches);
 			assert.equal(branches.found, 4);
 			assert.equal(branches.hit, 4);
 			assert.equal(branches.data.length, 4);
 
 			const [data] = branches.data;
-			assert.ok(data instanceof BranchData);
+			assert(data instanceof BranchData);
 			assert.equal(data.lineNumber, 8);
 		});
 
 		it("should have detailed function coverage", () => {
 			const {functions} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
-			assert.ok(functions);
+			assert(functions);
 			assert.equal(functions.found, 1);
 			assert.equal(functions.hit, 1);
 			assert.equal(functions.data.length, 1);
 
 			const [data] = functions.data;
-			assert.ok(data instanceof FunctionData);
+			assert(data instanceof FunctionData);
 			assert.equal(data.functionName, "func1");
 		});
 
 		it("should have detailed line coverage", () => {
 			const {lines} = report.sourceFiles[1]; // eslint-disable-line prefer-destructuring
-			assert.ok(lines);
+			assert(lines);
 			assert.equal(lines.found, 9);
 			assert.equal(lines.hit, 9);
 			assert.equal(lines.data.length, 9);
 
 			const [data] = lines.data;
-			assert.ok(data instanceof LineData);
+			assert(data instanceof LineData);
 			assert.equal(data.checksum, "5kX7OTfHFcjnS98fjeVqNA");
 		});
 

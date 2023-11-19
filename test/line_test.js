@@ -21,7 +21,7 @@ describe("LineCoverage", () => {
 			assert.equal(coverage.hit, 11);
 
 			const [data] = coverage.data;
-			assert.ok(data instanceof LineData);
+			assert(data instanceof LineData);
 			assert.equal(data.lineNumber, 127);
 		});
 	});

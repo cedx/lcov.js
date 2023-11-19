@@ -17,9 +17,9 @@ describe("SourceFile", () => {
 
 		it("should return an initialized instance for a non-empty map", () => {
 			const record = SourceFile.fromJson({branches: {}, functions: {}, lines: {}, path: "/home/cedx/lcov.js"});
-			assert.ok(record.branches instanceof BranchCoverage);
-			assert.ok(record.functions instanceof FunctionCoverage);
-			assert.ok(record.lines instanceof LineCoverage);
+			assert(record.branches instanceof BranchCoverage);
+			assert(record.functions instanceof FunctionCoverage);
+			assert(record.lines instanceof LineCoverage);
 			assert.equal(record.path, "/home/cedx/lcov.js");
 		});
 	});
