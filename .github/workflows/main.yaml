@@ -15,8 +15,3 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-      - name: Collect code coverage
-        if: success()
-        uses: codecov/codecov-action@v3
-        with:
-          files: var/lcov.info

@@ -21,4 +21,3 @@ The `Report` class, the main one, provides the parsing and formatting features.
 ## See also
 - [API reference](api/)
 - [npm package](https://www.npmjs.com/package/@cedx/lcov)
-- [Code coverage](https://app.codecov.io/gh/cedx/lcov.js)
