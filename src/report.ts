@@ -46,7 +46,7 @@ export class Report {
 	 * Parses the specified coverage data in LCOV format.
 	 * @param coverage The LCOV coverage data.
 	 * @returns The resulting coverage report.
-	 * @throws {@link SyntaxError} A parsing error occurred.
+	 * @throws `SyntaxError` if a parsing error occurred.
 	 */
 	static parse(coverage: string): Report {
 		const report = new this("");
