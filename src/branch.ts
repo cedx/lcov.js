@@ -7,33 +7,29 @@ export class BranchData {
 
 	/**
 	 * The block number.
-	 * @type {number}
 	 */
-	blockNumber;
+	blockNumber: number;
 
 	/**
 	 * The branch number.
-	 * @type {number}
 	 */
-	branchNumber;
+	branchNumber: number;
 
 	/**
 	 * The line number.
-	 * @type {number}
 	 */
-	lineNumber;
+	lineNumber: number;
 
 	/**
 	 * A number indicating how often this branch was taken.
-	 * @type {number}
 	 */
-	taken;
+	taken: number;
 
 	/**
 	 * Creates new branch data.
-	 * @param {BranchDataOptions} [options] An object providing values to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options: Partial<BranchDataOptions> = {}) {
 		this.blockNumber = options.blockNumber ?? 0;
 		this.branchNumber = options.branchNumber ?? 0;
 		this.lineNumber = options.lineNumber ?? 0;
@@ -42,10 +38,10 @@ export class BranchData {
 
 	/**
 	 * Creates new branch data from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing branch data.
-	 * @returns {BranchData} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing branch data.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): BranchData {
 		return new this({
 			blockNumber: Number.isInteger(json.blockNumber) ? json.blockNumber : 0,
 			branchNumber: Number.isInteger(json.branchNumber) ? json.branchNumber : 0,
@@ -56,9 +52,9 @@ export class BranchData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns {string} The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
-	toString() {
+	toString(): string {
 		const value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
 		return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
 	}
@@ -66,12 +62,29 @@ export class BranchData {
 
 /**
  * Defines the options of a {@link BranchData} instance.
- * @typedef {object} BranchDataOptions
- * @property {number} [blockNumber] The block number.
- * @property {number} [branchNumber] The branch number.
- * @property {number} [lineNumber] The line number.
- * @property {number} [taken] A number indicating how often this branch was taken.
  */
+export interface BranchDataOptions {
+
+	/**
+	 * The block number.
+	 */
+	blockNumber: number;
+
+	/**
+	 * The branch number.
+	 */
+	branchNumber: number;
+
+	/**
+	 * The line number.
+	 */
+	lineNumber: number;
+
+	/**
+	 * A number indicating how often this branch was taken.
+	 */
+	taken: number;
+}
 
 /**
  * Provides the coverage data of branches.
@@ -80,27 +93,24 @@ export class BranchCoverage {
 
 	/**
 	 * The coverage data.
-	 * @type {BranchData[]}
 	 */
-	data;
+	data: BranchData[];
 
 	/**
 	 * The number of branches found.
-	 * @type {number}
 	 */
-	found;
+	found: number;
 
 	/**
 	 * The number of branches hit.
-	 * @type {number}
 	 */
-	hit;
+	hit: number;
 
 	/**
 	 * Creates a new branch coverage.
-	 * @param {BranchCoverageOptions} [options] An object providing values to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options: Partial<BranchCoverageOptions> = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -108,10 +118,10 @@ export class BranchCoverage {
 
 	/**
 	 * Creates a new branch coverage from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a branch coverage.
-	 * @returns {BranchCoverage} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing a branch coverage.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): BranchCoverage {
 		return new this({
 			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item)) : [],
 			found: Number.isInteger(json.found) ? json.found : 0,
@@ -121,9 +131,9 @@ export class BranchCoverage {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns {string} The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
-	toString() {
+	toString(): string {
 		return [
 			...this.data.map(item => item.toString()),
 			`${Token.branchesFound}:${this.found}`,
@@ -134,8 +144,21 @@ export class BranchCoverage {
 
 /**
  * Defines the options of a {@link BranchCoverage} instance.
- * @typedef {object} BranchCoverageOptions
- * @property {BranchData[]} [data] The coverage data.
- * @property {number} [found] The number of branches found.
- * @property {number} [hit] The number of branches hit.
  */
+export interface BranchCoverageOptions {
+
+	/**
+	 * The coverage data.
+	 */
+	data: BranchData[];
+
+	/**
+	 * The number of branches found.
+	 */
+	found: number;
+
+	/**
+	 * The number of branches hit.
+	 */
+	hit: number;
+}

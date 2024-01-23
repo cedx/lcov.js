@@ -1,4 +1,4 @@
-import {equal} from "node:assert/strict";
+import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
 import {LineCoverage, LineData} from "#lcov";
 
@@ -21,7 +21,7 @@ describe("LineCoverage", () => {
 			equal(coverage.hit, 11);
 
 			const [data] = coverage.data;
-			assert(data instanceof LineData);
+			ok(data instanceof LineData);
 			equal(data.lineNumber, 127);
 		});
 	});

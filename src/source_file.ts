@@ -10,34 +10,30 @@ export class SourceFile {
 
 	/**
 	 * The branch coverage.
-	 * @type {BranchCoverage|null}
 	 */
-	branches;
+	branches: BranchCoverage|null;
 
 	/**
 	 * The branch coverage.
-	 * @type {FunctionCoverage|null}
 	 */
-	functions;
+	functions: FunctionCoverage|null;
 
 	/**
 	 * The line coverage.
-	 * @type {LineCoverage|null}
 	 */
-	lines;
+	lines: LineCoverage|null;
 
 	/**
 	 * The path to the source file.
-	 * @type {string}
 	 */
-	path;
+	path: string;
 
 	/**
 	 * Creates a new source file.
-	 * @param {string} path The path to the source file.
-	 * @param {SourceFileOptions} [options] An object providing values to initialize this instance.
+	 * @param path The path to the source file.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(path, options = {}) {
+	constructor(path: string, options: Partial<SourceFileOptions> = {}) {
 		this.branches = options.branches ?? null;
 		this.functions = options.functions ?? null;
 		this.lines = options.lines ?? null;
@@ -46,10 +42,10 @@ export class SourceFile {
 
 	/**
 	 * Creates a new source file from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a source file.
-	 * @returns {SourceFile} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing a source file.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): SourceFile {
 		return new this(typeof json.path == "string" ? json.path : "", {
 			branches: typeof json.branches == "object" && json.branches ? BranchCoverage.fromJson(json.branches) : null,
 			functions: typeof json.functions == "object" && json.functions ? FunctionCoverage.fromJson(json.functions) : null,
@@ -59,9 +55,9 @@ export class SourceFile {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns {string} The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
-	toString() {
+	toString(): string {
 		const output = [`${Token.sourceFile}:${this.path}`];
 		if (this.functions) output.push(this.functions.toString());
 		if (this.branches) output.push(this.branches.toString());
@@ -73,8 +69,21 @@ export class SourceFile {
 
 /**
  * Defines the options of a {@link SourceFile} instance.
- * @typedef {object} SourceFileOptions
- * @property {BranchCoverage|null} [branches] The branch coverage.
- * @property {FunctionCoverage|null} [functions] The function coverage.
- * @property {LineCoverage|null} [lines] The line coverage.
  */
+export interface SourceFileOptions {
+
+	/**
+	 * The branch coverage.
+	 */
+	branches: BranchCoverage|null;
+
+	/**
+	 * The branch coverage.
+	 */
+	functions: FunctionCoverage|null;
+
+	/**
+	 * The line coverage.
+	 */
+	lines: LineCoverage|null;
+}

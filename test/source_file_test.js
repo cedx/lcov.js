@@ -1,4 +1,4 @@
-import {equal} from "node:assert/strict";
+import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
 import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "#lcov";
 
@@ -17,9 +17,9 @@ describe("SourceFile", () => {
 
 		it("should return an initialized instance for a non-empty map", () => {
 			const record = SourceFile.fromJson({branches: {}, functions: {}, lines: {}, path: "/home/cedx/lcov.js"});
-			assert(record.branches instanceof BranchCoverage);
-			assert(record.functions instanceof FunctionCoverage);
-			assert(record.lines instanceof LineCoverage);
+			ok(record.branches instanceof BranchCoverage);
+			ok(record.functions instanceof FunctionCoverage);
+			ok(record.lines instanceof LineCoverage);
 			equal(record.path, "/home/cedx/lcov.js");
 		});
 	});

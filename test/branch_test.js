@@ -1,4 +1,4 @@
-import {equal} from "node:assert/strict";
+import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
 import {BranchCoverage, BranchData} from "#lcov";
 
@@ -21,7 +21,7 @@ describe("BranchCoverage", () => {
 			equal(coverage.hit, 11);
 
 			const [data] = coverage.data;
-			assert(data instanceof BranchData);
+			ok(data instanceof BranchData);
 			equal(data.lineNumber, 127);
 		});
 	});
