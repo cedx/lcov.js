@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [8.1.0](https://github.com/cedx/lcov.js/compare/v8.0.1...v8.1.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+
 ## Version [8.0.1](https://github.com/cedx/lcov.js/compare/v8.0.0...v8.0.1)
 - Fixed the [TypeScript](https://www.typescriptlang.org) typings.
 
