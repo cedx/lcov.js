@@ -6,7 +6,7 @@
 	"name": "@cedx/lcov",
 	"repository": "cedx/lcov.js",
 	"type": "module",
-	"version": "8.0.1",
+	"version": "8.1.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
