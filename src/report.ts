@@ -38,7 +38,7 @@ export class Report {
 	static fromJson(json: Record<string, any>): Report {
 		return new this(
 			typeof json.testName == "string" ? json.testName : "",
-			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item)) : []
+			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item as Record<string, any>)) : []
 		);
 	}
 
@@ -55,12 +55,9 @@ export class Report {
 
 		for (let line of coverage.split(/\r?\n/g)) {
 			offset++;
-			line = line.trim();
-			if (!line) continue;
+			if (!(line = line.trim())) continue;
 
 			const parts = line.split(":");
-			if (parts.length < 2 && parts[0] != Token.endOfRecord) throw SyntaxError(`Invalid token format at line #${offset}.`);
-
 			const token = parts.shift();
 			const data = parts.join(":").split(",");
 

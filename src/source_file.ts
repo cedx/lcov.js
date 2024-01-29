@@ -47,9 +47,9 @@ export class SourceFile {
 	 */
 	static fromJson(json: Record<string, any>): SourceFile {
 		return new this(typeof json.path == "string" ? json.path : "", {
-			branches: typeof json.branches == "object" && json.branches ? BranchCoverage.fromJson(json.branches) : null,
-			functions: typeof json.functions == "object" && json.functions ? FunctionCoverage.fromJson(json.functions) : null,
-			lines: typeof json.lines == "object" && json.lines ? LineCoverage.fromJson(json.lines) : null
+			branches: typeof json.branches == "object" && json.branches ? BranchCoverage.fromJson(json.branches as Record<string, any>) : null,
+			functions: typeof json.functions == "object" && json.functions ? FunctionCoverage.fromJson(json.functions as Record<string, any>) : null,
+			lines: typeof json.lines == "object" && json.lines ? LineCoverage.fromJson(json.lines as Record<string, any>) : null
 		});
 	}
 

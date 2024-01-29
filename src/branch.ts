@@ -43,10 +43,10 @@ export class BranchData {
 	 */
 	static fromJson(json: Record<string, any>): BranchData {
 		return new this({
-			blockNumber: Number.isInteger(json.blockNumber) ? json.blockNumber : 0,
-			branchNumber: Number.isInteger(json.branchNumber) ? json.branchNumber : 0,
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0,
-			taken: Number.isInteger(json.taken) ? json.taken : 0
+			blockNumber: typeof json.blockNumber == "number" && Number.isInteger(json.blockNumber) ? json.blockNumber : 0,
+			branchNumber: typeof json.branchNumber == "number" && Number.isInteger(json.branchNumber) ? json.branchNumber : 0,
+			lineNumber: typeof json.lineNumber == "number" && Number.isInteger(json.lineNumber) ? json.lineNumber : 0,
+			taken: typeof json.taken == "number" && Number.isInteger(json.taken) ? json.taken : 0
 		});
 	}
 
@@ -123,9 +123,9 @@ export class BranchCoverage {
 	 */
 	static fromJson(json: Record<string, any>): BranchCoverage {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item)) : [],
-			found: Number.isInteger(json.found) ? json.found : 0,
-			hit: Number.isInteger(json.hit) ? json.hit : 0
+			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item as Record<string, any>)) : [],
+			found: typeof json.found == "number" && Number.isInteger(json.found) ? json.found : 0,
+			hit: typeof json.hit == "number" && Number.isInteger(json.hit) ? json.hit : 0
 		});
 	}
 

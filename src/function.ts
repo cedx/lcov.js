@@ -37,9 +37,9 @@ export class FunctionData {
 	 */
 	static fromJson(json: Record<string, any>): FunctionData {
 		return new this({
-			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
+			executionCount: typeof json.executionCount == "number" && Number.isInteger(json.executionCount) ? json.executionCount : 0,
 			functionName: typeof json.functionName == "string" ? json.functionName : "",
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0
+			lineNumber: typeof json.lineNumber == "number" && Number.isInteger(json.lineNumber) ? json.lineNumber : 0
 		});
 	}
 
@@ -113,9 +113,9 @@ export class FunctionCoverage {
 	 */
 	static fromJson(json: Record<string, any>): FunctionCoverage {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item)) : [],
-			found: Number.isInteger(json.found) ? json.found : 0,
-			hit: Number.isInteger(json.hit) ? json.hit : 0
+			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item as Record<string, any>)) : [],
+			found: typeof json.found == "number" && Number.isInteger(json.found) ? json.found : 0,
+			hit: typeof json.hit == "number" && Number.isInteger(json.hit) ? json.hit : 0
 		});
 	}
 
