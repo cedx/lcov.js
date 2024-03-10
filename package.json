@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/lcov.js/issues",
 	"description": "Parse and format to LCOV your code coverage reports.",
-	"homepage": "https://github.com/cedx/lcov.js",
+	"homepage": "https://docs.belin.io/lcov.js",
 	"license": "MIT",
 	"name": "@cedx/lcov",
 	"repository": "cedx/lcov.js",
@@ -18,8 +18,8 @@
 		"del": "^7.1.0",
 		"eslint": "^8.57.0",
 		"execa": "^8.0.1",
-		"typedoc": "^0.25.11",
-		"typescript": "^5.3.3",
+		"typedoc": "^0.25.12",
+		"typescript": "^5.4.2",
 		"typescript-eslint": "^7.1.1"
 	},
 	"engines": {
