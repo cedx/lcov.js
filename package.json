@@ -33,12 +33,6 @@
 		"lib/",
 		"src/"
 	],
-	"imports": {
-		"#lcov": {
-			"types": "./lib/index.d.ts",
-			"import": "./lib/index.js"
-		}
-	},
 	"keywords": [
 		"coverage",
 		"formatter",

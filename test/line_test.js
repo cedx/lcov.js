@@ -1,6 +1,6 @@
 import {equal, ok} from "node:assert/strict";
 import {describe, it} from "node:test";
-import {LineCoverage, LineData} from "#lcov";
+import {LineCoverage, LineData} from "@cedx/lcov";
 
 /**
  * Tests the features of the {@link LineCoverage} class.
