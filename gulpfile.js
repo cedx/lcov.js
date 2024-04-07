@@ -11,7 +11,7 @@ export async function build() {
 
 // Deletes all generated files.
 export function clean() {
-	return deleteAsync(["lib", "var/**/*"]);
+	return deleteAsync(["lib", "var/**/*", "www"]);
 }
 
 // Builds the documentation.
