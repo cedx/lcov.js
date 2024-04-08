@@ -2,7 +2,7 @@
 The `Report.parse()` static method parses a [LCOV](https://github.com/linux-test-project/lcov) coverage report provided as string,
 and creates a `Report` instance giving detailed information about this coverage report:
 
-``` js
+```js
 import console from "node:console";
 import {readFile} from "node:fs/promises";
 import {Report} from "@cedx/lcov";
@@ -21,7 +21,7 @@ catch (error) {
 
 Converting the `Report` instance to [JSON](https://www.json.org) format will return a map like this:
 
-``` json
+```json
 {
   "testName": "Example",
   "sourceFiles": [

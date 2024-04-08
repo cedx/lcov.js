@@ -2,7 +2,7 @@
 Each class provided by this library has a dedicated `toString()` method returning the corresponding data formatted as [LCOV](https://github.com/linux-test-project/lcov) string.
 All you have to do is to create the adequate structure using these different classes, and to export the final result:
 
-``` js
+```js
 import console from "node:console";
 import {FunctionCoverage, LineCoverage, LineData, Report, SourceFile} from "@cedx/lcov";
 
@@ -20,7 +20,7 @@ console.log(report.toString());
 
 The `Report.toString()` method will return a [LCOV](https://github.com/linux-test-project/lcov) report formatted like this:
 
-``` lcov
+```lcov
 TN:Example
 SF:/home/cedx/lcov.js/fixture.js
 FNF:1
