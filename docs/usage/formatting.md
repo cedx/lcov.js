@@ -32,4 +32,5 @@ LH:2
 end_of_record
 ```
 
-> See the [API reference](api/) of this library for detailed information on the available classes.
+!!! tip
+    See the [API reference](api/) of this library for detailed information on the available classes.

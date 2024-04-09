@@ -17,7 +17,8 @@ catch (error) {
 }
 ```
 
-> A `SyntaxError` is thrown if any error occurred while parsing the coverage report.
+!!! note
+    A `SyntaxError` is thrown if any error occurred while parsing the coverage report.
 
 Converting the `Report` instance to [JSON](https://www.json.org) format will return a map like this:
 
@@ -52,4 +53,5 @@ Converting the `Report` instance to [JSON](https://www.json.org) format will ret
 }
 ```
 
-> See the [API reference](api/) of this library for more information on the `Report` class.
+!!! tip
+    See the [API reference](api/) of this library for more information on the `Report` class.
