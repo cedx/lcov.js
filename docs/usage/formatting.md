@@ -33,4 +33,4 @@ end_of_record
 ```
 
 !!! tip
-    See the [API reference](api/) of this library for detailed information on the available classes.
+    See the [API reference](../api/) of this library for detailed information on the available classes.

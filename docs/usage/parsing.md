@@ -54,4 +54,4 @@ Converting the `Report` instance to [JSON](https://www.json.org) format will ret
 ```
 
 !!! tip
-    See the [API reference](api/) of this library for more information on the `Report` class.
+    See the [API reference](../api/) of this library for more information on the `Report` class.
