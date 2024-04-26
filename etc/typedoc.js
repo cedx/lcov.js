@@ -2,11 +2,12 @@
  * @type {Partial<import("typedoc").TypeDocOptions>}
  */
 export default {
-	entryPoints: ["../src/index.ts"],
+	entryPoints: ["../src/index.js"],
 	excludePrivate: true,
 	gitRevision: "main",
 	hideGenerator: true,
 	name: "LCOV Reports for JS",
 	out: "../docs/api",
-	readme: "none"
+	readme: "none",
+	tsconfig: "../src/jsconfig.json"
 };

@@ -7,24 +7,27 @@ export class LineData {
 
 	/**
 	 * The data checksum.
+	 * @type {string}
 	 */
-	checksum: string;
+	checksum;
 
 	/**
 	 * The execution count.
+	 * @type {number}
 	 */
-	executionCount: number;
+	executionCount;
 
 	/**
 	 * The line number.
+	 * @type {number}
 	 */
-	lineNumber: number;
+	lineNumber;
 
 	/**
 	 * Creates new line data.
-	 * @param options An object providing values to initialize this instance.
+	 * @param {Partial<LineDataOptions>} options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<LineDataOptions> = {}) {
+	constructor(options = {}) {
 		this.checksum = options.checksum ?? "";
 		this.executionCount = options.executionCount ?? 0;
 		this.lineNumber = options.lineNumber ?? 0;
@@ -32,10 +35,10 @@ export class LineData {
 
 	/**
 	 * Creates new line data from the specified JSON object.
-	 * @param json A JSON object representing line data.
-	 * @returns The instance corresponding to the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing line data.
+	 * @returns {LineData} The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): LineData {
+	static fromJson(json) {
 		return new this({
 			checksum: typeof json.checksum == "string" ? json.checksum : "",
 			executionCount: typeof json.executionCount == "number" && Number.isInteger(json.executionCount) ? json.executionCount : 0,
@@ -45,9 +48,9 @@ export class LineData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns The string representation of this object.
+	 * @returns {string} The string representation of this object.
 	 */
-	toString(): string {
+	toString() {
 		const value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
 		return this.checksum ? `${value},${this.checksum}` : value;
 	}
@@ -55,24 +58,11 @@ export class LineData {
 
 /**
  * Defines the options of a {@link LineData} instance.
+ * @typedef {object} LineDataOptions
+ * @property {string} checksum The data checksum.
+ * @property {number} executionCount The execution count.
+ * @property {number} lineNumber The line number.
  */
-export interface LineDataOptions {
-
-	/**
-	 * The data checksum.
-	 */
-	checksum: string;
-
-	/**
-	 * The execution count.
-	 */
-	executionCount: number;
-
-	/**
-	 * The line number.
-	 */
-	lineNumber: number;
-}
 
 /**
  * Provides the coverage data of lines.
@@ -81,24 +71,27 @@ export class LineCoverage {
 
 	/**
 	 * The coverage data.
+	 * @type {LineData[]}
 	 */
-	data: LineData[];
+	data;
 
 	/**
 	 * The number of lines found.
+	 * @type {number}
 	 */
-	found: number;
+	found;
 
 	/**
 	 * The number of lines hit.
+	 * @type {number}
 	 */
-	hit: number;
+	hit;
 
 	/**
 	 * Creates a new line coverage.
-	 * @param options An object providing values to initialize this instance.
+	 * @param {Partial<LineCoverageOptions>} options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<LineCoverageOptions> = {}) {
+	constructor(options = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -106,12 +99,12 @@ export class LineCoverage {
 
 	/**
 	 * Creates a new line coverage from the specified JSON object.
-	 * @param json A JSON object representing a line coverage.
-	 * @returns The instance corresponding to the specified JSON object.
+	 * @param {Record<string, any>} json A JSON object representing a line coverage.
+	 * @returns {LineCoverage} The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json: Record<string, any>): LineCoverage {
+	static fromJson(json) {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item as Record<string, any>)) : [],
+			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item)) : [],
 			found: typeof json.found == "number" && Number.isInteger(json.found) ? json.found : 0,
 			hit: typeof json.hit == "number" && Number.isInteger(json.hit) ? json.hit : 0
 		});
@@ -119,9 +112,9 @@ export class LineCoverage {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns The string representation of this object.
+	 * @returns {string} The string representation of this object.
 	 */
-	toString(): string {
+	toString() {
 		return [
 			...this.data.map(item => item.toString()),
 			`${Token.linesFound}:${this.found}`,
@@ -132,21 +125,8 @@ export class LineCoverage {
 
 /**
  * Defines the options of a {@link LineCoverage} instance.
+ * @typedef {object} LineCoverageOptions
+ * @property {LineData[]} data The coverage data.
+ * @property {number} found The number of lines found.
+ * @property {number} hit The number of lines hit.
  */
-export interface LineCoverageOptions {
-
-	/**
-	 * The coverage data.
-	 */
-	data: LineData[];
-
-	/**
-	 * The number of lines found.
-	 */
-	found: number;
-
-	/**
-	 * The number of lines hit.
-	 */
-	hit: number;
-}
