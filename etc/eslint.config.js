@@ -107,7 +107,7 @@ export default [
 			"no-restricted-imports": "error",
 			"no-restricted-properties": "error",
 			"no-restricted-syntax": "error",
-			"no-return-assign": "error",
+			"no-return-assign": "off",
 			"no-script-url": "error",
 			"no-sequences": "error",
 			"no-shadow": "error",
