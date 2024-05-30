@@ -48,12 +48,12 @@ export class FunctionData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @param {boolean} asDefinition Whether to return the function definition instead of its data.
+	 * @param {Partial<{asDefinition: boolean}>} options Value indicating whether to return the function definition instead of its data.
 	 * @returns {string} The string representation of this object.
 	 */
-	toString(asDefinition = false) {
-		const token = asDefinition ? Token.functionName : Token.functionData;
-		const count = asDefinition ? this.lineNumber : this.executionCount;
+	toString(options = {}) {
+		const token = options.asDefinition ? Token.functionName : Token.functionData;
+		const count = options.asDefinition ? this.lineNumber : this.executionCount;
 		return `${token}:${count},${this.functionName}`;
 	}
 }
@@ -118,8 +118,8 @@ export class FunctionCoverage {
 	 */
 	toString() {
 		return [
-			...this.data.map(item => item.toString(true)),
-			...this.data.map(item => item.toString(false)),
+			...this.data.map(item => item.toString({asDefinition: true})),
+			...this.data.map(item => item.toString({asDefinition: false})),
 			`${Token.functionsFound}:${this.found}`,
 			`${Token.functionsHit}:${this.hit}`
 		].join("\n");
