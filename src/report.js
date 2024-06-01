@@ -70,32 +70,32 @@ export class Report {
 				case Token.branchData:
 					if (data.length < 4) throw SyntaxError(`Invalid branch data at line #${offset}.`);
 					sourceFile.branches?.data.push(new BranchData({
-						blockNumber: Number.parseInt(data[1]),
-						branchNumber: Number.parseInt(data[2]),
-						lineNumber: Number.parseInt(data[0]),
-						taken: data[3] == "-" ? 0 : Number.parseInt(data[3])
+						blockNumber: Number(data[1]),
+						branchNumber: Number(data[2]),
+						lineNumber: Number(data[0]),
+						taken: data[3] == "-" ? 0 : Number(data[3])
 					}));
 					break;
 
 				case Token.functionData:
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) {
-						item.executionCount = Number.parseInt(data[0]);
+						item.executionCount = Number(data[0]);
 						break;
 					}
 					break;
 
 				case Token.functionName:
 					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
-					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number.parseInt(data[0])}));
+					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
 
 				case Token.lineData:
 					if (data.length < 2) throw SyntaxError(`Invalid line data at line #${offset}.`);
 					sourceFile.lines?.data.push(new LineData({
 						checksum: data.length >= 3 ? data[2] : "",
-						executionCount: Number.parseInt(data[1]),
-						lineNumber: Number.parseInt(data[0])
+						executionCount: Number(data[1]),
+						lineNumber: Number(data[0])
 					}));
 					break;
 
@@ -107,12 +107,12 @@ export class Report {
 					});
 					break;
 
-				case Token.branchesFound: if (sourceFile.branches) sourceFile.branches.found = Number.parseInt(data[0]); break;
-				case Token.branchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number.parseInt(data[0]); break;
-				case Token.functionsFound: if (sourceFile.functions) sourceFile.functions.found = Number.parseInt(data[0]); break;
-				case Token.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number.parseInt(data[0]); break;
-				case Token.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number.parseInt(data[0]); break;
-				case Token.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number.parseInt(data[0]); break;
+				case Token.branchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
+				case Token.branchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
+				case Token.functionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
+				case Token.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
+				case Token.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
+				case Token.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
 				default: throw SyntaxError(`Unknown token at line #${offset}.`);
 			}
 		}
