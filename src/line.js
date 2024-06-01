@@ -41,8 +41,8 @@ export class LineData {
 	static fromJson(json) {
 		return new this({
 			checksum: typeof json.checksum == "string" ? json.checksum : "",
-			executionCount: typeof json.executionCount == "number" && Number.isInteger(json.executionCount) ? json.executionCount : 0,
-			lineNumber: typeof json.lineNumber == "number" && Number.isInteger(json.lineNumber) ? json.lineNumber : 0
+			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
+			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0
 		});
 	}
 
@@ -105,8 +105,8 @@ export class LineCoverage {
 	static fromJson(json) {
 		return new this({
 			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item)) : [],
-			found: typeof json.found == "number" && Number.isInteger(json.found) ? json.found : 0,
-			hit: typeof json.hit == "number" && Number.isInteger(json.hit) ? json.hit : 0
+			found: Number.isInteger(json.found) ? json.found : 0,
+			hit: Number.isInteger(json.hit) ? json.hit : 0
 		});
 	}
 

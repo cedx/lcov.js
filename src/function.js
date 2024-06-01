@@ -40,9 +40,9 @@ export class FunctionData {
 	 */
 	static fromJson(json) {
 		return new this({
-			executionCount: typeof json.executionCount == "number" && Number.isInteger(json.executionCount) ? json.executionCount : 0,
+			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
 			functionName: typeof json.functionName == "string" ? json.functionName : "",
-			lineNumber: typeof json.lineNumber == "number" && Number.isInteger(json.lineNumber) ? json.lineNumber : 0
+			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0
 		});
 	}
 
@@ -107,8 +107,8 @@ export class FunctionCoverage {
 	static fromJson(json) {
 		return new this({
 			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item)) : [],
-			found: typeof json.found == "number" && Number.isInteger(json.found) ? json.found : 0,
-			hit: typeof json.hit == "number" && Number.isInteger(json.hit) ? json.hit : 0
+			found: Number.isInteger(json.found) ? json.found : 0,
+			hit: Number.isInteger(json.hit) ? json.hit : 0
 		});
 	}
 
