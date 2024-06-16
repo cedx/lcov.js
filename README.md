@@ -5,12 +5,11 @@ Parse and format [LCOV](https://github.com/linux-test-project/lcov) coverage rep
 in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
 ## Documentation
-- [User guide](https://docs.belin.io/lcov.js)
-- [API reference](https://docs.belin.io/lcov.js/api)
+- [User guide](https://github.com/cedx/lcov.js/wiki)
+- [Examples](https://github.com/cedx/lcov.js/tree/main/example)
 
 ## Development
 - [Git repository](https://github.com/cedx/lcov.js)
-- [npm package](https://www.npmjs.com/package/@cedx/lcov)
 - [Submit an issue](https://github.com/cedx/lcov.js/issues)
 
 ## License
