@@ -38,8 +38,8 @@ export class LineData {
 	static fromJson(json: Record<string, any>): LineData {
 		return new this({
 			checksum: typeof json.checksum == "string" ? json.checksum : "",
-			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0
+			executionCount: Number.isInteger(json.executionCount) ? json.executionCount as number : 0,
+			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0
 		});
 	}
 
@@ -111,9 +111,9 @@ export class LineCoverage {
 	 */
 	static fromJson(json: Record<string, any>): LineCoverage {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item)) : [],
-			found: Number.isInteger(json.found) ? json.found : 0,
-			hit: Number.isInteger(json.hit) ? json.hit : 0
+			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item as Record<string, any>)) : [],
+			found: Number.isInteger(json.found) ? json.found as number : 0,
+			hit: Number.isInteger(json.hit) ? json.hit as number : 0
 		});
 	}
 

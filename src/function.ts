@@ -37,9 +37,9 @@ export class FunctionData {
 	 */
 	static fromJson(json: Record<string, any>): FunctionData {
 		return new this({
-			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
+			executionCount: Number.isInteger(json.executionCount) ? json.executionCount as number : 0,
 			functionName: typeof json.functionName == "string" ? json.functionName : "",
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0
+			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0
 		});
 	}
 
@@ -48,7 +48,7 @@ export class FunctionData {
 	 * @param options Value indicating whether to return the function definition instead of its data.
 	 * @returns The string representation of this object.
 	 */
-	toString(options: Partial<{asDefinition: boolean}> = {}) {
+	toString(options: Partial<{asDefinition: boolean}> = {}): string {
 		const token = options.asDefinition ? Token.functionName : Token.functionData;
 		const count = options.asDefinition ? this.lineNumber : this.executionCount;
 		return `${token}:${count},${this.functionName}`;
@@ -113,9 +113,9 @@ export class FunctionCoverage {
 	 */
 	static fromJson(json: Record<string, any>): FunctionCoverage {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item)) : [],
-			found: Number.isInteger(json.found) ? json.found : 0,
-			hit: Number.isInteger(json.hit) ? json.hit : 0
+			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item as Record<string, any>)) : [],
+			found: Number.isInteger(json.found) ? json.found as number : 0,
+			hit: Number.isInteger(json.hit) ? json.hit as number : 0
 		});
 	}
 

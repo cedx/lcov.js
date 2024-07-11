@@ -1,4 +1,4 @@
-/* eslint-disable complexity, max-depth */
+/* eslint-disable max-depth */
 import {BranchCoverage, BranchData} from "./branch.js";
 import {FunctionCoverage, FunctionData} from "./function.js";
 import {LineCoverage, LineData} from "./line.js";
@@ -38,7 +38,7 @@ export class Report {
 	static fromJson(json: Record<string, any>): Report {
 		return new this(
 			typeof json.testName == "string" ? json.testName : "",
-			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item)) : []
+			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item as Record<string, any>)) : []
 		);
 	}
 

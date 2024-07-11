@@ -43,10 +43,10 @@ export class BranchData {
 	 */
 	static fromJson(json: Record<string, any>): BranchData {
 		return new this({
-			blockNumber: Number.isInteger(json.blockNumber) ? json.blockNumber : 0,
-			branchNumber: Number.isInteger(json.branchNumber) ? json.branchNumber : 0,
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber : 0,
-			taken: Number.isInteger(json.taken) ? json.taken : 0
+			blockNumber: Number.isInteger(json.blockNumber) ? json.blockNumber as number : 0,
+			branchNumber: Number.isInteger(json.branchNumber) ? json.branchNumber as number : 0,
+			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0,
+			taken: Number.isInteger(json.taken) ? json.taken as number : 0
 		});
 	}
 
@@ -123,9 +123,9 @@ export class BranchCoverage {
 	 */
 	static fromJson(json: Record<string, any>): BranchCoverage {
 		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item)) : [],
-			found: Number.isInteger(json.found) ? json.found : 0,
-			hit: Number.isInteger(json.hit) ? json.hit : 0
+			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item as Record<string, any>)) : [],
+			found: Number.isInteger(json.found) ? json.found as number : 0,
+			hit: Number.isInteger(json.hit) ? json.hit as number : 0
 		});
 	}
 
