@@ -27,9 +27,10 @@ export async function publish() {
 }
 
 // Runs the test suite.
-export function test() {
+export async function test() {
 	env.NODE_ENV = "test";
-	return $`node --test --test-reporter=spec`;
+	await build();
+	return $({stdio: "inherit"})`node --test --test-reporter=spec`;
 }
 
 // The default task.
