@@ -7,27 +7,24 @@ export class FunctionData {
 
 	/**
 	 * The execution count.
-	 * @type {number}
 	 */
-	executionCount;
+	executionCount: number;
 
 	/**
 	 * The function name.
-	 * @type {string}
 	 */
-	functionName;
+	functionName: string;
 
 	/**
 	 * The line number of the function start.
-	 * @type {number}
 	 */
-	lineNumber;
+	lineNumber: number;
 
 	/**
 	 * Creates new function data.
-	 * @param {Partial<FunctionDataOptions>} options An object providing values to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options: Partial<FunctionDataOptions> = {}) {
 		this.executionCount = options.executionCount ?? 0;
 		this.functionName = options.functionName ?? "";
 		this.lineNumber = options.lineNumber ?? 0;
@@ -35,10 +32,10 @@ export class FunctionData {
 
 	/**
 	 * Creates new function data from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing function data.
-	 * @returns {FunctionData} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing function data.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): FunctionData {
 		return new this({
 			executionCount: Number.isInteger(json.executionCount) ? json.executionCount : 0,
 			functionName: typeof json.functionName == "string" ? json.functionName : "",
@@ -48,10 +45,10 @@ export class FunctionData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @param {Partial<{asDefinition: boolean}>} options Value indicating whether to return the function definition instead of its data.
-	 * @returns {string} The string representation of this object.
+	 * @param options Value indicating whether to return the function definition instead of its data.
+	 * @returns The string representation of this object.
 	 */
-	toString(options = {}) {
+	toString(options: Partial<{asDefinition: boolean}> = {}) {
 		const token = options.asDefinition ? Token.functionName : Token.functionData;
 		const count = options.asDefinition ? this.lineNumber : this.executionCount;
 		return `${token}:${count},${this.functionName}`;
@@ -60,11 +57,24 @@ export class FunctionData {
 
 /**
  * Defines the options of a {@link FunctionData} instance.
- * @typedef {object} FunctionDataOptions
- * @property {number} executionCount The execution count.
- * @property {string} functionName The function name.
- * @property {number} lineNumber The line number of the function start.
  */
+export interface FunctionDataOptions {
+
+	/**
+	 * The execution count.
+	 */
+	executionCount: number;
+
+	/**
+	 * The function name.
+	 */
+	functionName: string;
+
+	/**
+	 * The line number of the function start.
+	 */
+	lineNumber: number;
+}
 
 /**
  * Provides the coverage data of functions.
@@ -73,27 +83,24 @@ export class FunctionCoverage {
 
 	/**
 	 * The coverage data.
-	 * @type {FunctionData[]}
 	 */
-	data;
+	data: FunctionData[];
 
 	/**
 	 * The number of functions found.
-	 * @type {number}
 	 */
-	found;
+	found: number;
 
 	/**
 	 * The number of functions hit.
-	 * @type {number}
 	 */
-	hit;
+	hit: number;
 
 	/**
 	 * Creates a new function coverage.
-	 * @param {Partial<FunctionCoverageOptions>} options An object providing values to initialize this instance.
+	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options = {}) {
+	constructor(options: Partial<FunctionCoverageOptions> = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -101,10 +108,10 @@ export class FunctionCoverage {
 
 	/**
 	 * Creates a new function coverage from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a function coverage.
-	 * @returns {FunctionCoverage} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing a function coverage.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): FunctionCoverage {
 		return new this({
 			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item)) : [],
 			found: Number.isInteger(json.found) ? json.found : 0,
@@ -114,9 +121,9 @@ export class FunctionCoverage {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns {string} The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
-	toString() {
+	toString(): string {
 		return [
 			...this.data.map(item => item.toString({asDefinition: true})),
 			...this.data.map(item => item.toString({asDefinition: false})),
@@ -128,8 +135,21 @@ export class FunctionCoverage {
 
 /**
  * Defines the options of a {@link FunctionCoverage} instance.
- * @typedef {object} FunctionCoverageOptions
- * @property {FunctionData[]} data The coverage data.
- * @property {number} found The number of functions found.
- * @property {number} hit The number of functions hit.
  */
+export interface FunctionCoverageOptions {
+
+	/**
+	 * The coverage data.
+	 */
+	data: FunctionData[];
+
+	/**
+	 * The number of functions found.
+	 */
+	found: number;
+
+	/**
+	 * The number of functions hit.
+	 */
+	hit: number;
+}

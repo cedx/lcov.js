@@ -12,32 +12,30 @@ export class Report {
 
 	/**
 	 * The source file list.
-	 * @type {SourceFile[]}
 	 */
-	sourceFiles;
+	sourceFiles: SourceFile[];
 
 	/**
 	 * The test name.
-	 * @type {string}
 	 */
-	testName;
+	testName: string;
 
 	/**
 	 * Creates a new report.
-	 * @param {string} testName The test name.
-	 * @param {SourceFile[]} sourceFiles The source file list.
+	 * @param testName The test name.
+	 * @param sourceFiles The source file list.
 	 */
-	constructor(testName, sourceFiles = []) {
+	constructor(testName: string, sourceFiles: SourceFile[] = []) {
 		this.sourceFiles = sourceFiles;
 		this.testName = testName;
 	}
 
 	/**
 	 * Creates a new report from the specified JSON object.
-	 * @param {Record<string, any>} json A JSON object representing a report.
-	 * @returns {Report} The instance corresponding to the specified JSON object.
+	 * @param json A JSON object representing a report.
+	 * @returns The instance corresponding to the specified JSON object.
 	 */
-	static fromJson(json) {
+	static fromJson(json: Record<string, any>): Report {
 		return new this(
 			typeof json.testName == "string" ? json.testName : "",
 			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item)) : []
@@ -46,11 +44,11 @@ export class Report {
 
 	/**
 	 * Parses the specified coverage data in LCOV format.
-	 * @param {string} coverage The LCOV coverage data.
-	 * @returns {Report} The resulting coverage report.
+	 * @param coverage The LCOV coverage data.
+	 * @returns The resulting coverage report.
 	 * @throws `SyntaxError` if a parsing error occurred.
 	 */
-	static parse(coverage) {
+	static parse(coverage: string): Report {
 		const report = new this("");
 		let offset = 0;
 		let sourceFile = new SourceFile("");
@@ -123,9 +121,9 @@ export class Report {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @returns {string} The string representation of this object.
+	 * @returns The string representation of this object.
 	 */
-	toString() {
+	toString(): string {
 		return [
 			...this.testName ? [`${Token.testName}:${this.testName}`] : [],
 			...this.sourceFiles.map(item => item.toString())
