@@ -1,6 +1,6 @@
+import {Report} from "@cedx/lcov";
 import console from "node:console";
 import {readFile} from "node:fs/promises";
-import {Report} from "@cedx/lcov";
 
 // Parses a LCOV report to coverage data.
 try {

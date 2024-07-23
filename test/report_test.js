@@ -1,7 +1,7 @@
+import {BranchData, FunctionData, LineData, Report, SourceFile} from "@cedx/lcov";
+import {readFileSync} from "fs";
 import {equal, ok, throws} from "node:assert/strict";
 import {describe, it} from "node:test";
-import {readFileSync} from "fs";
-import {BranchData, FunctionData, LineData, Report, SourceFile} from "@cedx/lcov";
 
 /**
  * Tests the features of the {@link Report} class.

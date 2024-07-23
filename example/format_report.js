@@ -1,5 +1,5 @@
-import console from "node:console";
 import {FunctionCoverage, LineCoverage, LineData, Report, SourceFile} from "@cedx/lcov";
+import console from "node:console";
 
 // Formats coverage data as LCOV report.
 const sourceFile = new SourceFile("/home/cedx/lcov.js/fixture.js", {
