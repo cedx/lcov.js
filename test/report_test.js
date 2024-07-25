@@ -1,6 +1,6 @@
 import {BranchData, FunctionData, LineData, Report, SourceFile} from "@cedx/lcov";
-import {readFileSync} from "fs";
 import {equal, ok, throws} from "node:assert/strict";
+import {readFileSync} from "node:fs";
 import {describe, it} from "node:test";
 
 /**
