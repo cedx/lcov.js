@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [9.0.0](https://github.com/cedx/lcov.js/compare/v8.1.1...v9.0.0)
+- Breaking change: the `FunctionData.toString()` method now uses an option object instead of a boolean parameter.
+- The `Token` enumeration is now implemented as a frozen object.
+
 ## Version [8.1.1](https://github.com/cedx/lcov.js/compare/v8.1.0...v8.1.1)
 - Migrated the documentation to the [GitHub wiki](https://github.com/cedx/lcov.js/wiki).
 
