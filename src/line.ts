@@ -82,7 +82,7 @@ export class LineCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: LineData[];
+	data: Array<LineData>;
 
 	/**
 	 * The number of lines found.
@@ -138,7 +138,7 @@ export interface LineCoverageOptions {
 	/**
 	 * The coverage data.
 	 */
-	data: LineData[];
+	data: Array<LineData>;
 
 	/**
 	 * The number of lines found.

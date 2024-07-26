@@ -84,7 +84,7 @@ export class FunctionCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: FunctionData[];
+	data: Array<FunctionData>;
 
 	/**
 	 * The number of functions found.
@@ -141,7 +141,7 @@ export interface FunctionCoverageOptions {
 	/**
 	 * The coverage data.
 	 */
-	data: FunctionData[];
+	data: Array<FunctionData>;
 
 	/**
 	 * The number of functions found.

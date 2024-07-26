@@ -94,7 +94,7 @@ export class BranchCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: BranchData[];
+	data: Array<BranchData>;
 
 	/**
 	 * The number of branches found.
@@ -150,7 +150,7 @@ export interface BranchCoverageOptions {
 	/**
 	 * The coverage data.
 	 */
-	data: BranchData[];
+	data: Array<BranchData>;
 
 	/**
 	 * The number of branches found.

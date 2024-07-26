@@ -13,7 +13,7 @@ export class Report {
 	/**
 	 * The source file list.
 	 */
-	sourceFiles: SourceFile[];
+	sourceFiles: Array<SourceFile>;
 
 	/**
 	 * The test name.
@@ -25,7 +25,7 @@ export class Report {
 	 * @param testName The test name.
 	 * @param sourceFiles The source file list.
 	 */
-	constructor(testName: string, sourceFiles: SourceFile[] = []) {
+	constructor(testName: string, sourceFiles: Array<SourceFile> = []) {
 		this.sourceFiles = sourceFiles;
 		this.testName = testName;
 	}
