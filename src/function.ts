@@ -24,7 +24,7 @@ export class FunctionData {
 	 * Creates new function data.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<FunctionDataOptions> = {}) {
+	constructor(options: FunctionDataOptions = {}) {
 		this.executionCount = options.executionCount ?? 0;
 		this.functionName = options.functionName ?? "";
 		this.lineNumber = options.lineNumber ?? 0;
@@ -58,7 +58,7 @@ export class FunctionData {
 /**
  * Defines the options of a {@link FunctionData} instance.
  */
-export interface FunctionDataOptions {
+export type FunctionDataOptions = Partial<{
 
 	/**
 	 * The execution count.
@@ -74,7 +74,7 @@ export interface FunctionDataOptions {
 	 * The line number of the function start.
 	 */
 	lineNumber: number;
-}
+}>;
 
 /**
  * Provides the coverage data of functions.
@@ -100,7 +100,7 @@ export class FunctionCoverage {
 	 * Creates a new function coverage.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<FunctionCoverageOptions> = {}) {
+	constructor(options: FunctionCoverageOptions = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -136,7 +136,7 @@ export class FunctionCoverage {
 /**
  * Defines the options of a {@link FunctionCoverage} instance.
  */
-export interface FunctionCoverageOptions {
+export type FunctionCoverageOptions = Partial<{
 
 	/**
 	 * The coverage data.
@@ -152,4 +152,4 @@ export interface FunctionCoverageOptions {
 	 * The number of functions hit.
 	 */
 	hit: number;
-}
+}>;

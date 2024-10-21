@@ -33,7 +33,7 @@ export class SourceFile {
 	 * @param path The path to the source file.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(path: string, options: Partial<SourceFileOptions> = {}) {
+	constructor(path: string, options: SourceFileOptions = {}) {
 		this.branches = options.branches ?? null;
 		this.functions = options.functions ?? null;
 		this.lines = options.lines ?? null;
@@ -70,7 +70,7 @@ export class SourceFile {
 /**
  * Defines the options of a {@link SourceFile} instance.
  */
-export interface SourceFileOptions {
+export type SourceFileOptions = Partial<{
 
 	/**
 	 * The branch coverage.
@@ -86,4 +86,4 @@ export interface SourceFileOptions {
 	 * The line coverage.
 	 */
 	lines: LineCoverage|null;
-}
+}>;

@@ -29,7 +29,7 @@ export class BranchData {
 	 * Creates new branch data.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<BranchDataOptions> = {}) {
+	constructor(options: BranchDataOptions = {}) {
 		this.blockNumber = options.blockNumber ?? 0;
 		this.branchNumber = options.branchNumber ?? 0;
 		this.lineNumber = options.lineNumber ?? 0;
@@ -63,7 +63,7 @@ export class BranchData {
 /**
  * Defines the options of a {@link BranchData} instance.
  */
-export interface BranchDataOptions {
+export type BranchDataOptions = Partial<{
 
 	/**
 	 * The block number.
@@ -84,7 +84,7 @@ export interface BranchDataOptions {
 	 * A number indicating how often this branch was taken.
 	 */
 	taken: number;
-}
+}>;
 
 /**
  * Provides the coverage data of branches.
@@ -110,7 +110,7 @@ export class BranchCoverage {
 	 * Creates a new branch coverage.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<BranchCoverageOptions> = {}) {
+	constructor(options: BranchCoverageOptions = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -145,7 +145,7 @@ export class BranchCoverage {
 /**
  * Defines the options of a {@link BranchCoverage} instance.
  */
-export interface BranchCoverageOptions {
+export type BranchCoverageOptions = Partial<{
 
 	/**
 	 * The coverage data.
@@ -161,4 +161,4 @@ export interface BranchCoverageOptions {
 	 * The number of branches hit.
 	 */
 	hit: number;
-}
+}>;

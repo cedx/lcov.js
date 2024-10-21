@@ -24,7 +24,7 @@ export class LineData {
 	 * Creates new line data.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<LineDataOptions> = {}) {
+	constructor(options: LineDataOptions = {}) {
 		this.checksum = options.checksum ?? "";
 		this.executionCount = options.executionCount ?? 0;
 		this.lineNumber = options.lineNumber ?? 0;
@@ -56,7 +56,7 @@ export class LineData {
 /**
  * Defines the options of a {@link LineData} instance.
  */
-export interface LineDataOptions {
+export type LineDataOptions = Partial<{
 
 	/**
 	 * The data checksum.
@@ -72,7 +72,7 @@ export interface LineDataOptions {
 	 * The line number.
 	 */
 	lineNumber: number;
-}
+}>;
 
 /**
  * Provides the coverage data of lines.
@@ -98,7 +98,7 @@ export class LineCoverage {
 	 * Creates a new line coverage.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<LineCoverageOptions> = {}) {
+	constructor(options: LineCoverageOptions = {}) {
 		this.data = options.data ?? [];
 		this.found = options.found ?? 0;
 		this.hit = options.hit ?? 0;
@@ -133,7 +133,7 @@ export class LineCoverage {
 /**
  * Defines the options of a {@link LineCoverage} instance.
  */
-export interface LineCoverageOptions {
+export type LineCoverageOptions = Partial<{
 
 	/**
 	 * The coverage data.
@@ -149,4 +149,4 @@ export interface LineCoverageOptions {
 	 * The number of lines hit.
 	 */
 	hit: number;
-}
+}>;
