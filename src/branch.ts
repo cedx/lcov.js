@@ -68,22 +68,22 @@ export type BranchDataOptions = Partial<{
 	/**
 	 * The block number.
 	 */
-	blockNumber: number;
+	blockNumber: number,
 
 	/**
 	 * The branch number.
 	 */
-	branchNumber: number;
+	branchNumber: number,
 
 	/**
 	 * The line number.
 	 */
-	lineNumber: number;
+	lineNumber: number,
 
 	/**
 	 * A number indicating how often this branch was taken.
 	 */
-	taken: number;
+	taken: number
 }>;
 
 /**
@@ -150,15 +150,15 @@ export type BranchCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<BranchData>;
+	data: Array<BranchData>,
 
 	/**
 	 * The number of branches found.
 	 */
-	found: number;
+	found: number,
 
 	/**
 	 * The number of branches hit.
 	 */
-	hit: number;
+	hit: number
 }>;

@@ -63,17 +63,17 @@ export type FunctionDataOptions = Partial<{
 	/**
 	 * The execution count.
 	 */
-	executionCount: number;
+	executionCount: number,
 
 	/**
 	 * The function name.
 	 */
-	functionName: string;
+	functionName: string,
 
 	/**
 	 * The line number of the function start.
 	 */
-	lineNumber: number;
+	lineNumber: number,
 }>;
 
 /**
@@ -141,15 +141,15 @@ export type FunctionCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<FunctionData>;
+	data: Array<FunctionData>,
 
 	/**
 	 * The number of functions found.
 	 */
-	found: number;
+	found: number,
 
 	/**
 	 * The number of functions hit.
 	 */
-	hit: number;
+	hit: number
 }>;

@@ -61,17 +61,17 @@ export type LineDataOptions = Partial<{
 	/**
 	 * The data checksum.
 	 */
-	checksum: string;
+	checksum: string,
 
 	/**
 	 * The execution count.
 	 */
-	executionCount: number;
+	executionCount: number,
 
 	/**
 	 * The line number.
 	 */
-	lineNumber: number;
+	lineNumber: number
 }>;
 
 /**
@@ -138,15 +138,15 @@ export type LineCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<LineData>;
+	data: Array<LineData>,
 
 	/**
 	 * The number of lines found.
 	 */
-	found: number;
+	found: number,
 
 	/**
 	 * The number of lines hit.
 	 */
-	hit: number;
+	hit: number
 }>;
