@@ -75,15 +75,15 @@ export type SourceFileOptions = Partial<{
 	/**
 	 * The branch coverage.
 	 */
-	branches: BranchCoverage|null,
+	branches: BranchCoverage|null;
 
 	/**
 	 * The branch coverage.
 	 */
-	functions: FunctionCoverage|null,
+	functions: FunctionCoverage|null;
 
 	/**
 	 * The line coverage.
 	 */
-	lines: LineCoverage|null
+	lines: LineCoverage|null;
 }>;
