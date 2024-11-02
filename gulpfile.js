@@ -6,7 +6,7 @@ import pkg from "./package.json" with {type: "json"};
 
 /** Builds the project. */
 export function build() {
-	return exec("tsc", "--build", "src/tsconfig.json");
+	return npx("tsc", "--build", "src/tsconfig.json");
 }
 
 /** Deletes all generated files. */
@@ -18,8 +18,8 @@ export async function clean() {
 /** Performs the static analysis of source code. */
 export async function lint() {
 	await build();
-	await exec("tsc", "--build", "tsconfig.json");
-	return exec("eslint", "--config=etc/eslint.js", "gulpfile.js", "example", "src", "test");
+	await npx("tsc", "--build", "tsconfig.json");
+	return npx("eslint", "--config=etc/eslint.js", "gulpfile.js", "example", "src", "test");
 }
 
 /** Publishes the package. */
@@ -36,7 +36,7 @@ export async function test() {
 
 /** Watches for file changes. */
 export function watch() {
-	return exec("tsc", "--build", "src/tsconfig.json", "--preserveWatchOutput", "--watch");
+	return npx("tsc", "--build", "src/tsconfig.json", "--preserveWatchOutput", "--watch");
 }
 
 /** The default task. */
