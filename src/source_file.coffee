@@ -23,9 +23,9 @@ export class SourceFile
 
 	# Creates a new source file from the specified JSON object.
 	@fromJson: (json) -> new @ (if typeof json.path is "string" then json.path else ""),
-		branches: if typeof json.branches is "object" && json.branches then BranchCoverage.fromJson(json.branches) else null
-		functions: if typeof json.functions is "object" && json.functions then FunctionCoverage.fromJson(json.functions) else null
-		lines: if typeof json.lines is "object" && json.lines then LineCoverage.fromJson(json.lines) else null
+		branches: if typeof json.branches is "object" and json.branches then BranchCoverage.fromJson json.branches else null
+		functions: if typeof json.functions is "object" and json.functions then FunctionCoverage.fromJson json.functions else null
+		lines: if typeof json.lines is "object" and json.lines then LineCoverage.fromJson json.lines else null
 
 	# Returns a string representation of this object.
 	toString: ->
