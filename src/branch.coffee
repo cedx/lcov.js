@@ -1,4 +1,4 @@
-import {Token} from "./token.js";
+import {Token} from "./token.js"
 
 # Provides the coverage data of branches.
 export class BranchCoverage
