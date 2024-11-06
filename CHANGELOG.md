@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [10.0.0](https://github.com/cedx/lcov.js/compare/v9.0.0...v10.0.0)
+- Ported the source code to [CoffeeScript](https://coffeescript.org).
+
 ## Version [9.0.0](https://github.com/cedx/lcov.js/compare/v8.1.1...v9.0.0)
 - Breaking change: the `FunctionData.toString()` method now uses an option object instead of a boolean parameter.
 - The `Token` enumeration is now implemented as a frozen object.
