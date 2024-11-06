@@ -2,7 +2,7 @@ import {BranchCoverage, FunctionCoverage, LineCoverage, SourceFile} from "@cedx/
 import {equal, ok} from "node:assert/strict"
 import {describe, it} from "node:test"
 
-# Tests the features of the {@link SourceFile} class.
+# Tests the features of the `SourceFile` class.
 describe "SourceFile", ->
 	describe "fromJson()", ->
 		it "should return an instance with default values for an empty map", ->
