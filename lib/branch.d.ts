@@ -1,51 +1,4 @@
 /**
- * Defines the options of a {@link BranchCoverage} instance.
- */
-export type BranchCoverageOptions = Partial<{
-
-	/**
-	 * The coverage data.
-	 */
-	data: Array<BranchData>;
-
-	/**
-	 * The number of branches found.
-	 */
-	found: number;
-
-	/**
-	 * The number of branches hit.
-	 */
-	hit: number;
-}>;
-
-/**
- * Defines the options of a {@link BranchData} instance.
- */
-export type BranchDataOptions = Partial<{
-
-	/**
-	 * The block number.
-	 */
-	blockNumber: number,
-
-	/**
-	 * The branch number.
-	 */
-	branchNumber: number,
-
-	/**
-	 * The line number.
-	 */
-	lineNumber: number,
-
-	/**
-	 * A number indicating how often this branch was taken.
-	 */
-	taken: number
-}>;
-
-/**
  * Provides the coverage data of branches.
  */
 export class BranchCoverage {
@@ -84,6 +37,27 @@ export class BranchCoverage {
 	 */
 	toString(): string;
 }
+
+/**
+ * Defines the options of a {@link BranchCoverage} instance.
+ */
+export type BranchCoverageOptions = Partial<{
+
+	/**
+	 * The coverage data.
+	 */
+	data: Array<BranchData>;
+
+	/**
+	 * The number of branches found.
+	 */
+	found: number;
+
+	/**
+	 * The number of branches hit.
+	 */
+	hit: number;
+}>;
 
 /**
  * Provides details for branch coverage.
@@ -129,3 +103,29 @@ export class BranchData {
 	 */
 	toString(): string;
 }
+
+/**
+ * Defines the options of a {@link BranchData} instance.
+ */
+export type BranchDataOptions = Partial<{
+
+	/**
+	 * The block number.
+	 */
+	blockNumber: number,
+
+	/**
+	 * The branch number.
+	 */
+	branchNumber: number,
+
+	/**
+	 * The line number.
+	 */
+	lineNumber: number,
+
+	/**
+	 * A number indicating how often this branch was taken.
+	 */
+	taken: number
+}>;
