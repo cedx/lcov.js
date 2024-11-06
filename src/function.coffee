@@ -47,11 +47,11 @@ export class FunctionData
 	# Creates new function data from the specified JSON object.
 	@fromJson: (json) -> new @
 		executionCount: if Number.isInteger(json.executionCount) then json.executionCount else 0,
-		functionName: if typeof json.functionName == "string" then json.functionName else "",
+		functionName: if typeof json.functionName is "string" then json.functionName else "",
 		lineNumber: if Number.isInteger(json.lineNumber) then json.lineNumber else 0
 
 	# Returns a string representation of this object.
 	toString: (options = {}) ->
 		token = if options.asDefinition then Token.functionName else Token.functionData
 		count = if options.asDefinition then @lineNumber else @executionCount
-		return "#{token}:#{count},#{@functionName}"
+		"#{token}:#{count},#{@functionName}"
