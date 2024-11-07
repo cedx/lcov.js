@@ -45,9 +45,9 @@ describe "FunctionData", ->
 
 	describe "toString()", ->
 		it "should return a format like 'FN:<lineNumber>,<functionName>' when used as definition", ->
-			equal new FunctionData().toString(asDefinition: true), "FN:0,"
-			equal new FunctionData(executionCount: 3, functionName: "main", lineNumber: 127).toString(asDefinition: true), "FN:127,main"
+			equal new FunctionData().toString(asDefinition: yes), "FN:0,"
+			equal new FunctionData(executionCount: 3, functionName: "main", lineNumber: 127).toString(asDefinition: yes), "FN:127,main"
 
 		it "should return a format like 'FNDA:<executionCount>,<functionName>' when used as data", ->
-			equal new FunctionData().toString(asDefinition: false), "FNDA:0,"
-			equal new FunctionData(executionCount: 3, functionName: "main", lineNumber: 127).toString(asDefinition: false), "FNDA:3,main"
+			equal new FunctionData().toString(asDefinition: no), "FNDA:0,"
+			equal new FunctionData(executionCount: 3, functionName: "main", lineNumber: 127).toString(asDefinition: no), "FNDA:3,main"
