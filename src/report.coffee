@@ -28,7 +28,7 @@ export class Report
 		offset = 0
 		sourceFile = new SourceFile ""
 
-		for line in coverage.split /\r?\n/g
+		for line from coverage.split /\r?\n/g
 			# offset++
 			unless line = line.trim() then continue
 
@@ -50,7 +50,7 @@ export class Report
 
 				when Token.functionData
 					throw SyntaxError "Invalid function data at line ##{offset}." if data.length < 2
-					if sourceFile.functions? then for item in sourceFile.functions.data when item.functionName is data[1]
+					if sourceFile.functions? then for item from sourceFile.functions.data when item.functionName is data[1]
 						item.executionCount = Number data[0]
 						break
 
