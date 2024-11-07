@@ -30,8 +30,8 @@ export class SourceFile
 	# Returns a string representation of this object.
 	toString: ->
 		output = ["#{Token.sourceFile}:#{@path}"]
-		if @functions then output.push @functions.toString()
-		if @branches then output.push @branches.toString()
-		if @lines then output.push @lines.toString()
+		output.push @functions.toString() if @functions?
+		output.push @branches.toString() if @branches?
+		output.push @lines.toString() if @lines?
 		output.push Token.endOfRecord
 		output.join "\n"
