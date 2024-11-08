@@ -61,8 +61,8 @@ describe "Report", ->
 			ok data instanceof LineData
 			equal data.checksum, "5kX7OTfHFcjnS98fjeVqNA"
 
-		it "should throw an error if the input is invalid", (-> throws((-> Report.parse "ZZ"), SyntaxError))
-		it "should throw an error if the report is empty", (-> throws((-> Report.parse "TN:Example"), SyntaxError))
+		it "should throw an error if the input is invalid", -> throws (-> Report.parse "ZZ"), SyntaxError
+		it "should throw an error if the report is empty", -> throws (-> Report.parse "TN:Example"), SyntaxError
 
 	describe "toString()", ->
 		it "should return a format like 'TN:<testName>'", ->
