@@ -97,7 +97,7 @@ export class FunctionData {
 	 * @param options Value indicating whether to return the function definition instead of its data.
 	 * @returns The string representation of this object.
 	 */
-	toString(options?: Partial<{asDefinition: boolean}>): string;
+	toString(options?: {asDefinition?: boolean}): string;
 }
 
 /**
