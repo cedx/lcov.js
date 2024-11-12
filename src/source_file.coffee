@@ -10,13 +10,13 @@ export class SourceFile
 	constructor: (path, options = {}) ->
 
 		# The branch coverage.
-		@branches = options.branches ? null
+		@branches = options.branches or null
 
 		# The function coverage.
-		@functions = options.functions ? null
+		@functions = options.functions or null
 
 		# The line coverage.
-		@lines = options.lines ? null
+		@lines = options.lines or null
 
 		# The path to the source file.
 		@path = path
