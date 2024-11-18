@@ -36,10 +36,4 @@ export class Report {
 	 * @throws `SyntaxError` if a parsing error occurred.
 	 */
 	static parse(coverage: string): Report;
-
-	/**
-	 * Returns a string representation of this object.
-	 * @returns The string representation of this object.
-	 */
-	toString(): string;
 }

@@ -30,12 +30,6 @@ export class LineCoverage {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): LineCoverage;
-
-	/**
-	 * Returns a string representation of this object.
-	 * @returns The string representation of this object.
-	 */
-	toString(): string;
 }
 
 /**
@@ -91,12 +85,6 @@ export class LineData {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): LineData;
-
-	/**
-	 * Returns a string representation of this object.
-	 * @returns The string representation of this object.
-	 */
-	toString(): string;
 }
 
 /**
