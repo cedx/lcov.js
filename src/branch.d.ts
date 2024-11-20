@@ -30,6 +30,12 @@ export class BranchCoverage {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): BranchCoverage;
+
+	/**
+	 * Returns a string representation of this object.
+	 * @returns The string representation of this object.
+	 */
+	toString(): string;
 }
 
 /**
@@ -90,6 +96,12 @@ export class BranchData {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): BranchData;
+
+	/**
+	 * Returns a string representation of this object.
+	 * @returns The string representation of this object.
+	 */
+	toString(): string;
 }
 
 /**

@@ -40,6 +40,12 @@ export class SourceFile {
 	 * @returns The instance corresponding to the specified JSON object.
 	 */
 	static fromJson(json: Record<string, any>): SourceFile;
+
+	/**
+	 * Returns a string representation of this object.
+	 * @returns The string representation of this object.
+	 */
+	toString(): string;
 }
 
 /**
