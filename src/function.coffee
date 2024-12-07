@@ -17,14 +17,14 @@ export class FunctionCoverage
 
 	# Creates a new function coverage from the specified JSON object.
 	@fromJson: (json) -> new @
-		data: if Array.isArray json.data then json.data.map (item) -> FunctionData.fromJson item else []
+		data: if Array.isArray json.data then json.data.map ($) -> FunctionData.fromJson $ else []
 		found: if Number.isInteger json.found then json.found else 0
 		hit: if Number.isInteger json.hit then json.hit else 0
 
 	# Returns a string representation of this object.
 	toString: -> [
-		@data.map((item) -> item.toString(asDefinition: yes))...
-		@data.map((item) -> item.toString(asDefinition: no))...
+		@data.map(($) -> $.toString asDefinition: yes)...
+		@data.map(($) -> $.toString asDefinition: no)...
 		"#{Token.functionsFound}:#{@found}"
 		"#{Token.functionsHit}:#{@hit}"
 	].join "\n"
