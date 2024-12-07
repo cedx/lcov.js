@@ -17,13 +17,13 @@ export class LineCoverage
 
 	# Creates a new line coverage from the specified JSON object.
 	@fromJson: (json) -> new @
-		data: if Array.isArray json.data then json.data.map ($) -> LineData.fromJson $ else []
+		data: if Array.isArray json.data then json.data.map (item) -> LineData.fromJson item else []
 		found: if Number.isInteger json.found then json.found else 0
 		hit: if Number.isInteger json.hit then json.hit else 0
 
 	# Returns a string representation of this object.
 	toString: -> [
-		@data.map(($) -> $.toString())...
+		@data.map((item) -> item.toString())...
 		"#{Token.linesFound}:#{@found}"
 		"#{Token.linesHit}:#{@hit}"
 	].join "\n"

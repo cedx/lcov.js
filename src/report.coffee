@@ -19,7 +19,7 @@ export class Report
 	# Creates a new report from the specified JSON object.
 	@fromJson: (json) ->
 		testName = if typeof json.testName is "string" then json.testName else ""
-		sourceFiles = if Array.isArray(json.sourceFiles) then json.sourceFiles.map(($) -> SourceFile.fromJson $) else []
+		sourceFiles = if Array.isArray(json.sourceFiles) then json.sourceFiles.map((item) -> SourceFile.fromJson item) else []
 		new @ testName, sourceFiles
 
 	# Parses the specified coverage data in LCOV format.
@@ -84,5 +84,5 @@ export class Report
 	# Returns a string representation of this object.
 	toString: -> [
 		(if @testName then ["#{Token.testName}:#{@testName}"] else [])...
-		@sourceFiles.map(($) -> $.toString())...
+		@sourceFiles.map((item) -> item.toString())...
 	].join "\n"
