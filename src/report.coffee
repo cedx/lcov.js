@@ -23,7 +23,7 @@ export class Report
 		new @ testName, sourceFiles
 
 	# Parses the specified coverage data in LCOV format.
-	@parse: (coverage) -> # coffeelint: disable-line = cyclomatic_complexity
+	@parse: (coverage) -> # coffeelint: disable-line=cyclomatic_complexity
 		report = new @ ""
 		offset = 0
 		sourceFile = new SourceFile ""
