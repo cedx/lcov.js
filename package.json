@@ -38,6 +38,9 @@
 		"test",
 		"writer"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"test": "gulp test"
 	}
