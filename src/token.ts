@@ -1,7 +1,7 @@
 /**
  * Provides the list of tokens supported by the parser.
  */
-export const Token: Readonly<{
+export const Token = Object.freeze({
 
 	/**
 	 * The coverage data of a branch.
@@ -67,7 +67,7 @@ export const Token: Readonly<{
 	 * A test name.
 	 */
 	testName: "TN"
-}>;
+});
 
 /**
  * Provides the list of tokens supported by the parser.
