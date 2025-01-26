@@ -24,12 +24,12 @@ export class Report
 
 	# Parses the specified coverage data in LCOV format.
 	@parse: (coverage) -> # coffeelint: disable-line=cyclomatic_complexity
-		report = new @ ""
 		offset = 0
+		report = new @ ""
 		sourceFile = new SourceFile ""
 
 		for line from coverage.split /\r?\n/g
-			# offset++
+			offset++
 			unless line = line.trim() then continue
 
 			parts = line.split ":"
@@ -80,6 +80,8 @@ export class Report
 
 		throw SyntaxError "The coverage data is empty or invalid." unless report.sourceFiles.length
 		report
+
+	# TODO tryParse !
 
 	# Returns a string representation of this object.
 	toString: -> [
