@@ -8,7 +8,7 @@ export class BranchCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: Array<BranchData>;
+	data: BranchData[];
 
 	/**
 	 * The number of branches found.
@@ -64,7 +64,7 @@ export type BranchCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<BranchData>;
+	data: BranchData[];
 
 	/**
 	 * The number of branches found.

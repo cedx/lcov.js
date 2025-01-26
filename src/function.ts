@@ -8,7 +8,7 @@ export class FunctionCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: Array<FunctionData>;
+	data: FunctionData[];
 
 	/**
 	 * The number of functions found.
@@ -65,7 +65,7 @@ export type FunctionCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<FunctionData>;
+	data: FunctionData[];
 
 	/**
 	 * The number of functions found.

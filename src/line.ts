@@ -8,7 +8,7 @@ export class LineCoverage {
 	/**
 	 * The coverage data.
 	 */
-	data: Array<LineData>;
+	data: LineData[];
 
 	/**
 	 * The number of lines found.
@@ -64,7 +64,7 @@ export type LineCoverageOptions = Partial<{
 	/**
 	 * The coverage data.
 	 */
-	data: Array<LineData>;
+	data: LineData[];
 
 	/**
 	 * The number of lines found.
