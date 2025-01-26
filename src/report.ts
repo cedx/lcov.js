@@ -119,6 +119,17 @@ export class Report {
 	}
 
 	/**
+	 * Parses the specified coverage data in LCOV format.
+	 * @param coverage The LCOV coverage data.
+	 * @returns The resulting coverage report, or `null` if a parsing error occurred.
+	 * @throws `SyntaxError` if a parsing error occurred.
+	 */
+	static tryParse(coverage: string): Report|null {
+		try { return this.parse(coverage); }
+		catch { return null; }
+	}
+
+	/**
 	 * Returns a string representation of this object.
 	 * @returns The string representation of this object.
 	 */
