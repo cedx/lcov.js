@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [11.0.0](https://github.com/cedx/lcov.js/compare/v10.0.0...v11.0.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+- Added the `Report.tryParse()` static method.
+
 ## Version [10.0.0](https://github.com/cedx/lcov.js/compare/v9.0.0...v10.0.0)
 - Ported the source code to [CoffeeScript](https://coffeescript.org).
 
