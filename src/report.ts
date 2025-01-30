@@ -76,7 +76,7 @@ export class Report {
 
 				case Token.functionData:
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
-					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) {
+					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
 						item.executionCount = Number(data[0]);
 						break;
 					}
