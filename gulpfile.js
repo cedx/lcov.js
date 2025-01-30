@@ -1,6 +1,6 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
-import {readdir, rm} from "node:fs/promises";
+import {cp, readdir, rm} from "node:fs/promises";
 import {join} from "node:path";
 import pkg from "./package.json" with {type: "json"};
 
@@ -13,6 +13,12 @@ export async function build() {
 export async function clean() {
 	await rm("lib", {force: true, recursive: true});
 	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(join("var", file), {recursive: true});
+}
+
+/** Builds the documentation. */
+export async function doc() {
+	await npx("typedoc", "--options", "etc/typedoc.js");
+	await cp("res/favicon.ico", "docs/favicon.ico");
 }
 
 /** Performs the static analysis of source code. */
