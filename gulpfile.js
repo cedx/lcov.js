@@ -1,6 +1,6 @@
 import gulp from "gulp";
 import {spawn} from "node:child_process";
-import {cp, readdir, rm} from "node:fs/promises";
+import {readdir, rm} from "node:fs/promises";
 import {join} from "node:path";
 import pkg from "./package.json" with {type: "json"};
 
@@ -18,7 +18,6 @@ export async function clean() {
 /** Builds the documentation. */
 export async function doc() {
 	await npx("typedoc", "--options", "etc/typedoc.js");
-	await cp("res/favicon.ico", "docs/favicon.ico");
 }
 
 /** Performs the static analysis of source code. */
