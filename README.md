@@ -6,6 +6,7 @@ in [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 
 ## Documentation
 - [User guide](https://github.com/cedx/lcov.js/wiki)
+- [API reference](https://cedx.github.io/lcov.js)
 - [Examples](https://github.com/cedx/lcov.js/tree/main/example)
 
 ## Development
