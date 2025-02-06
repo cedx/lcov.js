@@ -56,23 +56,7 @@ export class LineData {
 /**
  * Defines the options of a {@link LineData} instance.
  */
-export type LineDataOptions = Partial<{
-
-	/**
-	 * The data checksum.
-	 */
-	checksum: string;
-
-	/**
-	 * The execution count.
-	 */
-	executionCount: number;
-
-	/**
-	 * The line number.
-	 */
-	lineNumber: number;
-}>;
+export type LineDataOptions = Partial<Omit<LineData, "toString">>;
 
 /**
  * Provides the coverage data of lines.
@@ -133,20 +117,4 @@ export class LineCoverage {
 /**
  * Defines the options of a {@link LineCoverage} instance.
  */
-export type LineCoverageOptions = Partial<{
-
-	/**
-	 * The coverage data.
-	 */
-	data: LineData[];
-
-	/**
-	 * The number of lines found.
-	 */
-	found: number;
-
-	/**
-	 * The number of lines hit.
-	 */
-	hit: number;
-}>;
+export type LineCoverageOptions = Partial<Omit<LineCoverage, "toString">>;

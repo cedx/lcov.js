@@ -71,20 +71,4 @@ export class SourceFile {
 /**
  * Defines the options of a {@link SourceFile} instance.
  */
-export type SourceFileOptions = Partial<{
-
-	/**
-	 * The branch coverage.
-	 */
-	branches: BranchCoverage|null;
-
-	/**
-	 * The branch coverage.
-	 */
-	functions: FunctionCoverage|null;
-
-	/**
-	 * The line coverage.
-	 */
-	lines: LineCoverage|null;
-}>;
+export type SourceFileOptions = Partial<Omit<SourceFile, "path"|"toString">>;

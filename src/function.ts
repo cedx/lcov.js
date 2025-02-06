@@ -58,23 +58,7 @@ export class FunctionData {
 /**
  * Defines the options of a {@link FunctionData} instance.
  */
-export type FunctionDataOptions = Partial<{
-
-	/**
-	 * The execution count.
-	 */
-	executionCount: number;
-
-	/**
-	 * The function name.
-	 */
-	functionName: string;
-
-	/**
-	 * The line number of the function start.
-	 */
-	lineNumber: number;
-}>;
+export type FunctionDataOptions = Partial<Omit<FunctionData, "toString">>;
 
 /**
  * Provides the coverage data of functions.
@@ -136,20 +120,4 @@ export class FunctionCoverage {
 /**
  * Defines the options of a {@link FunctionCoverage} instance.
  */
-export type FunctionCoverageOptions = Partial<{
-
-	/**
-	 * The coverage data.
-	 */
-	data: FunctionData[];
-
-	/**
-	 * The number of functions found.
-	 */
-	found: number;
-
-	/**
-	 * The number of functions hit.
-	 */
-	hit: number;
-}>;
+export type FunctionCoverageOptions = Partial<Omit<FunctionCoverage, "toString">>;
