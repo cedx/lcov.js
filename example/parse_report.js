@@ -9,5 +9,5 @@ try {
 	console.log(JSON.stringify(report));
 }
 catch (error) {
-	console.log(error instanceof SyntaxError ? error.message : error);
+	console.error(error instanceof SyntaxError ? error.message : error);
 }
