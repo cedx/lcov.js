@@ -1,6 +1,0 @@
-<Solution>
-	<Project Path="lcov.esproj">
-		<Build />
-		<Deploy />
-	</Project>
-</Solution>
