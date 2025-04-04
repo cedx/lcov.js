@@ -1,7 +1,7 @@
-import {BranchCoverage} from "./branch.js";
-import {FunctionCoverage} from "./function.js";
-import {LineCoverage} from "./line.js";
-import {Token} from "./token.js";
+import {BranchCoverage} from "./BranchCoverage.js";
+import {FunctionCoverage} from "./FunctionCoverage.js";
+import {LineCoverage} from "./LineCoverage.js";
+import {Token} from "./Token.js";
 
 
 /**

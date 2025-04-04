@@ -1,8 +1,11 @@
-import {BranchCoverage, BranchData} from "./branch.js";
-import {FunctionCoverage, FunctionData} from "./function.js";
-import {LineCoverage, LineData} from "./line.js";
-import {SourceFile} from "./source_file.js";
-import {Token} from "./token.js";
+import {BranchCoverage} from "./BranchCoverage.js";
+import {BranchData} from "./BranchData.js";
+import {FunctionCoverage} from "./FunctionCoverage.js";
+import {FunctionData} from "./FunctionData.js";
+import {LineCoverage} from "./LineCoverage.js";
+import {LineData} from "./LineData.js";
+import {SourceFile} from "./SourceFile.js";
+import {Token} from "./Token.js";
 
 /**
  * Represents a trace file, that is a coverage report.
