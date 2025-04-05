@@ -1,4 +1,4 @@
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides details for function coverage.
@@ -49,7 +49,7 @@ export class FunctionData {
 	 * @returns The string representation of this object.
 	 */
 	toString(options: {asDefinition?: boolean} = {}): string {
-		const token = options.asDefinition ? Token.functionName : Token.functionData;
+		const token = options.asDefinition ? Tokens.functionName : Tokens.functionData;
 		const count = options.asDefinition ? this.lineNumber : this.executionCount;
 		return `${token}:${count},${this.functionName}`;
 	}

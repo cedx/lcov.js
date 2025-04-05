@@ -1,7 +1,7 @@
 import {BranchCoverage} from "./BranchCoverage.js";
 import {FunctionCoverage} from "./FunctionCoverage.js";
 import {LineCoverage} from "./LineCoverage.js";
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 
 /**
@@ -59,11 +59,11 @@ export class SourceFile {
 	 * @returns The string representation of this object.
 	 */
 	toString(): string {
-		const output = [`${Token.sourceFile}:${this.path}`];
+		const output = [`${Tokens.sourceFile}:${this.path}`];
 		if (this.functions) output.push(this.functions.toString());
 		if (this.branches) output.push(this.branches.toString());
 		if (this.lines) output.push(this.lines.toString());
-		output.push(Token.endOfRecord);
+		output.push(Tokens.endOfRecord);
 		return output.join("\n");
 	}
 }

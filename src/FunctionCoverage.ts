@@ -1,5 +1,5 @@
 import {FunctionData} from "./FunctionData.js";
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides the coverage data of functions.
@@ -52,8 +52,8 @@ export class FunctionCoverage {
 		return [
 			...this.data.map(item => item.toString({asDefinition: true})),
 			...this.data.map(item => item.toString({asDefinition: false})),
-			`${Token.functionsFound}:${this.found}`,
-			`${Token.functionsHit}:${this.hit}`
+			`${Tokens.functionsFound}:${this.found}`,
+			`${Tokens.functionsHit}:${this.hit}`
 		].join("\n");
 	}
 }

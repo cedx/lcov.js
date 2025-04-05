@@ -1,5 +1,5 @@
 import {LineData} from "./LineData.js";
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides the coverage data of lines.
@@ -51,8 +51,8 @@ export class LineCoverage {
 	toString(): string {
 		return [
 			...this.data.map(item => item.toString()),
-			`${Token.linesFound}:${this.found}`,
-			`${Token.linesHit}:${this.hit}`
+			`${Tokens.linesFound}:${this.found}`,
+			`${Tokens.linesHit}:${this.hit}`
 		].join("\n");
 	}
 }

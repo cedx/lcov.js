@@ -1,7 +1,7 @@
 /**
  * Provides the list of tokens supported by the parser.
  */
-export const Token = Object.freeze({
+export const Tokens = Object.freeze({
 
 	/**
 	 * The coverage data of a branch.
@@ -72,4 +72,4 @@ export const Token = Object.freeze({
 /**
  * Provides the list of tokens supported by the parser.
  */
-export type Token = typeof Token[keyof typeof Token];
+export type Tokens = typeof Tokens[keyof typeof Tokens];

@@ -1,5 +1,5 @@
 import {BranchData} from "./BranchData.js";
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides the coverage data of branches.
@@ -51,8 +51,8 @@ export class BranchCoverage {
 	toString(): string {
 		return [
 			...this.data.map(item => item.toString()),
-			`${Token.branchesFound}:${this.found}`,
-			`${Token.branchesHit}:${this.hit}`
+			`${Tokens.branchesFound}:${this.found}`,
+			`${Tokens.branchesHit}:${this.hit}`
 		].join("\n");
 	}
 }

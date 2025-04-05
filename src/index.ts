@@ -6,4 +6,4 @@ export * from "./LineCoverage.js";
 export * from "./LineData.js";
 export * from "./Report.js";
 export * from "./SourceFile.js";
-export * from "./Token.js";
+export * from "./Tokens.js";

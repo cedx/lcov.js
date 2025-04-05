@@ -5,7 +5,7 @@ import {FunctionData} from "./FunctionData.js";
 import {LineCoverage} from "./LineCoverage.js";
 import {LineData} from "./LineData.js";
 import {SourceFile} from "./SourceFile.js";
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Represents a trace file, that is a coverage report.
@@ -64,10 +64,10 @@ export class Report {
 			const data = parts.join(":").split(",");
 
 			switch (token) {
-				case Token.testName: report.testName ||= data[0]; break;
-				case Token.endOfRecord: report.sourceFiles.push(sourceFile); break;
+				case Tokens.testName: report.testName ||= data[0]; break;
+				case Tokens.endOfRecord: report.sourceFiles.push(sourceFile); break;
 
-				case Token.branchData:
+				case Tokens.branchData:
 					if (data.length < 4) throw SyntaxError(`Invalid branch data at line #${offset}.`);
 					sourceFile.branches?.data.push(new BranchData({
 						blockNumber: Number(data[1]),
@@ -77,7 +77,7 @@ export class Report {
 					}));
 					break;
 
-				case Token.functionData:
+				case Tokens.functionData:
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
 						item.executionCount = Number(data[0]);
@@ -85,12 +85,12 @@ export class Report {
 					}
 					break;
 
-				case Token.functionName:
+				case Tokens.functionName:
 					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
 					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
 
-				case Token.lineData:
+				case Tokens.lineData:
 					if (data.length < 2) throw SyntaxError(`Invalid line data at line #${offset}.`);
 					sourceFile.lines?.data.push(new LineData({
 						checksum: data.length >= 3 ? data[2] : "",
@@ -99,7 +99,7 @@ export class Report {
 					}));
 					break;
 
-				case Token.sourceFile:
+				case Tokens.sourceFile:
 					sourceFile = new SourceFile(data[0], {
 						branches: new BranchCoverage,
 						functions: new FunctionCoverage,
@@ -107,12 +107,12 @@ export class Report {
 					});
 					break;
 
-				case Token.branchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
-				case Token.branchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
-				case Token.functionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
-				case Token.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
-				case Token.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
-				case Token.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
+				case Tokens.branchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
+				case Tokens.branchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
+				case Tokens.functionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
+				case Tokens.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
+				case Tokens.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
+				case Tokens.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
 				default: throw SyntaxError(`Unknown token at line #${offset}.`);
 			}
 		}
@@ -137,7 +137,7 @@ export class Report {
 	 */
 	toString(): string {
 		return [
-			...this.testName ? [`${Token.testName}:${this.testName}`] : [],
+			...this.testName ? [`${Tokens.testName}:${this.testName}`] : [],
 			...this.sourceFiles.map(item => item.toString())
 		].join("\n");
 	}

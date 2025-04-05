@@ -1,4 +1,4 @@
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides details for branch coverage.
@@ -55,7 +55,7 @@ export class BranchData {
 	 * @returns The string representation of this object.
 	 */
 	toString(): string {
-		const value = `${Token.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
+		const value = `${Tokens.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
 		return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
 	}
 }

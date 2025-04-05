@@ -1,4 +1,4 @@
-import {Token} from "./Token.js";
+import {Tokens} from "./Tokens.js";
 
 /**
  * Provides details for line coverage.
@@ -48,7 +48,7 @@ export class LineData {
 	 * @returns The string representation of this object.
 	 */
 	toString(): string {
-		const value = `${Token.lineData}:${this.lineNumber},${this.executionCount}`;
+		const value = `${Tokens.lineData}:${this.lineNumber},${this.executionCount}`;
 		return this.checksum ? `${value},${this.checksum}` : value;
 	}
 }
