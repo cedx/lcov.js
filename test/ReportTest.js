@@ -7,7 +7,7 @@ import {describe, it} from "node:test";
  * Tests the features of the {@link Report} class.
  */
 describe("Report", () => {
-	const coverage = readFileSync("res/lcov.info", "utf8");
+	const coverage = readFileSync("res/Lcov.info", "utf8");
 
 	describe("fromJson()", () => {
 		it("should return an instance with default values for an empty map", () => {
