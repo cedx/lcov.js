@@ -51,8 +51,8 @@ export class BranchCoverage {
 	toString(): string {
 		return [
 			...this.data.map(item => item.toString()),
-			`${Tokens.branchesFound}:${this.found}`,
-			`${Tokens.branchesHit}:${this.hit}`
+			`${Tokens.BranchesFound}:${this.found}`,
+			`${Tokens.BranchesHit}:${this.hit}`
 		].join("\n");
 	}
 }

@@ -59,11 +59,11 @@ export class SourceFile {
 	 * @returns The string representation of this object.
 	 */
 	toString(): string {
-		const output = [`${Tokens.sourceFile}:${this.path}`];
+		const output = [`${Tokens.SourceFile}:${this.path}`];
 		if (this.functions) output.push(this.functions.toString());
 		if (this.branches) output.push(this.branches.toString());
 		if (this.lines) output.push(this.lines.toString());
-		output.push(Tokens.endOfRecord);
+		output.push(Tokens.EndOfRecord);
 		return output.join("\n");
 	}
 }

@@ -55,7 +55,7 @@ export class BranchData {
 	 * @returns The string representation of this object.
 	 */
 	toString(): string {
-		const value = `${Tokens.branchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
+		const value = `${Tokens.BranchData}:${this.lineNumber},${this.blockNumber},${this.branchNumber}`;
 		return this.taken > 0 ? `${value},${this.taken}` : `${value},-`;
 	}
 }

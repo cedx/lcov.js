@@ -64,10 +64,10 @@ export class Report {
 			const data = parts.join(":").split(",");
 
 			switch (token) {
-				case Tokens.testName: report.testName ||= data[0]; break;
-				case Tokens.endOfRecord: report.sourceFiles.push(sourceFile); break;
+				case Tokens.TestName: report.testName ||= data[0]; break;
+				case Tokens.EndOfRecord: report.sourceFiles.push(sourceFile); break;
 
-				case Tokens.branchData:
+				case Tokens.BranchData:
 					if (data.length < 4) throw SyntaxError(`Invalid branch data at line #${offset}.`);
 					sourceFile.branches?.data.push(new BranchData({
 						blockNumber: Number(data[1]),
@@ -77,7 +77,7 @@ export class Report {
 					}));
 					break;
 
-				case Tokens.functionData:
+				case Tokens.FunctionData:
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
 						item.executionCount = Number(data[0]);
@@ -85,12 +85,12 @@ export class Report {
 					}
 					break;
 
-				case Tokens.functionName:
+				case Tokens.FunctionName:
 					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
 					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
 
-				case Tokens.lineData:
+				case Tokens.LineData:
 					if (data.length < 2) throw SyntaxError(`Invalid line data at line #${offset}.`);
 					sourceFile.lines?.data.push(new LineData({
 						checksum: data.length >= 3 ? data[2] : "",
@@ -99,7 +99,7 @@ export class Report {
 					}));
 					break;
 
-				case Tokens.sourceFile:
+				case Tokens.SourceFile:
 					sourceFile = new SourceFile(data[0], {
 						branches: new BranchCoverage,
 						functions: new FunctionCoverage,
@@ -107,12 +107,12 @@ export class Report {
 					});
 					break;
 
-				case Tokens.branchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
-				case Tokens.branchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
-				case Tokens.functionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
-				case Tokens.functionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
-				case Tokens.linesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
-				case Tokens.linesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
+				case Tokens.BranchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
+				case Tokens.BranchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
+				case Tokens.FunctionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
+				case Tokens.FunctionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
+				case Tokens.LinesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
+				case Tokens.LinesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
 				default: throw SyntaxError(`Unknown token at line #${offset}.`);
 			}
 		}
@@ -137,7 +137,7 @@ export class Report {
 	 */
 	toString(): string {
 		return [
-			...this.testName ? [`${Tokens.testName}:${this.testName}`] : [],
+			...this.testName ? [`${Tokens.TestName}:${this.testName}`] : [],
 			...this.sourceFiles.map(item => item.toString())
 		].join("\n");
 	}

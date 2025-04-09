@@ -6,67 +6,67 @@ export const Tokens = Object.freeze({
 	/**
 	 * The coverage data of a branch.
 	 */
-	branchData: "BRDA",
+	BranchData: "BRDA",
 
 	/**
 	 * The number of branches found.
 	 */
-	branchesFound: "BRF",
+	BranchesFound: "BRF",
 
 	/**
 	 * The number of branches hit.
 	 */
-	branchesHit: "BRH",
+	BranchesHit: "BRH",
 
 	/**
 	 * The end of a section.
 	 */
-	endOfRecord: "end_of_record",
+	EndOfRecord: "end_of_record",
 
 	/**
 	 * The coverage data of a function.
 	 */
-	functionData: "FNDA",
+	FunctionData: "FNDA",
 
 	/**
 	 * A function name.
 	 */
-	functionName: "FN",
+	FunctionName: "FN",
 
 	/**
 	 * The number of functions found.
 	 */
-	functionsFound: "FNF",
+	FunctionsFound: "FNF",
 
 	/**
 	 * The number of functions hit.
 	 */
-	functionsHit: "FNH",
+	FunctionsHit: "FNH",
 
 	/**
 	 * The coverage data of a line.
 	 */
-	lineData: "DA",
+	LineData: "DA",
 
 	/**
 	 * The number of lines found.
 	 */
-	linesFound: "LF",
+	LinesFound: "LF",
 
 	/**
 	 * The number of lines hit.
 	 */
-	linesHit: "LH",
+	LinesHit: "LH",
 
 	/**
 	 * The path to a source file.
 	 */
-	sourceFile: "SF",
+	SourceFile: "SF",
 
 	/**
 	 * A test name.
 	 */
-	testName: "TN"
+	TestName: "TN"
 });
 
 /**

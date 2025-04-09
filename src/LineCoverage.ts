@@ -51,8 +51,8 @@ export class LineCoverage {
 	toString(): string {
 		return [
 			...this.data.map(item => item.toString()),
-			`${Tokens.linesFound}:${this.found}`,
-			`${Tokens.linesHit}:${this.hit}`
+			`${Tokens.LinesFound}:${this.found}`,
+			`${Tokens.LinesHit}:${this.hit}`
 		].join("\n");
 	}
 }

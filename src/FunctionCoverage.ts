@@ -52,8 +52,8 @@ export class FunctionCoverage {
 		return [
 			...this.data.map(item => item.toString({asDefinition: true})),
 			...this.data.map(item => item.toString({asDefinition: false})),
-			`${Tokens.functionsFound}:${this.found}`,
-			`${Tokens.functionsHit}:${this.hit}`
+			`${Tokens.FunctionsFound}:${this.found}`,
+			`${Tokens.FunctionsHit}:${this.hit}`
 		].join("\n");
 	}
 }
