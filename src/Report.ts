@@ -50,7 +50,7 @@ export class Report {
 	 * @returns The resulting coverage report.
 	 * @throws `SyntaxError` if a parsing error occurred.
 	 */
-	static parse(coverage: string): Report {
+	static parse(coverage: string): Report { // eslint-disable-line max-statements
 		const report = new this("");
 		let offset = 0;
 		let sourceFile = new SourceFile("");
@@ -64,10 +64,11 @@ export class Report {
 			const data = parts.join(":").split(",");
 
 			switch (token) {
-				case Tokens.TestName: report.testName ||= data[0]; break;
-				case Tokens.EndOfRecord: report.sourceFiles.push(sourceFile); break;
-
-				case Tokens.BranchData:
+				case Tokens.TestName: {
+					report.testName ||= data[0];
+					break;
+				}
+				case Tokens.BranchData: {
 					if (data.length < 4) throw SyntaxError(`Invalid branch data at line #${offset}.`);
 					sourceFile.branches?.data.push(new BranchData({
 						blockNumber: Number(data[1]),
@@ -76,21 +77,37 @@ export class Report {
 						taken: data[3] == "-" ? 0 : Number(data[3])
 					}));
 					break;
-
-				case Tokens.FunctionData:
+				}
+				case Tokens.BranchesFound: {
+					if (sourceFile.branches) sourceFile.branches.found = Number(data[0]);
+					break;
+				}
+				case Tokens.BranchesHit: {
+					if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]);
+					break;
+				}
+				case Tokens.FunctionData: {
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
 						item.executionCount = Number(data[0]);
 						break;
 					}
 					break;
-
-				case Tokens.FunctionName:
+				}
+				case Tokens.FunctionsFound: {
+					if (sourceFile.functions) sourceFile.functions.found = Number(data[0]);
+					break;
+				}
+				case Tokens.FunctionName: {
 					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
 					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
-
-				case Tokens.LineData:
+				}
+				case Tokens.FunctionsHit: {
+					if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]);
+					break;
+				}
+				case Tokens.LineData: {
 					if (data.length < 2) throw SyntaxError(`Invalid line data at line #${offset}.`);
 					sourceFile.lines?.data.push(new LineData({
 						checksum: data.length >= 3 ? data[2] : "",
@@ -98,22 +115,29 @@ export class Report {
 						lineNumber: Number(data[0])
 					}));
 					break;
-
-				case Tokens.SourceFile:
+				}
+				case Tokens.LinesFound: {
+					if (sourceFile.lines) sourceFile.lines.found = Number(data[0]);
+					break;
+				}
+				case Tokens.LinesHit: {
+					if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]);
+					break;
+				}
+				case Tokens.SourceFile: {
 					sourceFile = new SourceFile(data[0], {
 						branches: new BranchCoverage,
 						functions: new FunctionCoverage,
 						lines: new LineCoverage
 					});
 					break;
-
-				case Tokens.BranchesFound: if (sourceFile.branches) sourceFile.branches.found = Number(data[0]); break;
-				case Tokens.BranchesHit: if (sourceFile.branches) sourceFile.branches.hit = Number(data[0]); break;
-				case Tokens.FunctionsFound: if (sourceFile.functions) sourceFile.functions.found = Number(data[0]); break;
-				case Tokens.FunctionsHit: if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]); break;
-				case Tokens.LinesFound: if (sourceFile.lines) sourceFile.lines.found = Number(data[0]); break;
-				case Tokens.LinesHit: if (sourceFile.lines) sourceFile.lines.hit = Number(data[0]); break;
-				default: throw SyntaxError(`Unknown token at line #${offset}.`);
+				}
+				case Tokens.EndOfRecord: {
+					report.sourceFiles.push(sourceFile);
+					break;
+				}
+				default:
+					throw SyntaxError(`Unknown token at line #${offset}.`);
 			}
 		}
 
