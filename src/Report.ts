@@ -1,9 +1,6 @@
-import {BranchCoverage} from "./BranchCoverage.js";
-import {BranchData} from "./BranchData.js";
-import {FunctionCoverage} from "./FunctionCoverage.js";
-import {FunctionData} from "./FunctionData.js";
-import {LineCoverage} from "./LineCoverage.js";
-import {LineData} from "./LineData.js";
+import {BranchCoverage, BranchData} from "./BranchCoverage.js";
+import {FunctionCoverage, FunctionData} from "./FunctionCoverage.js";
+import {LineCoverage, LineData} from "./LineCoverage.js";
 import {SourceFile} from "./SourceFile.js";
 import {Tokens} from "./Tokens.js";
 
