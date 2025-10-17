@@ -73,10 +73,15 @@ export class Report {
 				}
 				case Tokens.FunctionData: {
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
-					if (sourceFile.functions) for (const item of sourceFile.functions.data) if (item.functionName == data[1]) { // eslint-disable-line max-depth
-						item.executionCount = Number(data[0]);
-						break;
+					if (sourceFile.functions) {
+						const items = sourceFile.functions.data.filter(item => item.functionName == data[1]);
+						items.forEach(item => item.executionCount = Number(data[0]));
 					}
+					break;
+				}
+				case Tokens.FunctionName: {
+					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
+					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
 				}
 				case Tokens.FunctionsFound: {
@@ -85,11 +90,6 @@ export class Report {
 				}
 				case Tokens.FunctionsHit: {
 					if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]);
-					break;
-				}
-				case Tokens.FunctionName: {
-					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
-					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
 					break;
 				}
 				case Tokens.LineData: {
