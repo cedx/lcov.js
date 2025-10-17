@@ -9,21 +9,6 @@ import {describe, it} from "node:test";
 describe("Report", () => {
 	const coverage = readFileSync("res/Lcov.info", "utf8");
 
-	describe("fromJson()", () => {
-		it("should return an instance with default values for an empty map", () => {
-			const report = Report.fromJson({});
-			equal(report.sourceFiles.length, 0);
-			equal(report.testName.length, 0);
-		});
-
-		it("should return an initialized instance for a non-empty map", () => {
-			const report = Report.fromJson({sourceFiles: [{}], testName: "LcovTest"});
-			equal(report.sourceFiles.length, 1);
-			ok(report.sourceFiles[0] instanceof SourceFile);
-			equal(report.testName, "LcovTest");
-		});
-	});
-
 	describe("parse()", () => {
 		const report = Report.parse(coverage);
 		it("should have a test name", () => equal(report.testName, "Example"));

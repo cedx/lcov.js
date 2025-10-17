@@ -26,21 +26,8 @@ export class LineData {
 	 */
 	constructor(options: LineDataOptions = {}) {
 		this.checksum = options.checksum ?? "";
-		this.executionCount = options.executionCount ?? 0;
-		this.lineNumber = options.lineNumber ?? 0;
-	}
-
-	/**
-	 * Creates new line data from the specified JSON object.
-	 * @param json A JSON object representing line data.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): LineData {
-		return new this({
-			checksum: typeof json.checksum == "string" ? json.checksum : "",
-			executionCount: Number.isInteger(json.executionCount) ? json.executionCount as number : 0,
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0
-		});
+		this.executionCount = Math.max(0, options.executionCount ?? 0);
+		this.lineNumber = Math.max(0, options.lineNumber ?? 0);
 	}
 
 	/**
@@ -84,21 +71,8 @@ export class LineCoverage {
 	 */
 	constructor(options: LineCoverageOptions = {}) {
 		this.data = options.data ?? [];
-		this.found = options.found ?? 0;
-		this.hit = options.hit ?? 0;
-	}
-
-	/**
-	 * Creates a new line coverage from the specified JSON object.
-	 * @param json A JSON object representing a line coverage.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): LineCoverage {
-		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => LineData.fromJson(item as Record<string, any>)) : [],
-			found: Number.isInteger(json.found) ? json.found as number : 0,
-			hit: Number.isInteger(json.hit) ? json.hit as number : 0
-		});
+		this.found = Math.max(0, options.found ?? 0);
+		this.hit = Math.max(0, options.hit ?? 0);
 	}
 
 	/**

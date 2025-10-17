@@ -1,6 +1,6 @@
-import {BranchCoverage} from "./BranchCoverage.js";
-import {FunctionCoverage} from "./FunctionCoverage.js";
-import {LineCoverage} from "./LineCoverage.js";
+import type {BranchCoverage} from "./BranchCoverage.js";
+import type {FunctionCoverage} from "./FunctionCoverage.js";
+import type {LineCoverage} from "./LineCoverage.js";
 import {Tokens} from "./Tokens.js";
 
 
@@ -39,19 +39,6 @@ export class SourceFile {
 		this.functions = options.functions ?? null;
 		this.lines = options.lines ?? null;
 		this.path = path;
-	}
-
-	/**
-	 * Creates a new source file from the specified JSON object.
-	 * @param json A JSON object representing a source file.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): SourceFile {
-		return new this(typeof json.path == "string" ? json.path : "", {
-			branches: typeof json.branches == "object" && json.branches ? BranchCoverage.fromJson(json.branches as Record<string, any>) : null,
-			functions: typeof json.functions == "object" && json.functions ? FunctionCoverage.fromJson(json.functions as Record<string, any>) : null,
-			lines: typeof json.lines == "object" && json.lines ? LineCoverage.fromJson(json.lines as Record<string, any>) : null
-		});
 	}
 
 	/**

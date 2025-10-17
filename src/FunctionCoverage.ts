@@ -25,22 +25,9 @@ export class FunctionData {
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(options: FunctionDataOptions = {}) {
-		this.executionCount = options.executionCount ?? 0;
+		this.executionCount = Math.max(0, options.executionCount ?? 0);
 		this.functionName = options.functionName ?? "";
-		this.lineNumber = options.lineNumber ?? 0;
-	}
-
-	/**
-	 * Creates new function data from the specified JSON object.
-	 * @param json A JSON object representing function data.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): FunctionData {
-		return new this({
-			executionCount: Number.isInteger(json.executionCount) ? json.executionCount as number : 0,
-			functionName: typeof json.functionName == "string" ? json.functionName : "",
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0
-		});
+		this.lineNumber = Math.max(0, options.lineNumber ?? 0);
 	}
 
 	/**
@@ -86,21 +73,8 @@ export class FunctionCoverage {
 	 */
 	constructor(options: FunctionCoverageOptions = {}) {
 		this.data = options.data ?? [];
-		this.found = options.found ?? 0;
-		this.hit = options.hit ?? 0;
-	}
-
-	/**
-	 * Creates a new function coverage from the specified JSON object.
-	 * @param json A JSON object representing a function coverage.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): FunctionCoverage {
-		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => FunctionData.fromJson(item as Record<string, any>)) : [],
-			found: Number.isInteger(json.found) ? json.found as number : 0,
-			hit: Number.isInteger(json.hit) ? json.hit as number : 0
-		});
+		this.found = Math.max(0, options.found ?? 0);
+		this.hit = Math.max(0, options.hit ?? 0);
 	}
 
 	/**

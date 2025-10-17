@@ -30,24 +30,10 @@ export class BranchData {
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(options: BranchDataOptions = {}) {
-		this.blockNumber = options.blockNumber ?? 0;
-		this.branchNumber = options.branchNumber ?? 0;
-		this.lineNumber = options.lineNumber ?? 0;
-		this.taken = options.taken ?? 0;
-	}
-
-	/**
-	 * Creates new branch data from the specified JSON object.
-	 * @param json A JSON object representing branch data.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): BranchData {
-		return new this({
-			blockNumber: Number.isInteger(json.blockNumber) ? json.blockNumber as number : 0,
-			branchNumber: Number.isInteger(json.branchNumber) ? json.branchNumber as number : 0,
-			lineNumber: Number.isInteger(json.lineNumber) ? json.lineNumber as number : 0,
-			taken: Number.isInteger(json.taken) ? json.taken as number : 0
-		});
+		this.blockNumber = Math.max(0, options.blockNumber ?? 0);
+		this.branchNumber = Math.max(0, options.branchNumber ?? 0);
+		this.lineNumber = Math.max(0, options.lineNumber ?? 0);
+		this.taken = Math.max(0, options.taken ?? 0);
 	}
 
 	/**
@@ -91,21 +77,8 @@ export class BranchCoverage {
 	 */
 	constructor(options: BranchCoverageOptions = {}) {
 		this.data = options.data ?? [];
-		this.found = options.found ?? 0;
-		this.hit = options.hit ?? 0;
-	}
-
-	/**
-	 * Creates a new branch coverage from the specified JSON object.
-	 * @param json A JSON object representing a branch coverage.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): BranchCoverage {
-		return new this({
-			data: Array.isArray(json.data) ? json.data.map(item => BranchData.fromJson(item as Record<string, any>)) : [],
-			found: Number.isInteger(json.found) ? json.found as number : 0,
-			hit: Number.isInteger(json.hit) ? json.hit as number : 0
-		});
+		this.found = Math.max(0, options.found ?? 0);
+		this.hit = Math.max(0, options.hit ?? 0);
 	}
 
 	/**

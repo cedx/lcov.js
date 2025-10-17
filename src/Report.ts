@@ -30,18 +30,6 @@ export class Report {
 	}
 
 	/**
-	 * Creates a new report from the specified JSON object.
-	 * @param json A JSON object representing a report.
-	 * @returns The instance corresponding to the specified JSON object.
-	 */
-	static fromJson(json: Record<string, any>): Report {
-		return new this(
-			typeof json.testName == "string" ? json.testName : "",
-			Array.isArray(json.sourceFiles) ? json.sourceFiles.map(item => SourceFile.fromJson(item as Record<string, any>)) : []
-		);
-	}
-
-	/**
 	 * Parses the specified coverage data in LCOV format.
 	 * @param coverage The LCOV coverage data.
 	 * @returns The resulting coverage report.
