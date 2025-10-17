@@ -83,13 +83,13 @@ export class Report {
 					if (sourceFile.functions) sourceFile.functions.found = Number(data[0]);
 					break;
 				}
+				case Tokens.FunctionsHit: {
+					if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]);
+					break;
+				}
 				case Tokens.FunctionName: {
 					if (data.length < 2) throw SyntaxError(`Invalid function name at line #${offset}.`);
 					sourceFile.functions?.data.push(new FunctionData({functionName: data[1], lineNumber: Number(data[0])}));
-					break;
-				}
-				case Tokens.FunctionsHit: {
-					if (sourceFile.functions) sourceFile.functions.hit = Number(data[0]);
 					break;
 				}
 				case Tokens.LineData: {
