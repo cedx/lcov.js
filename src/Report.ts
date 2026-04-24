@@ -41,7 +41,7 @@ export class Report {
 	static parse(coverage: string): Report { // eslint-disable-line max-statements
 		const report = new this("");
 		let offset = 0;
-		let sourceFile = new SourceFile("");
+		let sourceFile = new SourceFile("", {branches: new BranchCoverage, functions: new FunctionCoverage, lines: new LineCoverage});
 
 		for (let line of coverage.split(/\r?\n/g)) {
 			offset++;
