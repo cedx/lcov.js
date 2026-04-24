@@ -78,7 +78,7 @@ export class Report {
 					if (data.length < 2) throw SyntaxError(`Invalid function data at line #${offset}.`);
 					if (sourceFile.functions) {
 						const items = sourceFile.functions.data.filter(item => item.functionName == data[1]);
-						items.forEach(item => item.executionCount = Number(data[0]));
+						for (const item of items) item.executionCount = Number(data[0]);
 					}
 					break;
 				}
@@ -113,11 +113,7 @@ export class Report {
 					break;
 				}
 				case Tokens.SourceFile: {
-					sourceFile = new SourceFile(data[0], {
-						branches: new BranchCoverage,
-						functions: new FunctionCoverage,
-						lines: new LineCoverage
-					});
+					sourceFile = new SourceFile(data[0], {branches: new BranchCoverage, functions: new FunctionCoverage, lines: new LineCoverage});
 					break;
 				}
 				case Tokens.EndOfRecord: {
