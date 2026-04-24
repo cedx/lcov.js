@@ -32,13 +32,13 @@ export class FunctionData {
 
 	/**
 	 * Returns a string representation of this object.
-	 * @param options Value indicating whether to return the function definition instead of its data.
 	 * @returns The string representation of this object.
 	 */
-	toString(options: {asDefinition?: boolean} = {}): string {
-		const token = options.asDefinition ? Tokens.FunctionName : Tokens.FunctionData;
-		const count = options.asDefinition ? this.lineNumber : this.executionCount;
-		return `${token}:${count},${this.functionName}`;
+	toString(): string {
+		return [
+			`${Tokens.FunctionName}:${this.lineNumber},${this.functionName}`,
+			`${Tokens.FunctionData}:${this.executionCount},${this.functionName}`
+		].join("\n");
 	}
 }
 

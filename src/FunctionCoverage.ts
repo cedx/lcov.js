@@ -37,7 +37,7 @@ export class FunctionCoverage {
 	 */
 	toString(): string {
 		return [
-			...this.data.map(item => `${item.toString({asDefinition: true})}\n${item.toString({asDefinition: false})}`),
+			...this.data.map(item => item.toString()),
 			`${Tokens.FunctionsFound}:${this.found}`,
 			`${Tokens.FunctionsHit}:${this.hit}`
 		].join("\n");
