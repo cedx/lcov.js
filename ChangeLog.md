@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [11.0.0](https://github.com/cedx/lcov.js/compare/v10.1.0...v11.0.0)
+- Breaking change: changed the output of the `FunctionData.toString()` method.
+- Breaking change: removed the `options` parameter from the `FunctionData.toString()` method.
+
 ## Version [10.1.0](https://github.com/cedx/lcov.js/compare/v10.0.0...v10.1.0)
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
 - Added the `Report.tryParse()` static method.
