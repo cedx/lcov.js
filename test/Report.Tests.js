@@ -16,9 +16,9 @@ describe("Report", () => {
 		it("should contain three source files", () => {
 			equal(report.sourceFiles.length, 3);
 			ok(report.sourceFiles[0] instanceof SourceFile);
-			equal(report.sourceFiles[0].path, "/home/cedx/lcov.js/fixture.js");
-			equal(report.sourceFiles[1].path, "/home/cedx/lcov.js/func1.js");
-			equal(report.sourceFiles[2].path, "/home/cedx/lcov.js/func2.js");
+			equal(report.sourceFiles[0].path, "/home/CedX/Lcov.js/Fixture.js");
+			equal(report.sourceFiles[1].path, "/home/CedX/Lcov.js/Func1.js");
+			equal(report.sourceFiles[2].path, "/home/CedX/Lcov.js/Func2.js");
 		});
 
 		it("should have detailed branch coverage", () => {

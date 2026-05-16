@@ -6,7 +6,7 @@ All you have to do is to create the adequate structure using these different cla
 import console from "node:console";
 import {FunctionCoverage, LineCoverage, LineData, Report, SourceFile} from "@cedx/lcov";
 
-const sourceFile = new SourceFile("/home/cedx/lcov.js/fixture.js", {
+const sourceFile = new SourceFile("/home/CedX/Lcov.js/Fixture.js", {
   functions: new FunctionCoverage({found: 1, hit: 1}),
   lines: new LineCoverage({found: 2, hit: 2, data: [
     new LineData({lineNumber: 6, executionCount: 2, checksum: "PF4Rz2r7RTliO9u6bZ7h6g"}),
@@ -22,7 +22,7 @@ The `Report.toString()` method will return a [LCOV](https://github.com/linux-tes
 
 ```lcov
 TN:Example
-SF:/home/cedx/lcov.js/fixture.js
+SF:/home/CedX/Lcov.js/Fixture.js
 FNF:1
 FNH:1
 DA:6,2,PF4Rz2r7RTliO9u6bZ7h6g
@@ -33,5 +33,5 @@ end_of_record
 ```
 
 > [!TIP]
-> See the [source code](https://github.com/cedx/lcov.js/tree/main/src) of this library
+> See the [source code](https://github.com/CedX/Lcov.js/tree/main/src) of this library
 > for detailed information on the available classes.
